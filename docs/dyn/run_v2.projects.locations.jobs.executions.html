@@ -299,7 +299,7 @@ Returns:
         },
         &quot;emptyDir&quot;: { # Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). # Ephemeral storage used as a shared volume.
           &quot;medium&quot;: &quot;A String&quot;, # The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
-          &quot;sizeLimit&quot;: &quot;A String&quot;, # Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#x27;s values are of the &#x27;Quantity&#x27; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+          &quot;sizeLimit&quot;: &quot;A String&quot;, # Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#x27;s values are of the &#x27;Quantity&#x27; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         },
         &quot;name&quot;: &quot;A String&quot;, # Required. Volume&#x27;s name.
         &quot;secret&quot;: { # The secret&#x27;s value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret. # Secret represents a secret that should populate this volume.
@@ -317,7 +317,7 @@ Returns:
     ],
     &quot;vpcAccess&quot;: { # VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc # VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
       &quot;connector&quot;: &quot;A String&quot;, # VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-      &quot;egress&quot;: &quot;A String&quot;, # Traffic VPC egress settings.
+      &quot;egress&quot;: &quot;A String&quot;, # Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
     },
   },
   &quot;uid&quot;: &quot;A String&quot;, # Output only. Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
@@ -492,7 +492,7 @@ Returns:
             },
             &quot;emptyDir&quot;: { # Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs). # Ephemeral storage used as a shared volume.
               &quot;medium&quot;: &quot;A String&quot;, # The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional
-              &quot;sizeLimit&quot;: &quot;A String&quot;, # Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#x27;s values are of the &#x27;Quantity&#x27; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir +optional
+              &quot;sizeLimit&quot;: &quot;A String&quot;, # Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#x27;s values are of the &#x27;Quantity&#x27; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
             },
             &quot;name&quot;: &quot;A String&quot;, # Required. Volume&#x27;s name.
             &quot;secret&quot;: { # The secret&#x27;s value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret. # Secret represents a secret that should populate this volume.
@@ -510,7 +510,7 @@ Returns:
         ],
         &quot;vpcAccess&quot;: { # VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc # VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
           &quot;connector&quot;: &quot;A String&quot;, # VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
-          &quot;egress&quot;: &quot;A String&quot;, # Traffic VPC egress settings.
+          &quot;egress&quot;: &quot;A String&quot;, # Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
         },
       },
       &quot;uid&quot;: &quot;A String&quot;, # Output only. Server assigned unique identifier for the Execution. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
