@@ -665,6 +665,12 @@ Returns:
   &quot;invocationTools&quot;: [ # The tool names of the tools that were invoked.
     &quot;A String&quot;,
   ],
+  &quot;invokedSkills&quot;: [ # The skills executed during the turn.
+    { # Represents a skill used during the assist call.
+      &quot;displayName&quot;: &quot;A String&quot;, # The display name of the skill.
+      &quot;name&quot;: &quot;A String&quot;, # The resource name of the skill.
+    },
+  ],
   &quot;sessionInfo&quot;: { # Information about the session. # Session information. Only included in the final StreamAssistResponse of the response stream.
     &quot;session&quot;: &quot;A String&quot;, # Name of the newly generated or continued session. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`.
   },
