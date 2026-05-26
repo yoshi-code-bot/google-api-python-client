@@ -1045,6 +1045,9 @@ Args:
         &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
       },
     },
+    &quot;nodeCreationConfig&quot;: { # NodeCreationConfig defines the settings of node creation mode. # Optional. Configuration for Node Creation Mode.
+      &quot;nodeCreationMode&quot;: &quot;A String&quot;, # The mode of node creation.
+    },
     &quot;nodeIpv4CidrSize&quot;: 42, # Output only. The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
     &quot;nodePoolAutoConfig&quot;: { # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters. # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
       &quot;linuxNodeConfig&quot;: { # Parameters that can be configured on Linux nodes. # Output only. Configuration options for Linux nodes.
@@ -1615,6 +1618,13 @@ Args:
         &quot;locations&quot;: [ # The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool&#x27;s nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
           &quot;A String&quot;,
         ],
+        &quot;maintenancePolicy&quot;: { # Defines the maintenance policy for the node pool. # Optional. Specifies the maintenance policy for the node pool.
+          &quot;exclusionUntilEndOfSupport&quot;: { # Defines the maintenance exclusion for the node pool. # Optional. The exclusion until end of support for the node pool.
+            &quot;enabled&quot;: True or False, # Optional. Indicates whether the exclusion is enabled.
+            &quot;endTime&quot;: &quot;A String&quot;, # Output only. The end time of the maintenance exclusion. It is output only. It is the cluster control plane version&#x27;s end of support time, or end of extended support time when the cluster is on extended support channel.
+            &quot;startTime&quot;: &quot;A String&quot;, # Output only. The start time of the maintenance exclusion. It is output only. It is the exclusion creation time.
+          },
+        },
         &quot;management&quot;: { # NodeManagement defines the set of node management services turned on for the node pool. # NodeManagement configuration for this NodePool.
           &quot;autoRepair&quot;: True or False, # A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
           &quot;autoUpgrade&quot;: True or False, # A flag that specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
@@ -1662,6 +1672,8 @@ Args:
           &quot;subnetwork&quot;: &quot;A String&quot;, # Optional. The subnetwork name/path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple subnetworks, the subnetwork can be either: - A user supplied subnetwork name during node pool creation (e.g., `my-subnet`). The name must be between 1 and 63 characters long, start with a letter, contain only letters, numbers, and hyphens, and end with a letter or a number. - A full subnetwork path during node pool creation, such as `projects/gke-project/regions/us-central1/subnetworks/my-subnet` - A subnetwork path picked based on the IP utilization during node pool creation and is immutable.
         },
         &quot;nodeDrainConfig&quot;: { # NodeDrainConfig contains the node drain related configurations for this node pool. # Specifies the node drain configuration for this node pool.
+          &quot;graceTerminationDuration&quot;: &quot;A String&quot;, # The duration of the grace termination period for node drain.
+          &quot;pdbTimeoutDuration&quot;: &quot;A String&quot;, # The duration of the PDB timeout period for node drain.
           &quot;respectPdbDuringNodePoolDeletion&quot;: True or False, # Whether to respect PDB during node pool deletion.
         },
         &quot;placementPolicy&quot;: { # PlacementPolicy defines the placement policy used by the node pool. # Specifies the node placement policy.
@@ -2782,6 +2794,9 @@ Returns:
       &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
     },
   },
+  &quot;nodeCreationConfig&quot;: { # NodeCreationConfig defines the settings of node creation mode. # Optional. Configuration for Node Creation Mode.
+    &quot;nodeCreationMode&quot;: &quot;A String&quot;, # The mode of node creation.
+  },
   &quot;nodeIpv4CidrSize&quot;: 42, # Output only. The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
   &quot;nodePoolAutoConfig&quot;: { # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters. # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
     &quot;linuxNodeConfig&quot;: { # Parameters that can be configured on Linux nodes. # Output only. Configuration options for Linux nodes.
@@ -3352,6 +3367,13 @@ Returns:
       &quot;locations&quot;: [ # The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool&#x27;s nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
         &quot;A String&quot;,
       ],
+      &quot;maintenancePolicy&quot;: { # Defines the maintenance policy for the node pool. # Optional. Specifies the maintenance policy for the node pool.
+        &quot;exclusionUntilEndOfSupport&quot;: { # Defines the maintenance exclusion for the node pool. # Optional. The exclusion until end of support for the node pool.
+          &quot;enabled&quot;: True or False, # Optional. Indicates whether the exclusion is enabled.
+          &quot;endTime&quot;: &quot;A String&quot;, # Output only. The end time of the maintenance exclusion. It is output only. It is the cluster control plane version&#x27;s end of support time, or end of extended support time when the cluster is on extended support channel.
+          &quot;startTime&quot;: &quot;A String&quot;, # Output only. The start time of the maintenance exclusion. It is output only. It is the exclusion creation time.
+        },
+      },
       &quot;management&quot;: { # NodeManagement defines the set of node management services turned on for the node pool. # NodeManagement configuration for this NodePool.
         &quot;autoRepair&quot;: True or False, # A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
         &quot;autoUpgrade&quot;: True or False, # A flag that specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
@@ -3399,6 +3421,8 @@ Returns:
         &quot;subnetwork&quot;: &quot;A String&quot;, # Optional. The subnetwork name/path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple subnetworks, the subnetwork can be either: - A user supplied subnetwork name during node pool creation (e.g., `my-subnet`). The name must be between 1 and 63 characters long, start with a letter, contain only letters, numbers, and hyphens, and end with a letter or a number. - A full subnetwork path during node pool creation, such as `projects/gke-project/regions/us-central1/subnetworks/my-subnet` - A subnetwork path picked based on the IP utilization during node pool creation and is immutable.
       },
       &quot;nodeDrainConfig&quot;: { # NodeDrainConfig contains the node drain related configurations for this node pool. # Specifies the node drain configuration for this node pool.
+        &quot;graceTerminationDuration&quot;: &quot;A String&quot;, # The duration of the grace termination period for node drain.
+        &quot;pdbTimeoutDuration&quot;: &quot;A String&quot;, # The duration of the PDB timeout period for node drain.
         &quot;respectPdbDuringNodePoolDeletion&quot;: True or False, # Whether to respect PDB during node pool deletion.
       },
       &quot;placementPolicy&quot;: { # PlacementPolicy defines the placement policy used by the node pool. # Specifies the node placement policy.
@@ -4383,6 +4407,9 @@ Returns:
           &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
         },
       },
+      &quot;nodeCreationConfig&quot;: { # NodeCreationConfig defines the settings of node creation mode. # Optional. Configuration for Node Creation Mode.
+        &quot;nodeCreationMode&quot;: &quot;A String&quot;, # The mode of node creation.
+      },
       &quot;nodeIpv4CidrSize&quot;: 42, # Output only. The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
       &quot;nodePoolAutoConfig&quot;: { # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters. # Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
         &quot;linuxNodeConfig&quot;: { # Parameters that can be configured on Linux nodes. # Output only. Configuration options for Linux nodes.
@@ -4953,6 +4980,13 @@ Returns:
           &quot;locations&quot;: [ # The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool&#x27;s nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
             &quot;A String&quot;,
           ],
+          &quot;maintenancePolicy&quot;: { # Defines the maintenance policy for the node pool. # Optional. Specifies the maintenance policy for the node pool.
+            &quot;exclusionUntilEndOfSupport&quot;: { # Defines the maintenance exclusion for the node pool. # Optional. The exclusion until end of support for the node pool.
+              &quot;enabled&quot;: True or False, # Optional. Indicates whether the exclusion is enabled.
+              &quot;endTime&quot;: &quot;A String&quot;, # Output only. The end time of the maintenance exclusion. It is output only. It is the cluster control plane version&#x27;s end of support time, or end of extended support time when the cluster is on extended support channel.
+              &quot;startTime&quot;: &quot;A String&quot;, # Output only. The start time of the maintenance exclusion. It is output only. It is the exclusion creation time.
+            },
+          },
           &quot;management&quot;: { # NodeManagement defines the set of node management services turned on for the node pool. # NodeManagement configuration for this NodePool.
             &quot;autoRepair&quot;: True or False, # A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
             &quot;autoUpgrade&quot;: True or False, # A flag that specifies whether node auto-upgrade is enabled for the node pool. If enabled, node auto-upgrade helps keep the nodes in your node pool up to date with the latest release version of Kubernetes.
@@ -5000,6 +5034,8 @@ Returns:
             &quot;subnetwork&quot;: &quot;A String&quot;, # Optional. The subnetwork name/path for the node pool. Format: projects/{project}/regions/{region}/subnetworks/{subnetwork} If the cluster is associated with multiple subnetworks, the subnetwork can be either: - A user supplied subnetwork name during node pool creation (e.g., `my-subnet`). The name must be between 1 and 63 characters long, start with a letter, contain only letters, numbers, and hyphens, and end with a letter or a number. - A full subnetwork path during node pool creation, such as `projects/gke-project/regions/us-central1/subnetworks/my-subnet` - A subnetwork path picked based on the IP utilization during node pool creation and is immutable.
           },
           &quot;nodeDrainConfig&quot;: { # NodeDrainConfig contains the node drain related configurations for this node pool. # Specifies the node drain configuration for this node pool.
+            &quot;graceTerminationDuration&quot;: &quot;A String&quot;, # The duration of the grace termination period for node drain.
+            &quot;pdbTimeoutDuration&quot;: &quot;A String&quot;, # The duration of the PDB timeout period for node drain.
             &quot;respectPdbDuringNodePoolDeletion&quot;: True or False, # Whether to respect PDB during node pool deletion.
           },
           &quot;placementPolicy&quot;: { # PlacementPolicy defines the placement policy used by the node pool. # Specifies the node placement policy.
@@ -6483,6 +6519,9 @@ Args:
     },
     &quot;desiredNetworkTierConfig&quot;: { # NetworkTierConfig contains network tier information. # The desired network tier configuration for the cluster.
       &quot;networkTier&quot;: &quot;A String&quot;, # Network tier configuration.
+    },
+    &quot;desiredNodeCreationConfig&quot;: { # NodeCreationConfig defines the settings of node creation mode. # Optional. The desired NodeCreationConfig for the cluster.
+      &quot;nodeCreationMode&quot;: &quot;A String&quot;, # The mode of node creation.
     },
     &quot;desiredNodeKubeletConfig&quot;: { # Node kubelet configs. # The desired node kubelet config for the cluster.
       &quot;allowedUnsafeSysctls&quot;: [ # Optional. Defines a comma-separated allowlist of unsafe sysctls or sysctl patterns (ending in `*`). The unsafe namespaced sysctl groups are `kernel.shm*`, `kernel.msg*`, `kernel.sem`, `fs.mqueue.*`, and `net.*`. Leaving this allowlist empty means they cannot be set on Pods. To allow certain sysctls or sysctl patterns to be set on Pods, list them separated by commas. For example: `kernel.msg*,net.ipv4.route.min_pmtu`. See https://kubernetes.io/docs/tasks/administer-cluster/sysctl-cluster/ for more details.
