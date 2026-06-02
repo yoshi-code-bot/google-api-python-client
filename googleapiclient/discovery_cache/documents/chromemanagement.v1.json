@@ -646,6 +646,86 @@
 }
 }
 },
+"enterprise": {
+"resources": {
+"securityInsights": {
+"methods": {
+"checkEnablementStatus": {
+"description": "Gets the setting state of the insights feature for the customer.",
+"flatPath": "v1/customers/{customersId}/enterprise/securityInsights:checkEnablementStatus",
+"httpMethod": "GET",
+"id": "chromemanagement.customers.enterprise.securityInsights.checkEnablementStatus",
+"parameterOrder": [
+"customer"
+],
+"parameters": {
+"customer": {
+"description": "Required. The customer to check the enablement status for. Format: customers/{customer_id}",
+"location": "path",
+"pattern": "^customers/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1/{+customer}/enterprise/securityInsights:checkEnablementStatus",
+"response": {
+"$ref": "GoogleChromeManagementVersionsV1CheckEnablementStatusResponse"
+}
+},
+"disable": {
+"description": "Disables insights for the customer.",
+"flatPath": "v1/customers/{customersId}/enterprise/securityInsights:disable",
+"httpMethod": "POST",
+"id": "chromemanagement.customers.enterprise.securityInsights.disable",
+"parameterOrder": [
+"customer"
+],
+"parameters": {
+"customer": {
+"description": "Required. The customer to disable insights for. Format: customers/{customer}",
+"location": "path",
+"pattern": "^customers/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1/{+customer}/enterprise/securityInsights:disable",
+"request": {
+"$ref": "GoogleChromeManagementVersionsV1DisableInsightsRequest"
+},
+"response": {
+"$ref": "GoogleChromeManagementVersionsV1DisableInsightsResponse"
+}
+},
+"enable": {
+"description": "Enables insights for the customer and sets up required chrome connectors.",
+"flatPath": "v1/customers/{customersId}/enterprise/securityInsights:enable",
+"httpMethod": "POST",
+"id": "chromemanagement.customers.enterprise.securityInsights.enable",
+"parameterOrder": [
+"customer"
+],
+"parameters": {
+"customer": {
+"description": "Required. The customer to enable insights for. Format: customers/{customer}",
+"location": "path",
+"pattern": "^customers/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1/{+customer}/enterprise/securityInsights:enable",
+"request": {
+"$ref": "GoogleChromeManagementVersionsV1EnableInsightsRequest"
+},
+"response": {
+"$ref": "GoogleChromeManagementVersionsV1EnableInsightsResponse"
+}
+}
+}
+}
+}
+},
 "profiles": {
 "methods": {
 "delete": {
@@ -1067,6 +1147,52 @@
 "path": "v1/{+customer}/reports:countChromeHardwareFleetDevices",
 "response": {
 "$ref": "GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse"
+},
+"scopes": [
+"https://www.googleapis.com/auth/chrome.management.reports.readonly"
+]
+},
+"countChromeProfileVersions": {
+"description": "Generate report of installed Chrome versions on managed profiles.",
+"flatPath": "v1/customers/{customersId}/reports:countChromeProfileVersions",
+"httpMethod": "GET",
+"id": "chromemanagement.customers.reports.countChromeProfileVersions",
+"parameterOrder": [
+"customer"
+],
+"parameters": {
+"customer": {
+"description": "Required. Customer id or \"my_customer\" to use the customer associated to the account making the request.",
+"location": "path",
+"pattern": "^customers/[^/]+$",
+"required": true,
+"type": "string"
+},
+"filter": {
+"description": "Optional. Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * last_active_date",
+"location": "query",
+"type": "string"
+},
+"orgUnitId": {
+"description": "The ID of the organizational unit. If omitted, all data will be returned.",
+"location": "query",
+"type": "string"
+},
+"pageSize": {
+"description": "Optional. Maximum number of results to return. Maximum and default are 100.",
+"format": "int32",
+"location": "query",
+"type": "integer"
+},
+"pageToken": {
+"description": "Optional. Token to specify the page of the request to be returned.",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1/{+customer}/reports:countChromeProfileVersions",
+"response": {
+"$ref": "GoogleChromeManagementV1CountChromeProfileVersionsResponse"
 },
 "scopes": [
 "https://www.googleapis.com/auth/chrome.management.reports.readonly"
@@ -2005,7 +2131,7 @@
 }
 }
 },
-"revision": "20260505",
+"revision": "20260528",
 "rootUrl": "https://chromemanagement.googleapis.com/",
 "schemas": {
 "GoogleChromeManagementV1AndroidAppInfo": {
@@ -2904,6 +3030,29 @@ false
 "$ref": "GoogleChromeManagementV1DeviceHardwareCountReport"
 },
 "type": "array"
+}
+},
+"type": "object"
+},
+"GoogleChromeManagementV1CountChromeProfileVersionsResponse": {
+"description": "Response containing requested managed profile versions details and counts.",
+"id": "GoogleChromeManagementV1CountChromeProfileVersionsResponse",
+"properties": {
+"nextPageToken": {
+"description": "Token to specify the next page of the request.",
+"type": "string"
+},
+"profileBrowserVersions": {
+"description": "List of all browser versions reported for profiles and their install counts.",
+"items": {
+"$ref": "GoogleChromeManagementV1BrowserVersion"
+},
+"type": "array"
+},
+"totalSize": {
+"description": "Total number browser versions matching request.",
+"format": "int32",
+"type": "integer"
 }
 },
 "type": "object"
@@ -6144,6 +6293,27 @@ false
 },
 "type": "object"
 },
+"GoogleChromeManagementVersionsV1CheckEnablementStatusResponse": {
+"description": "Response from checking the enablement status of insights for the customer.",
+"id": "GoogleChromeManagementVersionsV1CheckEnablementStatusResponse",
+"properties": {
+"insightsState": {
+"description": "The state of the insights feature.",
+"enum": [
+"INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED",
+"INSIGHTS_ENABLED",
+"INSIGHTS_DISABLED"
+],
+"enumDescriptions": [
+"Default value. Should not be used.",
+"The insights feature is enabled for the customer.",
+"The insights feature is disabled for the customer."
+],
+"type": "string"
+}
+},
+"type": "object"
+},
 "GoogleChromeManagementVersionsV1ChromeBrowserProfile": {
 "description": "A representation of a Chrome browser profile.",
 "id": "GoogleChromeManagementVersionsV1ChromeBrowserProfile",
@@ -6744,6 +6914,68 @@ false
 "type": "string"
 },
 "type": "array"
+}
+},
+"type": "object"
+},
+"GoogleChromeManagementVersionsV1DisableInsightsRequest": {
+"description": "Request to disable insights for the customer.",
+"id": "GoogleChromeManagementVersionsV1DisableInsightsRequest",
+"properties": {},
+"type": "object"
+},
+"GoogleChromeManagementVersionsV1DisableInsightsResponse": {
+"description": "Response from disabling insights for the customer.",
+"id": "GoogleChromeManagementVersionsV1DisableInsightsResponse",
+"properties": {
+"insightsState": {
+"description": "The state of the insights feature.",
+"enum": [
+"INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED",
+"INSIGHTS_ENABLED",
+"INSIGHTS_DISABLED"
+],
+"enumDescriptions": [
+"Default value. Should not be used.",
+"The insights feature is enabled for the customer.",
+"The insights feature is disabled for the customer."
+],
+"type": "string"
+}
+},
+"type": "object"
+},
+"GoogleChromeManagementVersionsV1EnableInsightsRequest": {
+"description": "Request to enable insights for the customer.",
+"id": "GoogleChromeManagementVersionsV1EnableInsightsRequest",
+"properties": {
+"targetOus": {
+"description": "Optional. The Organizational Units to set up required connectors for. Organizational Units are provided as paths relative to root. If this field is not set, connectors will be set up at root OU (as if it were set to [\"/\"]). Example: [\"/corp/sales\", \"/eng\"]",
+"items": {
+"type": "string"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"GoogleChromeManagementVersionsV1EnableInsightsResponse": {
+"description": "Response from enabling insights for the customer.",
+"id": "GoogleChromeManagementVersionsV1EnableInsightsResponse",
+"properties": {
+"insightsState": {
+"description": "The state of the insights feature.",
+"enum": [
+"INSIGHTS_ENABLEMENT_STATE_UNSPECIFIED",
+"INSIGHTS_ENABLED",
+"INSIGHTS_DISABLED"
+],
+"enumDescriptions": [
+"Default value. Should not be used.",
+"The insights feature is enabled for the customer.",
+"The insights feature is disabled for the customer."
+],
+"type": "string"
 }
 },
 "type": "object"
