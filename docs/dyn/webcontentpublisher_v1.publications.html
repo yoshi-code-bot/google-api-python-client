@@ -72,22 +72,23 @@ h1, h2, h3 {
 
 </style>
 
-<h1><a href="securitycenter_v1beta2.html">Security Command Center API</a> . <a href="securitycenter_v1beta2.organizations.html">organizations</a> . <a href="securitycenter_v1beta2.organizations.webSecurityScannerSettings.html">webSecurityScannerSettings</a></h1>
+<h1><a href="webcontentpublisher_v1.html">Web Content Publisher API</a> . <a href="webcontentpublisher_v1.publications.html">publications</a></h1>
 <h2>Instance Methods</h2>
 <p class="toc_element">
-  <code><a href="#calculate">calculate(name, showEligibleModulesOnly=None, x__xgafv=None)</a></code></p>
-<p class="firstline"></p>
+  <code><a href="#checkFreeAccess">checkFreeAccess(name, httpReferrer=None, uri=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Checks if a user is eligible for free article access.</p>
 <p class="toc_element">
   <code><a href="#close">close()</a></code></p>
 <p class="firstline">Close httplib2 connections.</p>
 <h3>Method Details</h3>
 <div class="method">
-    <code class="details" id="calculate">calculate(name, showEligibleModulesOnly=None, x__xgafv=None)</code>
-  <pre>
+    <code class="details" id="checkFreeAccess">checkFreeAccess(name, httpReferrer=None, uri=None, x__xgafv=None)</code>
+  <pre>Checks if a user is eligible for free article access.
 
 Args:
-  name: string, A parameter (required)
-  showEligibleModulesOnly: boolean, A parameter
+  name: string, Required. The resource name of the publication. Format: publications/{publication_id} (required)
+  httpReferrer: string, Required. The HTTP referrer.
+  uri: string, Required. The URI of the content.
   x__xgafv: string, V1 error format.
     Allowed values
       1 - v1 error format
@@ -96,18 +97,8 @@ Args:
 Returns:
   An object of the form:
 
-    {
-  &quot;modules&quot;: {
-    &quot;a_key&quot;: {
-      &quot;moduleEnablementState&quot;: &quot;A String&quot;,
-      &quot;value&quot;: {
-        &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
-      },
-    },
-  },
-  &quot;name&quot;: &quot;A String&quot;,
-  &quot;serviceEnablementState&quot;: &quot;A String&quot;,
-  &quot;updateTime&quot;: &quot;A String&quot;,
+    { # Response message for CheckFreeAccess
+  &quot;isAllowed&quot;: True or False, # True if free access should be allowed, false otherwise.
 }</pre>
 </div>
 
