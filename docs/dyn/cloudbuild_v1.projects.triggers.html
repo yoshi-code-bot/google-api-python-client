@@ -337,6 +337,13 @@ Args:
       &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
         &quot;A String&quot;,
       ],
+      &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+        &quot;a_key&quot;: { # Results for a build step.
+          &quot;results&quot;: { # Results for a build step.
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
+      },
       &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
         { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
           &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -570,6 +577,13 @@ Args:
           &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
           &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
         },
+        &quot;results&quot;: [ # Declaration of results for this build step.
+          { # StepResult is the declaration of a result for a build step.
+            &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+            &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+          },
+        ],
         &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
           &quot;A String&quot;,
@@ -988,6 +1002,13 @@ Returns:
       &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
         &quot;A String&quot;,
       ],
+      &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+        &quot;a_key&quot;: { # Results for a build step.
+          &quot;results&quot;: { # Results for a build step.
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
+      },
       &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
         { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
           &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -1221,6 +1242,13 @@ Returns:
           &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
           &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
         },
+        &quot;results&quot;: [ # Declaration of results for this build step.
+          { # StepResult is the declaration of a result for a build step.
+            &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+            &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+          },
+        ],
         &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
           &quot;A String&quot;,
@@ -1667,6 +1695,13 @@ Returns:
       &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
         &quot;A String&quot;,
       ],
+      &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+        &quot;a_key&quot;: { # Results for a build step.
+          &quot;results&quot;: { # Results for a build step.
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
+      },
       &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
         { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
           &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -1900,6 +1935,13 @@ Returns:
           &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
           &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
         },
+        &quot;results&quot;: [ # Declaration of results for this build step.
+          { # StepResult is the declaration of a result for a build step.
+            &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+            &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+          },
+        ],
         &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
           &quot;A String&quot;,
@@ -2330,6 +2372,13 @@ Returns:
           &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
             &quot;A String&quot;,
           ],
+          &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+            &quot;a_key&quot;: { # Results for a build step.
+              &quot;results&quot;: { # Results for a build step.
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
+          },
           &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
             { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
               &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -2563,6 +2612,13 @@ Returns:
               &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
               &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
             },
+            &quot;results&quot;: [ # Declaration of results for this build step.
+              { # StepResult is the declaration of a result for a build step.
+                &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+                &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+                &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+              },
+            ],
             &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
             &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
               &quot;A String&quot;,
@@ -2999,6 +3055,13 @@ Args:
       &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
         &quot;A String&quot;,
       ],
+      &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+        &quot;a_key&quot;: { # Results for a build step.
+          &quot;results&quot;: { # Results for a build step.
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
+      },
       &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
         { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
           &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -3232,6 +3295,13 @@ Args:
           &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
           &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
         },
+        &quot;results&quot;: [ # Declaration of results for this build step.
+          { # StepResult is the declaration of a result for a build step.
+            &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+            &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+          },
+        ],
         &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
           &quot;A String&quot;,
@@ -3650,6 +3720,13 @@ Returns:
       &quot;buildStepOutputs&quot;: [ # List of build step outputs, produced by builder images, in the order corresponding to build step indices. [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored. Note that the `$BUILDER_OUTPUT` variable is read-only and can&#x27;t be substituted.
         &quot;A String&quot;,
       ],
+      &quot;buildStepResults&quot;: { # Results for build steps. step_id -&gt;
+        &quot;a_key&quot;: { # Results for a build step.
+          &quot;results&quot;: { # Results for a build step.
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
+      },
       &quot;genericArtifacts&quot;: [ # Output only. Generic artifacts uploaded to Artifact Registry at the end of the build.
         { # A generic artifact uploaded to Artifact Registry using the GenericArtifact directive.
           &quot;artifactFingerprint&quot;: { # Container message for hashes of byte content of files, used in SourceProvenance messages to verify integrity of source input to the build. # Output only. The hash of the whole artifact.
@@ -3883,6 +3960,13 @@ Returns:
           &quot;endTime&quot;: &quot;A String&quot;, # End of time span.
           &quot;startTime&quot;: &quot;A String&quot;, # Start of time span.
         },
+        &quot;results&quot;: [ # Declaration of results for this build step.
+          { # StepResult is the declaration of a result for a build step.
+            &quot;attestationContent&quot;: &quot;A String&quot;, # Optional. The content of the attestation to be generated.
+            &quot;attestationType&quot;: &quot;A String&quot;, # Optional. The type of attestation to be generated.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the result.
+          },
+        ],
         &quot;script&quot;: &quot;A String&quot;, # A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
         &quot;secretEnv&quot;: [ # A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build&#x27;s `Secret`.
           &quot;A String&quot;,
