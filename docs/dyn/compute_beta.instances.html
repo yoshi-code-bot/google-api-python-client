@@ -2461,6 +2461,14 @@ Returns:
                 # Engine cluster, as well as the ID of the block, sub-block, and host on
                 # which the running instance is located.
                 # running.
+              &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+                &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                    # example
+                    # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                    # the location ID of the topologies.
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+              },
               &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
                   # located. Instances within the same block experience low network latency.
               &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -2475,6 +2483,10 @@ Returns:
             &quot;reservationConsumptionInfo&quot;: { # Reservation consumption information that the instance is consuming from. # Output only. [Output Only] Reservation information that the instance is consuming from.
               &quot;consumedReservation&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation that this
                   # instance is consuming from.
+              &quot;consumedReservationBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation block that this
+                  # instance is consuming from.
+              &quot;consumedReservationSubBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation sub-block that
+                  # this instance is consuming from.
             },
             &quot;scheduling&quot;: {
               &quot;availabilityDomain&quot;: 42, # Specifies the availability domain to place the instance in. The value
@@ -7603,6 +7615,14 @@ Returns:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -7617,6 +7637,10 @@ Returns:
     &quot;reservationConsumptionInfo&quot;: { # Reservation consumption information that the instance is consuming from. # Output only. [Output Only] Reservation information that the instance is consuming from.
       &quot;consumedReservation&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation that this
           # instance is consuming from.
+      &quot;consumedReservationBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation block that this
+          # instance is consuming from.
+      &quot;consumedReservationSubBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation sub-block that
+          # this instance is consuming from.
     },
     &quot;scheduling&quot;: {
       &quot;availabilityDomain&quot;: 42, # Specifies the availability domain to place the instance in. The value
@@ -10512,6 +10536,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -10526,6 +10558,10 @@ Args:
     &quot;reservationConsumptionInfo&quot;: { # Reservation consumption information that the instance is consuming from. # Output only. [Output Only] Reservation information that the instance is consuming from.
       &quot;consumedReservation&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation that this
           # instance is consuming from.
+      &quot;consumedReservationBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation block that this
+          # instance is consuming from.
+      &quot;consumedReservationSubBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation sub-block that
+          # this instance is consuming from.
     },
     &quot;scheduling&quot;: {
       &quot;availabilityDomain&quot;: 42, # Specifies the availability domain to place the instance in. The value
@@ -12177,6 +12213,14 @@ Returns:
             # Engine cluster, as well as the ID of the block, sub-block, and host on
             # which the running instance is located.
             # running.
+          &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+            &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                # example
+                # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                # the location ID of the topologies.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
               # located. Instances within the same block experience low network latency.
           &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -12191,6 +12235,10 @@ Returns:
         &quot;reservationConsumptionInfo&quot;: { # Reservation consumption information that the instance is consuming from. # Output only. [Output Only] Reservation information that the instance is consuming from.
           &quot;consumedReservation&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation that this
               # instance is consuming from.
+          &quot;consumedReservationBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation block that this
+              # instance is consuming from.
+          &quot;consumedReservationSubBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation sub-block that
+              # this instance is consuming from.
         },
         &quot;scheduling&quot;: {
           &quot;availabilityDomain&quot;: 42, # Specifies the availability domain to place the instance in. The value
@@ -22490,6 +22538,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -22504,6 +22560,10 @@ Args:
     &quot;reservationConsumptionInfo&quot;: { # Reservation consumption information that the instance is consuming from. # Output only. [Output Only] Reservation information that the instance is consuming from.
       &quot;consumedReservation&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation that this
           # instance is consuming from.
+      &quot;consumedReservationBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation block that this
+          # instance is consuming from.
+      &quot;consumedReservationSubBlock&quot;: &quot;A String&quot;, # Output only. [Output Only] The full resource name of the reservation sub-block that
+          # this instance is consuming from.
     },
     &quot;scheduling&quot;: {
       &quot;availabilityDomain&quot;: 42, # Specifies the availability domain to place the instance in. The value
