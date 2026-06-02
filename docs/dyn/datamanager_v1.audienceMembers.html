@@ -100,6 +100,29 @@ Args:
 { # Request to upload audience members to the provided destinations. Returns an IngestAudienceMembersResponse.
   &quot;audienceMembers&quot;: [ # Required. The list of users to send to the specified destinations. At most 10000 AudienceMember resources can be sent in a single request.
     { # The audience member to be operated on.
+      &quot;compositeData&quot;: { # Composite data holding identifiers and associated data for a user. At least one of `user_data` or `ip_data` is required. # Group of multiple identifier types.
+        &quot;ipData&quot;: [ # Optional. IP address data representing customer interaction used to build the audience.
+          { # IP address information for a user. We recommend including observe_start_time and observe_end_time to help improve Customer Match match rates.
+            &quot;ipAddress&quot;: &quot;A String&quot;, # Required. IP address captured at the time of customer interaction. Accepts standard string formats for both IPv4 and IPv6.
+            &quot;observeEndTime&quot;: &quot;A String&quot;, # Optional. Last recorded interaction time from this IP address in a session.
+            &quot;observeStartTime&quot;: &quot;A String&quot;, # Optional. First recorded interaction time from this IP address in a session.
+          },
+        ],
+        &quot;userData&quot;: { # Data that identifies the user. At least one identifier is required. # Optional. User-provided data that identifies the user.
+          &quot;userIdentifiers&quot;: [ # Required. The identifiers for the user. It&#x27;s possible to provide multiple instances of the same type of data (for example, multiple email addresses). To increase the likelihood of a match, provide as many identifiers as possible. At most 10 `userIdentifiers` can be provided in a single AudienceMember or Event.
+            { # A single identifier for the user.
+              &quot;address&quot;: { # Address information for the user. # The known components of a user&#x27;s address. Holds a grouping of identifiers that are matched all at once.
+                &quot;familyName&quot;: &quot;A String&quot;, # Required. Family (last) name of the user, all lowercase, with no punctuation, no leading or trailing whitespace, and hashed as SHA-256.
+                &quot;givenName&quot;: &quot;A String&quot;, # Required. Given (first) name of the user, all lowercase, with no punctuation, no leading or trailing whitespace, and hashed as SHA-256.
+                &quot;postalCode&quot;: &quot;A String&quot;, # Required. The postal code of the user&#x27;s address.
+                &quot;regionCode&quot;: &quot;A String&quot;, # Required. The 2-letter region code in ISO-3166-1 alpha-2 of the user&#x27;s address.
+              },
+              &quot;emailAddress&quot;: &quot;A String&quot;, # Hashed email address using SHA-256 hash function after normalization.
+              &quot;phoneNumber&quot;: &quot;A String&quot;, # Hashed phone number using SHA-256 hash function after normalization (E164 standard).
+            },
+          ],
+        },
+      },
       &quot;consent&quot;: { # [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en) consent settings for the user. # Optional. The consent setting for the user.
         &quot;adPersonalization&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad personalization.
         &quot;adUserData&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad user data.
@@ -211,6 +234,29 @@ Args:
 { # Request to remove users from an audience in the provided destinations. Returns a RemoveAudienceMembersResponse.
   &quot;audienceMembers&quot;: [ # Required. The list of users to remove.
     { # The audience member to be operated on.
+      &quot;compositeData&quot;: { # Composite data holding identifiers and associated data for a user. At least one of `user_data` or `ip_data` is required. # Group of multiple identifier types.
+        &quot;ipData&quot;: [ # Optional. IP address data representing customer interaction used to build the audience.
+          { # IP address information for a user. We recommend including observe_start_time and observe_end_time to help improve Customer Match match rates.
+            &quot;ipAddress&quot;: &quot;A String&quot;, # Required. IP address captured at the time of customer interaction. Accepts standard string formats for both IPv4 and IPv6.
+            &quot;observeEndTime&quot;: &quot;A String&quot;, # Optional. Last recorded interaction time from this IP address in a session.
+            &quot;observeStartTime&quot;: &quot;A String&quot;, # Optional. First recorded interaction time from this IP address in a session.
+          },
+        ],
+        &quot;userData&quot;: { # Data that identifies the user. At least one identifier is required. # Optional. User-provided data that identifies the user.
+          &quot;userIdentifiers&quot;: [ # Required. The identifiers for the user. It&#x27;s possible to provide multiple instances of the same type of data (for example, multiple email addresses). To increase the likelihood of a match, provide as many identifiers as possible. At most 10 `userIdentifiers` can be provided in a single AudienceMember or Event.
+            { # A single identifier for the user.
+              &quot;address&quot;: { # Address information for the user. # The known components of a user&#x27;s address. Holds a grouping of identifiers that are matched all at once.
+                &quot;familyName&quot;: &quot;A String&quot;, # Required. Family (last) name of the user, all lowercase, with no punctuation, no leading or trailing whitespace, and hashed as SHA-256.
+                &quot;givenName&quot;: &quot;A String&quot;, # Required. Given (first) name of the user, all lowercase, with no punctuation, no leading or trailing whitespace, and hashed as SHA-256.
+                &quot;postalCode&quot;: &quot;A String&quot;, # Required. The postal code of the user&#x27;s address.
+                &quot;regionCode&quot;: &quot;A String&quot;, # Required. The 2-letter region code in ISO-3166-1 alpha-2 of the user&#x27;s address.
+              },
+              &quot;emailAddress&quot;: &quot;A String&quot;, # Hashed email address using SHA-256 hash function after normalization.
+              &quot;phoneNumber&quot;: &quot;A String&quot;, # Hashed phone number using SHA-256 hash function after normalization (E164 standard).
+            },
+          ],
+        },
+      },
       &quot;consent&quot;: { # [Digital Markets Act (DMA)](//digital-markets-act.ec.europa.eu/index_en) consent settings for the user. # Optional. The consent setting for the user.
         &quot;adPersonalization&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad personalization.
         &quot;adUserData&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad user data.

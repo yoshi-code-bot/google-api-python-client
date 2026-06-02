@@ -138,8 +138,18 @@ Args:
   &quot;events&quot;: [ # Required. The list of events to send to the specified destinations. At most 2000 Event resources can be sent in a single request.
     { # An event representing a user interaction with an advertiser&#x27;s website or app.
       &quot;adIdentifiers&quot;: { # Identifiers and other information used to match the conversion event with other online activity (such as ad clicks). # Optional. Identifiers and other information used to match the conversion event with other online activity (such as ad clicks).
+        &quot;dclid&quot;: &quot;A String&quot;, # Optional. The display click ID associated with this event.
+        &quot;encryptedUserIds&quot;: [ # Optional. Any number of encrypted user IDs.
+          { # A user identifier issued to be used for attribution. All fields are required if this is used.
+            &quot;encryptedId&quot;: &quot;A String&quot;, # Required. The alphanumeric encrypted id.
+            &quot;entityId&quot;: &quot;A String&quot;, # Required. The encryption entity ID. This should match the encryption configuration for ad serving or Data Transfer.
+            &quot;entityType&quot;: &quot;A String&quot;, # Required. The encryption entity type. This should match the encryption configuration for ad serving or Data Transfer.
+            &quot;source&quot;: &quot;A String&quot;, # Required. Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer.
+          },
+        ],
         &quot;gbraid&quot;: &quot;A String&quot;, # Optional. The click identifier for clicks associated with app events and originating from iOS devices starting with iOS14.
         &quot;gclid&quot;: &quot;A String&quot;, # Optional. The Google click ID (gclid) associated with this event.
+        &quot;impressionId&quot;: &quot;A String&quot;, # Optional. The impression ID associated with this event.
         &quot;landingPageDeviceInfo&quot;: { # Information about the device being used (if any) when the event happened. # Optional. Information gathered about the device being used (if any) at the time of landing onto the advertiser’s site after interacting with the ad.
           &quot;brand&quot;: &quot;A String&quot;, # Optional. The brand of the device.
           &quot;browser&quot;: &quot;A String&quot;, # Optional. The brand or type of the browser.
@@ -154,6 +164,7 @@ Args:
           &quot;screenWidth&quot;: 42, # Optional. The width of the screen in pixels.
           &quot;userAgent&quot;: &quot;A String&quot;, # Optional. The user-agent string of the device for the given context.
         },
+        &quot;matchId&quot;: &quot;A String&quot;, # Optional. The match ID field used to join this event with a previous event.
         &quot;mobileDeviceId&quot;: &quot;A String&quot;, # Optional. The mobile identifier for advertisers. This would be IDFA on iOS, AdID on Android, or other platforms’ identifiers for advertisers.
         &quot;sessionAttributes&quot;: &quot;A String&quot;, # Optional. Session attributes for event attribution and modeling.
         &quot;wbraid&quot;: &quot;A String&quot;, # Optional. The click identifier for clicks associated with web events and originating from iOS devices starting with iOS14.
@@ -206,6 +217,7 @@ Args:
         &quot;adPersonalization&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad personalization.
         &quot;adUserData&quot;: &quot;A String&quot;, # Optional. Represents if the user consents to ad user data.
       },
+      &quot;conversionCount&quot;: 3.14, # Optional. The conversion quantity associated with the event, for counting-based conversions.
       &quot;conversionValue&quot;: 3.14, # Optional. The conversion value associated with the event, for value-based conversions.
       &quot;currency&quot;: &quot;A String&quot;, # Optional. The currency code associated with all monetary values within this event.
       &quot;customVariables&quot;: [ # Optional. Additional key/value pair information to send to the conversion containers (conversion action or FL activity).
