@@ -84,7 +84,7 @@ h1, h2, h3 {
   <code><a href="#get">get(name, x__xgafv=None)</a></code></p>
 <p class="firstline">Gets a diagnostic.</p>
 <p class="toc_element">
-  <code><a href="#list">list(parent, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</a></code></p>
+  <code><a href="#list">list(parent, appId=None, appVersion=None, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Lists diagnostics.</p>
 <p class="toc_element">
   <code><a href="#list_next">list_next()</a></code></p>
@@ -128,11 +128,16 @@ Returns:
   An object of the form:
 
     { # The diagnostic resource.
+  &quot;agentDisplayName&quot;: &quot;A String&quot;, # Output only. The display name of the agent associated with the diagnostic.
+  &quot;agentId&quot;: &quot;A String&quot;, # Output only. The ID of the agent associated with the diagnostic.
   &quot;analysisSummary&quot;: &quot;A String&quot;, # Output only. The complete sequence of thoughts and actions taken by the agent.
+  &quot;appId&quot;: &quot;A String&quot;, # Output only. The application ID associated with the diagnostic.
+  &quot;appVersion&quot;: &quot;A String&quot;, # Output only. The application version associated with the diagnostic.
   &quot;conversationFilter&quot;: &quot;A String&quot;, # Output only. The filter used to select the conversations that were included in the diagnostic.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time at which the diagnostic was created.
+  &quot;groupCreateTime&quot;: &quot;A String&quot;, # Output only. The timestamp when the group was created.
   &quot;name&quot;: &quot;A String&quot;, # Immutable. Identifier. The resource name of the diagnostic.
-  &quot;report&quot;: { # A diagnostic report containing aggregate metrics and intent breakdowns. # Output only. The report containing the findings of the diagnostic.
+  &quot;report&quot;: { # A diagnostic report containing loss patterns and problematic slice stats. # Output only. The report containing the findings of the diagnostic.
     &quot;conversationSlices&quot;: { # Output only. A map of conversation slices used in the report.
       &quot;a_key&quot;: { # Output only. A map of conversation slices used in the report.
         &quot;conversationIds&quot;: [ # The list of conversation IDs that match this slice.
@@ -237,11 +242,13 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="list">list(parent, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</code>
+    <code class="details" id="list">list(parent, appId=None, appVersion=None, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</code>
   <pre>Lists diagnostics.
 
 Args:
   parent: string, Required. The parent resource of the diagnostics. (required)
+  appId: string, Optional. The CES App ID to filter diagnostics by.
+  appVersion: string, Optional. The CES App version to filter diagnostics by. Setting to &quot;-&quot; filters to diagnostics created using &quot;-&quot; (the latest draft version). Note that reports created at different times may correspond to different draft instructions. Setting to &quot;&quot; (empty) retrieves all diagnostics for the app_id regardless of version.
   filter: string, Optional. A filter to apply to the list (e.g. `create_time &gt; &quot;2023-01-01T00:00:00Z&quot;`).
   pageSize: integer, Optional. The maximum number of diagnostics to return. The service may return fewer than this value. If unspecified, at most 100 diagnostics will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
   pageToken: string, Optional. A page token, received from a previous `ListDiagnostics` call. Provide this to retrieve the subsequent page.
@@ -256,11 +263,16 @@ Returns:
     { # The response from a ListDiagnostics request.
   &quot;diagnostics&quot;: [ # Optional. The diagnostics that match the request.
     { # The diagnostic resource.
+      &quot;agentDisplayName&quot;: &quot;A String&quot;, # Output only. The display name of the agent associated with the diagnostic.
+      &quot;agentId&quot;: &quot;A String&quot;, # Output only. The ID of the agent associated with the diagnostic.
       &quot;analysisSummary&quot;: &quot;A String&quot;, # Output only. The complete sequence of thoughts and actions taken by the agent.
+      &quot;appId&quot;: &quot;A String&quot;, # Output only. The application ID associated with the diagnostic.
+      &quot;appVersion&quot;: &quot;A String&quot;, # Output only. The application version associated with the diagnostic.
       &quot;conversationFilter&quot;: &quot;A String&quot;, # Output only. The filter used to select the conversations that were included in the diagnostic.
       &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time at which the diagnostic was created.
+      &quot;groupCreateTime&quot;: &quot;A String&quot;, # Output only. The timestamp when the group was created.
       &quot;name&quot;: &quot;A String&quot;, # Immutable. Identifier. The resource name of the diagnostic.
-      &quot;report&quot;: { # A diagnostic report containing aggregate metrics and intent breakdowns. # Output only. The report containing the findings of the diagnostic.
+      &quot;report&quot;: { # A diagnostic report containing loss patterns and problematic slice stats. # Output only. The report containing the findings of the diagnostic.
         &quot;conversationSlices&quot;: { # Output only. A map of conversation slices used in the report.
           &quot;a_key&quot;: { # Output only. A map of conversation slices used in the report.
             &quot;conversationIds&quot;: [ # The list of conversation IDs that match this slice.
