@@ -125,9 +125,9 @@ Args:
 { # Request message for NotebookService.AssignNotebookRuntime.
   &quot;notebookRuntime&quot;: { # A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis with lifetime. Default runtimes have a lifetime of 18 hours, while custom runtimes last for 6 months from their creation or last upgrade. # Required. Provide runtime specific information (e.g. runtime owner, notebook id) used for NotebookRuntime assignment.
     &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntime was created.
-    &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
+    &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
       &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-      &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+      &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
     },
     &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntime.
     &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntime. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -331,9 +331,9 @@ Returns:
 
     { # A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis with lifetime. Default runtimes have a lifetime of 18 hours, while custom runtimes last for 6 months from their creation or last upgrade.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntime was created.
-  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
+  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
   },
   &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntime.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntime. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -445,9 +445,9 @@ Returns:
   &quot;notebookRuntimes&quot;: [ # List of NotebookRuntimes in the requested page.
     { # A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis with lifetime. Default runtimes have a lifetime of 18 hours, while custom runtimes last for 6 months from their creation or last upgrade.
       &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntime was created.
-      &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
+      &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Output only. The specification of persistent disk attached to the notebook runtime as data disk storage.
         &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-        &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+        &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
       },
       &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntime.
       &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntime. The name can be up to 128 characters long and can consist of any UTF-8 characters.

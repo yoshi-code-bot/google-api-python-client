@@ -135,6 +135,14 @@ Args:
   },
   &quot;defaultContainerEnvironment&quot;: { # The default sandbox runtime environment for default container workloads. # The sandbox environment for default container workloads.
     &quot;defaultContainerCategory&quot;: &quot;A String&quot;, # Required. The category of the default container image.
+    &quot;resources&quot;: { # Message to define resource requests and limits (mirroring Kubernetes) for each sandbox instance created from this template. # Optional. Resource requests and limits for the default container.
+      &quot;limits&quot;: { # Optional. The maximum amounts of compute resources allowed. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;500m&quot;, &quot;1Gi&quot;).
+        &quot;a_key&quot;: &quot;A String&quot;,
+      },
+      &quot;requests&quot;: { # Optional. The requested amounts of compute resources. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;250m&quot;, &quot;512Mi&quot;).
+        &quot;a_key&quot;: &quot;A String&quot;,
+      },
+    },
   },
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the SandboxEnvironmentTemplate.
   &quot;egressControlConfig&quot;: { # Configuration for egress control of sandbox instances. # Optional. The configuration for egress control of this template.
@@ -246,6 +254,14 @@ Returns:
   },
   &quot;defaultContainerEnvironment&quot;: { # The default sandbox runtime environment for default container workloads. # The sandbox environment for default container workloads.
     &quot;defaultContainerCategory&quot;: &quot;A String&quot;, # Required. The category of the default container image.
+    &quot;resources&quot;: { # Message to define resource requests and limits (mirroring Kubernetes) for each sandbox instance created from this template. # Optional. Resource requests and limits for the default container.
+      &quot;limits&quot;: { # Optional. The maximum amounts of compute resources allowed. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;500m&quot;, &quot;1Gi&quot;).
+        &quot;a_key&quot;: &quot;A String&quot;,
+      },
+      &quot;requests&quot;: { # Optional. The requested amounts of compute resources. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;250m&quot;, &quot;512Mi&quot;).
+        &quot;a_key&quot;: &quot;A String&quot;,
+      },
+    },
   },
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the SandboxEnvironmentTemplate.
   &quot;egressControlConfig&quot;: { # Configuration for egress control of sandbox instances. # Optional. The configuration for egress control of this template.
@@ -300,6 +316,14 @@ Returns:
       },
       &quot;defaultContainerEnvironment&quot;: { # The default sandbox runtime environment for default container workloads. # The sandbox environment for default container workloads.
         &quot;defaultContainerCategory&quot;: &quot;A String&quot;, # Required. The category of the default container image.
+        &quot;resources&quot;: { # Message to define resource requests and limits (mirroring Kubernetes) for each sandbox instance created from this template. # Optional. Resource requests and limits for the default container.
+          &quot;limits&quot;: { # Optional. The maximum amounts of compute resources allowed. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;500m&quot;, &quot;1Gi&quot;).
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+          &quot;requests&quot;: { # Optional. The requested amounts of compute resources. Keys are resource names (e.g., &quot;cpu&quot;, &quot;memory&quot;). Values are quantities (e.g., &quot;250m&quot;, &quot;512Mi&quot;).
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
       },
       &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the SandboxEnvironmentTemplate.
       &quot;egressControlConfig&quot;: { # Configuration for egress control of sandbox instances. # Optional. The configuration for egress control of this template.

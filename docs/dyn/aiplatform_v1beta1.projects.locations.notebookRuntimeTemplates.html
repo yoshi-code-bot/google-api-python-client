@@ -126,9 +126,9 @@ Args:
 
 { # A template that specifies runtime configurations such as machine type, runtime version, network configurations, etc. Multiple runtimes can be created from a runtime template.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntimeTemplate was created.
-  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
+  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
   },
   &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntimeTemplate.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -286,9 +286,9 @@ Returns:
 
     { # A template that specifies runtime configurations such as machine type, runtime version, network configurations, etc. Multiple runtimes can be created from a runtime template.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntimeTemplate was created.
-  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
+  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
   },
   &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntimeTemplate.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -425,9 +425,9 @@ Returns:
   &quot;notebookRuntimeTemplates&quot;: [ # List of NotebookRuntimeTemplates in the requested page.
     { # A template that specifies runtime configurations such as machine type, runtime version, network configurations, etc. Multiple runtimes can be created from a runtime template.
       &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntimeTemplate was created.
-      &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
+      &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
         &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-        &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+        &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
       },
       &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntimeTemplate.
       &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -532,9 +532,9 @@ Args:
 
 { # A template that specifies runtime configurations such as machine type, runtime version, network configurations, etc. Multiple runtimes can be created from a runtime template.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntimeTemplate was created.
-  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
+  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
   },
   &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntimeTemplate.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -622,9 +622,9 @@ Returns:
 
     { # A template that specifies runtime configurations such as machine type, runtime version, network configurations, etc. Multiple runtimes can be created from a runtime template.
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this NotebookRuntimeTemplate was created.
-  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
+  &quot;dataPersistentDiskSpec&quot;: { # Represents the spec of persistent disk and hyperdisk options. # Optional. The specification of persistent disk attached to the runtime as data disk storage.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Size in GB of the disk (default is 100GB).
-    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk)
+    &quot;diskType&quot;: &quot;A String&quot;, # Type of the disk (default is &quot;pd-standard&quot;). Valid values: &quot;pd-ssd&quot; (Persistent Disk Solid State Drive) &quot;pd-standard&quot; (Persistent Disk Hard Disk Drive) &quot;pd-balanced&quot; (Balanced Persistent Disk) &quot;pd-extreme&quot; (Extreme Persistent Disk) &quot;hyperdisk-balanced&quot; (Hyperdisk Balanced) &quot;hyperdisk-extreme&quot; (Hyperdisk Extreme) &quot;hyperdisk-balanced-high-availability&quot; (Hyperdisk Balanced High Availability) &quot;hyperdisk-ml&quot; (Hyperdisk ML) &quot;hyperdisk-throughput&quot; (Hyperdisk Throughput)
   },
   &quot;description&quot;: &quot;A String&quot;, # The description of the NotebookRuntimeTemplate.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can consist of any UTF-8 characters.

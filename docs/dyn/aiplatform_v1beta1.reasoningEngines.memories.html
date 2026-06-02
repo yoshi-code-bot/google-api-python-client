@@ -732,7 +732,7 @@ Args:
   &quot;updateTime&quot;: &quot;A String&quot;, # Output only. Represents the timestamp when this Memory was most recently updated.
 }
 
-  updateMask: string, Optional. Mask specifying which fields to update. Supported fields: * `display_name` * `description` * `fact`
+  updateMask: string, Optional. Mask specifying which fields to update. The following fields are immutable: * `scope` * `memory_type`
   x__xgafv: string, V1 error format.
     Allowed values
       1 - v1 error format
