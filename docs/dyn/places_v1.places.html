@@ -812,6 +812,77 @@ Returns:
     &quot;id&quot;: &quot;A String&quot;, # IANA Time Zone Database time zone. For example &quot;America/New_York&quot;.
     &quot;version&quot;: &quot;A String&quot;, # Optional. IANA Time Zone Database version number. For example &quot;2019a&quot;.
   },
+  &quot;transitStation&quot;: { # Represents transit-specific information for a place. # The transit station information for the place.
+    &quot;agencies&quot;: [ # The transit agencies that serve this station.
+      { # Represents a transit agency.
+        &quot;displayName&quot;: { # Localized variant of a text in a particular language. # Agency name (e.g. &quot;VTA&quot;) in the requested language.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;fareUrl&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s fare details page.
+        &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for localized branded icon of a transit system (e.g. London Underground) which should be used instead of TransitLine.vehicle_icon in the UI.
+          &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+          &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+        },
+        &quot;lines&quot;: [ # The transit lines that are served by this agency.
+          { # Represents a single transit line.
+            &quot;backgroundColor&quot;: &quot;A String&quot;, # The background color of the labels for this transit line in #RRGGBB hex format, e.g. #909CE1. This color can also be used for drawing shapes for this transit line.
+            &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The long name for this transit line (e.g. &quot;Sunnydale local&quot;).
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular line (e.g. subway lines in New York).
+              &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+              &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+            },
+            &quot;id&quot;: &quot;A String&quot;, # The id of the transit line that can be used to uniquely identify the line among other transit lines in the same transit station. This identifier is not guaranteed to be stable across different responses.
+            &quot;shortDisplayName&quot;: { # Localized variant of a text in a particular language. # The short name for this transit line (e.g. &quot;S2&quot;).
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;textColor&quot;: &quot;A String&quot;, # The text color of labels for this transit line in #RRGGBB hex format, e.g. #909CE1.
+            &quot;url&quot;: &quot;A String&quot;, # The URL of a webpage with details about this line.
+            &quot;vehicleIcon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular vehicle type.
+              &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+              &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+            },
+            &quot;vehicleType&quot;: &quot;A String&quot;, # The type of vehicle using this line.
+          },
+        ],
+        &quot;url&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s homepage.
+      },
+    ],
+    &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the station in the local language.
+      &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+      &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+    },
+    &quot;stops&quot;: [ # Transit stops at this station.
+      { # Represents a transit stop within a station. This is a specific location where passengers board and alight transit vehicles, such as a platform or bus bay. This is distinct from a `Departure`, which is an event of a vehicle leaving a stop at a specific time.
+        &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the stop.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;id&quot;: &quot;A String&quot;, # The id of the transit stop that can be used to uniquely identify the stop among other transit stops in the same transit station. This identifier is not guaranteed to be stable across different responses.
+        &quot;location&quot;: { # An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. # The stop&#x27;s location.
+          &quot;latitude&quot;: 3.14, # The latitude in degrees. It must be in the range [-90.0, +90.0].
+          &quot;longitude&quot;: 3.14, # The longitude in degrees. It must be in the range [-180.0, +180.0].
+        },
+        &quot;platformCode&quot;: { # Localized variant of a text in a particular language. # The platform code represented by this stop. It can be formatted in any way. (eg: &quot;2&quot;, &quot;Platform 2&quot;, &quot;2-4&quot;, or &quot;1x&quot;).
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;signageText&quot;: { # Localized variant of a text in a particular language. # The verbatim text written on the signboard for this platform, e.g. &quot;Towards Central&quot; or &quot;East side &amp; Brooklyn&quot;. When `platform_code` is absent, this field is potentially the only identifier for the platform; however, both `platform_code` and `signage_text` may be set simultaneously.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;stopCode&quot;: { # Localized variant of a text in a particular language. # Human readable identifier of the stop, used by transit agencies to distinguish stops with the same name.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;wheelchairAccessibleEntrance&quot;: True or False, # Wheelchair accessibility of this stop. This field indicates whether there is an accessible path from outside the station to the stop. It does not indicate whether it is possible to board a vehicle from the stop.
+      },
+    ],
+  },
   &quot;types&quot;: [ # A set of type tags for this result. For example, &quot;political&quot; and &quot;locality&quot;. For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types
     &quot;A String&quot;,
   ],
@@ -1433,6 +1504,77 @@ Returns:
         &quot;id&quot;: &quot;A String&quot;, # IANA Time Zone Database time zone. For example &quot;America/New_York&quot;.
         &quot;version&quot;: &quot;A String&quot;, # Optional. IANA Time Zone Database version number. For example &quot;2019a&quot;.
       },
+      &quot;transitStation&quot;: { # Represents transit-specific information for a place. # The transit station information for the place.
+        &quot;agencies&quot;: [ # The transit agencies that serve this station.
+          { # Represents a transit agency.
+            &quot;displayName&quot;: { # Localized variant of a text in a particular language. # Agency name (e.g. &quot;VTA&quot;) in the requested language.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;fareUrl&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s fare details page.
+            &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for localized branded icon of a transit system (e.g. London Underground) which should be used instead of TransitLine.vehicle_icon in the UI.
+              &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+              &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+            },
+            &quot;lines&quot;: [ # The transit lines that are served by this agency.
+              { # Represents a single transit line.
+                &quot;backgroundColor&quot;: &quot;A String&quot;, # The background color of the labels for this transit line in #RRGGBB hex format, e.g. #909CE1. This color can also be used for drawing shapes for this transit line.
+                &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The long name for this transit line (e.g. &quot;Sunnydale local&quot;).
+                  &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+                  &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+                },
+                &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular line (e.g. subway lines in New York).
+                  &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+                  &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+                },
+                &quot;id&quot;: &quot;A String&quot;, # The id of the transit line that can be used to uniquely identify the line among other transit lines in the same transit station. This identifier is not guaranteed to be stable across different responses.
+                &quot;shortDisplayName&quot;: { # Localized variant of a text in a particular language. # The short name for this transit line (e.g. &quot;S2&quot;).
+                  &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+                  &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+                },
+                &quot;textColor&quot;: &quot;A String&quot;, # The text color of labels for this transit line in #RRGGBB hex format, e.g. #909CE1.
+                &quot;url&quot;: &quot;A String&quot;, # The URL of a webpage with details about this line.
+                &quot;vehicleIcon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular vehicle type.
+                  &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+                  &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+                },
+                &quot;vehicleType&quot;: &quot;A String&quot;, # The type of vehicle using this line.
+              },
+            ],
+            &quot;url&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s homepage.
+          },
+        ],
+        &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the station in the local language.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;stops&quot;: [ # Transit stops at this station.
+          { # Represents a transit stop within a station. This is a specific location where passengers board and alight transit vehicles, such as a platform or bus bay. This is distinct from a `Departure`, which is an event of a vehicle leaving a stop at a specific time.
+            &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the stop.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;id&quot;: &quot;A String&quot;, # The id of the transit stop that can be used to uniquely identify the stop among other transit stops in the same transit station. This identifier is not guaranteed to be stable across different responses.
+            &quot;location&quot;: { # An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. # The stop&#x27;s location.
+              &quot;latitude&quot;: 3.14, # The latitude in degrees. It must be in the range [-90.0, +90.0].
+              &quot;longitude&quot;: 3.14, # The longitude in degrees. It must be in the range [-180.0, +180.0].
+            },
+            &quot;platformCode&quot;: { # Localized variant of a text in a particular language. # The platform code represented by this stop. It can be formatted in any way. (eg: &quot;2&quot;, &quot;Platform 2&quot;, &quot;2-4&quot;, or &quot;1x&quot;).
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;signageText&quot;: { # Localized variant of a text in a particular language. # The verbatim text written on the signboard for this platform, e.g. &quot;Towards Central&quot; or &quot;East side &amp; Brooklyn&quot;. When `platform_code` is absent, this field is potentially the only identifier for the platform; however, both `platform_code` and `signage_text` may be set simultaneously.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;stopCode&quot;: { # Localized variant of a text in a particular language. # Human readable identifier of the stop, used by transit agencies to distinguish stops with the same name.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;wheelchairAccessibleEntrance&quot;: True or False, # Wheelchair accessibility of this stop. This field indicates whether there is an accessible path from outside the station to the stop. It does not indicate whether it is possible to board a vehicle from the stop.
+          },
+        ],
+      },
       &quot;types&quot;: [ # A set of type tags for this result. For example, &quot;political&quot; and &quot;locality&quot;. For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types
         &quot;A String&quot;,
       ],
@@ -1558,15 +1700,15 @@ Returns:
 
     { # Response proto for SearchText.
   &quot;contextualContents&quot;: [ # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. A list of contextual contents where each entry associates to the corresponding place in the same index in the places field. The contents that are relevant to the `text_query` in the request are preferred. If the contextual content is not available for one of the places, it will return non-contextual content. It will be empty only when the content is unavailable for this place. This list will have as many entries as the list of places if requested.
-    { # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. Content that is contextual to the place query.
-      &quot;justifications&quot;: [ # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. Justifications for the place.
-        { # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. Justifications for the place. Justifications answers the question of why a place could interest an end user.
-          &quot;businessAvailabilityAttributesJustification&quot;: { # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. BusinessAvailabilityAttributes justifications. This shows some attributes a business has that could interest an end user. # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details.
+    { # Content that is contextual to the place query.
+      &quot;justifications&quot;: [ # Justifications for the place.
+        { # Justifications for the place. Justifications answers the question of why a place could interest an end user.
+          &quot;businessAvailabilityAttributesJustification&quot;: { # BusinessAvailabilityAttributes justifications. This shows some attributes a business has that could interest an end user.
             &quot;delivery&quot;: True or False, # If a place provides delivery.
             &quot;dineIn&quot;: True or False, # If a place provides dine-in.
             &quot;takeout&quot;: True or False, # If a place provides takeout.
           },
-          &quot;reviewJustification&quot;: { # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. User review justifications. This highlights a section of the user review that would interest an end user. For instance, if the search query is &quot;firewood pizza&quot;, the review justification highlights the text relevant to the search query. # Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details.
+          &quot;reviewJustification&quot;: { # User review justifications. This highlights a section of the user review that would interest an end user. For instance, if the search query is &quot;firewood pizza&quot;, the review justification highlights the text relevant to the search query.
             &quot;highlightedText&quot;: { # The text highlighted by the justification. This is a subset of the review itself. The exact word to highlight is marked by the HighlightedTextRange. There could be several words in the text being highlighted.
               &quot;highlightedTextRanges&quot;: [ # The list of the ranges of the highlighted text.
                 { # The range of highlighted text.
@@ -2193,6 +2335,77 @@ Returns:
       &quot;timeZone&quot;: { # Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones). # IANA Time Zone Database time zone. For example &quot;America/New_York&quot;.
         &quot;id&quot;: &quot;A String&quot;, # IANA Time Zone Database time zone. For example &quot;America/New_York&quot;.
         &quot;version&quot;: &quot;A String&quot;, # Optional. IANA Time Zone Database version number. For example &quot;2019a&quot;.
+      },
+      &quot;transitStation&quot;: { # Represents transit-specific information for a place. # The transit station information for the place.
+        &quot;agencies&quot;: [ # The transit agencies that serve this station.
+          { # Represents a transit agency.
+            &quot;displayName&quot;: { # Localized variant of a text in a particular language. # Agency name (e.g. &quot;VTA&quot;) in the requested language.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;fareUrl&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s fare details page.
+            &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for localized branded icon of a transit system (e.g. London Underground) which should be used instead of TransitLine.vehicle_icon in the UI.
+              &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+              &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+            },
+            &quot;lines&quot;: [ # The transit lines that are served by this agency.
+              { # Represents a single transit line.
+                &quot;backgroundColor&quot;: &quot;A String&quot;, # The background color of the labels for this transit line in #RRGGBB hex format, e.g. #909CE1. This color can also be used for drawing shapes for this transit line.
+                &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The long name for this transit line (e.g. &quot;Sunnydale local&quot;).
+                  &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+                  &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+                },
+                &quot;icon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular line (e.g. subway lines in New York).
+                  &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+                  &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+                },
+                &quot;id&quot;: &quot;A String&quot;, # The id of the transit line that can be used to uniquely identify the line among other transit lines in the same transit station. This identifier is not guaranteed to be stable across different responses.
+                &quot;shortDisplayName&quot;: { # Localized variant of a text in a particular language. # The short name for this transit line (e.g. &quot;S2&quot;).
+                  &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+                  &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+                },
+                &quot;textColor&quot;: &quot;A String&quot;, # The text color of labels for this transit line in #RRGGBB hex format, e.g. #909CE1.
+                &quot;url&quot;: &quot;A String&quot;, # The URL of a webpage with details about this line.
+                &quot;vehicleIcon&quot;: { # Icon for a transit line, vehicle, or agency. # Icon identifier for this particular vehicle type.
+                  &quot;nameIncluded&quot;: True or False, # Whether the name is contained in the icon and there is no need to display it next to the icon.
+                  &quot;url&quot;: &quot;A String&quot;, # The URL of the icon.
+                },
+                &quot;vehicleType&quot;: &quot;A String&quot;, # The type of vehicle using this line.
+              },
+            ],
+            &quot;url&quot;: &quot;A String&quot;, # The URL of the agency&#x27;s homepage.
+          },
+        ],
+        &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the station in the local language.
+          &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+          &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+        },
+        &quot;stops&quot;: [ # Transit stops at this station.
+          { # Represents a transit stop within a station. This is a specific location where passengers board and alight transit vehicles, such as a platform or bus bay. This is distinct from a `Departure`, which is an event of a vehicle leaving a stop at a specific time.
+            &quot;displayName&quot;: { # Localized variant of a text in a particular language. # The name of the stop.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;id&quot;: &quot;A String&quot;, # The id of the transit stop that can be used to uniquely identify the stop among other transit stops in the same transit station. This identifier is not guaranteed to be stable across different responses.
+            &quot;location&quot;: { # An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges. # The stop&#x27;s location.
+              &quot;latitude&quot;: 3.14, # The latitude in degrees. It must be in the range [-90.0, +90.0].
+              &quot;longitude&quot;: 3.14, # The longitude in degrees. It must be in the range [-180.0, +180.0].
+            },
+            &quot;platformCode&quot;: { # Localized variant of a text in a particular language. # The platform code represented by this stop. It can be formatted in any way. (eg: &quot;2&quot;, &quot;Platform 2&quot;, &quot;2-4&quot;, or &quot;1x&quot;).
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;signageText&quot;: { # Localized variant of a text in a particular language. # The verbatim text written on the signboard for this platform, e.g. &quot;Towards Central&quot; or &quot;East side &amp; Brooklyn&quot;. When `platform_code` is absent, this field is potentially the only identifier for the platform; however, both `platform_code` and `signage_text` may be set simultaneously.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;stopCode&quot;: { # Localized variant of a text in a particular language. # Human readable identifier of the stop, used by transit agencies to distinguish stops with the same name.
+              &quot;languageCode&quot;: &quot;A String&quot;, # The text&#x27;s BCP-47 language code, such as &quot;en-US&quot; or &quot;sr-Latn&quot;. For more information, see http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+              &quot;text&quot;: &quot;A String&quot;, # Localized string in the language corresponding to language_code below.
+            },
+            &quot;wheelchairAccessibleEntrance&quot;: True or False, # Wheelchair accessibility of this stop. This field indicates whether there is an accessible path from outside the station to the stop. It does not indicate whether it is possible to board a vehicle from the stop.
+          },
+        ],
       },
       &quot;types&quot;: [ # A set of type tags for this result. For example, &quot;political&quot; and &quot;locality&quot;. For the complete list of possible values, see Table A and Table B at https://developers.google.com/maps/documentation/places/web-service/place-types
         &quot;A String&quot;,
