@@ -173,6 +173,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -480,6 +484,10 @@ Args:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -782,6 +790,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -1088,6 +1100,10 @@ Args:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -1399,6 +1415,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -1737,6 +1757,10 @@ Returns:
       &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
         {
           &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+          &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+              # Possible values are:
+              # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+              # - (not present) - Otherwise.
           &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
           &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
           &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -2141,6 +2165,10 @@ Returns:
       &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
         {
           &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+          &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+              # Possible values are:
+              # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+              # - (not present) - Otherwise.
           &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
           &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
           &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -2480,6 +2508,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -2787,6 +2819,10 @@ Args:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -3099,6 +3135,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -3415,6 +3455,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -3722,6 +3766,10 @@ Args:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
@@ -4034,6 +4082,10 @@ Returns:
   &quot;attendees&quot;: [ # The attendees of the event. See the Events with attendees guide for more information on scheduling events with other calendar users. Service accounts need to use domain-wide delegation of authority to populate the attendee list.
     {
       &quot;additionalGuests&quot;: 0, # Number of additional guests. Optional. The default is 0.
+      &quot;asyncOperation&quot;: &quot;&quot;, # If present, indicates the status of an asynchronous operation ongoing for this attendee (e.g. listing of members of large attendee groups). Read-only. The default is to not be present.
+          # Possible values are:
+          # - &quot;inProgress&quot; - The asynchronous operation is in progress.
+          # - (not present) - Otherwise.
       &quot;comment&quot;: &quot;A String&quot;, # The attendee&#x27;s response comment. Optional.
       &quot;displayName&quot;: &quot;A String&quot;, # The attendee&#x27;s name, if available. Optional.
       &quot;email&quot;: &quot;A String&quot;, # The attendee&#x27;s email address, if available. This field must be present when adding an attendee. It must be a valid email address as per RFC5322.
