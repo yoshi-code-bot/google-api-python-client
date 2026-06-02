@@ -214,6 +214,9 @@ Returns:
   &quot;knowledgeAssistAnswer&quot;: {
     &quot;answerRecord&quot;: &quot;A String&quot;,
     &quot;knowledgeAssistDebugInfo&quot;: {
+      &quot;cesDebugInfo&quot;: {
+        &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+      },
       &quot;datastoreResponseReason&quot;: &quot;A String&quot;,
       &quot;ingestedContextReferenceDebugInfo&quot;: {
         &quot;contextReferenceRetrieved&quot;: True or False,
@@ -245,6 +248,11 @@ Returns:
         &quot;useTranslatedMessage&quot;: True or False,
       },
       &quot;queryCategorizationFailureReason&quot;: &quot;A String&quot;,
+      &quot;queryGenerationDebugInfo&quot;: {
+        &quot;candidatesTokenCount&quot;: 42,
+        &quot;promptTokenCount&quot;: 42,
+        &quot;totalTokenCount&quot;: 42,
+      },
       &quot;queryGenerationFailureReason&quot;: &quot;A String&quot;,
       &quot;serviceLatency&quot;: {
         &quot;internalServiceLatencies&quot;: [
