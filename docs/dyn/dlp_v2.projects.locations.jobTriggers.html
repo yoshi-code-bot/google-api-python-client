@@ -3116,7 +3116,7 @@ Returns:
         },
       },
       &quot;snapshotInspectTemplate&quot;: { # The inspectTemplate contains a configuration (set of types of sensitive data to be detected) to be used anywhere you otherwise would normally specify InspectConfig. See https://cloud.google.com/sensitive-data-protection/docs/concepts-templates to learn more. # If run with an InspectTemplate, a snapshot of its state at the time of this run.
-        &quot;allowLimitedAvailabilityInfoTypes&quot;: True or False, # Optional. Enables the use of limited-availability built-in infoTypes in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere. For more information, see https://cloud.google.com/sensitive-data-protection/docs/locations#location-specific_limitations to learn more about location-specific limitations.
+        &quot;allowLimitedAvailabilityInfoTypes&quot;: True or False, # Optional. Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes) in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.
         &quot;createTime&quot;: &quot;A String&quot;, # Output only. The creation timestamp of an inspectTemplate.
         &quot;description&quot;: &quot;A String&quot;, # Short description (max 256 chars).
         &quot;displayName&quot;: &quot;A String&quot;, # Display name (max 256 chars).
@@ -5271,6 +5271,13 @@ Args:
       },
     },
     &quot;item&quot;: { # Type of content to inspect. # The item to inspect.
+      &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+        &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+          &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+            &quot;A String&quot;,
+          ],
+        },
+      },
       &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
         &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
         &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -5280,6 +5287,15 @@ Args:
           { # A key-value pair in the Metadata.
             &quot;key&quot;: &quot;A String&quot;, # The key of the property.
             &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+          },
+        ],
+      },
+      &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+        &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+          { # Single message in a conversation.
+            &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+            &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+            &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
           },
         ],
       },

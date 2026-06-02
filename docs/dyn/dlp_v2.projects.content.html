@@ -1200,6 +1200,13 @@ Args:
   },
   &quot;inspectTemplateName&quot;: &quot;A String&quot;, # Template to use. Any configuration directly specified in inspect_config will override those set in the template. Singular fields that are set in this request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.
   &quot;item&quot;: { # Type of content to inspect. # The item to de-identify. Will be treated as text. This value must be of type Table if your deidentify_config is a RecordTransformations object.
+    &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+      &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+        &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+          &quot;A String&quot;,
+        ],
+      },
+    },
     &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
       &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
       &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -1209,6 +1216,15 @@ Args:
         { # A key-value pair in the Metadata.
           &quot;key&quot;: &quot;A String&quot;, # The key of the property.
           &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+        },
+      ],
+    },
+    &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+      &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+        { # Single message in a conversation.
+          &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+          &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+          &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         },
       ],
     },
@@ -1259,6 +1275,13 @@ Returns:
 
     { # Results of de-identifying a ContentItem.
   &quot;item&quot;: { # Type of content to inspect. # The de-identified item.
+    &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+      &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+        &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+          &quot;A String&quot;,
+        ],
+      },
+    },
     &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
       &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
       &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -1268,6 +1291,15 @@ Returns:
         { # A key-value pair in the Metadata.
           &quot;key&quot;: &quot;A String&quot;, # The key of the property.
           &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+        },
+      ],
+    },
+    &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+      &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+        { # Single message in a conversation.
+          &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+          &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+          &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         },
       ],
     },
@@ -2387,6 +2419,13 @@ Args:
   },
   &quot;inspectTemplateName&quot;: &quot;A String&quot;, # Template to use. Any configuration directly specified in inspect_config will override those set in the template. Singular fields that are set in this request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.
   &quot;item&quot;: { # Type of content to inspect. # The item to inspect.
+    &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+      &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+        &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+          &quot;A String&quot;,
+        ],
+      },
+    },
     &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
       &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
       &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -2396,6 +2435,15 @@ Args:
         { # A key-value pair in the Metadata.
           &quot;key&quot;: &quot;A String&quot;, # The key of the property.
           &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+        },
+      ],
+    },
+    &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+      &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+        { # Single message in a conversation.
+          &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+          &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+          &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         },
       ],
     },
@@ -2483,9 +2531,17 @@ Returns:
           },
           &quot;contentLocations&quot;: [ # List of nested objects pointing to the precise location of the finding within the file or record.
             { # Precise location of the finding within a document, record, image, or metadata container.
+              &quot;batchContentLocation&quot;: { # Location within a batch of content. # Location within a batch of content.
+                &quot;itemIndex&quot;: 42, # Matches an index of a batch item in the batch provided in the request.
+              },
               &quot;containerName&quot;: &quot;A String&quot;, # Name of the container where the finding is located. The top level name is the source file name or table name. Names of some common storage containers are formatted as follows: * BigQuery tables: `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` * Datastore namespace: {namespace} Nested names could be absent if the embedded object has no string identifier (for example, an image contained within a document).
               &quot;containerTimestamp&quot;: &quot;A String&quot;, # Finding container modification timestamp, if applicable. For Cloud Storage, this field contains the last file modification timestamp. For a BigQuery table, this field contains the last_modified_time property. For Datastore, this field isn&#x27;t populated.
               &quot;containerVersion&quot;: &quot;A String&quot;, # Finding container version, if available (&quot;generation&quot; for Cloud Storage).
+              &quot;conversationLocation&quot;: { # Location within a conversation. # Location within a conversation.
+                &quot;allMessages&quot;: { # If set, indicates that the finding applies to all messages in the conversation. # If set, indicates that the finding applies to all messages in the conversation.
+                },
+                &quot;messageIndex&quot;: 42, # Matches an index of a message in the conversation provided in the request.
+              },
               &quot;documentLocation&quot;: { # Location of a finding within a document. # Location data for document files.
                 &quot;fileOffset&quot;: &quot;A String&quot;, # Offset of the line, from the beginning of the file, where the finding is located.
               },
@@ -2829,6 +2885,13 @@ Args:
   },
   &quot;inspectTemplateName&quot;: &quot;A String&quot;, # Template to use. Any configuration directly specified in `inspect_config` will override those set in the template. Singular fields that are set in this request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively merged.
   &quot;item&quot;: { # Type of content to inspect. # The item to re-identify. Will be treated as text.
+    &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+      &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+        &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+          &quot;A String&quot;,
+        ],
+      },
+    },
     &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
       &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
       &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -2838,6 +2901,15 @@ Args:
         { # A key-value pair in the Metadata.
           &quot;key&quot;: &quot;A String&quot;, # The key of the property.
           &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+        },
+      ],
+    },
+    &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+      &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+        { # Single message in a conversation.
+          &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+          &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+          &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         },
       ],
     },
@@ -3744,6 +3816,13 @@ Returns:
 
     { # Results of re-identifying an item.
   &quot;item&quot;: { # Type of content to inspect. # The re-identified item.
+    &quot;batchContentItem&quot;: { # Represents a batch of content to inspect or redact. # Represents a batch of items to inspect.
+      &quot;stringValueBatch&quot;: { # Represents a batch of string values to inspect or redact. # Optional. Represents a batch of string values to inspect or redact.
+        &quot;values&quot;: [ # Optional. Represents string data to inspect or redact.
+          &quot;A String&quot;,
+        ],
+      },
+    },
     &quot;byteItem&quot;: { # Container for bytes to inspect or redact. # Content data to inspect or redact. Replaces `type` and `data`.
       &quot;data&quot;: &quot;A String&quot;, # Content data to inspect or redact.
       &quot;type&quot;: &quot;A String&quot;, # The type of data stored in the bytes string. Default will be TEXT_UTF8.
@@ -3753,6 +3832,15 @@ Returns:
         { # A key-value pair in the Metadata.
           &quot;key&quot;: &quot;A String&quot;, # The key of the property.
           &quot;value&quot;: &quot;A String&quot;, # The value of the property.
+        },
+      ],
+    },
+    &quot;conversation&quot;: { # Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order. # Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order.
+      &quot;messages&quot;: [ # Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.
+        { # Single message in a conversation.
+          &quot;content&quot;: &quot;A String&quot;, # The contents of this message.
+          &quot;messageType&quot;: &quot;A String&quot;, # The type of message.
+          &quot;participantId&quot;: &quot;A String&quot;, # Optional. The identifier of the participant. For example &#x27;test-user&#x27; or &#x27;gemini&#x27;. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.
         },
       ],
     },
