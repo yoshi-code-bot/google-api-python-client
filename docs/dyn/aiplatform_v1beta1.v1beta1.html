@@ -606,7 +606,7 @@ Args:
     The object takes the form of:
 
 { # Request message for EvaluationService.EvaluateInstances.
-  &quot;autoraterConfig&quot;: { # The configs for autorater. This is applicable to both EvaluateInstances and EvaluateDataset. # Optional. Autorater config used for evaluation.
+  &quot;autoraterConfig&quot;: { # The configs for autorater. This is applicable to both EvaluateInstances and EvaluateDataset. # Optional. Autorater config used for evaluation. Not applicable for predefined metrics (PredefinedMetricSpec); the server uses its own model configuration for predefined metrics and this field is ignored.
     &quot;autoraterModel&quot;: &quot;A String&quot;, # Optional. The fully qualified name of the publisher model or tuned autorater endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
     &quot;flipEnabled&quot;: True or False, # Optional. Default is true. Whether to flip the candidate and baseline responses. This is only applicable to the pairwise metric. If enabled, also provide PairwiseMetricSpec.candidate_response_field_name and PairwiseMetricSpec.baseline_response_field_name. When rendering PairwiseMetricSpec.metric_prompt_template, the candidate and baseline fields will be flipped for half of the samples to reduce bias.
     &quot;generationConfig&quot;: { # Configuration for content generation. This message contains all the parameters that control how the model generates content. It allows you to influence the randomness, length, and structure of the output. # Optional. Configuration options for model generation and outputs.
@@ -902,6 +902,12 @@ Args:
                 &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                   &quot;A String&quot;,
                 ],
+              },
+              &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                  &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                },
               },
               &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                 { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -1221,6 +1227,12 @@ Args:
                   &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                     &quot;A String&quot;,
                   ],
+                },
+                &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                  &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                  &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                    &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                  },
                 },
                 &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                   { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -1614,6 +1626,12 @@ Args:
                 &quot;A String&quot;,
               ],
             },
+            &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+              &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+              &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+              },
+            },
             &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
               { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                 &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -1843,6 +1861,12 @@ Args:
                     &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                       &quot;A String&quot;,
                     ],
+                  },
+                  &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                    &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                    &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                      &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                    },
                   },
                   &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                     { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -2166,6 +2190,12 @@ Args:
                   &quot;A String&quot;,
                 ],
               },
+              &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                  &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                },
+              },
               &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                 { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                   &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -2395,6 +2425,12 @@ Args:
                     &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                       &quot;A String&quot;,
                     ],
+                  },
+                  &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                    &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                    &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                      &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                    },
                   },
                   &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                     { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -4587,6 +4623,12 @@ Args:
             &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
               &quot;A String&quot;,
             ],
+          },
+          &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+            &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+            &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+              &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+            },
           },
           &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
             { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.

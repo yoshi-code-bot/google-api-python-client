@@ -385,6 +385,9 @@ h1, h2, h3 {
   <code><a href="#getRagEngineConfig">getRagEngineConfig(name, x__xgafv=None)</a></code></p>
 <p class="firstline">Gets a RagEngineConfig.</p>
 <p class="toc_element">
+  <code><a href="#getSemanticGovernancePolicyEngine">getSemanticGovernancePolicyEngine(name, x__xgafv=None)</a></code></p>
+<p class="firstline">Gets a SemanticGovernancePolicyEngine. A SemanticGovernancePolicyEngine is a singleton resource that is created when its parent is created, and deleted when its parent is deleted. This method retrieves the current state of the Semantic Governance Policy Engine.</p>
+<p class="toc_element">
   <code><a href="#list">list(name, extraLocationTypes=None, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.</p>
 <p class="toc_element">
@@ -399,6 +402,9 @@ h1, h2, h3 {
 <p class="toc_element">
   <code><a href="#updateRagEngineConfig">updateRagEngineConfig(name, body=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Updates a RagEngineConfig.</p>
+<p class="toc_element">
+  <code><a href="#updateSemanticGovernancePolicyEngine">updateSemanticGovernancePolicyEngine(name, body=None, updateMask=None, x__xgafv=None)</a></code></p>
+<p class="firstline">Updates a SemanticGovernancePolicyEngine. This method performs an upsert operation. If the SemanticGovernancePolicyEngine resource does not exist, it will be created. Otherwise, it will be updated.</p>
 <h3>Method Details</h3>
 <div class="method">
     <code class="details" id="askContexts">askContexts(parent, body=None, x__xgafv=None)</code>
@@ -451,6 +457,12 @@ Args:
         &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
           &quot;A String&quot;,
         ],
+      },
+      &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+        &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+        &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+          &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+        },
       },
       &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
         { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -747,6 +759,12 @@ Args:
         &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
           &quot;A String&quot;,
         ],
+      },
+      &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+        &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+        &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+          &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+        },
       },
       &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
         { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -1393,10 +1411,10 @@ Args:
       },
       &quot;initialReplicaCount&quot;: 42, # Immutable. Number of initial replicas being deployed on when scaling the workload up from zero or when creating the workload in case min_replica_count = 0. When min_replica_count &gt; 0 (meaning that the scale-to-zero feature is not enabled), initial_replica_count should not be set. When min_replica_count = 0 (meaning that the scale-to-zero feature is enabled), initial_replica_count should be larger than zero, but no greater than max_replica_count.
       &quot;machineSpec&quot;: { # Specification of a single machine. # Required. Immutable. The specification of a single machine being used.
-        &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+        &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For [accelerator optimized machine types](https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Agent Platform co-schedules the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Agent Platform co-schedules 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
         &quot;acceleratorType&quot;: &quot;A String&quot;, # Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
         &quot;gpuPartitionSize&quot;: &quot;A String&quot;, # Optional. Immutable. The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size=&quot;1g.10gb&quot;, the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
-        &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+        &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
         &quot;minGpuDriverVersion&quot;: &quot;A String&quot;, # Optional. Immutable. The minimum GPU driver version that this machine requires. For example, &quot;535.104.06&quot;. If not specified, the default GPU driver version will be used by the underlying infrastructure.
         &quot;multihostGpuNodeCount&quot;: 42, # Optional. Immutable. The number of nodes per replica for multihost GPU deployments.
         &quot;reservationAffinity&quot;: { # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity. # Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
@@ -1408,7 +1426,7 @@ Args:
         },
         &quot;tpuTopology&quot;: &quot;A String&quot;, # Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: &quot;2x2x1&quot;).
       },
-      &quot;maxReplicaCount&quot;: 42, # Immutable. The maximum number of replicas that may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale to that many replicas is guaranteed (barring service outages). If traffic increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for (max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+      &quot;maxReplicaCount&quot;: 42, # Immutable. The maximum number of replicas that may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale to that many replicas is guaranteed (barring service outages). If traffic increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Agent Platform CPU and GPU quotas. Specifically, you will be charged for (max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
       &quot;minReplicaCount&quot;: 42, # Required. Immutable. The minimum number of machine replicas that will be always deployed on. This value must be greater than or equal to 1. If traffic increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
       &quot;requiredReplicaCount&quot;: 42, # Optional. Number of required available replicas for the deployment to succeed. This field is only needed when partial deployment/mutation is desired. If set, the deploy/mutate operation will succeed once available_replica_count reaches required_replica_count, and the rest of the replicas will be retried. If not set, the default required_replica_count will be min_replica_count.
       &quot;scaleToZeroSpec&quot;: { # Specification for scale-to-zero feature. # Optional. Specification for scale-to-zero feature.
@@ -1641,10 +1659,10 @@ Args:
     },
     &quot;initialReplicaCount&quot;: 42, # Immutable. Number of initial replicas being deployed on when scaling the workload up from zero or when creating the workload in case min_replica_count = 0. When min_replica_count &gt; 0 (meaning that the scale-to-zero feature is not enabled), initial_replica_count should not be set. When min_replica_count = 0 (meaning that the scale-to-zero feature is enabled), initial_replica_count should be larger than zero, but no greater than max_replica_count.
     &quot;machineSpec&quot;: { # Specification of a single machine. # Required. Immutable. The specification of a single machine being used.
-      &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+      &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For [accelerator optimized machine types](https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Agent Platform co-schedules the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Agent Platform co-schedules 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
       &quot;acceleratorType&quot;: &quot;A String&quot;, # Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
       &quot;gpuPartitionSize&quot;: &quot;A String&quot;, # Optional. Immutable. The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size=&quot;1g.10gb&quot;, the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
-      &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+      &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
       &quot;minGpuDriverVersion&quot;: &quot;A String&quot;, # Optional. Immutable. The minimum GPU driver version that this machine requires. For example, &quot;535.104.06&quot;. If not specified, the default GPU driver version will be used by the underlying infrastructure.
       &quot;multihostGpuNodeCount&quot;: 42, # Optional. Immutable. The number of nodes per replica for multihost GPU deployments.
       &quot;reservationAffinity&quot;: { # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity. # Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
@@ -1656,7 +1674,7 @@ Args:
       },
       &quot;tpuTopology&quot;: &quot;A String&quot;, # Immutable. The topology of the TPUs. Corresponds to the TPU topologies available from GKE. (Example: tpu_topology: &quot;2x2x1&quot;).
     },
-    &quot;maxReplicaCount&quot;: 42, # Immutable. The maximum number of replicas that may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale to that many replicas is guaranteed (barring service outages). If traffic increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Vertex CPU and GPU quotas. Specifically, you will be charged for (max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
+    &quot;maxReplicaCount&quot;: 42, # Immutable. The maximum number of replicas that may be deployed on when the traffic against it increases. If the requested value is too large, the deployment will error, but if deployment succeeds then the ability to scale to that many replicas is guaranteed (barring service outages). If traffic increases beyond what its replicas at maximum may handle, a portion of the traffic will be dropped. If this value is not provided, will use min_replica_count as the default value. The value of this field impacts the charge against Agent Platform CPU and GPU quotas. Specifically, you will be charged for (max_replica_count * number of cores in the selected machine type) and (max_replica_count * number of GPUs per replica in the selected machine type).
     &quot;minReplicaCount&quot;: 42, # Required. Immutable. The minimum number of machine replicas that will be always deployed on. This value must be greater than or equal to 1. If traffic increases, it may dynamically be deployed onto more replicas, and as traffic decreases, some of these extra replicas may be freed.
     &quot;requiredReplicaCount&quot;: 42, # Optional. Number of required available replicas for the deployment to succeed. This field is only needed when partial deployment/mutation is desired. If set, the deploy/mutate operation will succeed once available_replica_count reaches required_replica_count, and the rest of the replicas will be retried. If not set, the default required_replica_count will be min_replica_count.
     &quot;scaleToZeroSpec&quot;: { # Specification for scale-to-zero feature. # Optional. Specification for scale-to-zero feature.
@@ -2216,7 +2234,7 @@ Args:
     The object takes the form of:
 
 { # Request message for EvaluationService.EvaluateInstances.
-  &quot;autoraterConfig&quot;: { # The configs for autorater. This is applicable to both EvaluateInstances and EvaluateDataset. # Optional. Autorater config used for evaluation.
+  &quot;autoraterConfig&quot;: { # The configs for autorater. This is applicable to both EvaluateInstances and EvaluateDataset. # Optional. Autorater config used for evaluation. Not applicable for predefined metrics (PredefinedMetricSpec); the server uses its own model configuration for predefined metrics and this field is ignored.
     &quot;autoraterModel&quot;: &quot;A String&quot;, # Optional. The fully qualified name of the publisher model or tuned autorater endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}`
     &quot;flipEnabled&quot;: True or False, # Optional. Default is true. Whether to flip the candidate and baseline responses. This is only applicable to the pairwise metric. If enabled, also provide PairwiseMetricSpec.candidate_response_field_name and PairwiseMetricSpec.baseline_response_field_name. When rendering PairwiseMetricSpec.metric_prompt_template, the candidate and baseline fields will be flipped for half of the samples to reduce bias.
     &quot;generationConfig&quot;: { # Configuration for content generation. This message contains all the parameters that control how the model generates content. It allows you to influence the randomness, length, and structure of the output. # Optional. Configuration options for model generation and outputs.
@@ -2512,6 +2530,12 @@ Args:
                 &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                   &quot;A String&quot;,
                 ],
+              },
+              &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                  &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                },
               },
               &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                 { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -2831,6 +2855,12 @@ Args:
                   &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                     &quot;A String&quot;,
                   ],
+                },
+                &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                  &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                  &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                    &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                  },
                 },
                 &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                   { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -3224,6 +3254,12 @@ Args:
                 &quot;A String&quot;,
               ],
             },
+            &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+              &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+              &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+              },
+            },
             &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
               { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                 &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -3453,6 +3489,12 @@ Args:
                     &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                       &quot;A String&quot;,
                     ],
+                  },
+                  &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                    &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                    &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                      &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                    },
                   },
                   &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                     { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -3776,6 +3818,12 @@ Args:
                   &quot;A String&quot;,
                 ],
               },
+              &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                  &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                },
+              },
               &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                 { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                   &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -4005,6 +4053,12 @@ Args:
                     &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                       &quot;A String&quot;,
                     ],
+                  },
+                  &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                    &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                    &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                      &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                    },
                   },
                   &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                     { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -6199,6 +6253,12 @@ Args:
               &quot;A String&quot;,
             ],
           },
+          &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+            &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+            &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+              &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+            },
+          },
           &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
             { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
               &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -6728,6 +6788,12 @@ Args:
                             &quot;A String&quot;,
                           ],
                         },
+                        &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                          &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                          &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                            &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                          },
+                        },
                         &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                           { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                             &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -6957,6 +7023,12 @@ Args:
                               &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                                 &quot;A String&quot;,
                               ],
+                            },
+                            &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                              &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                              &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                                &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                              },
                             },
                             &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                               { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -7373,6 +7445,12 @@ Args:
                           &quot;A String&quot;,
                         ],
                       },
+                      &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                        &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                        &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                          &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                        },
+                      },
                       &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                         { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                           &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -7602,6 +7680,12 @@ Args:
                             &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                               &quot;A String&quot;,
                             ],
+                          },
+                          &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                            &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                            &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                              &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                            },
                           },
                           &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                             { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -8017,6 +8101,12 @@ Args:
                           &quot;A String&quot;,
                         ],
                       },
+                      &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                        &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                        &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                          &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                        },
+                      },
                       &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                         { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
                           &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -8246,6 +8336,12 @@ Args:
                             &quot;excludeDomains&quot;: [ # Optional. List of domains to be excluded from the search results. The default limit is 2000 domains.
                               &quot;A String&quot;,
                             ],
+                          },
+                          &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+                            &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+                            &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+                              &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+                            },
                           },
                           &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
                             { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
@@ -8923,6 +9019,12 @@ Args:
               &quot;A String&quot;,
             ],
           },
+          &quot;exaAiSearch&quot;: { # ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding. # Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation
+            &quot;apiKey&quot;: &quot;A String&quot;, # Required. The API key for ExaAiSearch.
+            &quot;customConfigs&quot;: { # Optional. This field can be used to pass any parameter from the Exa.ai Search API.
+              &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+            },
+          },
           &quot;functionDeclarations&quot;: [ # Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.
             { # Structured representation of a function declaration as defined by the [OpenAPI 3.0 specification](https://spec.openapis.org/oas/v3.0.3). Included in this declaration are the function name, description, parameters and response type. This FunctionDeclaration is a representation of a block of code that can be used as a `Tool` by the model and executed by the client.
               &quot;behavior&quot;: &quot;A String&quot;, # Optional. Specifies the function Behavior. If not specified, the system keeps the current function call behavior. This field is currently only supported by the BidiGenerateContent method.
@@ -9229,6 +9331,43 @@ Returns:
 </div>
 
 <div class="method">
+    <code class="details" id="getSemanticGovernancePolicyEngine">getSemanticGovernancePolicyEngine(name, x__xgafv=None)</code>
+  <pre>Gets a SemanticGovernancePolicyEngine. A SemanticGovernancePolicyEngine is a singleton resource that is created when its parent is created, and deleted when its parent is deleted. This method retrieves the current state of the Semantic Governance Policy Engine.
+
+Args:
+  name: string, Required. The resource name of the SemanticGovernancePolicyEngine to retrieve. Format: projects/{project}/locations/{location}/semanticGovernancePolicyEngine (required)
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # Define a singleton SemanticGovernancePolicyEngine resource under a project and location.
+  &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this SemanticGovernancePolicyEngine was created.
+  &quot;gatewayConfigs&quot;: { # Optional. Configurations for gateways. The keys are user-defined names for each gateway.
+    &quot;a_key&quot;: { # Configuration for a single gateway.
+      &quot;dnsRecord&quot;: &quot;A String&quot;, # Output only. The fully qualified record name of the created A-record in Cloud DNS.
+      &quot;dnsZoneName&quot;: &quot;A String&quot;, # Optional. FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+      &quot;ipAddress&quot;: &quot;A String&quot;, # Output only. The private IP address of the PSC endpoint.
+      &quot;network&quot;: &quot;A String&quot;, # Optional. The URI of the network resource where PSC-E will be provisioned. if not provided `default` network will be used. Format: projects/{project}/global/networks/{network}
+      &quot;pscEndpoint&quot;: &quot;A String&quot;, # Output only. The self-link or name of the Private Service Connect endpoint forwarding rule.
+      &quot;state&quot;: &quot;A String&quot;, # Output only. The state of the Gateway configuration.
+      &quot;subnetwork&quot;: &quot;A String&quot;, # Optional. The URI of the subnetwork resource where PSC-E will be provisioned. if not provided `default` subnet will be used from the same {location} Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+    },
+  },
+  &quot;ipAddress&quot;: &quot;A String&quot;, # Output only. The private IPv4 address of the PSC endpoint.
+  &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the SemanticGovernancePolicyEngine. Format: projects/{project}/locations/{location}/semanticGovernancePolicyEngine
+  &quot;pscForwardingRule&quot;: &quot;A String&quot;, # Output only. The URI of the PSC endpoint resource created in customer project. Format: projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+  &quot;pscServiceAttachment&quot;: &quot;A String&quot;, # Output only. URI of the PSC attachment resource provided by SGP. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
+  &quot;state&quot;: &quot;A String&quot;, # Output only. The state of the SemanticGovernancePolicyEngine.
+  &quot;targetProject&quot;: &quot;A String&quot;, # Optional. The project where network, subnetwork and dns resources are located. If not provided, it is assumed to be the same project of SemanticGovernancePolicyEngine. This field is for Shared VPC scenarios, where network resources may be in a target project and SGP engine in a service project.
+  &quot;updateTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this SemanticGovernancePolicyEngine was last updated.
+}</pre>
+</div>
+
+<div class="method">
     <code class="details" id="list">list(name, extraLocationTypes=None, filter=None, pageSize=None, pageToken=None, x__xgafv=None)</code>
   <pre>Lists information about the supported locations for this service. This method lists locations based on the resource scope provided in the ListLocationsRequest.name field: * **Global locations**: If `name` is empty, the method lists the public locations available to all projects. * **Project-specific locations**: If `name` follows the format `projects/{project}`, the method lists locations visible to that specific project. This includes public, private, or other project-specific locations enabled for the project. For gRPC and client library implementations, the resource name is passed as the `name` field. For direct service calls, the resource name is incorporated into the request path based on the specific service implementation and version.
 
@@ -9434,10 +9573,10 @@ Returns:
           },
         },
         &quot;machineSpec&quot;: { # Specification of a single machine. # Output only. The machine spec.
-          &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+          &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For [accelerator optimized machine types](https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Agent Platform co-schedules the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Agent Platform co-schedules 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
           &quot;acceleratorType&quot;: &quot;A String&quot;, # Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
           &quot;gpuPartitionSize&quot;: &quot;A String&quot;, # Optional. Immutable. The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size=&quot;1g.10gb&quot;, the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
-          &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+          &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
           &quot;minGpuDriverVersion&quot;: &quot;A String&quot;, # Optional. Immutable. The minimum GPU driver version that this machine requires. For example, &quot;535.104.06&quot;. If not specified, the default GPU driver version will be used by the underlying infrastructure.
           &quot;multihostGpuNodeCount&quot;: 42, # Optional. Immutable. The number of nodes per replica for multihost GPU deployments.
           &quot;reservationAffinity&quot;: { # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity. # Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
@@ -9582,10 +9721,10 @@ Returns:
         },
       },
       &quot;machineSpec&quot;: { # Specification of a single machine. # Output only. The machine spec.
-        &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For accelerator optimized machine types (https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Vertex will co-schedule the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Vertex will co-schedule 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
+        &quot;acceleratorCount&quot;: 42, # The number of accelerators to attach to the machine. For [accelerator optimized machine types](https://cloud.google.com/compute/docs/accelerator-optimized-machines), One may set the accelerator_count from 1 to N for machine with N GPUs. If accelerator_count is less than or equal to N / 2, Agent Platform co-schedules the replicas of the model into the same VM to save cost. For example, if the machine type is a3-highgpu-8g, which has 8 H100 GPUs, one can set accelerator_count to 1 to 8. If accelerator_count is 1, 2, 3, or 4, Agent Platform co-schedules 8, 4, 2, or 2 replicas of the model into the same VM to save cost. When co-scheduling, CPU, memory and storage on the VM will be distributed to replicas on the VM. For example, one can expect a co-scheduled replica requesting 2 GPUs out of a 8-GPU VM will receive 25% of the CPU, memory and storage of the VM. Note that the feature is not compatible with multihost_gpu_node_count. When multihost_gpu_node_count is set, the co-scheduling will not be enabled.
         &quot;acceleratorType&quot;: &quot;A String&quot;, # Immutable. The type of accelerator(s) that may be attached to the machine as per accelerator_count.
         &quot;gpuPartitionSize&quot;: &quot;A String&quot;, # Optional. Immutable. The Nvidia GPU partition size. When specified, the requested accelerators will be partitioned into smaller GPU partitions. For example, if the request is for 8 units of NVIDIA A100 GPUs, and gpu_partition_size=&quot;1g.10gb&quot;, the service will create 8 * 7 = 56 partitioned MIG instances. The partition size must be a value supported by the requested accelerator. Refer to [Nvidia GPU Partitioning](https://cloud.google.com/kubernetes-engine/docs/how-to/gpus-multi#multi-instance_gpu_partitions) for the available partition sizes. If set, the accelerator_count should be set to 1.
-        &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/vertex-ai/docs/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
+        &quot;machineType&quot;: &quot;A String&quot;, # Immutable. The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/predictions/configure-compute#machine-types) See the [list of machine types supported for custom training](https://cloud.google.com/gemini-enterprise-agent-platform/machine-learning/training/configure-compute#machine-types). For DeployedModel this field is optional, and the default value is `n1-standard-2`. For BatchPredictionJob or as part of WorkerPoolSpec this field is required.
         &quot;minGpuDriverVersion&quot;: &quot;A String&quot;, # Optional. Immutable. The minimum GPU driver version that this machine requires. For example, &quot;535.104.06&quot;. If not specified, the default GPU driver version will be used by the underlying infrastructure.
         &quot;multihostGpuNodeCount&quot;: 42, # Optional. Immutable. The number of nodes per replica for multihost GPU deployments.
         &quot;reservationAffinity&quot;: { # A ReservationAffinity can be used to configure a Vertex AI resource (e.g., a DeployedModel) to draw its Compute Engine resources from a Shared Reservation, or exclusively from on-demand capacity. # Optional. Immutable. Configuration controlling how this resource pool consumes reservation.
@@ -9720,6 +9859,67 @@ Args:
   },
 }
 
+  x__xgafv: string, V1 error format.
+    Allowed values
+      1 - v1 error format
+      2 - v2 error format
+
+Returns:
+  An object of the form:
+
+    { # This resource represents a long-running operation that is the result of a network API call.
+  &quot;done&quot;: True or False, # If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available.
+  &quot;error&quot;: { # The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). # The error result of the operation in case of failure or cancellation.
+    &quot;code&quot;: 42, # The status code, which should be an enum value of google.rpc.Code.
+    &quot;details&quot;: [ # A list of messages that carry the error details. There is a common set of message types for APIs to use.
+      {
+        &quot;a_key&quot;: &quot;&quot;, # Properties of the object. Contains field @type with type URL.
+      },
+    ],
+    &quot;message&quot;: &quot;A String&quot;, # A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
+  },
+  &quot;metadata&quot;: { # Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any.
+    &quot;a_key&quot;: &quot;&quot;, # Properties of the object. Contains field @type with type URL.
+  },
+  &quot;name&quot;: &quot;A String&quot;, # The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+  &quot;response&quot;: { # The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+    &quot;a_key&quot;: &quot;&quot;, # Properties of the object. Contains field @type with type URL.
+  },
+}</pre>
+</div>
+
+<div class="method">
+    <code class="details" id="updateSemanticGovernancePolicyEngine">updateSemanticGovernancePolicyEngine(name, body=None, updateMask=None, x__xgafv=None)</code>
+  <pre>Updates a SemanticGovernancePolicyEngine. This method performs an upsert operation. If the SemanticGovernancePolicyEngine resource does not exist, it will be created. Otherwise, it will be updated.
+
+Args:
+  name: string, Identifier. The resource name of the SemanticGovernancePolicyEngine. Format: projects/{project}/locations/{location}/semanticGovernancePolicyEngine (required)
+  body: object, The request body.
+    The object takes the form of:
+
+{ # Define a singleton SemanticGovernancePolicyEngine resource under a project and location.
+  &quot;createTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this SemanticGovernancePolicyEngine was created.
+  &quot;gatewayConfigs&quot;: { # Optional. Configurations for gateways. The keys are user-defined names for each gateway.
+    &quot;a_key&quot;: { # Configuration for a single gateway.
+      &quot;dnsRecord&quot;: &quot;A String&quot;, # Output only. The fully qualified record name of the created A-record in Cloud DNS.
+      &quot;dnsZoneName&quot;: &quot;A String&quot;, # Optional. FQDN of the private DNS zone to create DNS record set for PSC endpoint.
+      &quot;ipAddress&quot;: &quot;A String&quot;, # Output only. The private IP address of the PSC endpoint.
+      &quot;network&quot;: &quot;A String&quot;, # Optional. The URI of the network resource where PSC-E will be provisioned. if not provided `default` network will be used. Format: projects/{project}/global/networks/{network}
+      &quot;pscEndpoint&quot;: &quot;A String&quot;, # Output only. The self-link or name of the Private Service Connect endpoint forwarding rule.
+      &quot;state&quot;: &quot;A String&quot;, # Output only. The state of the Gateway configuration.
+      &quot;subnetwork&quot;: &quot;A String&quot;, # Optional. The URI of the subnetwork resource where PSC-E will be provisioned. if not provided `default` subnet will be used from the same {location} Format: projects/{project}/regions/{region}/subnetworks/{subnetwork}
+    },
+  },
+  &quot;ipAddress&quot;: &quot;A String&quot;, # Output only. The private IPv4 address of the PSC endpoint.
+  &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the SemanticGovernancePolicyEngine. Format: projects/{project}/locations/{location}/semanticGovernancePolicyEngine
+  &quot;pscForwardingRule&quot;: &quot;A String&quot;, # Output only. The URI of the PSC endpoint resource created in customer project. Format: projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+  &quot;pscServiceAttachment&quot;: &quot;A String&quot;, # Output only. URI of the PSC attachment resource provided by SGP. Format: projects/{project}/regions/{region}/serviceAttachments/{service_attachment}
+  &quot;state&quot;: &quot;A String&quot;, # Output only. The state of the SemanticGovernancePolicyEngine.
+  &quot;targetProject&quot;: &quot;A String&quot;, # Optional. The project where network, subnetwork and dns resources are located. If not provided, it is assumed to be the same project of SemanticGovernancePolicyEngine. This field is for Shared VPC scenarios, where network resources may be in a target project and SGP engine in a service project.
+  &quot;updateTime&quot;: &quot;A String&quot;, # Output only. Timestamp when this SemanticGovernancePolicyEngine was last updated.
+}
+
+  updateMask: string, Optional. Specifies the fields to be overwritten in the SemanticGovernancePolicyEngine resource by the update. The fields specified in the update_mask are relative to the resource itself. If no update_mask is provided, all fields are overwritten.
   x__xgafv: string, V1 error format.
     Allowed values
       1 - v1 error format
