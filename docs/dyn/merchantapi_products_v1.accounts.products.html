@@ -233,6 +233,9 @@ Returns:
     ],
     &quot;displayAdsTitle&quot;: &quot;A String&quot;, # Title of an item for dynamic remarketing campaigns.
     &quot;displayAdsValue&quot;: 3.14, # Offer margin for dynamic remarketing campaigns. For more information, see [Display ads attribute](https://support.google.com/merchants/answer/6069387).
+    &quot;documentLinks&quot;: [ # Optional. Contains a list of PDF [document URLs](https://support.google.com/merchants/answer/17084656) for the product. Examples are training manuals, user guides, assembly instructions, package inserts, etc. Must start with &quot;http://&quot; or &quot;https://&quot;), ASCII characters only, and RFC 3986 compliant.
+      &quot;A String&quot;,
+    ],
     &quot;electricRange&quot;: { # The mileage of the vehicle. # The [electric range](https://support.google.com/google-ads/answer/15162232) of the vehicle in miles/kms.
       &quot;unit&quot;: &quot;A String&quot;, # The unit of the mileage.
       &quot;value&quot;: &quot;A String&quot;, # The distance value.
@@ -303,6 +306,7 @@ Returns:
     },
     &quot;isBundle&quot;: True or False, # Whether the item is a business-defined sub-API. A [sub-API] (https://support.google.com/merchants/answer/6324449) is a custom grouping of different products sold by a business for a single price.
     &quot;itemGroupId&quot;: &quot;A String&quot;, # Shared identifier for all variants of the same product.
+    &quot;itemGroupTitle&quot;: &quot;A String&quot;, # Optional. Represents the [title of the product group](https://support.google.com/merchants/answer/17085146) to which this variant product belongs. This can be used along with the [item group id](https://support.google.com/merchants/answer/6324507) attribute. It lets you perform better grouping of variant products, and helps identifying common product characteristics more efficiently.
     &quot;lifestyleImageLinks&quot;: [ # Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item in a real-world context. See the [Help Center article](https://support.google.com/merchants/answer/9103186) for more information.
       &quot;A String&quot;,
     ],
@@ -376,6 +380,7 @@ Returns:
     },
     &quot;pickupMethod&quot;: &quot;A String&quot;, # The [pickup](https://support.google.com/merchants/answer/14634021) option for the item.
     &quot;pickupSla&quot;: &quot;A String&quot;, # Item store pickup timeline. For more information, see [Pickup SLA](https://support.google.com/merchants/answer/14635400).
+    &quot;popularityRank&quot;: 3.14, # Optional. Indicates the [popularity](https://support.google.com/merchants/answer/17085297) of the product in a merchant&#x27;s inventory. Using a scale of 0.0 (lowest) to 100.0 (highest).
     &quot;price&quot;: { # The price represented as a number and currency. # Price of the item.
       &quot;amountMicros&quot;: &quot;A String&quot;, # The price represented as a number in micros (1 million micros is an equivalent to one&#x27;s currency standard unit, for example, 1 USD = 1000000 micros).
       &quot;currencyCode&quot;: &quot;A String&quot;, # The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
@@ -411,6 +416,19 @@ Returns:
     },
     &quot;promotionIds&quot;: [ # The unique ID of a promotion.
       &quot;A String&quot;,
+    ],
+    &quot;questionsAndAnswers&quot;: [ # Optional. Contains user-, merchant-, and manufacturer-authored [questions and answers](https://support.google.com/merchants/answer/17085211) about the product. Max 30 question and answer pairs. Max 10000 characters total. Each question can have max 1000 characters. Each answer can have max 1000 characters.
+      { # The question and answer for the product.
+        &quot;answer&quot;: &quot;A String&quot;, # Required. The answer text.
+        &quot;question&quot;: &quot;A String&quot;, # Required. The question text.
+      },
+    ],
+    &quot;relatedProducts&quot;: [ # Optional. Specifies how other [products are related](https://support.google.com/merchants/answer/17085213) to this product.
+      { # Specifies how other products are related to this product.
+        &quot;id&quot;: &quot;A String&quot;, # Required. The identifier of the related product.
+        &quot;idType&quot;: &quot;A String&quot;, # Required. The type of the identifier of the related product. For example, [GTIN](https://support.google.com/merchants/answer/6219078) or [product ID](https://support.google.com/merchants/answer/6324405).
+        &quot;relationshipType&quot;: &quot;A String&quot;, # Required. The type of the relationship between this product and the related product.
+      },
     ],
     &quot;returnPolicyLabel&quot;: &quot;A String&quot;, # The return label of the product, used to group products in account-level return policies. Max. 100 characters. For more information, see [Return policy label](https://support.google.com/merchants/answer/9445425).
     &quot;salePrice&quot;: { # The price represented as a number and currency. # Advertised sale price of the item.
@@ -518,6 +536,12 @@ Returns:
       &quot;unit&quot;: &quot;A String&quot;, # The unit of the measure.
       &quot;value&quot;: 3.14, # The measure of an item.
     },
+    &quot;variantOptions&quot;: [ # Optional. Contains the [list of all variant-identifying options](https://support.google.com/merchants/answer/17085214) of this product.
+      { # Additional product variants for the product.
+        &quot;name&quot;: &quot;A String&quot;, # Required. The name of the variant. For example, &quot;Color&quot;, &quot;Memory&quot;, &quot;Size&quot;, &quot;Length&quot;
+        &quot;value&quot;: &quot;A String&quot;, # Required. The value of the variant. For example, &quot;Red&quot;, &quot;128GB&quot;, &quot;XL&quot;, &quot;100cm&quot;
+      },
+    ],
     &quot;vehicleAllInPrice&quot;: { # The price represented as a number and currency. # The all-in advertised price for a vehicle, which includes costs for the following – any accessories attached to the vehicle, environmental levies, extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer fees for handling licensing, provincial regulatory fees, miscellaneous dealer charges for security etching and nitrogen tire fill, and factory-to-customer or dealer-to-customer discounts or incentives. See the [Vehicle all-in price](https://support.google.com/google-ads/answer/14156981) for more information.
       &quot;amountMicros&quot;: &quot;A String&quot;, # The price represented as a number in micros (1 million micros is an equivalent to one&#x27;s currency standard unit, for example, 1 USD = 1000000 micros).
       &quot;currencyCode&quot;: &quot;A String&quot;, # The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
@@ -730,6 +754,9 @@ Returns:
         ],
         &quot;displayAdsTitle&quot;: &quot;A String&quot;, # Title of an item for dynamic remarketing campaigns.
         &quot;displayAdsValue&quot;: 3.14, # Offer margin for dynamic remarketing campaigns. For more information, see [Display ads attribute](https://support.google.com/merchants/answer/6069387).
+        &quot;documentLinks&quot;: [ # Optional. Contains a list of PDF [document URLs](https://support.google.com/merchants/answer/17084656) for the product. Examples are training manuals, user guides, assembly instructions, package inserts, etc. Must start with &quot;http://&quot; or &quot;https://&quot;), ASCII characters only, and RFC 3986 compliant.
+          &quot;A String&quot;,
+        ],
         &quot;electricRange&quot;: { # The mileage of the vehicle. # The [electric range](https://support.google.com/google-ads/answer/15162232) of the vehicle in miles/kms.
           &quot;unit&quot;: &quot;A String&quot;, # The unit of the mileage.
           &quot;value&quot;: &quot;A String&quot;, # The distance value.
@@ -800,6 +827,7 @@ Returns:
         },
         &quot;isBundle&quot;: True or False, # Whether the item is a business-defined sub-API. A [sub-API] (https://support.google.com/merchants/answer/6324449) is a custom grouping of different products sold by a business for a single price.
         &quot;itemGroupId&quot;: &quot;A String&quot;, # Shared identifier for all variants of the same product.
+        &quot;itemGroupTitle&quot;: &quot;A String&quot;, # Optional. Represents the [title of the product group](https://support.google.com/merchants/answer/17085146) to which this variant product belongs. This can be used along with the [item group id](https://support.google.com/merchants/answer/6324507) attribute. It lets you perform better grouping of variant products, and helps identifying common product characteristics more efficiently.
         &quot;lifestyleImageLinks&quot;: [ # Additional URLs of lifestyle images of the item, used to explicitly identify images that showcase your item in a real-world context. See the [Help Center article](https://support.google.com/merchants/answer/9103186) for more information.
           &quot;A String&quot;,
         ],
@@ -873,6 +901,7 @@ Returns:
         },
         &quot;pickupMethod&quot;: &quot;A String&quot;, # The [pickup](https://support.google.com/merchants/answer/14634021) option for the item.
         &quot;pickupSla&quot;: &quot;A String&quot;, # Item store pickup timeline. For more information, see [Pickup SLA](https://support.google.com/merchants/answer/14635400).
+        &quot;popularityRank&quot;: 3.14, # Optional. Indicates the [popularity](https://support.google.com/merchants/answer/17085297) of the product in a merchant&#x27;s inventory. Using a scale of 0.0 (lowest) to 100.0 (highest).
         &quot;price&quot;: { # The price represented as a number and currency. # Price of the item.
           &quot;amountMicros&quot;: &quot;A String&quot;, # The price represented as a number in micros (1 million micros is an equivalent to one&#x27;s currency standard unit, for example, 1 USD = 1000000 micros).
           &quot;currencyCode&quot;: &quot;A String&quot;, # The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
@@ -908,6 +937,19 @@ Returns:
         },
         &quot;promotionIds&quot;: [ # The unique ID of a promotion.
           &quot;A String&quot;,
+        ],
+        &quot;questionsAndAnswers&quot;: [ # Optional. Contains user-, merchant-, and manufacturer-authored [questions and answers](https://support.google.com/merchants/answer/17085211) about the product. Max 30 question and answer pairs. Max 10000 characters total. Each question can have max 1000 characters. Each answer can have max 1000 characters.
+          { # The question and answer for the product.
+            &quot;answer&quot;: &quot;A String&quot;, # Required. The answer text.
+            &quot;question&quot;: &quot;A String&quot;, # Required. The question text.
+          },
+        ],
+        &quot;relatedProducts&quot;: [ # Optional. Specifies how other [products are related](https://support.google.com/merchants/answer/17085213) to this product.
+          { # Specifies how other products are related to this product.
+            &quot;id&quot;: &quot;A String&quot;, # Required. The identifier of the related product.
+            &quot;idType&quot;: &quot;A String&quot;, # Required. The type of the identifier of the related product. For example, [GTIN](https://support.google.com/merchants/answer/6219078) or [product ID](https://support.google.com/merchants/answer/6324405).
+            &quot;relationshipType&quot;: &quot;A String&quot;, # Required. The type of the relationship between this product and the related product.
+          },
         ],
         &quot;returnPolicyLabel&quot;: &quot;A String&quot;, # The return label of the product, used to group products in account-level return policies. Max. 100 characters. For more information, see [Return policy label](https://support.google.com/merchants/answer/9445425).
         &quot;salePrice&quot;: { # The price represented as a number and currency. # Advertised sale price of the item.
@@ -1015,6 +1057,12 @@ Returns:
           &quot;unit&quot;: &quot;A String&quot;, # The unit of the measure.
           &quot;value&quot;: 3.14, # The measure of an item.
         },
+        &quot;variantOptions&quot;: [ # Optional. Contains the [list of all variant-identifying options](https://support.google.com/merchants/answer/17085214) of this product.
+          { # Additional product variants for the product.
+            &quot;name&quot;: &quot;A String&quot;, # Required. The name of the variant. For example, &quot;Color&quot;, &quot;Memory&quot;, &quot;Size&quot;, &quot;Length&quot;
+            &quot;value&quot;: &quot;A String&quot;, # Required. The value of the variant. For example, &quot;Red&quot;, &quot;128GB&quot;, &quot;XL&quot;, &quot;100cm&quot;
+          },
+        ],
         &quot;vehicleAllInPrice&quot;: { # The price represented as a number and currency. # The all-in advertised price for a vehicle, which includes costs for the following – any accessories attached to the vehicle, environmental levies, extra warranty, fuel, freight, pre-delivery inspection (PDI), dealer fees for handling licensing, provincial regulatory fees, miscellaneous dealer charges for security etching and nitrogen tire fill, and factory-to-customer or dealer-to-customer discounts or incentives. See the [Vehicle all-in price](https://support.google.com/google-ads/answer/14156981) for more information.
           &quot;amountMicros&quot;: &quot;A String&quot;, # The price represented as a number in micros (1 million micros is an equivalent to one&#x27;s currency standard unit, for example, 1 USD = 1000000 micros).
           &quot;currencyCode&quot;: &quot;A String&quot;, # The currency of the price using three-letter acronyms according to [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217).
