@@ -2610,7 +2610,7 @@
 }
 }
 },
-"revision": "20260512",
+"revision": "20260529",
 "rootUrl": "https://run.googleapis.com/",
 "schemas": {
 "GoogleCloudRunV2BinaryAuthorization": {
@@ -3814,6 +3814,22 @@
 "readOnly": true,
 "type": "boolean"
 },
+"restartPolicy": {
+"description": "Optional. Restart policy for the Instance.",
+"enum": [
+"RESTART_POLICY_UNSPECIFIED",
+"ALWAYS",
+"ON_FAILURE",
+"NEVER"
+],
+"enumDescriptions": [
+"Unspecified restart policy.",
+"Always restart the instance.",
+"Restart if the instance terminates with non-zero exit code.",
+"Never restart the instance."
+],
+"type": "string"
+},
 "satisfiesPzs": {
 "description": "Output only. Reserved for future use.",
 "readOnly": true,
@@ -3826,11 +3842,6 @@
 "$ref": "GoogleCloudRunV2Condition",
 "description": "Output only. The Condition of this Instance, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run.",
 "readOnly": true
-},
-"timeout": {
-"description": "Optional. Duration the instance may be active before the system will shut it down.",
-"format": "google-duration",
-"type": "string"
 },
 "uid": {
 "description": "Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.",

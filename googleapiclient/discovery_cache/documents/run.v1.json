@@ -3612,7 +3612,7 @@
 }
 }
 },
-"revision": "20260512",
+"revision": "20260529",
 "rootUrl": "https://run.googleapis.com/",
 "schemas": {
 "Addressable": {
@@ -6298,13 +6298,12 @@ false
 "description": "Optional. The Node Selector configuration. Map of selector key to a value which matches a node.",
 "type": "object"
 },
-"serviceAccountName": {
-"description": "Optional. Email address of the IAM service account associated with the Instance. The service account represents the identity of the running container, and determines what permissions the Instance has. If not provided, the Instance will use the project's default service account.",
+"restartPolicy": {
+"description": "Optional. Restart policy for the Instance. Allowable values are 'Always', 'OnFailure', or 'Never'.",
 "type": "string"
 },
-"timeout": {
-"description": "Optional. Duration the instance may be active before the system will shut it down.",
-"format": "google-duration",
+"serviceAccountName": {
+"description": "Optional. Email address of the IAM service account associated with the Instance. The service account represents the identity of the running container, and determines what permissions the Instance has. If not provided, the Instance will use the project's default service account.",
 "type": "string"
 },
 "volumes": {
