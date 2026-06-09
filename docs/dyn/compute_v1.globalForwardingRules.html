@@ -81,7 +81,7 @@ h1, h2, h3 {
   <code><a href="#delete">delete(project, forwardingRule, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Deletes the specified GlobalForwardingRule resource.</p>
 <p class="toc_element">
-  <code><a href="#get">get(project, forwardingRule, x__xgafv=None)</a></code></p>
+  <code><a href="#get">get(project, forwardingRule, view=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Returns the specified GlobalForwardingRule resource. Gets a list of</p>
 <p class="toc_element">
   <code><a href="#insert">insert(project, body=None, requestId=None, x__xgafv=None)</a></code></p>
@@ -400,13 +400,17 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="get">get(project, forwardingRule, x__xgafv=None)</code>
+    <code class="details" id="get">get(project, forwardingRule, view=None, x__xgafv=None)</code>
   <pre>Returns the specified GlobalForwardingRule resource. Gets a list of
 available forwarding rules by making a list() request.
 
 Args:
   project: string, Project ID for this request. (required)
   forwardingRule: string, Name of the ForwardingRule resource to return. (required)
+  view: string, A parameter
+    Allowed values
+      BASIC - The default view of a ForwardingRule, which includes the basic fields.
+      FULL - The full view, including the ForwardingRule.`attached_extensions` field.
   x__xgafv: string, V1 error format.
     Allowed values
       1 - v1 error format
@@ -502,6 +506,11 @@ Returns:
       # cannot be changed after the forwarding rule is created.
   &quot;allowPscGlobalAccess&quot;: True or False, # This is used in PSC consumer ForwardingRule to control whether the PSC
       # endpoint can be accessed from another region.
+  &quot;attachedExtensions&quot;: [ # Output only. [Output Only]. The extensions that are attached to this ForwardingRule.
+    { # Reference to an extension resource that is attached to this ForwardingRule.
+      &quot;reference&quot;: &quot;A String&quot;, # Output only. The resource name.
+    },
+  ],
   &quot;backendService&quot;: &quot;A String&quot;, # Identifies the backend service to which the forwarding rule sends traffic.
       # Required for internal and external passthrough Network Load Balancers;
       # must be omitted for all other load balancer types.
@@ -902,6 +911,11 @@ Args:
       # cannot be changed after the forwarding rule is created.
   &quot;allowPscGlobalAccess&quot;: True or False, # This is used in PSC consumer ForwardingRule to control whether the PSC
       # endpoint can be accessed from another region.
+  &quot;attachedExtensions&quot;: [ # Output only. [Output Only]. The extensions that are attached to this ForwardingRule.
+    { # Reference to an extension resource that is attached to this ForwardingRule.
+      &quot;reference&quot;: &quot;A String&quot;, # Output only. The resource name.
+    },
+  ],
   &quot;backendService&quot;: &quot;A String&quot;, # Identifies the backend service to which the forwarding rule sends traffic.
       # Required for internal and external passthrough Network Load Balancers;
       # must be omitted for all other load balancer types.
@@ -1677,6 +1691,11 @@ Returns:
           # cannot be changed after the forwarding rule is created.
       &quot;allowPscGlobalAccess&quot;: True or False, # This is used in PSC consumer ForwardingRule to control whether the PSC
           # endpoint can be accessed from another region.
+      &quot;attachedExtensions&quot;: [ # Output only. [Output Only]. The extensions that are attached to this ForwardingRule.
+        { # Reference to an extension resource that is attached to this ForwardingRule.
+          &quot;reference&quot;: &quot;A String&quot;, # Output only. The resource name.
+        },
+      ],
       &quot;backendService&quot;: &quot;A String&quot;, # Identifies the backend service to which the forwarding rule sends traffic.
           # Required for internal and external passthrough Network Load Balancers;
           # must be omitted for all other load balancer types.
@@ -2129,6 +2148,11 @@ Args:
       # cannot be changed after the forwarding rule is created.
   &quot;allowPscGlobalAccess&quot;: True or False, # This is used in PSC consumer ForwardingRule to control whether the PSC
       # endpoint can be accessed from another region.
+  &quot;attachedExtensions&quot;: [ # Output only. [Output Only]. The extensions that are attached to this ForwardingRule.
+    { # Reference to an extension resource that is attached to this ForwardingRule.
+      &quot;reference&quot;: &quot;A String&quot;, # Output only. The resource name.
+    },
+  ],
   &quot;backendService&quot;: &quot;A String&quot;, # Identifies the backend service to which the forwarding rule sends traffic.
       # Required for internal and external passthrough Network Load Balancers;
       # must be omitted for all other load balancer types.

@@ -705,6 +705,8 @@ Returns:
                 # pools for the instance.
             &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
                 # are scheduled to be restarted or are currently being restarted.
+            &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+                # are scheduled to be restarted or are currently being restarted.
             &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
                 # are scheduled to be resumed or are currently being resumed.
             &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -1702,6 +1704,9 @@ Returns:
               #    - Manually change the targetSuspendedSize using the update
               #    method.
           &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+            &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+              &quot;A String&quot;,
+            ],
             &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
                 # instance redistribution policy for regional managed instance groups.
                 # Valid values are:
@@ -1953,6 +1958,9 @@ where the managed instance group is located. Should conform to RFC1035. (require
   &quot;allInstances&quot;: True or False, # Flag to update all instances instead of specified list of “instances”.
       # If the flag is set to true then the instances may not be specified
       # in the request.
+  &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+    &quot;A String&quot;,
+  ],
   &quot;instances&quot;: [ # The list of URLs of one or more instances for which you want to apply
       # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/instances/[INSTANCE_NAME].
     &quot;A String&quot;,
@@ -3988,6 +3996,8 @@ Returns:
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -4985,6 +4995,9 @@ Returns:
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -5388,6 +5401,8 @@ where you want to create the managed instance group. (required)
         # or a recreate action. For example, setting or removing target
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
@@ -6386,6 +6401,9 @@ where you want to create the managed instance group. (required)
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -7015,6 +7033,8 @@ Returns:
             # or a recreate action. For example, setting or removing target
             # pools for the instance.
         &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
+            # are scheduled to be restarted or are currently being restarted.
+        &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
             # are scheduled to be restarted or are currently being restarted.
         &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
             # are scheduled to be resumed or are currently being resumed.
@@ -8013,6 +8033,9 @@ Returns:
           #    - Manually change the targetSuspendedSize using the update
           #    method.
       &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+        &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+          &quot;A String&quot;,
+        ],
         &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
             # instance redistribution policy for regional managed instance groups.
             # Valid values are:
@@ -8311,18 +8334,18 @@ Returns:
     {
   &quot;items&quot;: [ # Output only. [Output Only] The list of errors of the managed instance group.
     {
-      &quot;error&quot;: { # Output only. [Output Only] Contents of the error.
-        &quot;code&quot;: &quot;A String&quot;, # Output only. [Output Only] Error code.
-        &quot;message&quot;: &quot;A String&quot;, # Output only. [Output Only] Error message.
+      &quot;error&quot;: { # Output only. Contents of the error.
+        &quot;code&quot;: &quot;A String&quot;, # Output only. Error code.
+        &quot;message&quot;: &quot;A String&quot;, # Output only. Error message.
       },
-      &quot;instanceActionDetails&quot;: { # Output only. [Output Only] Details of the instance action that triggered this error.
+      &quot;instanceActionDetails&quot;: { # Output only. Details of the instance action that triggered this error.
           # May be null, if the error was not caused by an action on an instance.
           # This field is optional.
-        &quot;action&quot;: &quot;A String&quot;, # Output only. [Output Only] Action that managed instance group was executing on
-            # the instance when the error occurred. Possible values:
-        &quot;instance&quot;: &quot;A String&quot;, # Output only. [Output Only] The URL of the instance.
-            # The URL can be set even if the instance has not yet been created.
-        &quot;version&quot;: { # Output only. [Output Only] Version this instance was created from, or was being
+        &quot;action&quot;: &quot;A String&quot;, # Output only. Action that managed instance group was executing on the instance when the
+            # error occurred. Possible values:
+        &quot;instance&quot;: &quot;A String&quot;, # Output only. The URL of the instance. The URL can be set even if the instance has not
+            # yet been created.
+        &quot;version&quot;: { # Output only. Version this instance was created from, or was being
             # created from, but the creation failed. Corresponds to one of the versions
             # that were set on the Instance Group Manager resource at the time this
             # instance was being created.
@@ -8331,8 +8354,7 @@ Returns:
           &quot;name&quot;: &quot;A String&quot;, # Output only. [Output Only] Name of the version.
         },
       },
-      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The time that this error occurred.
-          # This value is in RFC3339 text format.
+      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. The time that this error occurred. This value is in RFC3339 text format.
     },
   ],
   &quot;nextPageToken&quot;: &quot;A String&quot;, # Output only. [Output Only] This token allows you to get the next page of results for
@@ -9587,6 +9609,8 @@ you want to create the managed instance group. (required)
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -10584,6 +10608,9 @@ you want to create the managed instance group. (required)
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -14753,6 +14780,8 @@ where you want to create the managed instance group. (required)
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -15750,6 +15779,9 @@ where you want to create the managed instance group. (required)
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:

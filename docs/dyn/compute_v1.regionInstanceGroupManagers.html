@@ -4853,18 +4853,18 @@ Returns:
     {
   &quot;items&quot;: [ # [Output Only] The list of errors of the managed instance group.
     {
-      &quot;error&quot;: { # Output only. [Output Only] Contents of the error.
-        &quot;code&quot;: &quot;A String&quot;, # Output only. [Output Only] Error code.
-        &quot;message&quot;: &quot;A String&quot;, # Output only. [Output Only] Error message.
+      &quot;error&quot;: { # Output only. Contents of the error.
+        &quot;code&quot;: &quot;A String&quot;, # Output only. Error code.
+        &quot;message&quot;: &quot;A String&quot;, # Output only. Error message.
       },
-      &quot;instanceActionDetails&quot;: { # Output only. [Output Only] Details of the instance action that triggered this error.
+      &quot;instanceActionDetails&quot;: { # Output only. Details of the instance action that triggered this error.
           # May be null, if the error was not caused by an action on an instance.
           # This field is optional.
-        &quot;action&quot;: &quot;A String&quot;, # Output only. [Output Only] Action that managed instance group was executing on
-            # the instance when the error occurred. Possible values:
-        &quot;instance&quot;: &quot;A String&quot;, # Output only. [Output Only] The URL of the instance.
-            # The URL can be set even if the instance has not yet been created.
-        &quot;version&quot;: { # Output only. [Output Only] Version this instance was created from, or was being
+        &quot;action&quot;: &quot;A String&quot;, # Output only. Action that managed instance group was executing on the instance when the
+            # error occurred. Possible values:
+        &quot;instance&quot;: &quot;A String&quot;, # Output only. The URL of the instance. The URL can be set even if the instance has not
+            # yet been created.
+        &quot;version&quot;: { # Output only. Version this instance was created from, or was being
             # created from, but the creation failed. Corresponds to one of the versions
             # that were set on the Instance Group Manager resource at the time this
             # instance was being created.
@@ -4873,8 +4873,7 @@ Returns:
           &quot;name&quot;: &quot;A String&quot;, # Output only. [Output Only] Name of the version.
         },
       },
-      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The time that this error occurred.
-          # This value is in RFC3339 text format.
+      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. The time that this error occurred. This value is in RFC3339 text format.
     },
   ],
   &quot;nextPageToken&quot;: &quot;A String&quot;, # Output only. [Output Only] This token allows you to get the next page of results for
