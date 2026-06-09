@@ -291,11 +291,23 @@ Returns:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -456,11 +468,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -812,11 +836,23 @@ Args:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -977,11 +1013,23 @@ Args:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -1274,11 +1322,23 @@ Returns:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -1439,11 +1499,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -1844,11 +1916,23 @@ Args:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -2009,11 +2093,23 @@ Args:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -2307,11 +2403,23 @@ Returns:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -2472,11 +2580,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -2888,11 +3008,23 @@ Args:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3053,11 +3185,23 @@ Args:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3351,11 +3495,23 @@ Returns:
             ],
           },
           &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+          &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+            &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
             { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
               &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
             },
           ],
+          &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+            &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+              { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+              },
+            ],
+          },
           &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
           &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
           &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3516,11 +3672,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
