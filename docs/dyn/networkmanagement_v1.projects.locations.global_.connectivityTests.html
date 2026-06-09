@@ -133,6 +133,7 @@ Args:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -263,6 +264,11 @@ Args:
               &quot;location&quot;: &quot;A String&quot;, # Location in which the Cloud Function is deployed.
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
+            },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
             },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
@@ -625,6 +631,11 @@ Args:
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
             },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
+            },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
               &quot;location&quot;: &quot;A String&quot;, # Location in which this revision is deployed.
@@ -944,6 +955,7 @@ Args:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -1058,6 +1070,7 @@ Returns:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -1188,6 +1201,11 @@ Returns:
               &quot;location&quot;: &quot;A String&quot;, # Location in which the Cloud Function is deployed.
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
+            },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
             },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
@@ -1550,6 +1568,11 @@ Returns:
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
             },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
+            },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
               &quot;location&quot;: &quot;A String&quot;, # Location in which this revision is deployed.
@@ -1869,6 +1892,7 @@ Returns:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -1974,6 +1998,7 @@ Returns:
         &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
           &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
         },
+        &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
         &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
           &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
           &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -2104,6 +2129,11 @@ Returns:
                   &quot;location&quot;: &quot;A String&quot;, # Location in which the Cloud Function is deployed.
                   &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
                   &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
+                },
+                &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+                  &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+                  &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+                  &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
                 },
                 &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
                   &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
@@ -2466,6 +2496,11 @@ Returns:
                   &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
                   &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
                 },
+                &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+                  &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+                  &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+                  &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
+                },
                 &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
                   &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
                   &quot;location&quot;: &quot;A String&quot;, # Location in which this revision is deployed.
@@ -2785,6 +2820,7 @@ Returns:
         &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
           &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
         },
+        &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
         &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
           &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
           &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -2849,6 +2885,7 @@ Args:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
@@ -2979,6 +3016,11 @@ Args:
               &quot;location&quot;: &quot;A String&quot;, # Location in which the Cloud Function is deployed.
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
+            },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
             },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
@@ -3341,6 +3383,11 @@ Args:
               &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Function.
               &quot;versionId&quot;: &quot;A String&quot;, # Latest successfully deployed version id of the Cloud Function.
             },
+            &quot;cloudRunJob&quot;: { # For display only. Metadata associated with a Cloud Run job. # Display information of a Cloud Run job.
+              &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run job.
+              &quot;location&quot;: &quot;A String&quot;, # Location in which this job is deployed.
+              &quot;uri&quot;: &quot;A String&quot;, # URI of a Cloud Run job.
+            },
             &quot;cloudRunRevision&quot;: { # For display only. Metadata associated with a Cloud Run revision. # Display information of a Cloud Run revision.
               &quot;displayName&quot;: &quot;A String&quot;, # Name of a Cloud Run revision.
               &quot;location&quot;: &quot;A String&quot;, # Location in which this revision is deployed.
@@ -3660,6 +3707,7 @@ Args:
     &quot;cloudFunction&quot;: { # Wrapper for Cloud Function attributes. # A [Cloud Function](https://cloud.google.com/functions). Applicable only to source endpoint.
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Function](https://cloud.google.com/functions) name.
     },
+    &quot;cloudRunJob&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [job](https://docs.cloud.google.com/run/docs/reference/rest/v2/projects.locations.jobs#Job) URI. Applicable only to source endpoint. The format is: projects/{project}/locations/{location}/jobs/{job}
     &quot;cloudRunRevision&quot;: { # Wrapper for Cloud Run revision attributes. # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) Applicable only to source endpoint.
       &quot;serviceUri&quot;: &quot;A String&quot;, # Output only. The URI of the Cloud Run service that the revision belongs to. The format is: projects/{project}/locations/{location}/services/{service}
       &quot;uri&quot;: &quot;A String&quot;, # A [Cloud Run](https://cloud.google.com/run) [revision](https://cloud.google.com/run/docs/reference/rest/v1/namespaces.revisions/get) URI. The format is: projects/{project}/locations/{location}/revisions/{revision}
