@@ -621,8 +621,8 @@ Returns:
     { # `QueryDirectoryContents` response message.
   &quot;directoryEntries&quot;: [ # List of entries in the directory.
     { # Represents a single entry in a directory.
-      &quot;directory&quot;: &quot;A String&quot;, # A child directory in the directory.
-      &quot;file&quot;: &quot;A String&quot;, # A file in the directory.
+      &quot;directory&quot;: &quot;A String&quot;, # A child directory in the directory. The path is returned including the full folder structure from the root.
+      &quot;file&quot;: &quot;A String&quot;, # A file in the directory. The path is returned including the full folder structure from the root.
       &quot;metadata&quot;: { # Represents metadata for a single entry in a filesystem. # Entry with metadata.
         &quot;sizeBytes&quot;: &quot;A String&quot;, # Output only. Provides the size of the entry in bytes. For directories, this will be 0.
         &quot;updateTime&quot;: &quot;A String&quot;, # Output only. Represents the time of the last modification of the entry.
