@@ -5128,7 +5128,7 @@
 }
 }
 },
-"revision": "20260509",
+"revision": "20260530",
 "rootUrl": "https://dlp.googleapis.com/",
 "schemas": {
 "GooglePrivacyDlpV2Action": {
@@ -5300,6 +5300,12 @@
 "GooglePrivacyDlpV2AllInfoTypes": {
 "description": "Apply transformation to all findings.",
 "id": "GooglePrivacyDlpV2AllInfoTypes",
+"properties": {},
+"type": "object"
+},
+"GooglePrivacyDlpV2AllMessages": {
+"description": "If set, indicates that the finding applies to all messages in the conversation.",
+"id": "GooglePrivacyDlpV2AllMessages",
 "properties": {},
 "type": "object"
 },
@@ -5502,6 +5508,29 @@
 "allAssetInventoryAssets": {
 "description": "All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.",
 "type": "boolean"
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2BatchContentItem": {
+"description": "Represents a batch of content to inspect or redact.",
+"id": "GooglePrivacyDlpV2BatchContentItem",
+"properties": {
+"stringValueBatch": {
+"$ref": "GooglePrivacyDlpV2StringValueBatch",
+"description": "Optional. Represents a batch of string values to inspect or redact."
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2BatchContentLocation": {
+"description": "Location within a batch of content.",
+"id": "GooglePrivacyDlpV2BatchContentLocation",
+"properties": {
+"itemIndex": {
+"description": "Matches an index of a batch item in the batch provided in the request.",
+"format": "int32",
+"type": "integer"
 }
 },
 "type": "object"
@@ -6517,6 +6546,10 @@
 "description": "Type of content to inspect.",
 "id": "GooglePrivacyDlpV2ContentItem",
 "properties": {
+"batchContentItem": {
+"$ref": "GooglePrivacyDlpV2BatchContentItem",
+"description": "Represents a batch of items to inspect."
+},
 "byteItem": {
 "$ref": "GooglePrivacyDlpV2ByteContentItem",
 "description": "Content data to inspect or redact. Replaces `type` and `data`."
@@ -6524,6 +6557,10 @@
 "contentMetadata": {
 "$ref": "GooglePrivacyDlpV2ContentMetadata",
 "description": "User provided metadata for the content."
+},
+"conversation": {
+"$ref": "GooglePrivacyDlpV2Conversation",
+"description": "Represents a conversation (either complete or a slice). It is assumed that all included messages are contiguous and ordered in chronological order."
 },
 "table": {
 "$ref": "GooglePrivacyDlpV2Table",
@@ -6540,6 +6577,10 @@
 "description": "Precise location of the finding within a document, record, image, or metadata container.",
 "id": "GooglePrivacyDlpV2ContentLocation",
 "properties": {
+"batchContentLocation": {
+"$ref": "GooglePrivacyDlpV2BatchContentLocation",
+"description": "Location within a batch of content."
+},
 "containerName": {
 "description": "Name of the container where the finding is located. The top level name is the source file name or table name. Names of some common storage containers are formatted as follows: * BigQuery tables: `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` * Datastore namespace: {namespace} Nested names could be absent if the embedded object has no string identifier (for example, an image contained within a document).",
 "type": "string"
@@ -6552,6 +6593,10 @@
 "containerVersion": {
 "description": "Finding container version, if available (\"generation\" for Cloud Storage).",
 "type": "string"
+},
+"conversationLocation": {
+"$ref": "GooglePrivacyDlpV2ConversationLocation",
+"description": "Location within a conversation."
 },
 "documentLocation": {
 "$ref": "GooglePrivacyDlpV2DocumentLocation",
@@ -6582,6 +6627,65 @@
 "$ref": "GooglePrivacyDlpV2KeyValueMetadataProperty"
 },
 "type": "array"
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2Conversation": {
+"description": "Complete conversation or slice of a conversation. It is assumed that all included messages are contiguous and ordered in chronological order.",
+"id": "GooglePrivacyDlpV2Conversation",
+"properties": {
+"messages": {
+"description": "Messages exchanged within this conversation. The maximum number of messages allowed is 50k. The order of the messages is assumed to be chronological and will be used to index findings in the response.",
+"items": {
+"$ref": "GooglePrivacyDlpV2ConversationMessage"
+},
+"type": "array"
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2ConversationLocation": {
+"description": "Location within a conversation.",
+"id": "GooglePrivacyDlpV2ConversationLocation",
+"properties": {
+"allMessages": {
+"$ref": "GooglePrivacyDlpV2AllMessages",
+"description": "If set, indicates that the finding applies to all messages in the conversation."
+},
+"messageIndex": {
+"description": "Matches an index of a message in the conversation provided in the request.",
+"format": "int32",
+"type": "integer"
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2ConversationMessage": {
+"description": "Single message in a conversation.",
+"id": "GooglePrivacyDlpV2ConversationMessage",
+"properties": {
+"content": {
+"description": "The contents of this message.",
+"type": "string"
+},
+"messageType": {
+"description": "The type of message.",
+"enum": [
+"MESSAGE_TYPE_UNSPECIFIED",
+"CONTENT",
+"CONTEXT"
+],
+"enumDescriptions": [
+"Unused.",
+"Message contains content to be inspected.",
+"Message contains context only and will not have findings reported from it during inspection or redacted from it during de-identification."
+],
+"type": "string"
+},
+"participantId": {
+"description": "Optional. The identifier of the participant, for example 'test-user' or 'gemini'. The participant ID can contain lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. The maximum length is 63 characters.",
+"type": "string"
 }
 },
 "type": "object"
@@ -9989,7 +10093,7 @@
 "id": "GooglePrivacyDlpV2InspectTemplate",
 "properties": {
 "allowLimitedAvailabilityInfoTypes": {
-"description": "Optional. Enables the use of limited-availability built-in infoTypes in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere. For more information, see https://cloud.google.com/sensitive-data-protection/docs/locations#location-specific_limitations to learn more about location-specific limitations.",
+"description": "Optional. Enables the use of [limited-availability built-in infoTypes](https://docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference#limited-availability-infotypes) in inspect_config. These infoTypes are supported only in specific regions and can cause scanning errors if used elsewhere.",
 "type": "boolean"
 },
 "createTime": {
@@ -12271,6 +12375,20 @@
 "name": {
 "description": "Resource name of the requested `StoredInfoType`, for example `organizations/433245324/storedInfoTypes/432452342` or `projects/project-id/storedInfoTypes/432452342`.",
 "type": "string"
+}
+},
+"type": "object"
+},
+"GooglePrivacyDlpV2StringValueBatch": {
+"description": "Represents a batch of string values to inspect or redact.",
+"id": "GooglePrivacyDlpV2StringValueBatch",
+"properties": {
+"values": {
+"description": "Optional. Represents string data to inspect or redact.",
+"items": {
+"type": "string"
+},
+"type": "array"
 }
 },
 "type": "object"
