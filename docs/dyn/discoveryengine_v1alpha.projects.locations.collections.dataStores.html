@@ -470,7 +470,7 @@ Args:
         &quot;schemaOrgPaths&quot;: [ # Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished
           &quot;A String&quot;,
         ],
-        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
         &quot;searchableOption&quot;: &quot;A String&quot;, # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is numerical, field values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical fields. If searchable_option is unset, the server behavior defaults to SEARCHABLE_DISABLED for fields that support setting searchable options. Only `string` fields that have no key property mapping support setting searchable_option. For those fields that do not support setting searchable options, the server will skip searchable option setting, and setting searchable_option for those fields will throw `INVALID_ARGUMENT` error.
       },
     ],
@@ -481,7 +481,7 @@ Args:
     },
   },
   &quot;workspaceConfig&quot;: { # Config to store data store type configuration for workspace data # Config to store data store type configuration for workspace data. This must be set when DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
-    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Obfuscated Dasher customer ID.
+    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Output only. Obfuscated Dasher customer ID. Derived by the server from the project&#x27;s GCP organization at data store creation time; any value supplied in the request payload is ignored.
     &quot;superAdminEmailAddress&quot;: &quot;A String&quot;, # Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;superAdminServiceAccount&quot;: &quot;A String&quot;, # Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;type&quot;: &quot;A String&quot;, # The Google Workspace data source.
@@ -795,7 +795,7 @@ Returns:
         &quot;schemaOrgPaths&quot;: [ # Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished
           &quot;A String&quot;,
         ],
-        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
         &quot;searchableOption&quot;: &quot;A String&quot;, # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is numerical, field values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical fields. If searchable_option is unset, the server behavior defaults to SEARCHABLE_DISABLED for fields that support setting searchable options. Only `string` fields that have no key property mapping support setting searchable_option. For those fields that do not support setting searchable options, the server will skip searchable option setting, and setting searchable_option for those fields will throw `INVALID_ARGUMENT` error.
       },
     ],
@@ -806,7 +806,7 @@ Returns:
     },
   },
   &quot;workspaceConfig&quot;: { # Config to store data store type configuration for workspace data # Config to store data store type configuration for workspace data. This must be set when DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
-    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Obfuscated Dasher customer ID.
+    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Output only. Obfuscated Dasher customer ID. Derived by the server from the project&#x27;s GCP organization at data store creation time; any value supplied in the request payload is ignored.
     &quot;superAdminEmailAddress&quot;: &quot;A String&quot;, # Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;superAdminServiceAccount&quot;: &quot;A String&quot;, # Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;type&quot;: &quot;A String&quot;, # The Google Workspace data source.
@@ -1117,7 +1117,7 @@ Returns:
             &quot;schemaOrgPaths&quot;: [ # Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished
               &quot;A String&quot;,
             ],
-            &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+            &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
             &quot;searchableOption&quot;: &quot;A String&quot;, # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is numerical, field values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical fields. If searchable_option is unset, the server behavior defaults to SEARCHABLE_DISABLED for fields that support setting searchable options. Only `string` fields that have no key property mapping support setting searchable_option. For those fields that do not support setting searchable options, the server will skip searchable option setting, and setting searchable_option for those fields will throw `INVALID_ARGUMENT` error.
           },
         ],
@@ -1128,7 +1128,7 @@ Returns:
         },
       },
       &quot;workspaceConfig&quot;: { # Config to store data store type configuration for workspace data # Config to store data store type configuration for workspace data. This must be set when DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
-        &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Obfuscated Dasher customer ID.
+        &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Output only. Obfuscated Dasher customer ID. Derived by the server from the project&#x27;s GCP organization at data store creation time; any value supplied in the request payload is ignored.
         &quot;superAdminEmailAddress&quot;: &quot;A String&quot;, # Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
         &quot;superAdminServiceAccount&quot;: &quot;A String&quot;, # Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
         &quot;type&quot;: &quot;A String&quot;, # The Google Workspace data source.
@@ -1344,7 +1344,7 @@ Args:
         &quot;schemaOrgPaths&quot;: [ # Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished
           &quot;A String&quot;,
         ],
-        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
         &quot;searchableOption&quot;: &quot;A String&quot;, # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is numerical, field values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical fields. If searchable_option is unset, the server behavior defaults to SEARCHABLE_DISABLED for fields that support setting searchable options. Only `string` fields that have no key property mapping support setting searchable_option. For those fields that do not support setting searchable options, the server will skip searchable option setting, and setting searchable_option for those fields will throw `INVALID_ARGUMENT` error.
       },
     ],
@@ -1355,7 +1355,7 @@ Args:
     },
   },
   &quot;workspaceConfig&quot;: { # Config to store data store type configuration for workspace data # Config to store data store type configuration for workspace data. This must be set when DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
-    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Obfuscated Dasher customer ID.
+    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Output only. Obfuscated Dasher customer ID. Derived by the server from the project&#x27;s GCP organization at data store creation time; any value supplied in the request payload is ignored.
     &quot;superAdminEmailAddress&quot;: &quot;A String&quot;, # Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;superAdminServiceAccount&quot;: &quot;A String&quot;, # Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;type&quot;: &quot;A String&quot;, # The Google Workspace data source.
@@ -1553,7 +1553,7 @@ Returns:
         &quot;schemaOrgPaths&quot;: [ # Field paths for indexing custom attribute from schema.org data. More details of schema.org and its defined types can be found at [schema.org](https://schema.org). It is only used on advanced site search schema. Currently only support full path from root. The full path to a field is constructed by concatenating field names, starting from `_root`, with a period `.` as the delimiter. Examples: * Publish date of the root: _root.datePublished * Publish date of the reviews: _root.review.datePublished
           &quot;A String&quot;,
         ],
-        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`.
+        &quot;searchableFieldImportance&quot;: &quot;A String&quot;, # Optional. Specifies the importance of the field when `searchable_option` is `SEARCHABLE_ENABLED`. If `searchable_option` is `SEARCHABLE_DISABLED`, this field is ignored. If `searchable_option` is `SEARCHABLE_ENABLED` and this is `SEARCHABLE_FIELD_IMPORTANCE_UNSPECIFIED`, it behaves as `DEFAULT_IMPORTANCE`. For more information, see [Weight searchable fields](https://cloud.google.com/generative-ai-app-builder/docs/configure-field-settings#weight-search).
         &quot;searchableOption&quot;: &quot;A String&quot;, # If searchable_option is SEARCHABLE_ENABLED, field values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but field type is numerical, field values will not be searchable by text queries in SearchService.Search, as there are no text values associated to numerical fields. If searchable_option is unset, the server behavior defaults to SEARCHABLE_DISABLED for fields that support setting searchable options. Only `string` fields that have no key property mapping support setting searchable_option. For those fields that do not support setting searchable options, the server will skip searchable option setting, and setting searchable_option for those fields will throw `INVALID_ARGUMENT` error.
       },
     ],
@@ -1564,7 +1564,7 @@ Returns:
     },
   },
   &quot;workspaceConfig&quot;: { # Config to store data store type configuration for workspace data # Config to store data store type configuration for workspace data. This must be set when DataStore.content_config is set as DataStore.ContentConfig.GOOGLE_WORKSPACE.
-    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Obfuscated Dasher customer ID.
+    &quot;dasherCustomerId&quot;: &quot;A String&quot;, # Output only. Obfuscated Dasher customer ID. Derived by the server from the project&#x27;s GCP organization at data store creation time; any value supplied in the request payload is ignored.
     &quot;superAdminEmailAddress&quot;: &quot;A String&quot;, # Optional. The super admin email address for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;superAdminServiceAccount&quot;: &quot;A String&quot;, # Optional. The super admin service account for the workspace that will be used for access token generation. For now we only use it for Native Google Drive connector data ingestion.
     &quot;type&quot;: &quot;A String&quot;, # The Google Workspace data source.
