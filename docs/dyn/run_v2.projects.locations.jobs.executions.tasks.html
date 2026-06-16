@@ -212,6 +212,7 @@ Returns:
         },
         &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
       },
+      &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
       &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
         &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
           &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
@@ -482,6 +483,7 @@ Returns:
             },
             &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
           },
+          &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
           &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
             &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
               &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
