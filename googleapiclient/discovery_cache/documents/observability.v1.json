@@ -1646,7 +1646,7 @@
 }
 }
 },
-"revision": "20260423",
+"revision": "20260528",
 "rootUrl": "https://observability.googleapis.com/",
 "schemas": {
 "Bucket": {
