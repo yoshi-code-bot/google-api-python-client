@@ -638,6 +638,8 @@ Returns:
     { # Response for getting WbI configurations in a location
   &quot;availableImages&quot;: [ # Output only. The list of available images to create a WbI.
     { # ConfigImage represents an image release available to create a WbI
+      &quot;description&quot;: &quot;A String&quot;, # Output only. The description of the image.
+      &quot;imageFamily&quot;: &quot;A String&quot;, # Output only. The image family of the image. (ex: workbench-instances or workbench-2603)
       &quot;imageName&quot;: &quot;A String&quot;, # Output only. The name of the image of the form workbench-instances-vYYYYmmdd--
       &quot;releaseName&quot;: &quot;A String&quot;, # Output only. The release of the image of the form m123
     },
@@ -1435,6 +1437,7 @@ Args:
     The object takes the form of:
 
 { # Request for upgrading a notebook instance
+  &quot;imageFamily&quot;: &quot;A String&quot;, # Optional. The Compute Engine image family resource name to upgrade to. Format: `projects/{project_id}/global/images/family/{image_family}` If specified, the instance will be upgraded to the latest image in the specified image family, allowing upgrades across image families. If not specified, the instance will be upgraded to the latest image in its current image family.
 }
 
   x__xgafv: string, V1 error format.
