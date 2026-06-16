@@ -76,38 +76,38 @@ h1, h2, h3 {
 <h2>Instance Methods</h2>
 <p class="toc_element">
   <code><a href="#cancel">cancel(projectId, jobId, location=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.</p>
+<p class="firstline">Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs. # IAM Permissions Requires the `bigquery.jobs.update` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead.</p>
 <p class="toc_element">
   <code><a href="#close">close()</a></code></p>
 <p class="firstline">Close httplib2 connections.</p>
 <p class="toc_element">
   <code><a href="#delete">delete(projectId, jobId, location=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.</p>
+<p class="firstline">Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted. # IAM Permissions Requires the `bigquery.jobs.delete` permission on the job resource.</p>
 <p class="toc_element">
   <code><a href="#get">get(projectId, jobId, location=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.</p>
+<p class="firstline">Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role. # IAM Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead.</p>
 <p class="toc_element">
   <code><a href="#getQueryResults">getQueryResults(projectId, jobId, formatOptions_timestampOutputFormat=None, formatOptions_useInt64Timestamp=None, location=None, maxResults=None, pageToken=None, startIndex=None, timeoutMs=None, x__xgafv=None)</a></code></p>
-<p class="firstline">RPC to get the results of a query job.</p>
+<p class="firstline">RPC to get the results of a query job. # IAM Permissions Requires the following IAM permission(s) to use this method: - `bigquery.jobs.get` on the job. - `bigquery.tables.getData` on the destination table. If the user matches the creator of the job, the following IAM permission(s) are required instead: - `bigquery.jobs.create` on the project. - `bigquery.tables.getData` on the destination table.</p>
 <p class="toc_element">
   <code><a href="#getQueryResults_next">getQueryResults_next()</a></code></p>
 <p class="firstline">Retrieves the next page of results.</p>
 <p class="toc_element">
   <code><a href="#insert">insert(projectId, body=None, media_body=None, media_mime_type=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.</p>
+<p class="firstline">Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource. Additional permissions are required depending on the job type: - **Load, Export, and Copy jobs**: Generally require data-level permissions such as `bigquery.tables.export` or access to external storage. - **Query jobs**: Permissions are dependent on the SQL statement. Complex queries (DDL, DCL) may require additional permissions to create reservations, modify IAM policies, or update project settings.</p>
 <p class="toc_element">
   <code><a href="#list">list(projectId, allUsers=None, maxCreationTime=None, maxResults=None, minCreationTime=None, pageToken=None, parentJobId=None, projection=None, stateFilter=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.</p>
+<p class="firstline">Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property. # IAM Permissions Requires no specific IAM permission(s) to use this method. Users are able to list the jobs they created. Additional access is granted based on the following permissions: - Users with the `bigquery.jobs.listAll` permission can list all jobs with all metadata. - Users with the `bigquery.jobs.list` permission can list all jobs, but with redacted information for jobs they did not create.</p>
 <p class="toc_element">
   <code><a href="#list_next">list_next()</a></code></p>
 <p class="firstline">Retrieves the next page of results.</p>
 <p class="toc_element">
   <code><a href="#query">query(projectId, body=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.</p>
+<p class="firstline">Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource. Data-level permissions are highly dependent on the SQL statement being executed. While standard queries require data access (such as `bigquery.tables.getData`), complex operations like DDL or DCL may require permissions to manage reservations, IAM policies, or project settings.</p>
 <h3>Method Details</h3>
 <div class="method">
     <code class="details" id="cancel">cancel(projectId, jobId, location=None, x__xgafv=None)</code>
-  <pre>Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+  <pre>Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs. # IAM Permissions Requires the `bigquery.jobs.update` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead.
 
 Args:
   projectId: string, Required. Project ID of the job to cancel (required)
@@ -266,11 +266,23 @@ Returns:
                 ],
               },
               &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+              &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+              },
               &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                 { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                   &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                 },
               ],
+              &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                  { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                    &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                  },
+                ],
+              },
               &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
               &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
               &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -327,7 +339,7 @@ Returns:
         },
         &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
         &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Date format used for parsing TIMESTAMP values.
-        &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+        &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
           42,
         ],
         &quot;useAvroLogicalTypes&quot;: True or False, # Optional. If sourceFormat is set to &quot;AVRO&quot;, indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -530,11 +542,23 @@ Returns:
                     ],
                   },
                   &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                  &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                    &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                      &quot;a_key&quot;: &quot;A String&quot;,
+                    },
+                  },
                   &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                     { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                       &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                     },
                   ],
+                  &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                    &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                      { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                        &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                      },
+                    ],
+                  },
                   &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                   &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                   &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -578,7 +602,7 @@ Returns:
             &quot;timeFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIME values. Supports C-style and SQL-style values.
             &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
             &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.
-            &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+            &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
               42,
             ],
           },
@@ -749,6 +773,9 @@ Returns:
           },
           &quot;functionStats&quot;: [ # Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
             { # Provides statistics for each Ai function call within a query.
+              &quot;cacheStats&quot;: { # Provides cache statistics for a GenAi function call. # Cache stats for the function.
+                &quot;numCacheHitRows&quot;: &quot;A String&quot;, # Number of rows served from cache.
+              },
               &quot;costOptimizationStats&quot;: { # Provides cost optimization statistics for a GenAi function call. # Cost optimization stats if applied on the rows processed by the function.
                 &quot;message&quot;: &quot;A String&quot;, # System generated message to provide insights into cost optimization state.
                 &quot;numCostOptimizedRows&quot;: &quot;A String&quot;, # Number of rows inferred via cost optimized workflow.
@@ -1355,6 +1382,20 @@ Returns:
               &quot;stageId&quot;: &quot;A String&quot;, # Output only. The stage id that the insight mapped to.
             },
           ],
+          &quot;tableChangeInsights&quot;: [ # Output only. Performance insights for table-level attributes that changed compared to previous runs.
+            { # Table-level performance insights compared to previous runs. These insights don&#x27;t apply to specific query stages, rather they apply to the whole table.
+              &quot;metadataCacheNotUsedButUsedPreviously&quot;: True or False, # Output only. True if the table&#x27;s column metadata index was not used in the current job, but was used in a previous job with the same query hash.
+              &quot;metadataCacheStalenessInsight&quot;: { # Column Metadata Index staleness detailed infnormation. # Output only. If present, indicates that the table&#x27;s metadata column index staleness has increased significantly compared to previous jobs with the same query hash.
+                &quot;avgPreviousStalenessMs&quot;: &quot;A String&quot;, # Output only. Average column metadata index staleness of previous runs with the same query hash.
+                &quot;stalenessPercentageIncrease&quot;: 3.14, # Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash.
+              },
+              &quot;tableReference&quot;: { # Output only. The table that was queried.
+                &quot;datasetId&quot;: &quot;A String&quot;, # Required. The ID of the dataset containing this table.
+                &quot;projectId&quot;: &quot;A String&quot;, # Required. The ID of the project containing this table.
+                &quot;tableId&quot;: &quot;A String&quot;, # Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
+              },
+            },
+          ],
         },
         &quot;queryInfo&quot;: { # Query optimization information for a QUERY job. # Output only. Query optimization information for a QUERY job.
           &quot;optimizationDetails&quot;: { # Output only. Information about query optimizations.
@@ -1441,11 +1482,23 @@ Returns:
                 ],
               },
               &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+              &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+              },
               &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                 { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                   &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                 },
               ],
+              &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                  { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                    &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                  },
+                ],
+              },
               &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
               &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
               &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -1676,7 +1729,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="delete">delete(projectId, jobId, location=None, x__xgafv=None)</code>
-  <pre>Requests the deletion of the metadata of a job. This call returns when the job&#x27;s metadata is deleted.
+  <pre>Requests the deletion of the metadata of a job. This call returns when the job&#x27;s metadata is deleted. # IAM Permissions Requires the `bigquery.jobs.delete` permission on the job resource.
 
 Args:
   projectId: string, Required. Project ID of the job for which metadata is to be deleted. (required)
@@ -1691,7 +1744,7 @@ Args:
 
 <div class="method">
     <code class="details" id="get">get(projectId, jobId, location=None, x__xgafv=None)</code>
-  <pre>Returns information about a specific job. Job information is available for a six month period after creation. Requires that you&#x27;re the person who ran the job, or have the Is Owner project role.
+  <pre>Returns information about a specific job. Job information is available for a six month period after creation. Requires that you&#x27;re the person who ran the job, or have the Is Owner project role. # IAM Permissions Requires the `bigquery.jobs.get` permission on the job resource. If the user matches the creator of the job, the `bigquery.jobs.create` permission on the project is required instead.
 
 Args:
   projectId: string, Required. Project ID of the requested job. (required)
@@ -1849,11 +1902,23 @@ Returns:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -1910,7 +1975,7 @@ Returns:
       },
       &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
       &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Date format used for parsing TIMESTAMP values.
-      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
         42,
       ],
       &quot;useAvroLogicalTypes&quot;: True or False, # Optional. If sourceFormat is set to &quot;AVRO&quot;, indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -2113,11 +2178,23 @@ Returns:
                   ],
                 },
                 &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                  &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                    &quot;a_key&quot;: &quot;A String&quot;,
+                  },
+                },
                 &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                   { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                     &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                   },
                 ],
+                &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                  &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                    { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                      &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                    },
+                  ],
+                },
                 &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                 &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                 &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -2161,7 +2238,7 @@ Returns:
           &quot;timeFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIME values. Supports C-style and SQL-style values.
           &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
           &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.
-          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
             42,
           ],
         },
@@ -2332,6 +2409,9 @@ Returns:
         },
         &quot;functionStats&quot;: [ # Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
           { # Provides statistics for each Ai function call within a query.
+            &quot;cacheStats&quot;: { # Provides cache statistics for a GenAi function call. # Cache stats for the function.
+              &quot;numCacheHitRows&quot;: &quot;A String&quot;, # Number of rows served from cache.
+            },
             &quot;costOptimizationStats&quot;: { # Provides cost optimization statistics for a GenAi function call. # Cost optimization stats if applied on the rows processed by the function.
               &quot;message&quot;: &quot;A String&quot;, # System generated message to provide insights into cost optimization state.
               &quot;numCostOptimizedRows&quot;: &quot;A String&quot;, # Number of rows inferred via cost optimized workflow.
@@ -2938,6 +3018,20 @@ Returns:
             &quot;stageId&quot;: &quot;A String&quot;, # Output only. The stage id that the insight mapped to.
           },
         ],
+        &quot;tableChangeInsights&quot;: [ # Output only. Performance insights for table-level attributes that changed compared to previous runs.
+          { # Table-level performance insights compared to previous runs. These insights don&#x27;t apply to specific query stages, rather they apply to the whole table.
+            &quot;metadataCacheNotUsedButUsedPreviously&quot;: True or False, # Output only. True if the table&#x27;s column metadata index was not used in the current job, but was used in a previous job with the same query hash.
+            &quot;metadataCacheStalenessInsight&quot;: { # Column Metadata Index staleness detailed infnormation. # Output only. If present, indicates that the table&#x27;s metadata column index staleness has increased significantly compared to previous jobs with the same query hash.
+              &quot;avgPreviousStalenessMs&quot;: &quot;A String&quot;, # Output only. Average column metadata index staleness of previous runs with the same query hash.
+              &quot;stalenessPercentageIncrease&quot;: 3.14, # Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash.
+            },
+            &quot;tableReference&quot;: { # Output only. The table that was queried.
+              &quot;datasetId&quot;: &quot;A String&quot;, # Required. The ID of the dataset containing this table.
+              &quot;projectId&quot;: &quot;A String&quot;, # Required. The ID of the project containing this table.
+              &quot;tableId&quot;: &quot;A String&quot;, # Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
+            },
+          },
+        ],
       },
       &quot;queryInfo&quot;: { # Query optimization information for a QUERY job. # Output only. Query optimization information for a QUERY job.
         &quot;optimizationDetails&quot;: { # Output only. Information about query optimizations.
@@ -3024,11 +3118,23 @@ Returns:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3252,7 +3358,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="getQueryResults">getQueryResults(projectId, jobId, formatOptions_timestampOutputFormat=None, formatOptions_useInt64Timestamp=None, location=None, maxResults=None, pageToken=None, startIndex=None, timeoutMs=None, x__xgafv=None)</code>
-  <pre>RPC to get the results of a query job.
+  <pre>RPC to get the results of a query job. # IAM Permissions Requires the following IAM permission(s) to use this method: - `bigquery.jobs.get` on the job. - `bigquery.tables.getData` on the destination table. If the user matches the creator of the job, the following IAM permission(s) are required instead: - `bigquery.jobs.create` on the project. - `bigquery.tables.getData` on the destination table.
 
 Args:
   projectId: string, Required. Project ID of the query job. (required)
@@ -3315,11 +3421,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3377,7 +3495,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="insert">insert(projectId, body=None, media_body=None, media_mime_type=None, x__xgafv=None)</code>
-  <pre>Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you&#x27;re sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
+  <pre>Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you&#x27;re sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource. Additional permissions are required depending on the job type: - **Load, Export, and Copy jobs**: Generally require data-level permissions such as `bigquery.tables.export` or access to external storage. - **Query jobs**: Permissions are dependent on the SQL statement. Complex queries (DDL, DCL) may require additional permissions to create reservations, modify IAM policies, or update project settings.
 
 Args:
   projectId: string, Project ID of project that will be billed for the job. (required)
@@ -3528,11 +3646,23 @@ Args:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3589,7 +3719,7 @@ Args:
       },
       &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
       &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Date format used for parsing TIMESTAMP values.
-      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
         42,
       ],
       &quot;useAvroLogicalTypes&quot;: True or False, # Optional. If sourceFormat is set to &quot;AVRO&quot;, indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -3792,11 +3922,23 @@ Args:
                   ],
                 },
                 &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                  &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                    &quot;a_key&quot;: &quot;A String&quot;,
+                  },
+                },
                 &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                   { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                     &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                   },
                 ],
+                &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                  &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                    { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                      &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                    },
+                  ],
+                },
                 &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                 &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                 &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -3840,7 +3982,7 @@ Args:
           &quot;timeFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIME values. Supports C-style and SQL-style values.
           &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
           &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.
-          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
             42,
           ],
         },
@@ -4011,6 +4153,9 @@ Args:
         },
         &quot;functionStats&quot;: [ # Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
           { # Provides statistics for each Ai function call within a query.
+            &quot;cacheStats&quot;: { # Provides cache statistics for a GenAi function call. # Cache stats for the function.
+              &quot;numCacheHitRows&quot;: &quot;A String&quot;, # Number of rows served from cache.
+            },
             &quot;costOptimizationStats&quot;: { # Provides cost optimization statistics for a GenAi function call. # Cost optimization stats if applied on the rows processed by the function.
               &quot;message&quot;: &quot;A String&quot;, # System generated message to provide insights into cost optimization state.
               &quot;numCostOptimizedRows&quot;: &quot;A String&quot;, # Number of rows inferred via cost optimized workflow.
@@ -4617,6 +4762,20 @@ Args:
             &quot;stageId&quot;: &quot;A String&quot;, # Output only. The stage id that the insight mapped to.
           },
         ],
+        &quot;tableChangeInsights&quot;: [ # Output only. Performance insights for table-level attributes that changed compared to previous runs.
+          { # Table-level performance insights compared to previous runs. These insights don&#x27;t apply to specific query stages, rather they apply to the whole table.
+            &quot;metadataCacheNotUsedButUsedPreviously&quot;: True or False, # Output only. True if the table&#x27;s column metadata index was not used in the current job, but was used in a previous job with the same query hash.
+            &quot;metadataCacheStalenessInsight&quot;: { # Column Metadata Index staleness detailed infnormation. # Output only. If present, indicates that the table&#x27;s metadata column index staleness has increased significantly compared to previous jobs with the same query hash.
+              &quot;avgPreviousStalenessMs&quot;: &quot;A String&quot;, # Output only. Average column metadata index staleness of previous runs with the same query hash.
+              &quot;stalenessPercentageIncrease&quot;: 3.14, # Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash.
+            },
+            &quot;tableReference&quot;: { # Output only. The table that was queried.
+              &quot;datasetId&quot;: &quot;A String&quot;, # Required. The ID of the dataset containing this table.
+              &quot;projectId&quot;: &quot;A String&quot;, # Required. The ID of the project containing this table.
+              &quot;tableId&quot;: &quot;A String&quot;, # Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
+            },
+          },
+        ],
       },
       &quot;queryInfo&quot;: { # Query optimization information for a QUERY job. # Output only. Query optimization information for a QUERY job.
         &quot;optimizationDetails&quot;: { # Output only. Information about query optimizations.
@@ -4703,11 +4862,23 @@ Args:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -5082,11 +5253,23 @@ Returns:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -5143,7 +5326,7 @@ Returns:
       },
       &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
       &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Date format used for parsing TIMESTAMP values.
-      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+      &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
         42,
       ],
       &quot;useAvroLogicalTypes&quot;: True or False, # Optional. If sourceFormat is set to &quot;AVRO&quot;, indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -5346,11 +5529,23 @@ Returns:
                   ],
                 },
                 &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                  &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                    &quot;a_key&quot;: &quot;A String&quot;,
+                  },
+                },
                 &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                   { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                     &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                   },
                 ],
+                &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                  &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                    { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                      &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                    },
+                  ],
+                },
                 &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                 &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                 &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -5394,7 +5589,7 @@ Returns:
           &quot;timeFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIME values. Supports C-style and SQL-style values.
           &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
           &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.
-          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
             42,
           ],
         },
@@ -5565,6 +5760,9 @@ Returns:
         },
         &quot;functionStats&quot;: [ # Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
           { # Provides statistics for each Ai function call within a query.
+            &quot;cacheStats&quot;: { # Provides cache statistics for a GenAi function call. # Cache stats for the function.
+              &quot;numCacheHitRows&quot;: &quot;A String&quot;, # Number of rows served from cache.
+            },
             &quot;costOptimizationStats&quot;: { # Provides cost optimization statistics for a GenAi function call. # Cost optimization stats if applied on the rows processed by the function.
               &quot;message&quot;: &quot;A String&quot;, # System generated message to provide insights into cost optimization state.
               &quot;numCostOptimizedRows&quot;: &quot;A String&quot;, # Number of rows inferred via cost optimized workflow.
@@ -6171,6 +6369,20 @@ Returns:
             &quot;stageId&quot;: &quot;A String&quot;, # Output only. The stage id that the insight mapped to.
           },
         ],
+        &quot;tableChangeInsights&quot;: [ # Output only. Performance insights for table-level attributes that changed compared to previous runs.
+          { # Table-level performance insights compared to previous runs. These insights don&#x27;t apply to specific query stages, rather they apply to the whole table.
+            &quot;metadataCacheNotUsedButUsedPreviously&quot;: True or False, # Output only. True if the table&#x27;s column metadata index was not used in the current job, but was used in a previous job with the same query hash.
+            &quot;metadataCacheStalenessInsight&quot;: { # Column Metadata Index staleness detailed infnormation. # Output only. If present, indicates that the table&#x27;s metadata column index staleness has increased significantly compared to previous jobs with the same query hash.
+              &quot;avgPreviousStalenessMs&quot;: &quot;A String&quot;, # Output only. Average column metadata index staleness of previous runs with the same query hash.
+              &quot;stalenessPercentageIncrease&quot;: 3.14, # Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash.
+            },
+            &quot;tableReference&quot;: { # Output only. The table that was queried.
+              &quot;datasetId&quot;: &quot;A String&quot;, # Required. The ID of the dataset containing this table.
+              &quot;projectId&quot;: &quot;A String&quot;, # Required. The ID of the project containing this table.
+              &quot;tableId&quot;: &quot;A String&quot;, # Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
+            },
+          },
+        ],
       },
       &quot;queryInfo&quot;: { # Query optimization information for a QUERY job. # Output only. Query optimization information for a QUERY job.
         &quot;optimizationDetails&quot;: { # Output only. Information about query optimizations.
@@ -6257,11 +6469,23 @@ Returns:
               ],
             },
             &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+            &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+              &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                &quot;a_key&quot;: &quot;A String&quot;,
+              },
+            },
             &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
               { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                 &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
               },
             ],
+            &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+              &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                  &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                },
+              ],
+            },
             &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
             &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
             &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -6485,7 +6709,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="list">list(projectId, allUsers=None, maxCreationTime=None, maxResults=None, minCreationTime=None, pageToken=None, parentJobId=None, projection=None, stateFilter=None, x__xgafv=None)</code>
-  <pre>Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.
+  <pre>Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property. # IAM Permissions Requires no specific IAM permission(s) to use this method. Users are able to list the jobs they created. Additional access is granted based on the following permissions: - Users with the `bigquery.jobs.listAll` permission can list all jobs with all metadata. - Users with the `bigquery.jobs.list` permission can list all jobs, but with redacted information for jobs they did not create.
 
 Args:
   projectId: string, Project ID of the jobs to list. (required)
@@ -6659,11 +6883,23 @@ Returns:
                   ],
                 },
                 &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                  &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                    &quot;a_key&quot;: &quot;A String&quot;,
+                  },
+                },
                 &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                   { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                     &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                   },
                 ],
+                &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                  &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                    { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                      &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                    },
+                  ],
+                },
                 &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                 &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                 &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -6720,7 +6956,7 @@ Returns:
           },
           &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Default time zone that will apply when parsing timestamp values that have no specific time zone.
           &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Date format used for parsing TIMESTAMP values.
-          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+          &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
             42,
           ],
           &quot;useAvroLogicalTypes&quot;: True or False, # Optional. If sourceFormat is set to &quot;AVRO&quot;, indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -6923,11 +7159,23 @@ Returns:
                       ],
                     },
                     &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                    &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                      &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                        &quot;a_key&quot;: &quot;A String&quot;,
+                      },
+                    },
                     &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                       { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                         &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                       },
                     ],
+                    &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                      &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                        { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                          &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                        },
+                      ],
+                    },
                     &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                     &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                     &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -6971,7 +7219,7 @@ Returns:
               &quot;timeFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIME values. Supports C-style and SQL-style values.
               &quot;timeZone&quot;: &quot;A String&quot;, # Optional. Time zone used when parsing timestamp values that do not have specific time zone information (e.g. 2024-04-20 12:34:56). The expected format is a IANA timezone string (e.g. America/Los_Angeles).
               &quot;timestampFormat&quot;: &quot;A String&quot;, # Optional. Format used to parse TIMESTAMP values. Supports C-style and SQL-style values.
-              &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, and AVRO. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
+              &quot;timestampTargetPrecision&quot;: [ # Precisions (maximum number of total digits in base 10) for seconds of TIMESTAMP types that are allowed to the destination table for autodetection mode. Available for the formats: CSV, PARQUET, AVRO, and Iceberg External Table. Possible values include: Not Specified, [], or [6]: timestamp(6) for all auto detected TIMESTAMP columns [6, 12]: timestamp(6) for all auto detected TIMESTAMP columns that have less than 6 digits of subseconds. timestamp(12) for all auto detected TIMESTAMP columns that have more than 6 digits of subseconds. [12]: timestamp(12) for all auto detected TIMESTAMP columns. The order of the elements in this array is ignored. Inputs that have higher precision than the highest target precision in this array will be truncated.
                 42,
               ],
             },
@@ -7144,6 +7392,9 @@ Returns:
             },
             &quot;functionStats&quot;: [ # Function level stats for GenAi Functions. See https://docs.cloud.google.com/bigquery/docs/generative-ai-overview
               { # Provides statistics for each Ai function call within a query.
+                &quot;cacheStats&quot;: { # Provides cache statistics for a GenAi function call. # Cache stats for the function.
+                  &quot;numCacheHitRows&quot;: &quot;A String&quot;, # Number of rows served from cache.
+                },
                 &quot;costOptimizationStats&quot;: { # Provides cost optimization statistics for a GenAi function call. # Cost optimization stats if applied on the rows processed by the function.
                   &quot;message&quot;: &quot;A String&quot;, # System generated message to provide insights into cost optimization state.
                   &quot;numCostOptimizedRows&quot;: &quot;A String&quot;, # Number of rows inferred via cost optimized workflow.
@@ -7750,6 +8001,20 @@ Returns:
                 &quot;stageId&quot;: &quot;A String&quot;, # Output only. The stage id that the insight mapped to.
               },
             ],
+            &quot;tableChangeInsights&quot;: [ # Output only. Performance insights for table-level attributes that changed compared to previous runs.
+              { # Table-level performance insights compared to previous runs. These insights don&#x27;t apply to specific query stages, rather they apply to the whole table.
+                &quot;metadataCacheNotUsedButUsedPreviously&quot;: True or False, # Output only. True if the table&#x27;s column metadata index was not used in the current job, but was used in a previous job with the same query hash.
+                &quot;metadataCacheStalenessInsight&quot;: { # Column Metadata Index staleness detailed infnormation. # Output only. If present, indicates that the table&#x27;s metadata column index staleness has increased significantly compared to previous jobs with the same query hash.
+                  &quot;avgPreviousStalenessMs&quot;: &quot;A String&quot;, # Output only. Average column metadata index staleness of previous runs with the same query hash.
+                  &quot;stalenessPercentageIncrease&quot;: 3.14, # Output only. The percent increase in staleness between the current job and the average staleness of previous jobs with the same query hash.
+                },
+                &quot;tableReference&quot;: { # Output only. The table that was queried.
+                  &quot;datasetId&quot;: &quot;A String&quot;, # Required. The ID of the dataset containing this table.
+                  &quot;projectId&quot;: &quot;A String&quot;, # Required. The ID of the project containing this table.
+                  &quot;tableId&quot;: &quot;A String&quot;, # Required. The ID of the table. The ID can contain Unicode characters in category L (letter), M (mark), N (number), Pc (connector, including underscore), Pd (dash), and Zs (space). For more information, see [General Category](https://wikipedia.org/wiki/Unicode_character_property#General_Category). The maximum length is 1,024 characters. Certain operations allow suffixing of the table ID with a partition decorator, such as `sample_table$20190123`.
+                },
+              },
+            ],
           },
           &quot;queryInfo&quot;: { # Query optimization information for a QUERY job. # Output only. Query optimization information for a QUERY job.
             &quot;optimizationDetails&quot;: { # Output only. Information about query optimizations.
@@ -7836,11 +8101,23 @@ Returns:
                   ],
                 },
                 &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+                &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+                  &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+                    &quot;a_key&quot;: &quot;A String&quot;,
+                  },
+                },
                 &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
                   { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
                     &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
                   },
                 ],
+                &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+                  &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+                    { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+                      &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+                    },
+                  ],
+                },
                 &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
                 &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
                 &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
@@ -8085,7 +8362,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="query">query(projectId, body=None, x__xgafv=None)</code>
-  <pre>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.
+  <pre>Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout. # IAM Permissions Requires the `bigquery.jobs.create` permission on the project resource. Data-level permissions are highly dependent on the SQL statement being executed. While standard queries require data access (such as `bigquery.tables.getData`), complex operations like DDL or DCL may require permissions to manage reservations, IAM policies, or project settings.
 
 Args:
   projectId: string, Required. Project ID of the query request. (required)
@@ -8224,11 +8501,23 @@ Returns:
           ],
         },
         &quot;collation&quot;: &quot;A String&quot;, # Optional. Field collation can be set only when the type of field is STRING. The following values are supported: * &#x27;und:ci&#x27;: undetermined locale, case insensitive. * &#x27;&#x27;: empty string. Default to case-sensitive behavior.
+        &quot;dataGovernanceTagsInfo&quot;: { # Optional. Specifies the data governance tags on this field. This field works with other column-level security fields as follows: - Precedence: If a data governance tag is attached to a column, it takes precedence over the policy tag attached to the column. However, if a data policy is attached to a column, it takes precedence over the data governance tag. - Patching behavior (how this field behaves during a `Table.patch` schema update): - Unset: If the `data_governance_tags_info` field is omitted from the update request, the existing tags on the column are preserved. - Empty Field: To clear data governance tags from a column, send the `data_governance_tags_info` field as an empty object. This will remove all tags from the column. - Updating tags: To replace existing tag, send the field with the new tag.
+          &quot;dataGovernanceTags&quot;: { # Optional. The data governance tags added to this field are used for field-level access control. Only one data governance tag is currently supported on a field. Tag keys are globally unique. Tag key is expected to be in the namespaced format, for example &quot;123456789012/pii&quot; where 123456789012 is the ID of the parent organization or project resource for this tag key. Tag value is expected to be the short name, for example &quot;sensitive&quot;. See [Tag definitions](https://cloud.google.com/iam/docs/tags-access-control#definitions) for more details. For example: &quot;123456789012/pii&quot;: &quot;sensitive&quot;, &quot;myProject/cost_center&quot;: &quot;sales&quot;
+            &quot;a_key&quot;: &quot;A String&quot;,
+          },
+        },
         &quot;dataPolicies&quot;: [ # Optional. Data policies attached to this field, used for field-level access control.
           { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
             &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
           },
         ],
+        &quot;dataPolicyList&quot;: { # A list of data policy options. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column). # Optional. Specifies data policies attached to this field, used for field-level access control. When set, this will be the source of truth for data policy information.
+          &quot;dataPolicies&quot;: [ # Contains a list of data policy options. At most 9 data policies are allowed per field.
+            { # Data policy option. For more information, see [Mask data by applying data policies to a column](https://docs.cloud.google.com/bigquery/docs/column-data-masking#data-policies-on-column).
+              &quot;name&quot;: &quot;A String&quot;, # Data policy resource name in the form of projects/project_id/locations/location_id/dataPolicies/data_policy_id.
+            },
+          ],
+        },
         &quot;defaultValueExpression&quot;: &quot;A String&quot;, # Optional. A SQL expression to specify the [default value] (https://cloud.google.com/bigquery/docs/default-values) for this field.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The field description. The maximum length is 1,024 characters.
         &quot;fields&quot;: [ # Optional. Describes the nested schema fields if the type property is set to RECORD.
