@@ -206,7 +206,7 @@
 }
 }
 },
-"revision": "20260513",
+"revision": "20260605",
 "rootUrl": "https://firebaseml.googleapis.com/",
 "schemas": {
 "Date": {
@@ -1549,7 +1549,8 @@
 "id": "GoogleCloudAiplatformV1beta1GoogleMaps",
 "properties": {
 "enableWidget": {
-"description": "Optional. If true, include the widget context token in the response.",
+"deprecated": true,
+"description": "Optional. Deprecated: The Google Maps contextual widget behavior in Grounding with Google Maps is being deprecated; this field is planned for removal and no longer has any effect once removed. If true, include the widget context token in the response.",
 "type": "boolean"
 }
 },
@@ -1750,7 +1751,8 @@
 "id": "GoogleCloudAiplatformV1beta1GroundingMetadata",
 "properties": {
 "googleMapsWidgetContextToken": {
-"description": "Optional. Output only. A token that can be used to render a Google Maps widget with the contextual data. This field is populated only when the grounding source is Google Maps.",
+"deprecated": true,
+"description": "Optional. Output only. Deprecated: The Google Maps contextual widget behavior in Grounding with Google Maps is being deprecated; this field is planned for removal and will no longer be populated once removed. A token that can be used to render a Google Maps widget with the contextual data. This field is populated only when the grounding source is Google Maps.",
 "readOnly": true,
 "type": "string"
 },
@@ -2828,6 +2830,10 @@ false
 "$ref": "GoogleCloudAiplatformV1beta1EnterpriseWebSearch",
 "description": "Optional. Tool to support searching public web data, powered by Vertex AI Search and Sec4 compliance."
 },
+"exaAiSearch": {
+"$ref": "GoogleCloudAiplatformV1beta1ToolExaAiSearch",
+"description": "Optional. Uses Exa.ai to search for information to answer user queries. The search results will be grounded on Exa.ai and presented to the model for response generation"
+},
 "functionDeclarations": {
 "description": "Optional. Function tool type. One or more function declarations to be passed to the model along with the current user query. Model may decide to call a subset of these functions by populating FunctionCall in the response. User should provide a FunctionResponse for each function call in the next turn. Based on the function responses, Model will generate the final response back to the user. Maximum 512 function declarations can be provided.",
 "items": {
@@ -2873,23 +2879,15 @@ false
 "description": "Tool to support computer use.",
 "id": "GoogleCloudAiplatformV1beta1ToolComputerUse",
 "properties": {
-"enablePromptInjectionDetection": {
-"description": "Optional. Enables the prompt injection detection check on computer-use request.",
-"type": "boolean"
-},
 "environment": {
 "description": "Required. The environment being operated.",
 "enum": [
 "ENVIRONMENT_UNSPECIFIED",
-"ENVIRONMENT_BROWSER",
-"ENVIRONMENT_MOBILE",
-"ENVIRONMENT_DESKTOP"
+"ENVIRONMENT_BROWSER"
 ],
 "enumDescriptions": [
 "Defaults to browser.",
-"Operates in a web browser.",
-"Operates in a mobile environment.",
-"Operates in a desktop environment."
+"Operates in a web browser."
 ],
 "type": "string"
 },
@@ -2914,6 +2912,25 @@ false
 "retrievalConfig": {
 "$ref": "GoogleCloudAiplatformV1beta1RetrievalConfig",
 "description": "Optional. Retrieval config."
+}
+},
+"type": "object"
+},
+"GoogleCloudAiplatformV1beta1ToolExaAiSearch": {
+"description": "ExaAiSearch tool type. A tool that uses the Exa.ai search engine for grounding.",
+"id": "GoogleCloudAiplatformV1beta1ToolExaAiSearch",
+"properties": {
+"apiKey": {
+"description": "Required. The API key for ExaAiSearch.",
+"type": "string"
+},
+"customConfigs": {
+"additionalProperties": {
+"description": "Properties of the object.",
+"type": "any"
+},
+"description": "Optional. This field can be used to pass any parameter from the Exa.ai Search API.",
+"type": "object"
 }
 },
 "type": "object"
