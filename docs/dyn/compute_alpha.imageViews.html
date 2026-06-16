@@ -79,10 +79,10 @@ h1, h2, h3 {
 <p class="firstline">Close httplib2 connections.</p>
 <p class="toc_element">
   <code><a href="#get">get(project, region, resourceId, x__xgafv=None)</a></code></p>
-<p class="firstline">Returns the specified global Image resource by providing a regional</p>
+<p class="firstline">Returns the specified global ImageView resource, with a regional</p>
 <p class="toc_element">
   <code><a href="#list">list(project, region, filter=None, maxResults=None, orderBy=None, pageToken=None, returnPartialSuccess=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Retrieves the list of global Image resources available to the project by</p>
+<p class="firstline">Returns a list of global ImageView resources, with a regional</p>
 <p class="toc_element">
   <code><a href="#list_next">list_next()</a></code></p>
 <p class="firstline">Retrieves the next page of results.</p>
@@ -94,8 +94,8 @@ h1, h2, h3 {
 
 <div class="method">
     <code class="details" id="get">get(project, region, resourceId, x__xgafv=None)</code>
-  <pre>Returns the specified global Image resource by providing a regional
-context to read the metadata from the Global Clone in the region.
+  <pre>Returns the specified global ImageView resource, with a regional
+context.
 
 Args:
   project: string, Required. Project ID for this request. (required)
@@ -651,9 +651,8 @@ Returns:
 
 <div class="method">
     <code class="details" id="list">list(project, region, filter=None, maxResults=None, orderBy=None, pageToken=None, returnPartialSuccess=None, x__xgafv=None)</code>
-  <pre>Retrieves the list of global Image resources available to the project by
-providing a regional context to read the metadata from the Global Clone in
-the region.
+  <pre>Returns a list of global ImageView resources, with a regional
+context.
 
 Args:
   project: string, Required. Project ID for this request. (required)

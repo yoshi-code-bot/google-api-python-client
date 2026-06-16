@@ -654,6 +654,17 @@ Name should conform to RFC1035 or be an unsigned long integer. (required)
           # alias range. If not specified, the primary range of the subnetwork is used.
     },
   ],
+  &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+      # You can only specify this field for network interfaces in VPC networks.
+    { # An alias IP range attached to an instance&#x27;s network interface.
+      &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+          # must belong to the specified subnetwork and cannot contain IP addresses
+          # reserved by system or used by other network interfaces. This range may be
+          # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+      &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+          # alias range. If not specified, the primary range of the subnetwork is used.
+    },
+  ],
   &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
       # with network_attachment.
   &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -2168,6 +2179,17 @@ Returns:
                       # alias range. If not specified, the primary range of the subnetwork is used.
                 },
               ],
+              &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+                  # You can only specify this field for network interfaces in VPC networks.
+                { # An alias IP range attached to an instance&#x27;s network interface.
+                  &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+                      # must belong to the specified subnetwork and cannot contain IP addresses
+                      # reserved by system or used by other network interfaces. This range may be
+                      # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+                  &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+                      # alias range. If not specified, the primary range of the subnetwork is used.
+                },
+              ],
               &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
                   # with network_attachment.
               &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -2360,6 +2382,14 @@ Returns:
                 # Engine cluster, as well as the ID of the block, sub-block, and host on
                 # which the running instance is located.
                 # running.
+              &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+                &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                    # example
+                    # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                    # the location ID of the topologies.
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+              },
               &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
                   # located. Instances within the same block experience low network latency.
               &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -4403,6 +4433,17 @@ Args:
           },
         ],
         &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
+            # You can only specify this field for network interfaces in VPC networks.
+          { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+                # must belong to the specified subnetwork and cannot contain IP addresses
+                # reserved by system or used by other network interfaces. This range may be
+                # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+            &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+                # alias range. If not specified, the primary range of the subnetwork is used.
+          },
+        ],
+        &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
@@ -6944,6 +6985,17 @@ Returns:
               # alias range. If not specified, the primary range of the subnetwork is used.
         },
       ],
+      &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+          # You can only specify this field for network interfaces in VPC networks.
+        { # An alias IP range attached to an instance&#x27;s network interface.
+          &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+              # must belong to the specified subnetwork and cannot contain IP addresses
+              # reserved by system or used by other network interfaces. This range may be
+              # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+          &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+              # alias range. If not specified, the primary range of the subnetwork is used.
+        },
+      ],
       &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
           # with network_attachment.
       &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -7136,6 +7188,14 @@ Returns:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -9165,6 +9225,17 @@ Args:
               # alias range. If not specified, the primary range of the subnetwork is used.
         },
       ],
+      &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+          # You can only specify this field for network interfaces in VPC networks.
+        { # An alias IP range attached to an instance&#x27;s network interface.
+          &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+              # must belong to the specified subnetwork and cannot contain IP addresses
+              # reserved by system or used by other network interfaces. This range may be
+              # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+          &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+              # alias range. If not specified, the primary range of the subnetwork is used.
+        },
+      ],
       &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
           # with network_attachment.
       &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -9357,6 +9428,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -10685,6 +10764,17 @@ Returns:
                   # alias range. If not specified, the primary range of the subnetwork is used.
             },
           ],
+          &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+              # You can only specify this field for network interfaces in VPC networks.
+            { # An alias IP range attached to an instance&#x27;s network interface.
+              &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+                  # must belong to the specified subnetwork and cannot contain IP addresses
+                  # reserved by system or used by other network interfaces. This range may be
+                  # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+              &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+                  # alias range. If not specified, the primary range of the subnetwork is used.
+            },
+          ],
           &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
               # with network_attachment.
           &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -10877,6 +10967,14 @@ Returns:
             # Engine cluster, as well as the ID of the block, sub-block, and host on
             # which the running instance is located.
             # running.
+          &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+            &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                # example
+                # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                # the location ID of the topologies.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
               # located. Instances within the same block experience low network latency.
           &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -20068,6 +20166,17 @@ Args:
               # alias range. If not specified, the primary range of the subnetwork is used.
         },
       ],
+      &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
+          # You can only specify this field for network interfaces in VPC networks.
+        { # An alias IP range attached to an instance&#x27;s network interface.
+          &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+              # must belong to the specified subnetwork and cannot contain IP addresses
+              # reserved by system or used by other network interfaces. This range may be
+              # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+          &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+              # alias range. If not specified, the primary range of the subnetwork is used.
+        },
+      ],
       &quot;enableVpcScopedDns&quot;: True or False, # Optional. If true, DNS resolution will be enabled over this interface. Only valid
           # with network_attachment.
       &quot;fingerprint&quot;: &quot;A String&quot;, # Fingerprint hash of contents stored in this network interface.
@@ -20260,6 +20369,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -21518,6 +21635,17 @@ Args:
     },
   ],
   &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
+      # You can only specify this field for network interfaces in VPC networks.
+    { # An alias IP range attached to an instance&#x27;s network interface.
+      &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
+          # must belong to the specified subnetwork and cannot contain IP addresses
+          # reserved by system or used by other network interfaces. This range may be
+          # a single IP address (such as 10.2.3.4), a netmask (such as/24) or a CIDR-formatted string (such as10.1.2.0/24).
+      &quot;subnetworkRangeName&quot;: &quot;A String&quot;, # The name of a subnetwork secondary IP range from which to allocate an IP
+          # alias range. If not specified, the primary range of the subnetwork is used.
+    },
+  ],
+  &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
       # You can only specify this field for network interfaces in VPC networks.
     { # An alias IP range attached to an instance&#x27;s network interface.
       &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range

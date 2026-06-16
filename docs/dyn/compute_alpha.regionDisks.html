@@ -1125,11 +1125,13 @@ Args:
   &quot;storageBytes&quot;: &quot;A String&quot;, # Output only. [Output Only] A size of the storage used by the snapshot. As snapshots
       # share storage, this number is expected to change with snapshot
       # creation/deletion.
-  &quot;storageBytesStatus&quot;: &quot;A String&quot;, # Output only. [Output Only] An indicator whether storageBytes is in a
+  &quot;storageBytesStatus&quot;: &quot;A String&quot;, # Output only. [Deprecated] Instead, check the storageBytes field. After
+      # snapshot creation, the storageBytesStatus field is alwaysUP_TO_DATE.
+      # [Output Only] An indicator whether storageBytes is in a
       # stable state or it is being adjusted as a result of shared storage
-      # reallocation. This status can either be UPDATING, meaning
-      # the size of the snapshot is being updated, or UP_TO_DATE,
-      # meaning the size of the snapshot is up-to-date.
+      # reallocation. This status can either be unset, meaning the snapshot is
+      # being created, or UP_TO_DATE, meaning the size of the snapshot
+      # is up-to-date.
   &quot;storageLocations&quot;: [ # Cloud Storage bucket storage location of the snapshot (regional or
       # multi-regional).
     &quot;A String&quot;,
