@@ -73,10 +73,6 @@
 * [v1beta](http://googleapis.github.io/google-api-python-client/docs/dyn/alloydb_v1beta.html)
 
 
-## analytics
-* [v3](http://googleapis.github.io/google-api-python-client/docs/dyn/analytics_v3.html)
-
-
 ## analyticsadmin
 * [v1alpha](http://googleapis.github.io/google-api-python-client/docs/dyn/analyticsadmin_v1alpha.html)
 * [v1beta](http://googleapis.github.io/google-api-python-client/docs/dyn/analyticsadmin_v1beta.html)
@@ -353,6 +349,10 @@
 
 ## cloudnumberregistry
 * [v1alpha](http://googleapis.github.io/google-api-python-client/docs/dyn/cloudnumberregistry_v1alpha.html)
+
+
+## cloudproductregistry
+* [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/cloudproductregistry_v1.html)
 
 
 ## cloudprofiler
@@ -1379,6 +1379,10 @@
 
 ## walletobjects
 * [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/walletobjects_v1.html)
+
+
+## webcontentpublisher
+* [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/webcontentpublisher_v1.html)
 
 
 ## webfonts
