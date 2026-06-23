@@ -117,6 +117,17 @@ Args:
   &quot;bigqueryProfile&quot;: { # Profile for connecting to a BigQuery destination. # Profile for connecting to a BigQuery destination.
   },
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The create time of the resource.
+  &quot;dataverseProfile&quot;: { # Profile for connecting to a Dataverse source. # Profile for connecting to a Dataverse source.
+    &quot;environmentUrl&quot;: &quot;A String&quot;, # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Credentials for authenticating with the Dataverse API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;tenantId&quot;: &quot;A String&quot;, # Required. Tenant id of the Microsoft Dataverse instance.
+  },
   &quot;displayName&quot;: &quot;A String&quot;, # Required. Display name.
   &quot;forwardSshConnectivity&quot;: { # Forward SSH Tunnel connectivity. # Forward SSH tunnel connectivity.
     &quot;hostname&quot;: &quot;A String&quot;, # Required. Hostname for the SSH tunnel.
@@ -232,6 +243,16 @@ Args:
   &quot;privateConnectivity&quot;: { # Private Connectivity # Private connectivity.
     &quot;privateConnection&quot;: &quot;A String&quot;, # Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
   },
+  &quot;salesforceMarketingCloudProfile&quot;: { # Profile for connecting to a Salesforce Marketing Cloud source. # Profile for connecting to a Salesforce Marketing Cloud source.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;subdomain&quot;: &quot;A String&quot;, # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).
+  },
   &quot;salesforceProfile&quot;: { # Profile for connecting to a Salesforce source. # Profile for connecting to a Salesforce source.
     &quot;domain&quot;: &quot;A String&quot;, # Required. Domain endpoint for the Salesforce connection.
     &quot;oauth2ClientCredentials&quot;: { # OAuth2 Client Credentials. # Connected app authentication.
@@ -249,6 +270,23 @@ Args:
   },
   &quot;satisfiesPzi&quot;: True or False, # Output only. Reserved for future use.
   &quot;satisfiesPzs&quot;: True or False, # Output only. Reserved for future use.
+  &quot;serviceNowProfile&quot;: { # Profile for connecting to a ServiceNow source. # Profile for connecting to a ServiceNow source.
+    &quot;instance&quot;: &quot;A String&quot;, # Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Credentials for authenticating with the ServiceNow API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;userPasswordCredentials&quot;: { # User-password credentials. # User-password authentication.
+      &quot;password&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Password for the connection.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+      &quot;username&quot;: &quot;A String&quot;, # Required. Username for the connection.
+    },
+  },
   &quot;spannerProfile&quot;: { # Profile for connecting to a Spanner source. # Profile for connecting to a Spanner source.
     &quot;database&quot;: &quot;A String&quot;, # Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.
     &quot;host&quot;: &quot;A String&quot;, # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
@@ -359,6 +397,17 @@ Args:
     &quot;bigqueryProfile&quot;: { # Profile for connecting to a BigQuery destination. # Profile for connecting to a BigQuery destination.
     },
     &quot;createTime&quot;: &quot;A String&quot;, # Output only. The create time of the resource.
+    &quot;dataverseProfile&quot;: { # Profile for connecting to a Dataverse source. # Profile for connecting to a Dataverse source.
+      &quot;environmentUrl&quot;: &quot;A String&quot;, # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+      &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Credentials for authenticating with the Dataverse API.
+        &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+        &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+          &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+          &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+        },
+      },
+      &quot;tenantId&quot;: &quot;A String&quot;, # Required. Tenant id of the Microsoft Dataverse instance.
+    },
     &quot;displayName&quot;: &quot;A String&quot;, # Required. Display name.
     &quot;forwardSshConnectivity&quot;: { # Forward SSH Tunnel connectivity. # Forward SSH tunnel connectivity.
       &quot;hostname&quot;: &quot;A String&quot;, # Required. Hostname for the SSH tunnel.
@@ -474,6 +523,16 @@ Args:
     &quot;privateConnectivity&quot;: { # Private Connectivity # Private connectivity.
       &quot;privateConnection&quot;: &quot;A String&quot;, # Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
     },
+    &quot;salesforceMarketingCloudProfile&quot;: { # Profile for connecting to a Salesforce Marketing Cloud source. # Profile for connecting to a Salesforce Marketing Cloud source.
+      &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+        &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+        &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+          &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+          &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+        },
+      },
+      &quot;subdomain&quot;: &quot;A String&quot;, # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).
+    },
     &quot;salesforceProfile&quot;: { # Profile for connecting to a Salesforce source. # Profile for connecting to a Salesforce source.
       &quot;domain&quot;: &quot;A String&quot;, # Required. Domain endpoint for the Salesforce connection.
       &quot;oauth2ClientCredentials&quot;: { # OAuth2 Client Credentials. # Connected app authentication.
@@ -491,6 +550,23 @@ Args:
     },
     &quot;satisfiesPzi&quot;: True or False, # Output only. Reserved for future use.
     &quot;satisfiesPzs&quot;: True or False, # Output only. Reserved for future use.
+    &quot;serviceNowProfile&quot;: { # Profile for connecting to a ServiceNow source. # Profile for connecting to a ServiceNow source.
+      &quot;instance&quot;: &quot;A String&quot;, # Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+      &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Credentials for authenticating with the ServiceNow API.
+        &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+        &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+          &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+          &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+        },
+      },
+      &quot;userPasswordCredentials&quot;: { # User-password credentials. # User-password authentication.
+        &quot;password&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Password for the connection.
+          &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+          &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+        },
+        &quot;username&quot;: &quot;A String&quot;, # Required. Username for the connection.
+      },
+    },
     &quot;spannerProfile&quot;: { # Profile for connecting to a Spanner source. # Profile for connecting to a Spanner source.
       &quot;database&quot;: &quot;A String&quot;, # Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.
       &quot;host&quot;: &quot;A String&quot;, # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
@@ -622,6 +698,22 @@ Args:
           },
         ],
         &quot;objectName&quot;: &quot;A String&quot;, # The object name.
+      },
+    ],
+  },
+  &quot;sourceCatalog&quot;: { # Source catalog. # Optional. Source catalog to enrich with child data objects and metadata. This is mainly used to represent SaaS sources databases.
+    &quot;objects&quot;: [ # Optional. Source objects in the catalog.
+      { # Source object.
+        &quot;objectName&quot;: &quot;A String&quot;, # Required. The object name.
+        &quot;properties&quot;: [ # Optional. Source properties. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.
+          { # Source property.
+            &quot;primaryKey&quot;: True or False, # Optional. Whether or not the property is a primary key.
+            &quot;properties&quot;: [ # Optional. Source properties. When specified, it means that the current property contains nested properties of its own. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.
+              # Object with schema name: SourceProperty
+            ],
+            &quot;propertyName&quot;: &quot;A String&quot;, # Required. The property name.
+          },
+        ],
       },
     ],
   },
@@ -785,6 +877,22 @@ Returns:
       },
     ],
   },
+  &quot;sourceCatalog&quot;: { # Source catalog. # Enriched source catalog. This is mainly used to represent SaaS sources databases.
+    &quot;objects&quot;: [ # Optional. Source objects in the catalog.
+      { # Source object.
+        &quot;objectName&quot;: &quot;A String&quot;, # Required. The object name.
+        &quot;properties&quot;: [ # Optional. Source properties. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.
+          { # Source property.
+            &quot;primaryKey&quot;: True or False, # Optional. Whether or not the property is a primary key.
+            &quot;properties&quot;: [ # Optional. Source properties. When specified, it means that the current property contains nested properties of its own. When unspecified as part of include objects, includes everything, when unspecified as part of exclude objects, excludes nothing.
+              # Object with schema name: SourceProperty
+            ],
+            &quot;propertyName&quot;: &quot;A String&quot;, # Required. The property name.
+          },
+        ],
+      },
+    ],
+  },
   &quot;spannerDatabase&quot;: { # Spanner database structure. # Enriched Spanner database.
     &quot;schemas&quot;: [ # Optional. Spanner schemas in the database.
       { # Spanner schema.
@@ -850,6 +958,17 @@ Returns:
   &quot;bigqueryProfile&quot;: { # Profile for connecting to a BigQuery destination. # Profile for connecting to a BigQuery destination.
   },
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The create time of the resource.
+  &quot;dataverseProfile&quot;: { # Profile for connecting to a Dataverse source. # Profile for connecting to a Dataverse source.
+    &quot;environmentUrl&quot;: &quot;A String&quot;, # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Credentials for authenticating with the Dataverse API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;tenantId&quot;: &quot;A String&quot;, # Required. Tenant id of the Microsoft Dataverse instance.
+  },
   &quot;displayName&quot;: &quot;A String&quot;, # Required. Display name.
   &quot;forwardSshConnectivity&quot;: { # Forward SSH Tunnel connectivity. # Forward SSH tunnel connectivity.
     &quot;hostname&quot;: &quot;A String&quot;, # Required. Hostname for the SSH tunnel.
@@ -965,6 +1084,16 @@ Returns:
   &quot;privateConnectivity&quot;: { # Private Connectivity # Private connectivity.
     &quot;privateConnection&quot;: &quot;A String&quot;, # Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
   },
+  &quot;salesforceMarketingCloudProfile&quot;: { # Profile for connecting to a Salesforce Marketing Cloud source. # Profile for connecting to a Salesforce Marketing Cloud source.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;subdomain&quot;: &quot;A String&quot;, # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).
+  },
   &quot;salesforceProfile&quot;: { # Profile for connecting to a Salesforce source. # Profile for connecting to a Salesforce source.
     &quot;domain&quot;: &quot;A String&quot;, # Required. Domain endpoint for the Salesforce connection.
     &quot;oauth2ClientCredentials&quot;: { # OAuth2 Client Credentials. # Connected app authentication.
@@ -982,6 +1111,23 @@ Returns:
   },
   &quot;satisfiesPzi&quot;: True or False, # Output only. Reserved for future use.
   &quot;satisfiesPzs&quot;: True or False, # Output only. Reserved for future use.
+  &quot;serviceNowProfile&quot;: { # Profile for connecting to a ServiceNow source. # Profile for connecting to a ServiceNow source.
+    &quot;instance&quot;: &quot;A String&quot;, # Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Credentials for authenticating with the ServiceNow API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;userPasswordCredentials&quot;: { # User-password credentials. # User-password authentication.
+      &quot;password&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Password for the connection.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+      &quot;username&quot;: &quot;A String&quot;, # Required. Username for the connection.
+    },
+  },
   &quot;spannerProfile&quot;: { # Profile for connecting to a Spanner source. # Profile for connecting to a Spanner source.
     &quot;database&quot;: &quot;A String&quot;, # Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.
     &quot;host&quot;: &quot;A String&quot;, # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
@@ -1034,6 +1180,17 @@ Returns:
       &quot;bigqueryProfile&quot;: { # Profile for connecting to a BigQuery destination. # Profile for connecting to a BigQuery destination.
       },
       &quot;createTime&quot;: &quot;A String&quot;, # Output only. The create time of the resource.
+      &quot;dataverseProfile&quot;: { # Profile for connecting to a Dataverse source. # Profile for connecting to a Dataverse source.
+        &quot;environmentUrl&quot;: &quot;A String&quot;, # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+        &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Credentials for authenticating with the Dataverse API.
+          &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+          &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+            &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+            &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+          },
+        },
+        &quot;tenantId&quot;: &quot;A String&quot;, # Required. Tenant id of the Microsoft Dataverse instance.
+      },
       &quot;displayName&quot;: &quot;A String&quot;, # Required. Display name.
       &quot;forwardSshConnectivity&quot;: { # Forward SSH Tunnel connectivity. # Forward SSH tunnel connectivity.
         &quot;hostname&quot;: &quot;A String&quot;, # Required. Hostname for the SSH tunnel.
@@ -1149,6 +1306,16 @@ Returns:
       &quot;privateConnectivity&quot;: { # Private Connectivity # Private connectivity.
         &quot;privateConnection&quot;: &quot;A String&quot;, # Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
       },
+      &quot;salesforceMarketingCloudProfile&quot;: { # Profile for connecting to a Salesforce Marketing Cloud source. # Profile for connecting to a Salesforce Marketing Cloud source.
+        &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+          &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+          &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+            &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+            &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+          },
+        },
+        &quot;subdomain&quot;: &quot;A String&quot;, # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).
+      },
       &quot;salesforceProfile&quot;: { # Profile for connecting to a Salesforce source. # Profile for connecting to a Salesforce source.
         &quot;domain&quot;: &quot;A String&quot;, # Required. Domain endpoint for the Salesforce connection.
         &quot;oauth2ClientCredentials&quot;: { # OAuth2 Client Credentials. # Connected app authentication.
@@ -1166,6 +1333,23 @@ Returns:
       },
       &quot;satisfiesPzi&quot;: True or False, # Output only. Reserved for future use.
       &quot;satisfiesPzs&quot;: True or False, # Output only. Reserved for future use.
+      &quot;serviceNowProfile&quot;: { # Profile for connecting to a ServiceNow source. # Profile for connecting to a ServiceNow source.
+        &quot;instance&quot;: &quot;A String&quot;, # Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+        &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Credentials for authenticating with the ServiceNow API.
+          &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+          &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+            &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+            &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+          },
+        },
+        &quot;userPasswordCredentials&quot;: { # User-password credentials. # User-password authentication.
+          &quot;password&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Password for the connection.
+            &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+            &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+          },
+          &quot;username&quot;: &quot;A String&quot;, # Required. Username for the connection.
+        },
+      },
       &quot;spannerProfile&quot;: { # Profile for connecting to a Spanner source. # Profile for connecting to a Spanner source.
         &quot;database&quot;: &quot;A String&quot;, # Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.
         &quot;host&quot;: &quot;A String&quot;, # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
@@ -1227,6 +1411,17 @@ Args:
   &quot;bigqueryProfile&quot;: { # Profile for connecting to a BigQuery destination. # Profile for connecting to a BigQuery destination.
   },
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The create time of the resource.
+  &quot;dataverseProfile&quot;: { # Profile for connecting to a Dataverse source. # Profile for connecting to a Dataverse source.
+    &quot;environmentUrl&quot;: &quot;A String&quot;, # Required. Environment URL of the Microsoft Dataverse instance. Example: `.crm.dynamics.com`
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Credentials for authenticating with the Dataverse API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;tenantId&quot;: &quot;A String&quot;, # Required. Tenant id of the Microsoft Dataverse instance.
+  },
   &quot;displayName&quot;: &quot;A String&quot;, # Required. Display name.
   &quot;forwardSshConnectivity&quot;: { # Forward SSH Tunnel connectivity. # Forward SSH tunnel connectivity.
     &quot;hostname&quot;: &quot;A String&quot;, # Required. Hostname for the SSH tunnel.
@@ -1342,6 +1537,16 @@ Args:
   &quot;privateConnectivity&quot;: { # Private Connectivity # Private connectivity.
     &quot;privateConnection&quot;: &quot;A String&quot;, # Required. A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
   },
+  &quot;salesforceMarketingCloudProfile&quot;: { # Profile for connecting to a Salesforce Marketing Cloud source. # Profile for connecting to a Salesforce Marketing Cloud source.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Required. Input only. Credentials for authenticating with the Salesforce Marketing Cloud API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;subdomain&quot;: &quot;A String&quot;, # Required. Subdomain for the Salesforce Marketing Cloud connection. Example: if your specific endpoint is `https://{your-specific-subdomain}.rest.marketingcloudapis.com/`, the subdomain is `{your-specific-subdomain}`. Must be 1-63 characters, start and end with an alphanumeric character, and contain only lowercase letters, numbers, and hyphens (-).
+  },
   &quot;salesforceProfile&quot;: { # Profile for connecting to a Salesforce source. # Profile for connecting to a Salesforce source.
     &quot;domain&quot;: &quot;A String&quot;, # Required. Domain endpoint for the Salesforce connection.
     &quot;oauth2ClientCredentials&quot;: { # OAuth2 Client Credentials. # Connected app authentication.
@@ -1359,6 +1564,23 @@ Args:
   },
   &quot;satisfiesPzi&quot;: True or False, # Output only. Reserved for future use.
   &quot;satisfiesPzs&quot;: True or False, # Output only. Reserved for future use.
+  &quot;serviceNowProfile&quot;: { # Profile for connecting to a ServiceNow source. # Profile for connecting to a ServiceNow source.
+    &quot;instance&quot;: &quot;A String&quot;, # Required. The instance of the ServiceNow account. This is the `` part of the URL `https://.service-now.com`.
+    &quot;oauthClientCredentials&quot;: { # OAuth Client Credentials. # Credentials for authenticating with the ServiceNow API.
+      &quot;clientId&quot;: &quot;A String&quot;, # Required. Client ID for OAuth Client Credentials.
+      &quot;clientSecret&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Client secret for OAuth Client Credentials.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+    },
+    &quot;userPasswordCredentials&quot;: { # User-password credentials. # User-password authentication.
+      &quot;password&quot;: { # A confidential piece of information where the actual value is either directly specified in the message as a raw string or stored in GCP secret manager. # Required. Password for the connection.
+        &quot;rawValue&quot;: &quot;A String&quot;, # Optional. Input only. The actual raw value of the secret as plain text.
+        &quot;secretVersion&quot;: &quot;A String&quot;, # Optional. A Secret Manager resource name storing the actual value of the secret. Supported formats: * projects/{project}/locations/{location}/secrets/{secret}/versions/{version} * projects/{project}/secrets/{secret}/versions/{version}
+      },
+      &quot;username&quot;: &quot;A String&quot;, # Required. Username for the connection.
+    },
+  },
   &quot;spannerProfile&quot;: { # Profile for connecting to a Spanner source. # Profile for connecting to a Spanner source.
     &quot;database&quot;: &quot;A String&quot;, # Required. Immutable. Cloud Spanner database resource. This field is immutable. Must be in the format: projects/{project}/instances/{instance}/databases/{database_id}.
     &quot;host&quot;: &quot;A String&quot;, # Optional. The Spanner endpoint to connect to. Defaults to the global endpoint (https://spanner.googleapis.com). Must be in the format: https://spanner.{region}.rep.googleapis.com.
