@@ -725,6 +725,34 @@
 },
 "cloudExadataInfrastructures": {
 "methods": {
+"configureExascale": {
+"description": "Configures Exascale for a single Exadata Infrastructure.",
+"flatPath": "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures/{cloudExadataInfrastructuresId}:configureExascale",
+"httpMethod": "POST",
+"id": "oracledatabase.projects.locations.cloudExadataInfrastructures.configureExascale",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "Required. The name of the Cloud Exadata Infrastructure in the following format: projects/{project}/locations/{location}/cloudExadataInfrastructures/{cloud_exadata_infrastructure}.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/cloudExadataInfrastructures/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1/{+name}:configureExascale",
+"request": {
+"$ref": "ConfigureExascaleCloudExadataInfrastructureRequest"
+},
+"response": {
+"$ref": "Operation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
 "create": {
 "description": "Creates a new Exadata Infrastructure in a given project and location.",
 "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/cloudExadataInfrastructures",
@@ -2186,31 +2214,6 @@
 },
 "goldengateConnectionTypes": {
 "methods": {
-"get": {
-"description": "Gets details of a single GoldengateConnectionType.",
-"flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateConnectionTypes/{goldengateConnectionTypesId}",
-"httpMethod": "GET",
-"id": "oracledatabase.projects.locations.goldengateConnectionTypes.get",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Required. Name of the resource in the format: projects/{project}/locations/{location}/goldengateConnectionTypes/{goldengate_connection_type}",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/goldengateConnectionTypes/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1/{+name}",
-"response": {
-"$ref": "GoldengateConnectionType"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
 "list": {
 "description": "Lists GoldengateConnectionTypes in a given project and location.",
 "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateConnectionTypes",
@@ -2399,31 +2402,6 @@
 },
 "goldengateDeploymentEnvironments": {
 "methods": {
-"get": {
-"description": "Gets details of a single GoldengateDeploymentEnvironment.",
-"flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentEnvironments/{goldengateDeploymentEnvironmentsId}",
-"httpMethod": "GET",
-"id": "oracledatabase.projects.locations.goldengateDeploymentEnvironments.get",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Required. Name of the resource with the format: projects/{project}/locations/{location}/goldengateDeploymentEnvironments/{goldengate_deployment_environment}",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/goldengateDeploymentEnvironments/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1/{+name}",
-"response": {
-"$ref": "GoldengateDeploymentEnvironment"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
 "list": {
 "description": "Lists GoldengateDeploymentEnvironments in a given project and location.",
 "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentEnvironments",
@@ -2464,31 +2442,6 @@
 },
 "goldengateDeploymentTypes": {
 "methods": {
-"get": {
-"description": "Gets details of a single GoldenGateDeploymentType.",
-"flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentTypes/{goldengateDeploymentTypesId}",
-"httpMethod": "GET",
-"id": "oracledatabase.projects.locations.goldengateDeploymentTypes.get",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Required. The name of the GoldengateDeploymentType to retrieve. Format: projects/{project}/locations/{location}/goldengateDeploymentTypes/{goldengate_deployment_type}",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/goldengateDeploymentTypes/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1/{+name}",
-"response": {
-"$ref": "GoldengateDeploymentType"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
 "list": {
 "description": "Lists GoldenGateDeploymentTypes in a given project and location.",
 "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentTypes",
@@ -2539,31 +2492,6 @@
 },
 "goldengateDeploymentVersions": {
 "methods": {
-"get": {
-"description": "Gets details of a single GoldengateDeploymentVersion.",
-"flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentVersions/{goldengateDeploymentVersionsId}",
-"httpMethod": "GET",
-"id": "oracledatabase.projects.locations.goldengateDeploymentVersions.get",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Required. The name of the GoldengateDeploymentVersion to retrieve. Format: projects/{project}/locations/{location}/goldengateDeploymentVersions/{goldengate_deployment_version}",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/goldengateDeploymentVersions/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1/{+name}",
-"response": {
-"$ref": "GoldengateDeploymentVersion"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
 "list": {
 "description": "Lists GoldengateDeploymentVersions in a given project and location.",
 "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/goldengateDeploymentVersions",
@@ -3297,7 +3225,7 @@
 }
 }
 },
-"revision": "20260512",
+"revision": "20260615",
 "rootUrl": "https://oracledatabase.googleapis.com/",
 "schemas": {
 "AllConnectionStrings": {
@@ -4636,6 +4564,11 @@
 "readOnly": true,
 "type": "string"
 },
+"exascaleConfig": {
+"$ref": "ExascaleConfig",
+"description": "Output only. The Exascale configuration for the Exadata Infrastructure.",
+"readOnly": true
+},
 "maintenanceWindow": {
 "$ref": "MaintenanceWindow",
 "description": "Optional. Maintenance window for repair."
@@ -4787,6 +4720,10 @@
 },
 "exadataInfrastructure": {
 "description": "Required. The name of the Exadata Infrastructure resource on which VM cluster resource is created, in the following format: projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}",
+"type": "string"
+},
+"exascaleDbStorageVault": {
+"description": "Optional. The name of ExascaleDbStorageVault associated with the VM Cluster. Format: projects/{project}/locations/{location}/exascaleDbStorageVaults/{exascale_db_storage_vault}",
 "type": "string"
 },
 "gcpOracleZone": {
@@ -4982,15 +4919,13 @@
 "type": "array"
 },
 "scanListenerPortTcp": {
-"description": "Output only. SCAN listener port - TCP",
+"description": "Optional. SCAN listener port - TCP",
 "format": "int32",
-"readOnly": true,
 "type": "integer"
 },
 "scanListenerPortTcpSsl": {
-"description": "Output only. SCAN listener port - TLS",
+"description": "Optional. SCAN listener port - TLS",
 "format": "int32",
-"readOnly": true,
 "type": "integer"
 },
 "shape": {
@@ -5034,6 +4969,21 @@
 "readOnly": true,
 "type": "string"
 },
+"storageManagementType": {
+"description": "Output only. The storage management type of the VM Cluster.",
+"enum": [
+"STORAGE_MANAGEMENT_TYPE_UNSPECIFIED",
+"ASM",
+"EXASCALE"
+],
+"enumDescriptions": [
+"Unspecified storage management type.",
+"Automatic Storage Management.",
+"Exascale storage management."
+],
+"readOnly": true,
+"type": "string"
+},
 "storageSizeGb": {
 "description": "Output only. The storage allocation for the disk group, in gigabytes (GB).",
 "format": "int32",
@@ -5047,6 +4997,22 @@
 "timeZone": {
 "$ref": "TimeZone",
 "description": "Optional. Time zone of VM Cluster to set. Defaults to UTC if not specified."
+}
+},
+"type": "object"
+},
+"ConfigureExascaleCloudExadataInfrastructureRequest": {
+"description": "The request for `CloudExadataInfrastructure.ConfigureExascale`.",
+"id": "ConfigureExascaleCloudExadataInfrastructureRequest",
+"properties": {
+"requestId": {
+"description": "Optional. An optional ID to identify the request.",
+"type": "string"
+},
+"totalStorageSizeGb": {
+"description": "Required. The total storage to be allocated to Exascale in GBs.",
+"format": "int32",
+"type": "integer"
 }
 },
 "type": "object"
@@ -5940,7 +5906,7 @@
 ],
 "enumDescriptions": [
 "The storage management is unspecified.",
-"Automatic storage management.",
+"Automatic storage management. This option is not supported. Only LVM is supported.",
 "Logical Volume management."
 ],
 "type": "string"
@@ -6580,6 +6546,25 @@
 },
 "type": "object"
 },
+"ExascaleConfig": {
+"description": "Details of the Exascale configuration for the Exadata Infrastructure.",
+"id": "ExascaleConfig",
+"properties": {
+"availableStorageSizeGb": {
+"description": "Output only. Available storage size for Exascale in GBs.",
+"format": "int32",
+"readOnly": true,
+"type": "integer"
+},
+"totalStorageSizeGb": {
+"description": "Output only. Total storage size needed for Exascale in GBs.",
+"format": "int32",
+"readOnly": true,
+"type": "integer"
+}
+},
+"type": "object"
+},
 "ExascaleDbStorageDetails": {
 "description": "The storage details of the ExascaleDbStorageVault.",
 "id": "ExascaleDbStorageDetails",
@@ -6615,6 +6600,10 @@
 "entitlementId": {
 "description": "Output only. The ID of the subscription entitlement associated with the ExascaleDbStorageVault.",
 "readOnly": true,
+"type": "string"
+},
+"exadataInfrastructure": {
+"description": "Optional. The Exadata Infrastructure resource on which ExascaleDbStorageVault resource is created, in the following format: projects/{project}/locations/{region}/cloudExadataInfrastuctures/{cloud_extradata_infrastructure}",
 "type": "string"
 },
 "gcpOracleZone": {
@@ -8467,7 +8456,7 @@
 "id": "GoldengateGoogleBigQueryConnectionProperties",
 "properties": {
 "serviceAccountKeyFile": {
-"description": "Optional. The service account key file Cloud Storage containing the credentials required to use Google BigQuery.",
+"description": "Optional. The base64 encoded content of the service account key file containing the credentials required to use Google BigQuery.",
 "type": "string"
 },
 "technologyType": {
@@ -8482,7 +8471,7 @@
 "id": "GoldengateGoogleCloudStorageConnectionProperties",
 "properties": {
 "serviceAccountKeyFile": {
-"description": "Optional. The service account key Cloud Storage file containing the credentials required to use Google Cloud Storage.",
+"description": "Optional. The base64 encoded content of the service account key file containing the credentials required to use Google Cloud Storage.",
 "type": "string"
 },
 "technologyType": {
@@ -8497,7 +8486,7 @@
 "id": "GoldengateGooglePubsubConnectionProperties",
 "properties": {
 "serviceAccountKeyFile": {
-"description": "Optional. The content of the service account key file containing the credentials required to use Google Pub/Sub.",
+"description": "Optional. The base64 encoded content of the service account key file containing the credentials required to use Google Pub/Sub.",
 "type": "string"
 },
 "technologyType": {
@@ -8615,7 +8604,7 @@
 "type": "string"
 },
 "keyStoreFile": {
-"description": "Optional. The content of the KeyStore file.",
+"description": "Optional. The base64 encoded content of the KeyStore file.",
 "type": "string"
 },
 "keyStorePassword": {
@@ -8663,7 +8652,7 @@
 "type": "string"
 },
 "trustStoreFile": {
-"description": "Optional. The content of the TrustStore file.",
+"description": "Optional. The base64 encoded content of the TrustStore file.",
 "type": "string"
 },
 "trustStorePassword": {
@@ -8701,11 +8690,11 @@
 "type": "string"
 },
 "consumerPropertiesFile": {
-"description": "Optional. The content of the consumer.properties file.",
+"description": "Optional. The base64 encoded content of the consumer.properties file.",
 "type": "string"
 },
 "keyStoreFile": {
-"description": "Optional. The content of the KeyStore file.",
+"description": "Optional. The base64 encoded content of the KeyStore file.",
 "type": "string"
 },
 "keyStorePassword": {
@@ -8725,7 +8714,7 @@
 "type": "string"
 },
 "producerPropertiesFile": {
-"description": "Optional. The content of the producer.properties file.",
+"description": "Optional. The base64 encoded content of the producer.properties file.",
 "type": "string"
 },
 "securityProtocol": {
@@ -8763,7 +8752,7 @@
 "type": "string"
 },
 "trustStoreFile": {
-"description": "Optional. The content of the TrustStore file.",
+"description": "Optional. The base64 encoded content of the TrustStore file.",
 "type": "string"
 },
 "trustStorePassword": {
@@ -8806,7 +8795,7 @@
 "type": "string"
 },
 "keyStoreFile": {
-"description": "Optional. The content of the KeyStore file.",
+"description": "Optional. The base64 encoded content of the KeyStore file.",
 "type": "string"
 },
 "keyStorePassword": {
@@ -8838,7 +8827,7 @@
 "type": "string"
 },
 "trustStoreFile": {
-"description": "Optional. The content of the TrustStore file.",
+"description": "Optional. The base64 encoded content of the TrustStore file.",
 "type": "string"
 },
 "trustStorePassword": {
@@ -9005,7 +8994,7 @@
 "type": "boolean"
 },
 "sslCaFile": {
-"description": "Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for 1-way SSL).",
+"description": "Optional. Database Certificate - The base64 encoded content of a .pem or .crt file containing the server public key (for 1-way SSL).",
 "type": "string"
 },
 "technologyType": {
@@ -9060,11 +9049,11 @@
 "type": "string"
 },
 "tlsCaFile": {
-"description": "Optional. Database Certificate - The content of a .pem file, containing the server public key (for 1 and 2-way SSL).",
+"description": "Optional. Database Certificate - The base64 encoded content of a .pem file, containing the server public key (for 1 and 2-way SSL).",
 "type": "string"
 },
 "tlsCertificateKeyFile": {
-"description": "Optional. Client Certificate - The content of a .pem file, containing the client public key (for 2-way SSL).",
+"description": "Optional. Client Certificate - The base64 encoded content of a .pem file, containing the client public key (for 2-way SSL).",
 "type": "string"
 },
 "tlsCertificateKeyFilePassword": {
@@ -9135,19 +9124,19 @@
 "type": "string"
 },
 "sslCaFile": {
-"description": "Optional. Database Certificate - The content of a .pem or .crt file containing the server public key (for 1 and 2-way SSL).",
+"description": "Optional. Database Certificate - The base64 encoded content of a .pem or .crt file containing the server public key (for 1 and 2-way SSL).",
 "type": "string"
 },
 "sslCertFile": {
-"description": "Optional. Client Certificate - The content of a .pem or .crt file containing the client public key (for 2-way SSL).",
+"description": "Optional. Client Certificate - The base64 encoded content of a .pem or .crt file containing the client public key (for 2-way SSL).",
 "type": "string"
 },
 "sslCrlFile": {
-"description": "Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).",
+"description": "Optional. The base64 encoded list of certificates revoked by the trusted certificate authorities (Trusted CA).",
 "type": "string"
 },
 "sslKeyFile": {
-"description": "Optional. Client Key - The content of a .pem or .crt file containing the client private key (for 2-way SSL).",
+"description": "Optional. Client Key - The base64 encoded content of a .pem or .crt file containing the client private key (for 2-way SSL).",
 "type": "string"
 },
 "sslMode": {
@@ -9348,7 +9337,7 @@
 "type": "string"
 },
 "gcpOracleDatabaseId": {
-"description": "Optional. Database instance id of database in Oracle Database @ Google Cloud. If gcp_oracle_database_id is provided, connection_string must be empty.",
+"description": "Optional. Autonomous AI Database instance id of database in Oracle Database @ Google Cloud. If gcp_oracle_database_id is provided, connection_string must be empty. Format: projects/{project}/locations/{location}/autonomousDatabases/{autonomous_database}",
 "type": "string"
 },
 "password": {
@@ -9382,7 +9371,7 @@
 "type": "string"
 },
 "walletFile": {
-"description": "Optional. The wallet contents Oracle Goldengate uses to make connections to a database.",
+"description": "Optional. The wallet contents Oracle Goldengate uses to make connections to a database. This attribute is expected to be base64 encoded.",
 "type": "string"
 }
 },
@@ -9497,19 +9486,19 @@
 "type": "string"
 },
 "sslCaFile": {
-"description": "Optional. The certificate of the trusted certificate authorities (Trusted CA) for PostgreSQL.",
+"description": "Optional. The base64 encoded certificate of the trusted certificate authorities (Trusted CA) for PostgreSQL.",
 "type": "string"
 },
 "sslCertFile": {
-"description": "Optional. The certificate of the PostgreSQL server.",
+"description": "Optional. The base64 encoded certificate of the PostgreSQL server.",
 "type": "string"
 },
 "sslCrlFile": {
-"description": "Optional. The list of certificates revoked by the trusted certificate authorities (Trusted CA).",
+"description": "Optional. The base64 encoded list of certificates revoked by the trusted certificate authorities (Trusted CA).",
 "type": "string"
 },
 "sslKeyFile": {
-"description": "Optional. The private key of the PostgreSQL server.",
+"description": "Optional. The base64 encoded private key of the PostgreSQL server.",
 "type": "string"
 },
 "sslMode": {
@@ -9560,7 +9549,7 @@
 "type": "string"
 },
 "keyStoreFile": {
-"description": "Optional. The content of the KeyStore file.",
+"description": "Optional. The base64 encoded content of the KeyStore file.",
 "type": "string"
 },
 "keyStorePassword": {
@@ -9608,7 +9597,7 @@
 "type": "string"
 },
 "trustStoreFile": {
-"description": "Optional. The content of the TrustStore file.",
+"description": "Optional. The base64 encoded content of the TrustStore file.",
 "type": "string"
 },
 "trustStorePassword": {
@@ -9688,7 +9677,7 @@
 "type": "string"
 },
 "serviceAccountKeyFile": {
-"description": "Optional. The service account key file of Google Cloud Storage.",
+"description": "Optional. The base64 encoded content of the service account key file of Google Cloud Storage.",
 "type": "string"
 }
 },
@@ -11188,7 +11177,7 @@
 "id": "RestIcebergCatalog",
 "properties": {
 "properties": {
-"description": "Optional. The content of the configuration file containing additional properties for the REST catalog.",
+"description": "Optional. The base64 encoded content of the configuration file containing additional properties for the REST catalog.",
 "type": "string"
 },
 "uri": {
