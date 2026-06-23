@@ -73,10 +73,6 @@
 * [v1beta](http://googleapis.github.io/google-api-python-client/docs/dyn/alloydb_v1beta.html)
 
 
-## analytics
-* [v3](http://googleapis.github.io/google-api-python-client/docs/dyn/analytics_v3.html)
-
-
 ## analyticsadmin
 * [v1alpha](http://googleapis.github.io/google-api-python-client/docs/dyn/analyticsadmin_v1alpha.html)
 * [v1beta](http://googleapis.github.io/google-api-python-client/docs/dyn/analyticsadmin_v1beta.html)
@@ -355,6 +351,10 @@
 * [v1alpha](http://googleapis.github.io/google-api-python-client/docs/dyn/cloudnumberregistry_v1alpha.html)
 
 
+## cloudproductregistry
+* [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/cloudproductregistry_v1.html)
+
+
 ## cloudprofiler
 * [v2](http://googleapis.github.io/google-api-python-client/docs/dyn/cloudprofiler_v2.html)
 
@@ -452,6 +452,10 @@
 * [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/customsearch_v1.html)
 
 
+## databasecenter
+* [v1beta](http://googleapis.github.io/google-api-python-client/docs/dyn/databasecenter_v1beta.html)
+
+
 ## datacatalog
 * [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/datacatalog_v1.html)
 * [v1beta1](http://googleapis.github.io/google-api-python-client/docs/dyn/datacatalog_v1beta1.html)
@@ -533,7 +537,6 @@
 
 ## dfareporting
 * [v3.5](http://googleapis.github.io/google-api-python-client/docs/dyn/dfareporting_v3_5.html)
-* [v4](http://googleapis.github.io/google-api-python-client/docs/dyn/dfareporting_v4.html)
 * [v5](http://googleapis.github.io/google-api-python-client/docs/dyn/dfareporting_v5.html)
 
 
@@ -1379,6 +1382,10 @@
 
 ## walletobjects
 * [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/walletobjects_v1.html)
+
+
+## webcontentpublisher
+* [v1](http://googleapis.github.io/google-api-python-client/docs/dyn/webcontentpublisher_v1.html)
 
 
 ## webfonts

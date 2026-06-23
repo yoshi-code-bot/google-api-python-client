@@ -292,6 +292,7 @@ Args:
           },
           &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         },
+        &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
           &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
             &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
@@ -354,6 +355,146 @@ Args:
       &quot;accelerator&quot;: &quot;A String&quot;, # Required. GPU accelerator type to attach to an instance.
     },
     &quot;revision&quot;: &quot;A String&quot;, # Optional. The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+    &quot;sandboxes&quot;: { # Configuration for sandboxes. # Optional. Configuration for sandboxes.
+      &quot;templates&quot;: [ # Required. Container templates that can be launched through the `sandbox` CLI.
+        { # A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
+          &quot;args&quot;: [ # Arguments to the entrypoint. The docker image&#x27;s CMD is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;baseImageUri&quot;: &quot;A String&quot;, # Base image for this container. Only supported for services. If set, it indicates that the service is enrolled into automatic base image update.
+          &quot;buildInfo&quot;: { # Build information of the image. # Output only. The build info of the container image.
+            &quot;functionTarget&quot;: &quot;A String&quot;, # Output only. Entry point of the function when the image is a Cloud Run function.
+            &quot;sourceLocation&quot;: &quot;A String&quot;, # Output only. Source code location of the image.
+          },
+          &quot;command&quot;: [ # Entrypoint array. Not executed within a shell. The docker image&#x27;s ENTRYPOINT is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;dependsOn&quot;: [ # Names of the containers that must start before this container.
+            &quot;A String&quot;,
+          ],
+          &quot;env&quot;: [ # List of environment variables to set in the container.
+            { # EnvVar represents an environment variable present in a Container.
+              &quot;name&quot;: &quot;A String&quot;, # Required. Name of the environment variable. Must not exceed 32768 characters.
+              &quot;value&quot;: &quot;A String&quot;, # Literal value of the environment variable. Defaults to &quot;&quot;, and the maximum length is 32768 bytes. Variable references are not supported in Cloud Run.
+              &quot;valueSource&quot;: { # EnvVarSource represents a source for the value of an EnvVar. # Source for the environment variable&#x27;s value.
+                &quot;secretKeyRef&quot;: { # SecretEnvVarSource represents a source for the value of an EnvVar. # Selects a secret and a specific version from Cloud Secret Manager.
+                  &quot;secret&quot;: &quot;A String&quot;, # Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
+                  &quot;version&quot;: &quot;A String&quot;, # The Cloud Secret Manager secret version. Can be &#x27;latest&#x27; for the latest version, an integer for a specific version, or a version alias.
+                },
+              },
+            },
+          ],
+          &quot;image&quot;: &quot;A String&quot;, # Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
+          &quot;livenessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Periodic probe of container liveness. Container will be restarted if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;name&quot;: &quot;A String&quot;, # Name of the container specified as a DNS_LABEL (RFC 1123).
+          &quot;ports&quot;: [ # List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+            { # ContainerPort represents a network port in a single container.
+              &quot;containerPort&quot;: 42, # Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
+              &quot;name&quot;: &quot;A String&quot;, # If specified, used to specify which protocol to use. Allowed values are &quot;http1&quot; and &quot;h2c&quot;.
+            },
+          ],
+          &quot;readinessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Readiness probe to be used for health checks.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;resources&quot;: { # ResourceRequirements describes the compute resource requirements. # Compute Resource requirements by this container.
+            &quot;cpuIdle&quot;: True or False, # Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
+            &quot;limits&quot;: { # Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values for CPU are &#x27;1&#x27;, &#x27;2&#x27;, &#x27;4&#x27;, and &#x27;8&#x27;. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported &#x27;memory&#x27; values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits * The only supported &#x27;nvidia.com/gpu&#x27; value is &#x27;1&#x27;.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+            &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+          },
+          &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+          &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
+            &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
+              &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
+              &quot;generation&quot;: &quot;A String&quot;, # Optional. The Cloud Storage object generation.
+              &quot;object&quot;: &quot;A String&quot;, # Required. The Cloud Storage object name.
+            },
+            &quot;inlinedSource&quot;: { # Inlined source. # Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source.
+              &quot;sources&quot;: [ # Required. Input only. The source code.
+                { # Source file.
+                  &quot;content&quot;: &quot;A String&quot;, # Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application.
+                  &quot;filename&quot;: &quot;A String&quot;, # Required. Input only. The file name for the source code. e.g., `&quot;index.js&quot;` or `&quot;node_modules/dependency.js&quot;`. The filename must be less than 255 characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative path to access the file.
+                },
+              ],
+            },
+          },
+          &quot;startupProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;volumeMounts&quot;: [ # Volume to mount into the container&#x27;s filesystem.
+            { # VolumeMount describes a mounting of a Volume within a container.
+              &quot;mountPath&quot;: &quot;A String&quot;, # Required. Path within the container at which the volume should be mounted. Must not contain &#x27;:&#x27;. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+              &quot;name&quot;: &quot;A String&quot;, # Required. This must match the Name of a Volume.
+              &quot;subPath&quot;: &quot;A String&quot;, # Optional. Path within the volume from which the container&#x27;s volume should be mounted. Defaults to &quot;&quot; (volume&#x27;s root). This field is currently rejected in Secret volume mounts.
+            },
+          ],
+          &quot;workingDir&quot;: &quot;A String&quot;, # Container&#x27;s working directory. If not specified, the container runtime&#x27;s default will be used, which might be configured in the container image.
+        },
+      ],
+    },
     &quot;scaling&quot;: { # Settings for revision-level scaling settings. # Optional. Scaling settings for this Revision.
       &quot;concurrencyUtilization&quot;: 3.14, # Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
       &quot;cpuUtilization&quot;: 3.14, # Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
@@ -703,6 +844,7 @@ Returns:
           },
           &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         },
+        &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
           &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
             &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
@@ -765,6 +907,146 @@ Returns:
       &quot;accelerator&quot;: &quot;A String&quot;, # Required. GPU accelerator type to attach to an instance.
     },
     &quot;revision&quot;: &quot;A String&quot;, # Optional. The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+    &quot;sandboxes&quot;: { # Configuration for sandboxes. # Optional. Configuration for sandboxes.
+      &quot;templates&quot;: [ # Required. Container templates that can be launched through the `sandbox` CLI.
+        { # A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
+          &quot;args&quot;: [ # Arguments to the entrypoint. The docker image&#x27;s CMD is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;baseImageUri&quot;: &quot;A String&quot;, # Base image for this container. Only supported for services. If set, it indicates that the service is enrolled into automatic base image update.
+          &quot;buildInfo&quot;: { # Build information of the image. # Output only. The build info of the container image.
+            &quot;functionTarget&quot;: &quot;A String&quot;, # Output only. Entry point of the function when the image is a Cloud Run function.
+            &quot;sourceLocation&quot;: &quot;A String&quot;, # Output only. Source code location of the image.
+          },
+          &quot;command&quot;: [ # Entrypoint array. Not executed within a shell. The docker image&#x27;s ENTRYPOINT is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;dependsOn&quot;: [ # Names of the containers that must start before this container.
+            &quot;A String&quot;,
+          ],
+          &quot;env&quot;: [ # List of environment variables to set in the container.
+            { # EnvVar represents an environment variable present in a Container.
+              &quot;name&quot;: &quot;A String&quot;, # Required. Name of the environment variable. Must not exceed 32768 characters.
+              &quot;value&quot;: &quot;A String&quot;, # Literal value of the environment variable. Defaults to &quot;&quot;, and the maximum length is 32768 bytes. Variable references are not supported in Cloud Run.
+              &quot;valueSource&quot;: { # EnvVarSource represents a source for the value of an EnvVar. # Source for the environment variable&#x27;s value.
+                &quot;secretKeyRef&quot;: { # SecretEnvVarSource represents a source for the value of an EnvVar. # Selects a secret and a specific version from Cloud Secret Manager.
+                  &quot;secret&quot;: &quot;A String&quot;, # Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
+                  &quot;version&quot;: &quot;A String&quot;, # The Cloud Secret Manager secret version. Can be &#x27;latest&#x27; for the latest version, an integer for a specific version, or a version alias.
+                },
+              },
+            },
+          ],
+          &quot;image&quot;: &quot;A String&quot;, # Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
+          &quot;livenessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Periodic probe of container liveness. Container will be restarted if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;name&quot;: &quot;A String&quot;, # Name of the container specified as a DNS_LABEL (RFC 1123).
+          &quot;ports&quot;: [ # List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+            { # ContainerPort represents a network port in a single container.
+              &quot;containerPort&quot;: 42, # Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
+              &quot;name&quot;: &quot;A String&quot;, # If specified, used to specify which protocol to use. Allowed values are &quot;http1&quot; and &quot;h2c&quot;.
+            },
+          ],
+          &quot;readinessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Readiness probe to be used for health checks.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;resources&quot;: { # ResourceRequirements describes the compute resource requirements. # Compute Resource requirements by this container.
+            &quot;cpuIdle&quot;: True or False, # Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
+            &quot;limits&quot;: { # Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values for CPU are &#x27;1&#x27;, &#x27;2&#x27;, &#x27;4&#x27;, and &#x27;8&#x27;. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported &#x27;memory&#x27; values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits * The only supported &#x27;nvidia.com/gpu&#x27; value is &#x27;1&#x27;.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+            &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+          },
+          &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+          &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
+            &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
+              &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
+              &quot;generation&quot;: &quot;A String&quot;, # Optional. The Cloud Storage object generation.
+              &quot;object&quot;: &quot;A String&quot;, # Required. The Cloud Storage object name.
+            },
+            &quot;inlinedSource&quot;: { # Inlined source. # Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source.
+              &quot;sources&quot;: [ # Required. Input only. The source code.
+                { # Source file.
+                  &quot;content&quot;: &quot;A String&quot;, # Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application.
+                  &quot;filename&quot;: &quot;A String&quot;, # Required. Input only. The file name for the source code. e.g., `&quot;index.js&quot;` or `&quot;node_modules/dependency.js&quot;`. The filename must be less than 255 characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative path to access the file.
+                },
+              ],
+            },
+          },
+          &quot;startupProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;volumeMounts&quot;: [ # Volume to mount into the container&#x27;s filesystem.
+            { # VolumeMount describes a mounting of a Volume within a container.
+              &quot;mountPath&quot;: &quot;A String&quot;, # Required. Path within the container at which the volume should be mounted. Must not contain &#x27;:&#x27;. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+              &quot;name&quot;: &quot;A String&quot;, # Required. This must match the Name of a Volume.
+              &quot;subPath&quot;: &quot;A String&quot;, # Optional. Path within the volume from which the container&#x27;s volume should be mounted. Defaults to &quot;&quot; (volume&#x27;s root). This field is currently rejected in Secret volume mounts.
+            },
+          ],
+          &quot;workingDir&quot;: &quot;A String&quot;, # Container&#x27;s working directory. If not specified, the container runtime&#x27;s default will be used, which might be configured in the container image.
+        },
+      ],
+    },
     &quot;scaling&quot;: { # Settings for revision-level scaling settings. # Optional. Scaling settings for this Revision.
       &quot;concurrencyUtilization&quot;: 3.14, # Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
       &quot;cpuUtilization&quot;: 3.14, # Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
@@ -1101,6 +1383,7 @@ Returns:
               },
               &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
             },
+            &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
             &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
               &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
                 &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
@@ -1163,6 +1446,146 @@ Returns:
           &quot;accelerator&quot;: &quot;A String&quot;, # Required. GPU accelerator type to attach to an instance.
         },
         &quot;revision&quot;: &quot;A String&quot;, # Optional. The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+        &quot;sandboxes&quot;: { # Configuration for sandboxes. # Optional. Configuration for sandboxes.
+          &quot;templates&quot;: [ # Required. Container templates that can be launched through the `sandbox` CLI.
+            { # A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
+              &quot;args&quot;: [ # Arguments to the entrypoint. The docker image&#x27;s CMD is used if this is not provided.
+                &quot;A String&quot;,
+              ],
+              &quot;baseImageUri&quot;: &quot;A String&quot;, # Base image for this container. Only supported for services. If set, it indicates that the service is enrolled into automatic base image update.
+              &quot;buildInfo&quot;: { # Build information of the image. # Output only. The build info of the container image.
+                &quot;functionTarget&quot;: &quot;A String&quot;, # Output only. Entry point of the function when the image is a Cloud Run function.
+                &quot;sourceLocation&quot;: &quot;A String&quot;, # Output only. Source code location of the image.
+              },
+              &quot;command&quot;: [ # Entrypoint array. Not executed within a shell. The docker image&#x27;s ENTRYPOINT is used if this is not provided.
+                &quot;A String&quot;,
+              ],
+              &quot;dependsOn&quot;: [ # Names of the containers that must start before this container.
+                &quot;A String&quot;,
+              ],
+              &quot;env&quot;: [ # List of environment variables to set in the container.
+                { # EnvVar represents an environment variable present in a Container.
+                  &quot;name&quot;: &quot;A String&quot;, # Required. Name of the environment variable. Must not exceed 32768 characters.
+                  &quot;value&quot;: &quot;A String&quot;, # Literal value of the environment variable. Defaults to &quot;&quot;, and the maximum length is 32768 bytes. Variable references are not supported in Cloud Run.
+                  &quot;valueSource&quot;: { # EnvVarSource represents a source for the value of an EnvVar. # Source for the environment variable&#x27;s value.
+                    &quot;secretKeyRef&quot;: { # SecretEnvVarSource represents a source for the value of an EnvVar. # Selects a secret and a specific version from Cloud Secret Manager.
+                      &quot;secret&quot;: &quot;A String&quot;, # Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
+                      &quot;version&quot;: &quot;A String&quot;, # The Cloud Secret Manager secret version. Can be &#x27;latest&#x27; for the latest version, an integer for a specific version, or a version alias.
+                    },
+                  },
+                },
+              ],
+              &quot;image&quot;: &quot;A String&quot;, # Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
+              &quot;livenessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Periodic probe of container liveness. Container will be restarted if the probe fails.
+                &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+                &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                  &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+                },
+                &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                    { # HTTPHeader describes a custom header to be used in HTTP probes
+                      &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                      &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                    },
+                  ],
+                  &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+                &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+                &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+              },
+              &quot;name&quot;: &quot;A String&quot;, # Name of the container specified as a DNS_LABEL (RFC 1123).
+              &quot;ports&quot;: [ # List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+                { # ContainerPort represents a network port in a single container.
+                  &quot;containerPort&quot;: 42, # Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
+                  &quot;name&quot;: &quot;A String&quot;, # If specified, used to specify which protocol to use. Allowed values are &quot;http1&quot; and &quot;h2c&quot;.
+                },
+              ],
+              &quot;readinessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Readiness probe to be used for health checks.
+                &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+                &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                  &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+                },
+                &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                    { # HTTPHeader describes a custom header to be used in HTTP probes
+                      &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                      &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                    },
+                  ],
+                  &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+                &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+                &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+              },
+              &quot;resources&quot;: { # ResourceRequirements describes the compute resource requirements. # Compute Resource requirements by this container.
+                &quot;cpuIdle&quot;: True or False, # Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
+                &quot;limits&quot;: { # Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values for CPU are &#x27;1&#x27;, &#x27;2&#x27;, &#x27;4&#x27;, and &#x27;8&#x27;. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported &#x27;memory&#x27; values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits * The only supported &#x27;nvidia.com/gpu&#x27; value is &#x27;1&#x27;.
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+                &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+              },
+              &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+              &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
+                &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
+                  &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
+                  &quot;generation&quot;: &quot;A String&quot;, # Optional. The Cloud Storage object generation.
+                  &quot;object&quot;: &quot;A String&quot;, # Required. The Cloud Storage object name.
+                },
+                &quot;inlinedSource&quot;: { # Inlined source. # Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source.
+                  &quot;sources&quot;: [ # Required. Input only. The source code.
+                    { # Source file.
+                      &quot;content&quot;: &quot;A String&quot;, # Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application.
+                      &quot;filename&quot;: &quot;A String&quot;, # Required. Input only. The file name for the source code. e.g., `&quot;index.js&quot;` or `&quot;node_modules/dependency.js&quot;`. The filename must be less than 255 characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative path to access the file.
+                    },
+                  ],
+                },
+              },
+              &quot;startupProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+                &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+                &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                  &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+                },
+                &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                    { # HTTPHeader describes a custom header to be used in HTTP probes
+                      &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                      &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                    },
+                  ],
+                  &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+                &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+                &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+                  &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+                },
+                &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+              },
+              &quot;volumeMounts&quot;: [ # Volume to mount into the container&#x27;s filesystem.
+                { # VolumeMount describes a mounting of a Volume within a container.
+                  &quot;mountPath&quot;: &quot;A String&quot;, # Required. Path within the container at which the volume should be mounted. Must not contain &#x27;:&#x27;. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+                  &quot;name&quot;: &quot;A String&quot;, # Required. This must match the Name of a Volume.
+                  &quot;subPath&quot;: &quot;A String&quot;, # Optional. Path within the volume from which the container&#x27;s volume should be mounted. Defaults to &quot;&quot; (volume&#x27;s root). This field is currently rejected in Secret volume mounts.
+                },
+              ],
+              &quot;workingDir&quot;: &quot;A String&quot;, # Container&#x27;s working directory. If not specified, the container runtime&#x27;s default will be used, which might be configured in the container image.
+            },
+          ],
+        },
         &quot;scaling&quot;: { # Settings for revision-level scaling settings. # Optional. Scaling settings for this Revision.
           &quot;concurrencyUtilization&quot;: 3.14, # Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
           &quot;cpuUtilization&quot;: 3.14, # Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
@@ -1459,6 +1882,7 @@ Args:
           },
           &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
         },
+        &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
         &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
           &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
             &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
@@ -1521,6 +1945,146 @@ Args:
       &quot;accelerator&quot;: &quot;A String&quot;, # Required. GPU accelerator type to attach to an instance.
     },
     &quot;revision&quot;: &quot;A String&quot;, # Optional. The unique name for the revision. If this field is omitted, it will be automatically generated based on the Service name.
+    &quot;sandboxes&quot;: { # Configuration for sandboxes. # Optional. Configuration for sandboxes.
+      &quot;templates&quot;: [ # Required. Container templates that can be launched through the `sandbox` CLI.
+        { # A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container at runtime.
+          &quot;args&quot;: [ # Arguments to the entrypoint. The docker image&#x27;s CMD is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;baseImageUri&quot;: &quot;A String&quot;, # Base image for this container. Only supported for services. If set, it indicates that the service is enrolled into automatic base image update.
+          &quot;buildInfo&quot;: { # Build information of the image. # Output only. The build info of the container image.
+            &quot;functionTarget&quot;: &quot;A String&quot;, # Output only. Entry point of the function when the image is a Cloud Run function.
+            &quot;sourceLocation&quot;: &quot;A String&quot;, # Output only. Source code location of the image.
+          },
+          &quot;command&quot;: [ # Entrypoint array. Not executed within a shell. The docker image&#x27;s ENTRYPOINT is used if this is not provided.
+            &quot;A String&quot;,
+          ],
+          &quot;dependsOn&quot;: [ # Names of the containers that must start before this container.
+            &quot;A String&quot;,
+          ],
+          &quot;env&quot;: [ # List of environment variables to set in the container.
+            { # EnvVar represents an environment variable present in a Container.
+              &quot;name&quot;: &quot;A String&quot;, # Required. Name of the environment variable. Must not exceed 32768 characters.
+              &quot;value&quot;: &quot;A String&quot;, # Literal value of the environment variable. Defaults to &quot;&quot;, and the maximum length is 32768 bytes. Variable references are not supported in Cloud Run.
+              &quot;valueSource&quot;: { # EnvVarSource represents a source for the value of an EnvVar. # Source for the environment variable&#x27;s value.
+                &quot;secretKeyRef&quot;: { # SecretEnvVarSource represents a source for the value of an EnvVar. # Selects a secret and a specific version from Cloud Secret Manager.
+                  &quot;secret&quot;: &quot;A String&quot;, # Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
+                  &quot;version&quot;: &quot;A String&quot;, # The Cloud Secret Manager secret version. Can be &#x27;latest&#x27; for the latest version, an integer for a specific version, or a version alias.
+                },
+              },
+            },
+          ],
+          &quot;image&quot;: &quot;A String&quot;, # Required. Name of the container image in Dockerhub, Google Artifact Registry, or Google Container Registry. If the host is not provided, Dockerhub is assumed.
+          &quot;livenessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Periodic probe of container liveness. Container will be restarted if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;name&quot;: &quot;A String&quot;, # Name of the container specified as a DNS_LABEL (RFC 1123).
+          &quot;ports&quot;: [ # List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+            { # ContainerPort represents a network port in a single container.
+              &quot;containerPort&quot;: 42, # Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
+              &quot;name&quot;: &quot;A String&quot;, # If specified, used to specify which protocol to use. Allowed values are &quot;http1&quot; and &quot;h2c&quot;.
+            },
+          ],
+          &quot;readinessProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Readiness probe to be used for health checks.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;resources&quot;: { # ResourceRequirements describes the compute resource requirements. # Compute Resource requirements by this container.
+            &quot;cpuIdle&quot;: True or False, # Determines whether CPU is only allocated during requests (true by default). However, if ResourceRequirements is set, the caller must explicitly set this field to true to preserve the default behavior.
+            &quot;limits&quot;: { # Only `memory`, `cpu` and `nvidia.com/gpu` keys in the map are supported. Notes: * The only supported values for CPU are &#x27;1&#x27;, &#x27;2&#x27;, &#x27;4&#x27;, and &#x27;8&#x27;. Setting 4 CPU requires at least 2Gi of memory. For more information, go to https://cloud.google.com/run/docs/configuring/cpu. * For supported &#x27;memory&#x27; values and syntax, go to https://cloud.google.com/run/docs/configuring/memory-limits * The only supported &#x27;nvidia.com/gpu&#x27; value is &#x27;1&#x27;.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+            &quot;startupCpuBoost&quot;: True or False, # Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency.
+          },
+          &quot;sandboxLauncher&quot;: True or False, # Optional. Indicates that this container can act as a sandbox supervisor and launch sandboxes.
+          &quot;sourceCode&quot;: { # Source type for the container. # Optional. Location of the source.
+            &quot;cloudStorageSource&quot;: { # Cloud Storage source. # The source is a Cloud Storage bucket.
+              &quot;bucket&quot;: &quot;A String&quot;, # Required. The Cloud Storage bucket name.
+              &quot;generation&quot;: &quot;A String&quot;, # Optional. The Cloud Storage object generation.
+              &quot;object&quot;: &quot;A String&quot;, # Required. The Cloud Storage object name.
+            },
+            &quot;inlinedSource&quot;: { # Inlined source. # Optional. Input only. Source code inlined in the request. Cloud Run will store the inlined_source to Cloud Storage and replace the field with cloud_storage_source.
+              &quot;sources&quot;: [ # Required. Input only. The source code.
+                { # Source file.
+                  &quot;content&quot;: &quot;A String&quot;, # Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application.
+                  &quot;filename&quot;: &quot;A String&quot;, # Required. Input only. The file name for the source code. e.g., `&quot;index.js&quot;` or `&quot;node_modules/dependency.js&quot;`. The filename must be less than 255 characters and cannot contain `..`, `./`, `//`, or end with a `/`. Cloud Run will place the files in the container subdirectories, please use relative path to access the file.
+                },
+              ],
+            },
+          },
+          &quot;startupProbe&quot;: { # Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic. # Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails.
+            &quot;failureThreshold&quot;: 42, # Optional. Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+            &quot;grpc&quot;: { # GRPCAction describes an action involving a GRPC port. # Optional. GRPC specifies an action involving a gRPC port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+              &quot;service&quot;: &quot;A String&quot;, # Optional. Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default behavior is defined by gRPC.
+            },
+            &quot;httpGet&quot;: { # HTTPGetAction describes an action based on HTTP Get requests. # Optional. HTTPGet specifies the http request to perform. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;httpHeaders&quot;: [ # Optional. Custom headers to set in the request. HTTP allows repeated headers.
+                { # HTTPHeader describes a custom header to be used in HTTP probes
+                  &quot;name&quot;: &quot;A String&quot;, # Required. The header field name
+                  &quot;value&quot;: &quot;A String&quot;, # Optional. The header field value
+                },
+              ],
+              &quot;path&quot;: &quot;A String&quot;, # Optional. Path to access on the HTTP server. Defaults to &#x27;/&#x27;.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;initialDelaySeconds&quot;: 42, # Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
+            &quot;periodSeconds&quot;: 42, # Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+            &quot;tcpSocket&quot;: { # TCPSocketAction describes an action based on opening a socket # Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
+              &quot;port&quot;: 42, # Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort.
+            },
+            &quot;timeoutSeconds&quot;: 42, # Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
+          },
+          &quot;volumeMounts&quot;: [ # Volume to mount into the container&#x27;s filesystem.
+            { # VolumeMount describes a mounting of a Volume within a container.
+              &quot;mountPath&quot;: &quot;A String&quot;, # Required. Path within the container at which the volume should be mounted. Must not contain &#x27;:&#x27;. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run
+              &quot;name&quot;: &quot;A String&quot;, # Required. This must match the Name of a Volume.
+              &quot;subPath&quot;: &quot;A String&quot;, # Optional. Path within the volume from which the container&#x27;s volume should be mounted. Defaults to &quot;&quot; (volume&#x27;s root). This field is currently rejected in Secret volume mounts.
+            },
+          ],
+          &quot;workingDir&quot;: &quot;A String&quot;, # Container&#x27;s working directory. If not specified, the container runtime&#x27;s default will be used, which might be configured in the container image.
+        },
+      ],
+    },
     &quot;scaling&quot;: { # Settings for revision-level scaling settings. # Optional. Scaling settings for this Revision.
       &quot;concurrencyUtilization&quot;: 3.14, # Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.
       &quot;cpuUtilization&quot;: 3.14, # Optional. Determines a threshold for CPU utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable CPU utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled.

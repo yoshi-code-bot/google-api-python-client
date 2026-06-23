@@ -167,6 +167,24 @@ Returns:
         &quot;score&quot;: &quot;&quot;, # The overall score of the category, the weighted average of all its audits. (The category&#x27;s score, can be null.)
         &quot;title&quot;: &quot;A String&quot;, # The human-friendly name of the category.
       },
+      &quot;agentic-browsing&quot;: { # A Lighthouse category. # The agentic browsing category, containing all agentic browsing related audits.
+        &quot;auditRefs&quot;: [ # An array of references to all the audit members of this category.
+          { # A light reference to an audit by id, used to group and weight audits in a given category.
+            &quot;acronym&quot;: &quot;A String&quot;, # The conventional acronym for the audit/metric.
+            &quot;group&quot;: &quot;A String&quot;, # The category group that the audit belongs to (optional).
+            &quot;id&quot;: &quot;A String&quot;, # The audit ref id.
+            &quot;relevantAudits&quot;: [ # Any audit IDs closely relevant to this one.
+              &quot;A String&quot;,
+            ],
+            &quot;weight&quot;: 3.14, # The weight this audit&#x27;s score has on the overall category score.
+          },
+        ],
+        &quot;description&quot;: &quot;A String&quot;, # A more detailed description of the category and its importance.
+        &quot;id&quot;: &quot;A String&quot;, # The string identifier of the category.
+        &quot;manualDescription&quot;: &quot;A String&quot;, # A description for the manual audits in the category.
+        &quot;score&quot;: &quot;&quot;, # The overall score of the category, the weighted average of all its audits. (The category&#x27;s score, can be null.)
+        &quot;title&quot;: &quot;A String&quot;, # The human-friendly name of the category.
+      },
       &quot;best-practices&quot;: { # A Lighthouse category. # The best practices category, containing all best practices related audits.
         &quot;auditRefs&quot;: [ # An array of references to all the audit members of this category.
           { # A light reference to an audit by id, used to group and weight audits in a given category.

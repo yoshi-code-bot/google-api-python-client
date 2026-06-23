@@ -105,6 +105,11 @@ h1, h2, h3 {
 <p class="firstline">Returns the guardrails Resource.</p>
 
 <p class="toc_element">
+  <code><a href="ces_v1.projects.locations.apps.message.html">message()</a></code>
+</p>
+<p class="firstline">Returns the message Resource.</p>
+
+<p class="toc_element">
   <code><a href="ces_v1.projects.locations.apps.sessions.html">sessions()</a></code>
 </p>
 <p class="firstline">Returns the sessions Resource.</p>
@@ -277,11 +282,11 @@ Args:
   },
   &quot;locked&quot;: True or False, # Optional. Indicates whether the app is locked for changes. If the app is locked, modifications to the app resources will be rejected.
   &quot;loggingSettings&quot;: { # Settings to describe the logging behaviors for the app. # Optional. Logging settings of the app.
-    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded.
+    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as configured in RedactionConfig.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
-    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be exported to BigQuery tables if it is enabled.
+    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to redaction as configured in RedactionConfig.
       &quot;dataset&quot;: &quot;A String&quot;, # Optional. The BigQuery **dataset ID** to export the data to.
       &quot;enabled&quot;: True or False, # Optional. Indicates whether the BigQuery export is enabled.
       &quot;project&quot;: &quot;A String&quot;, # Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
@@ -305,7 +310,7 @@ Args:
       &quot;enableRedaction&quot;: True or False, # Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording.
       &quot;inspectTemplate&quot;: &quot;A String&quot;, # Optional. [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure detection of sensitive data types. Format: `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
     },
-    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access when audio redaction is enabled, typically for auditing or monitoring purposes.
+    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
@@ -710,11 +715,11 @@ Returns:
   },
   &quot;locked&quot;: True or False, # Optional. Indicates whether the app is locked for changes. If the app is locked, modifications to the app resources will be rejected.
   &quot;loggingSettings&quot;: { # Settings to describe the logging behaviors for the app. # Optional. Logging settings of the app.
-    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded.
+    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as configured in RedactionConfig.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
-    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be exported to BigQuery tables if it is enabled.
+    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to redaction as configured in RedactionConfig.
       &quot;dataset&quot;: &quot;A String&quot;, # Optional. The BigQuery **dataset ID** to export the data to.
       &quot;enabled&quot;: True or False, # Optional. Indicates whether the BigQuery export is enabled.
       &quot;project&quot;: &quot;A String&quot;, # Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
@@ -738,7 +743,7 @@ Returns:
       &quot;enableRedaction&quot;: True or False, # Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording.
       &quot;inspectTemplate&quot;: &quot;A String&quot;, # Optional. [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure detection of sensitive data types. Format: `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
     },
-    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access when audio redaction is enabled, typically for auditing or monitoring purposes.
+    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
@@ -1021,11 +1026,11 @@ Returns:
       },
       &quot;locked&quot;: True or False, # Optional. Indicates whether the app is locked for changes. If the app is locked, modifications to the app resources will be rejected.
       &quot;loggingSettings&quot;: { # Settings to describe the logging behaviors for the app. # Optional. Logging settings of the app.
-        &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded.
+        &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as configured in RedactionConfig.
           &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
           &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
         },
-        &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be exported to BigQuery tables if it is enabled.
+        &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to redaction as configured in RedactionConfig.
           &quot;dataset&quot;: &quot;A String&quot;, # Optional. The BigQuery **dataset ID** to export the data to.
           &quot;enabled&quot;: True or False, # Optional. Indicates whether the BigQuery export is enabled.
           &quot;project&quot;: &quot;A String&quot;, # Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
@@ -1049,7 +1054,7 @@ Returns:
           &quot;enableRedaction&quot;: True or False, # Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording.
           &quot;inspectTemplate&quot;: &quot;A String&quot;, # Optional. [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure detection of sensitive data types. Format: `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
         },
-        &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access when audio redaction is enabled, typically for auditing or monitoring purposes.
+        &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes.
           &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
           &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
         },
@@ -1292,11 +1297,11 @@ Args:
   },
   &quot;locked&quot;: True or False, # Optional. Indicates whether the app is locked for changes. If the app is locked, modifications to the app resources will be rejected.
   &quot;loggingSettings&quot;: { # Settings to describe the logging behaviors for the app. # Optional. Logging settings of the app.
-    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded.
+    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as configured in RedactionConfig.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
-    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be exported to BigQuery tables if it is enabled.
+    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to redaction as configured in RedactionConfig.
       &quot;dataset&quot;: &quot;A String&quot;, # Optional. The BigQuery **dataset ID** to export the data to.
       &quot;enabled&quot;: True or False, # Optional. Indicates whether the BigQuery export is enabled.
       &quot;project&quot;: &quot;A String&quot;, # Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
@@ -1320,7 +1325,7 @@ Args:
       &quot;enableRedaction&quot;: True or False, # Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording.
       &quot;inspectTemplate&quot;: &quot;A String&quot;, # Optional. [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure detection of sensitive data types. Format: `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
     },
-    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access when audio redaction is enabled, typically for auditing or monitoring purposes.
+    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
@@ -1542,11 +1547,11 @@ Returns:
   },
   &quot;locked&quot;: True or False, # Optional. Indicates whether the app is locked for changes. If the app is locked, modifications to the app resources will be rejected.
   &quot;loggingSettings&quot;: { # Settings to describe the logging behaviors for the app. # Optional. Logging settings of the app.
-    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded.
+    &quot;audioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configuration for how audio interactions should be recorded. The audio is subject to redaction as configured in RedactionConfig.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },
-    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Settings to describe the BigQuery export behaviors for the app. The conversation data will be exported to BigQuery tables if it is enabled.
+    &quot;bigqueryExportSettings&quot;: { # Settings to describe the BigQuery export behaviors for the app. # Optional. Configures the BigQuery export behaviors for the app. The conversation data is subject to redaction as configured in RedactionConfig.
       &quot;dataset&quot;: &quot;A String&quot;, # Optional. The BigQuery **dataset ID** to export the data to.
       &quot;enabled&quot;: True or False, # Optional. Indicates whether the BigQuery export is enabled.
       &quot;project&quot;: &quot;A String&quot;, # Optional. The **project ID** of the BigQuery dataset to export the data to. Note: If the BigQuery dataset is in a different project from the app, you should grant `roles/bigquery.admin` role to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
@@ -1570,7 +1575,7 @@ Returns:
       &quot;enableRedaction&quot;: True or False, # Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording.
       &quot;inspectTemplate&quot;: &quot;A String&quot;, # Optional. [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure detection of sensitive data types. Format: `projects/{project}/locations/{location}/inspectTemplates/{inspect_template}`
     },
-    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures recording of unredacted audio. Use this to maintain a raw backup with restricted access when audio redaction is enabled, typically for auditing or monitoring purposes.
+    &quot;unredactedAudioRecordingConfig&quot;: { # Configuration for how the audio interactions should be recorded. # Optional. Configures an additional recording of unredacted audio. This can be used to maintain a raw audio copy when audio redaction is enabled, typically for auditing or monitoring purposes.
       &quot;gcsBucket&quot;: &quot;A String&quot;, # Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with &quot;gs://&quot;. Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`.
       &quot;gcsPathPrefix&quot;: &quot;A String&quot;, # Optional. The Cloud Storage path prefix for audio recordings. This prefix can include the following placeholders, which will be dynamically substituted at serving time: - $project: project ID - $location: app location - $app: app ID - $date: session date in YYYY-MM-DD format - $session: session ID If the path prefix is not specified, the default prefix `$project/$location/$app/$date/$session/` will be used.
     },

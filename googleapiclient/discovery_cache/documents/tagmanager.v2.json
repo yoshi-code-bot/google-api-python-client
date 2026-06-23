@@ -519,6 +519,7 @@
 "destinations": {
 "methods": {
 "get": {
+"deprecated": true,
 "description": "Gets a Destination.",
 "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations/{destinationsId}",
 "httpMethod": "GET",
@@ -545,6 +546,7 @@
 ]
 },
 "link": {
+"deprecated": true,
 "description": "Adds a Destination to this Container and removes it from the Container to which it is currently linked.",
 "flatPath": "tagmanager/v2/accounts/{accountsId}/containers/{containersId}/destinations:link",
 "httpMethod": "POST",
@@ -3986,7 +3988,7 @@
 }
 }
 },
-"revision": "20260511",
+"revision": "20260608",
 "rootUrl": "https://tagmanager.googleapis.com/",
 "schemas": {
 "Account": {

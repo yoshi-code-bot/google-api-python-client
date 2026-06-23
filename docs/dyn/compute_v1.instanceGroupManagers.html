@@ -745,16 +745,15 @@ Returns:
           },
           &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
           &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-            &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed or an unhealthy VM.
-                # A VM is marked as unhealthy when the application running on that
-                # VM fails a health check.
+            &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+                # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+                # applies to the VMs on which your application fails a health check.
                 # Valid values are
                 #
-                #    - REPAIR (default): MIG automatically repairs a failed or
-                #    an unhealthy VM by recreating it. For more information, see About
+                #    - REPAIR (default): MIG automatically repairs a failed VM
+                #    by recreating it. For more information, see About
                 #    repairing VMs in a MIG.
-                #    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-                #    VM.
+                #    - DO_NOTHING: MIG does not repair a failed VM.
             &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
                 # configuration when repairing a VM. Valid options are:
                 #
@@ -777,6 +776,15 @@ Returns:
                 #    - DO_NOTHING: MIG doesn&#x27;t repair an unhealthy VM.
                 #    For more information, see
                 #    About repairing VMs in a MIG.
+            &quot;onRepair&quot;: { # Configuration for VM repairs in the MIG. # Configuration for VM repairs in the MIG.
+              &quot;allowChangingZone&quot;: &quot;A String&quot;, # Specifies whether the MIG can change a VM&#x27;s zone during a repair.
+                  # Valid values are:
+                  #
+                  #    - NO (default): MIG cannot change a VM&#x27;s zone during a
+                  #    repair.
+                  #    - YES: MIG can select a different zone for the VM during
+                  #    a repair.
+            },
           },
           &quot;instanceTemplate&quot;: &quot;A String&quot;, # The URL of the instance template that is specified for this managed
               # instance group. The group uses this template to create all new instances
@@ -3199,16 +3207,15 @@ Returns:
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed or an unhealthy VM.
-        # A VM is marked as unhealthy when the application running on that
-        # VM fails a health check.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
         # Valid values are
         #
-        #    - REPAIR (default): MIG automatically repairs a failed or
-        #    an unhealthy VM by recreating it. For more information, see About
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
         #    repairing VMs in a MIG.
-        #    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-        #    VM.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -3231,6 +3238,15 @@ Returns:
         #    - DO_NOTHING: MIG doesn&#x27;t repair an unhealthy VM.
         #    For more information, see
         #    About repairing VMs in a MIG.
+    &quot;onRepair&quot;: { # Configuration for VM repairs in the MIG. # Configuration for VM repairs in the MIG.
+      &quot;allowChangingZone&quot;: &quot;A String&quot;, # Specifies whether the MIG can change a VM&#x27;s zone during a repair.
+          # Valid values are:
+          #
+          #    - NO (default): MIG cannot change a VM&#x27;s zone during a
+          #    repair.
+          #    - YES: MIG can select a different zone for the VM during
+          #    a repair.
+    },
   },
   &quot;instanceTemplate&quot;: &quot;A String&quot;, # The URL of the instance template that is specified for this managed
       # instance group. The group uses this template to create all new instances
@@ -3954,16 +3970,15 @@ where you want to create the managed instance group. (required)
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed or an unhealthy VM.
-        # A VM is marked as unhealthy when the application running on that
-        # VM fails a health check.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
         # Valid values are
         #
-        #    - REPAIR (default): MIG automatically repairs a failed or
-        #    an unhealthy VM by recreating it. For more information, see About
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
         #    repairing VMs in a MIG.
-        #    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-        #    VM.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -3986,6 +4001,15 @@ where you want to create the managed instance group. (required)
         #    - DO_NOTHING: MIG doesn&#x27;t repair an unhealthy VM.
         #    For more information, see
         #    About repairing VMs in a MIG.
+    &quot;onRepair&quot;: { # Configuration for VM repairs in the MIG. # Configuration for VM repairs in the MIG.
+      &quot;allowChangingZone&quot;: &quot;A String&quot;, # Specifies whether the MIG can change a VM&#x27;s zone during a repair.
+          # Valid values are:
+          #
+          #    - NO (default): MIG cannot change a VM&#x27;s zone during a
+          #    repair.
+          #    - YES: MIG can select a different zone for the VM during
+          #    a repair.
+    },
   },
   &quot;instanceTemplate&quot;: &quot;A String&quot;, # The URL of the instance template that is specified for this managed
       # instance group. The group uses this template to create all new instances
@@ -5075,16 +5099,15 @@ Returns:
       },
       &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
       &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-        &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed or an unhealthy VM.
-            # A VM is marked as unhealthy when the application running on that
-            # VM fails a health check.
+        &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+            # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+            # applies to the VMs on which your application fails a health check.
             # Valid values are
             #
-            #    - REPAIR (default): MIG automatically repairs a failed or
-            #    an unhealthy VM by recreating it. For more information, see About
+            #    - REPAIR (default): MIG automatically repairs a failed VM
+            #    by recreating it. For more information, see About
             #    repairing VMs in a MIG.
-            #    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-            #    VM.
+            #    - DO_NOTHING: MIG does not repair a failed VM.
         &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
             # configuration when repairing a VM. Valid options are:
             #
@@ -5107,6 +5130,15 @@ Returns:
             #    - DO_NOTHING: MIG doesn&#x27;t repair an unhealthy VM.
             #    For more information, see
             #    About repairing VMs in a MIG.
+        &quot;onRepair&quot;: { # Configuration for VM repairs in the MIG. # Configuration for VM repairs in the MIG.
+          &quot;allowChangingZone&quot;: &quot;A String&quot;, # Specifies whether the MIG can change a VM&#x27;s zone during a repair.
+              # Valid values are:
+              #
+              #    - NO (default): MIG cannot change a VM&#x27;s zone during a
+              #    repair.
+              #    - YES: MIG can select a different zone for the VM during
+              #    a repair.
+        },
       },
       &quot;instanceTemplate&quot;: &quot;A String&quot;, # The URL of the instance template that is specified for this managed
           # instance group. The group uses this template to create all new instances
@@ -5806,18 +5838,18 @@ Returns:
     {
   &quot;items&quot;: [ # Output only. [Output Only] The list of errors of the managed instance group.
     {
-      &quot;error&quot;: { # Output only. [Output Only] Contents of the error.
-        &quot;code&quot;: &quot;A String&quot;, # Output only. [Output Only] Error code.
-        &quot;message&quot;: &quot;A String&quot;, # Output only. [Output Only] Error message.
+      &quot;error&quot;: { # Output only. Contents of the error.
+        &quot;code&quot;: &quot;A String&quot;, # Output only. Error code.
+        &quot;message&quot;: &quot;A String&quot;, # Output only. Error message.
       },
-      &quot;instanceActionDetails&quot;: { # Output only. [Output Only] Details of the instance action that triggered this error.
+      &quot;instanceActionDetails&quot;: { # Output only. Details of the instance action that triggered this error.
           # May be null, if the error was not caused by an action on an instance.
           # This field is optional.
-        &quot;action&quot;: &quot;A String&quot;, # Output only. [Output Only] Action that managed instance group was executing on
-            # the instance when the error occurred. Possible values:
-        &quot;instance&quot;: &quot;A String&quot;, # Output only. [Output Only] The URL of the instance.
-            # The URL can be set even if the instance has not yet been created.
-        &quot;version&quot;: { # Output only. [Output Only] Version this instance was created from, or was being
+        &quot;action&quot;: &quot;A String&quot;, # Output only. Action that managed instance group was executing on the instance when the
+            # error occurred. Possible values:
+        &quot;instance&quot;: &quot;A String&quot;, # Output only. The URL of the instance. The URL can be set even if the instance has not
+            # yet been created.
+        &quot;version&quot;: { # Output only. Version this instance was created from, or was being
             # created from, but the creation failed. Corresponds to one of the versions
             # that were set on the Instance Group Manager resource at the time this
             # instance was being created.
@@ -5826,8 +5858,7 @@ Returns:
           &quot;name&quot;: &quot;A String&quot;, # Output only. [Output Only] Name of the version.
         },
       },
-      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The time that this error occurred.
-          # This value is in RFC3339 text format.
+      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. The time that this error occurred. This value is in RFC3339 text format.
     },
   ],
   &quot;nextPageToken&quot;: &quot;A String&quot;, # Output only. [Output Only] This token allows you to get the next page of results for
@@ -6645,16 +6676,15 @@ you want to create the managed instance group. (required)
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed or an unhealthy VM.
-        # A VM is marked as unhealthy when the application running on that
-        # VM fails a health check.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
         # Valid values are
         #
-        #    - REPAIR (default): MIG automatically repairs a failed or
-        #    an unhealthy VM by recreating it. For more information, see About
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
         #    repairing VMs in a MIG.
-        #    - DO_NOTHING: MIG does not repair a failed or an unhealthy
-        #    VM.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -6677,6 +6707,15 @@ you want to create the managed instance group. (required)
         #    - DO_NOTHING: MIG doesn&#x27;t repair an unhealthy VM.
         #    For more information, see
         #    About repairing VMs in a MIG.
+    &quot;onRepair&quot;: { # Configuration for VM repairs in the MIG. # Configuration for VM repairs in the MIG.
+      &quot;allowChangingZone&quot;: &quot;A String&quot;, # Specifies whether the MIG can change a VM&#x27;s zone during a repair.
+          # Valid values are:
+          #
+          #    - NO (default): MIG cannot change a VM&#x27;s zone during a
+          #    repair.
+          #    - YES: MIG can select a different zone for the VM during
+          #    a repair.
+    },
   },
   &quot;instanceTemplate&quot;: &quot;A String&quot;, # The URL of the instance template that is specified for this managed
       # instance group. The group uses this template to create all new instances

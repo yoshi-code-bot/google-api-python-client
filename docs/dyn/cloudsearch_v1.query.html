@@ -142,7 +142,7 @@ Args:
   body: object, The request body.
     The object takes the form of:
 
-{ # The search API request. NEXT ID: 25
+{ # The search API request. NEXT ID: 26
   &quot;contextAttributes&quot;: [ # Context attributes for the request which will be used to adjust ranking of search results. The maximum number of elements is 10.
     { # A named attribute associated with an item which can be used for influencing the ranking of the item based on the context in the request.
       &quot;name&quot;: &quot;A String&quot;, # The name of the attribute. It should not be empty. The maximum length is 32 characters. The name must start with a letter and can only contain letters (A-Z, a-z) or numbers (0-9). The name will be normalized (lower-cased) before being matched.
@@ -231,7 +231,7 @@ Args:
 Returns:
   An object of the form:
 
-    { # The search API response. NEXT ID: 19
+    { # The search API response. NEXT ID: 20
   &quot;debugInfo&quot;: { # Debugging information about the response. # Debugging information about the response.
     &quot;formattedDebugInfo&quot;: &quot;A String&quot;, # General debug info formatted for display.
   },
@@ -318,7 +318,7 @@ Returns:
     ],
   },
   &quot;results&quot;: [ # Results from a search query.
-    { # Results containing indexed information for a document. Next ID: 16
+    { # Results containing indexed information for a document. Next ID: 17
       &quot;clusteredResults&quot;: [ # If source is clustered, provide list of clustered results. There will only be one level of clustered results. If current source is not enabled for clustering, this field will be empty.
         # Object with schema name: SearchResult
       ],

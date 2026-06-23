@@ -233,6 +233,7 @@ Returns:
           &quot;failoverCapacity&quot;: &quot;A String&quot;, # Capacity guarantee settings for the event of a failover.
               # This determines whether capacity is guaranteed to be available
               # in the zones used by the HaController.
+              # Deprecated: This field is deprecated and has no effect.
           &quot;failoverInitiation&quot;: &quot;A String&quot;, # Indicates how failover should be initiated.
           &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
               # defined by the server.
@@ -1039,8 +1040,6 @@ Args:
 
 {
   &quot;failoverToZone&quot;: &quot;A String&quot;, # Name of the destination zone for the failover.
-  &quot;primaryZone&quot;: &quot;A String&quot;, # Name of the destination zone for the failover.
-      # Deprecated: use failover_to_zone instead.
 }
 
   requestId: string, An optional request ID to identify requests. Specify a unique request ID so
@@ -1350,6 +1349,7 @@ Returns:
   &quot;failoverCapacity&quot;: &quot;A String&quot;, # Capacity guarantee settings for the event of a failover.
       # This determines whether capacity is guaranteed to be available
       # in the zones used by the HaController.
+      # Deprecated: This field is deprecated and has no effect.
   &quot;failoverInitiation&quot;: &quot;A String&quot;, # Indicates how failover should be initiated.
   &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
       # defined by the server.
@@ -1795,6 +1795,7 @@ Args:
   &quot;failoverCapacity&quot;: &quot;A String&quot;, # Capacity guarantee settings for the event of a failover.
       # This determines whether capacity is guaranteed to be available
       # in the zones used by the HaController.
+      # Deprecated: This field is deprecated and has no effect.
   &quot;failoverInitiation&quot;: &quot;A String&quot;, # Indicates how failover should be initiated.
   &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
       # defined by the server.
@@ -2607,6 +2608,7 @@ Returns:
       &quot;failoverCapacity&quot;: &quot;A String&quot;, # Capacity guarantee settings for the event of a failover.
           # This determines whether capacity is guaranteed to be available
           # in the zones used by the HaController.
+          # Deprecated: This field is deprecated and has no effect.
       &quot;failoverInitiation&quot;: &quot;A String&quot;, # Indicates how failover should be initiated.
       &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
           # defined by the server.
@@ -3102,6 +3104,7 @@ Args:
   &quot;failoverCapacity&quot;: &quot;A String&quot;, # Capacity guarantee settings for the event of a failover.
       # This determines whether capacity is guaranteed to be available
       # in the zones used by the HaController.
+      # Deprecated: This field is deprecated and has no effect.
   &quot;failoverInitiation&quot;: &quot;A String&quot;, # Indicates how failover should be initiated.
   &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
       # defined by the server.

@@ -138,9 +138,14 @@ Args:
     },
     &quot;egress&quot;: { # Configuration for Egress # Optional. Optional PSC-Interface network attachment for connectivity to your private VPCs network.
       &quot;networkAttachment&quot;: &quot;A String&quot;, # Optional. The URI of the Network Attachment resource.
+      &quot;trustConfig&quot;: { # TrustConfig defines the trust configuration for egress. # Optional. TrustConfig defines the trust configuration for egress.
+        &quot;pemCertificates&quot;: [ # Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations during egress connections.
+          &quot;A String&quot;,
+        ],
+      },
     },
   },
-  &quot;protocols&quot;: [ # Required. List of protocols supported by an Agent Gateway
+  &quot;protocols&quot;: [ # Optional. Deprecated.
     &quot;A String&quot;,
   ],
   &quot;registries&quot;: [ # Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway. Note: Currently limited to project-scoped registries Must be of format `//agentregistry.googleapis.com/projects/{project}/locations/{location}/
@@ -260,9 +265,14 @@ Returns:
     },
     &quot;egress&quot;: { # Configuration for Egress # Optional. Optional PSC-Interface network attachment for connectivity to your private VPCs network.
       &quot;networkAttachment&quot;: &quot;A String&quot;, # Optional. The URI of the Network Attachment resource.
+      &quot;trustConfig&quot;: { # TrustConfig defines the trust configuration for egress. # Optional. TrustConfig defines the trust configuration for egress.
+        &quot;pemCertificates&quot;: [ # Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations during egress connections.
+          &quot;A String&quot;,
+        ],
+      },
     },
   },
-  &quot;protocols&quot;: [ # Required. List of protocols supported by an Agent Gateway
+  &quot;protocols&quot;: [ # Optional. Deprecated.
     &quot;A String&quot;,
   ],
   &quot;registries&quot;: [ # Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway. Note: Currently limited to project-scoped registries Must be of format `//agentregistry.googleapis.com/projects/{project}/locations/{location}/
@@ -322,9 +332,14 @@ Returns:
         },
         &quot;egress&quot;: { # Configuration for Egress # Optional. Optional PSC-Interface network attachment for connectivity to your private VPCs network.
           &quot;networkAttachment&quot;: &quot;A String&quot;, # Optional. The URI of the Network Attachment resource.
+          &quot;trustConfig&quot;: { # TrustConfig defines the trust configuration for egress. # Optional. TrustConfig defines the trust configuration for egress.
+            &quot;pemCertificates&quot;: [ # Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations during egress connections.
+              &quot;A String&quot;,
+            ],
+          },
         },
       },
-      &quot;protocols&quot;: [ # Required. List of protocols supported by an Agent Gateway
+      &quot;protocols&quot;: [ # Optional. Deprecated.
         &quot;A String&quot;,
       ],
       &quot;registries&quot;: [ # Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway. Note: Currently limited to project-scoped registries Must be of format `//agentregistry.googleapis.com/projects/{project}/locations/{location}/
@@ -394,9 +409,14 @@ Args:
     },
     &quot;egress&quot;: { # Configuration for Egress # Optional. Optional PSC-Interface network attachment for connectivity to your private VPCs network.
       &quot;networkAttachment&quot;: &quot;A String&quot;, # Optional. The URI of the Network Attachment resource.
+      &quot;trustConfig&quot;: { # TrustConfig defines the trust configuration for egress. # Optional. TrustConfig defines the trust configuration for egress.
+        &quot;pemCertificates&quot;: [ # Required. PEM encoded root certificates used to validate the identity of the upstream servers/destinations during egress connections.
+          &quot;A String&quot;,
+        ],
+      },
     },
   },
-  &quot;protocols&quot;: [ # Required. List of protocols supported by an Agent Gateway
+  &quot;protocols&quot;: [ # Optional. Deprecated.
     &quot;A String&quot;,
   ],
   &quot;registries&quot;: [ # Optional. A list of Agent registries containing the agents, MCP servers and tools governed by the Agent Gateway. Note: Currently limited to project-scoped registries Must be of format `//agentregistry.googleapis.com/projects/{project}/locations/{location}/

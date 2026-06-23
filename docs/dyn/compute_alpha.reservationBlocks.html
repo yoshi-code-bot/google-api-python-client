@@ -121,14 +121,14 @@ Returns:
 
     {
   &quot;resource&quot;: { # Represents a reservation block resource.
-    &quot;count&quot;: 42, # Output only. [Output Only] The number of resources that are allocated in this
-        # reservation block.
-    &quot;creationTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Creation timestamp inRFC3339 text format.
-    &quot;healthInfo&quot;: { # Health information for the reservation block. # Output only. [Output Only] Health information for the reservation block.
+    &quot;blockHealthInfo&quot;: { # Health information for the reservation block. # Output only. [Output Only] Health information for the reservation block.
       &quot;degradedSubBlockCount&quot;: 42, # The number of subBlocks that are degraded.
       &quot;healthStatus&quot;: &quot;A String&quot;, # The health status of the reservation block.
       &quot;healthySubBlockCount&quot;: 42, # The number of subBlocks that are healthy.
     },
+    &quot;count&quot;: 42, # Output only. [Output Only] The number of resources that are allocated in this
+        # reservation block.
+    &quot;creationTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Creation timestamp inRFC3339 text format.
     &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
         # defined by the server.
     &quot;inUseCount&quot;: 42, # Output only. [Output Only] The number of instances that are currently in use on this
@@ -322,14 +322,14 @@ Returns:
   &quot;id&quot;: &quot;A String&quot;, # Unique identifier for the resource; defined by the server.
   &quot;items&quot;: [ # A list of reservation block resources.
     { # Represents a reservation block resource.
-      &quot;count&quot;: 42, # Output only. [Output Only] The number of resources that are allocated in this
-          # reservation block.
-      &quot;creationTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Creation timestamp inRFC3339 text format.
-      &quot;healthInfo&quot;: { # Health information for the reservation block. # Output only. [Output Only] Health information for the reservation block.
+      &quot;blockHealthInfo&quot;: { # Health information for the reservation block. # Output only. [Output Only] Health information for the reservation block.
         &quot;degradedSubBlockCount&quot;: 42, # The number of subBlocks that are degraded.
         &quot;healthStatus&quot;: &quot;A String&quot;, # The health status of the reservation block.
         &quot;healthySubBlockCount&quot;: 42, # The number of subBlocks that are healthy.
       },
+      &quot;count&quot;: 42, # Output only. [Output Only] The number of resources that are allocated in this
+          # reservation block.
+      &quot;creationTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Creation timestamp inRFC3339 text format.
       &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
           # defined by the server.
       &quot;inUseCount&quot;: 42, # Output only. [Output Only] The number of instances that are currently in use on this
