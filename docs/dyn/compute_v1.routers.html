@@ -560,6 +560,10 @@ Returns:
                   # These IPs should be used for updating/patching a NAT only.
                 &quot;A String&quot;,
               ],
+              &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+                  # state. This value is equal to tcp_time_wait_timeout_sec.
+                  # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+                  # 120s. The field is output only.
               &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
                   #
                   #
@@ -743,6 +747,7 @@ Returns:
               &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
             },
           ],
+          &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
           &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
           &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
               # as part of resource payload.
@@ -1758,6 +1763,10 @@ Returns:
           # These IPs should be used for updating/patching a NAT only.
         &quot;A String&quot;,
       ],
+      &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+          # state. This value is equal to tcp_time_wait_timeout_sec.
+          # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+          # 120s. The field is output only.
       &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
           #
           #
@@ -1941,6 +1950,7 @@ Returns:
       &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     },
   ],
+  &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
   &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
       # as part of resource payload.
@@ -3052,6 +3062,7 @@ Returns:
         ],
       },
     ],
+    &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
     &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   },
 }</pre>
@@ -3370,6 +3381,10 @@ Args:
           # These IPs should be used for updating/patching a NAT only.
         &quot;A String&quot;,
       ],
+      &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+          # state. This value is equal to tcp_time_wait_timeout_sec.
+          # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+          # 120s. The field is output only.
       &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
           #
           #
@@ -3553,6 +3568,7 @@ Args:
       &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     },
   ],
+  &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
   &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
       # as part of resource payload.
@@ -4266,6 +4282,10 @@ Returns:
               # These IPs should be used for updating/patching a NAT only.
             &quot;A String&quot;,
           ],
+          &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+              # state. This value is equal to tcp_time_wait_timeout_sec.
+              # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+              # 120s. The field is output only.
           &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
               #
               #
@@ -4449,6 +4469,7 @@ Returns:
           &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         },
       ],
+      &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
       &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
       &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
           # as part of resource payload.
@@ -5309,6 +5330,10 @@ Args:
           # These IPs should be used for updating/patching a NAT only.
         &quot;A String&quot;,
       ],
+      &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+          # state. This value is equal to tcp_time_wait_timeout_sec.
+          # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+          # 120s. The field is output only.
       &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
           #
           #
@@ -5492,6 +5517,7 @@ Args:
       &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     },
   ],
+  &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
   &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
       # as part of resource payload.
@@ -6522,6 +6548,10 @@ Args:
           # These IPs should be used for updating/patching a NAT only.
         &quot;A String&quot;,
       ],
+      &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+          # state. This value is equal to tcp_time_wait_timeout_sec.
+          # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+          # 120s. The field is output only.
       &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
           #
           #
@@ -6705,6 +6735,7 @@ Args:
       &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     },
   ],
+  &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
   &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
       # as part of resource payload.
@@ -7041,6 +7072,10 @@ Returns:
             # These IPs should be used for updating/patching a NAT only.
           &quot;A String&quot;,
         ],
+        &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+            # state. This value is equal to tcp_time_wait_timeout_sec.
+            # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+            # 120s. The field is output only.
         &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
             #
             #
@@ -7224,6 +7259,7 @@ Returns:
         &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
       },
     ],
+    &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
     &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
     &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
         # as part of resource payload.
@@ -7567,6 +7603,10 @@ Args:
           # These IPs should be used for updating/patching a NAT only.
         &quot;A String&quot;,
       ],
+      &quot;effectiveTcpTimeWaitTimeoutSec&quot;: 42, # Output only. Effective timeout (in seconds) for TCP connections that are in TIME_WAIT
+          # state. This value is equal to tcp_time_wait_timeout_sec.
+          # If tcp_time_wait_timeout_sec isn&#x27;t set, the effective timeout is 30s or
+          # 120s. The field is output only.
       &quot;enableDynamicPortAllocation&quot;: True or False, # Enable Dynamic Port Allocation.
           #
           #
@@ -7750,6 +7790,7 @@ Args:
       &quot;udpIdleTimeoutSec&quot;: 42, # Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
     },
   ],
+  &quot;nccGateway&quot;: &quot;A String&quot;, # URI of the ncc_gateway to which this router associated.
   &quot;network&quot;: &quot;A String&quot;, # URI of the network to which this router belongs.
   &quot;params&quot;: { # Additional router parameters. # Input only. [Input Only] Additional params passed with the request, but not persisted
       # as part of resource payload.

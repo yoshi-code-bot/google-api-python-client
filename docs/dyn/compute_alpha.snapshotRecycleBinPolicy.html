@@ -126,6 +126,15 @@ Returns:
       },
     },
   },
+  &quot;systemRules&quot;: { # Output only. The system rules for snapshot recycle bin policy.
+      # Defines the default rule that applies if no customer-defined rule matches.
+    &quot;a_key&quot;: { # A rule that defines the retention policy for snapshots in the recycle bin.
+      &quot;standardSnapshots&quot;: { # The rule config for snapshots in the recycle bin. # The rule config for standard snapshots.
+        &quot;retentionDurationDays&quot;: &quot;A String&quot;, # The retention duration for snapshots in the recycle bin after which the
+            # snapshots are automatically deleted from recycle bin.
+      },
+    },
+  },
 }</pre>
 </div>
 
@@ -154,6 +163,15 @@ Args:
       # `{project_number}/{tag_key_short_name}/{tag_value_short_name}`. The default
       # rule is applied if snapshots do not have any of these tags.
       #  The value is the rule for the key.
+    &quot;a_key&quot;: { # A rule that defines the retention policy for snapshots in the recycle bin.
+      &quot;standardSnapshots&quot;: { # The rule config for snapshots in the recycle bin. # The rule config for standard snapshots.
+        &quot;retentionDurationDays&quot;: &quot;A String&quot;, # The retention duration for snapshots in the recycle bin after which the
+            # snapshots are automatically deleted from recycle bin.
+      },
+    },
+  },
+  &quot;systemRules&quot;: { # Output only. The system rules for snapshot recycle bin policy.
+      # Defines the default rule that applies if no customer-defined rule matches.
     &quot;a_key&quot;: { # A rule that defines the retention policy for snapshots in the recycle bin.
       &quot;standardSnapshots&quot;: { # The rule config for snapshots in the recycle bin. # The rule config for standard snapshots.
         &quot;retentionDurationDays&quot;: &quot;A String&quot;, # The retention duration for snapshots in the recycle bin after which the

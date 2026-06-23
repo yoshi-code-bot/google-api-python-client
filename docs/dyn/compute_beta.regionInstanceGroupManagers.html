@@ -881,6 +881,9 @@ Args:
   &quot;allInstances&quot;: True or False, # Flag to update all instances instead of specified list of “instances”.
       # If the flag is set to true then the instances may not be specified
       # in the request.
+  &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+    &quot;A String&quot;,
+  ],
   &quot;instances&quot;: [ # The list of URLs of one or more instances for which you want to apply
       # updates. Each URL can be a full URL or a partial URL, such aszones/[ZONE]/instances/[INSTANCE_NAME].
     &quot;A String&quot;,
@@ -2588,6 +2591,8 @@ Returns:
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -3122,11 +3127,15 @@ Returns:
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed
-        # VM by recreating it. For more information, seeAbout repairing
-        # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        #
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
+        #    repairing VMs in a MIG.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -3585,6 +3594,9 @@ Returns:
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -3845,6 +3857,8 @@ Args:
         # or a recreate action. For example, setting or removing target
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
@@ -4380,11 +4394,15 @@ Args:
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed
-        # VM by recreating it. For more information, seeAbout repairing
-        # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        #
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
+        #    repairing VMs in a MIG.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -4843,6 +4861,9 @@ Args:
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -5472,6 +5493,8 @@ Returns:
             # pools for the instance.
         &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
             # are scheduled to be restarted or are currently being restarted.
+        &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+            # are scheduled to be restarted or are currently being restarted.
         &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
             # are scheduled to be resumed or are currently being resumed.
         &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -6006,11 +6029,15 @@ Returns:
       },
       &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
       &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-        &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field
-            # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application
-            # fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed
-            # VM by recreating it. For more information, seeAbout repairing
-            # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+        &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+            # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+            # applies to the VMs on which your application fails a health check.
+            # Valid values are
+            #
+            #    - REPAIR (default): MIG automatically repairs a failed VM
+            #    by recreating it. For more information, see About
+            #    repairing VMs in a MIG.
+            #    - DO_NOTHING: MIG does not repair a failed VM.
         &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
             # configuration when repairing a VM. Valid options are:
             #
@@ -6469,6 +6496,9 @@ Returns:
           #    - Manually change the targetSuspendedSize using the update
           #    method.
       &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+        &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+          &quot;A String&quot;,
+        ],
         &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
             # instance redistribution policy for regional managed instance groups.
             # Valid values are:
@@ -6765,18 +6795,18 @@ Returns:
     {
   &quot;items&quot;: [ # [Output Only] The list of errors of the managed instance group.
     {
-      &quot;error&quot;: { # Output only. [Output Only] Contents of the error.
-        &quot;code&quot;: &quot;A String&quot;, # Output only. [Output Only] Error code.
-        &quot;message&quot;: &quot;A String&quot;, # Output only. [Output Only] Error message.
+      &quot;error&quot;: { # Output only. Contents of the error.
+        &quot;code&quot;: &quot;A String&quot;, # Output only. Error code.
+        &quot;message&quot;: &quot;A String&quot;, # Output only. Error message.
       },
-      &quot;instanceActionDetails&quot;: { # Output only. [Output Only] Details of the instance action that triggered this error.
+      &quot;instanceActionDetails&quot;: { # Output only. Details of the instance action that triggered this error.
           # May be null, if the error was not caused by an action on an instance.
           # This field is optional.
-        &quot;action&quot;: &quot;A String&quot;, # Output only. [Output Only] Action that managed instance group was executing on
-            # the instance when the error occurred. Possible values:
-        &quot;instance&quot;: &quot;A String&quot;, # Output only. [Output Only] The URL of the instance.
-            # The URL can be set even if the instance has not yet been created.
-        &quot;version&quot;: { # Output only. [Output Only] Version this instance was created from, or was being
+        &quot;action&quot;: &quot;A String&quot;, # Output only. Action that managed instance group was executing on the instance when the
+            # error occurred. Possible values:
+        &quot;instance&quot;: &quot;A String&quot;, # Output only. The URL of the instance. The URL can be set even if the instance has not
+            # yet been created.
+        &quot;version&quot;: { # Output only. Version this instance was created from, or was being
             # created from, but the creation failed. Corresponds to one of the versions
             # that were set on the Instance Group Manager resource at the time this
             # instance was being created.
@@ -6785,8 +6815,7 @@ Returns:
           &quot;name&quot;: &quot;A String&quot;, # Output only. [Output Only] Name of the version.
         },
       },
-      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The time that this error occurred.
-          # This value is in RFC3339 text format.
+      &quot;timestamp&quot;: &quot;A String&quot;, # Output only. The time that this error occurred. This value is in RFC3339 text format.
     },
   ],
   &quot;nextPageToken&quot;: &quot;A String&quot;, # Output only. [Output Only] This token allows you to get the next page of results for
@@ -8034,6 +8063,8 @@ Args:
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -8568,11 +8599,15 @@ Args:
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed
-        # VM by recreating it. For more information, seeAbout repairing
-        # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        #
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
+        #    repairing VMs in a MIG.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -9031,6 +9066,9 @@ Args:
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:
@@ -13166,6 +13204,8 @@ Args:
         # pools for the instance.
     &quot;restarting&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be restarted or are currently being restarted.
+    &quot;restartingInPlace&quot;: 42, # Output only. The number of instances in the managed instance group that
+        # are scheduled to be restarted or are currently being restarted.
     &quot;resuming&quot;: 42, # Output only. The number of instances in the managed instance group that
         # are scheduled to be resumed or are currently being resumed.
     &quot;starting&quot;: 42, # Output only. The number of instances in the managed instance group that
@@ -13700,11 +13740,15 @@ Args:
   },
   &quot;instanceGroup&quot;: &quot;A String&quot;, # Output only. The URL of the Instance Group resource.
   &quot;instanceLifecyclePolicy&quot;: { # The repair policy for this managed instance group.
-    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the onFailedHealthCheck field
-        # is `DEFAULT_ACTION`, then the same action also applies to the VMs on which your application
-        # fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed
-        # VM by recreating it. For more information, seeAbout repairing
-        # VMs in a MIG. - DO_NOTHING: MIG does not repair a failed VM.
+    &quot;defaultActionOnFailure&quot;: &quot;A String&quot;, # The action that a MIG performs on a failed VM. If the value of the
+        # onFailedHealthCheck field is `DEFAULT_ACTION`, then the same action also
+        # applies to the VMs on which your application fails a health check.
+        # Valid values are
+        #
+        #    - REPAIR (default): MIG automatically repairs a failed VM
+        #    by recreating it. For more information, see About
+        #    repairing VMs in a MIG.
+        #    - DO_NOTHING: MIG does not repair a failed VM.
     &quot;forceUpdateOnRepair&quot;: &quot;A String&quot;, # A bit indicating whether to forcefully apply the group&#x27;s latest
         # configuration when repairing a VM. Valid options are:
         #
@@ -14163,6 +14207,9 @@ Args:
       #    - Manually change the targetSuspendedSize using the update
       #    method.
   &quot;updatePolicy&quot;: { # The update policy for this managed instance group.
+    &quot;allowedActions&quot;: [ # Actions that are allowed to update instances within MIG.
+      &quot;A String&quot;,
+    ],
     &quot;instanceRedistributionType&quot;: &quot;A String&quot;, # The
         # instance redistribution policy for regional managed instance groups.
         # Valid values are:

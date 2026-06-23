@@ -867,6 +867,34 @@ Returns:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -1724,6 +1752,34 @@ Returns:
                       # required.
                       #
                       # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                  &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                    &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                        # It uses RE2 syntax with the following constraints:
+                        #
+                        #
+                        #      - Any single character operators
+                        #      - Groups are allowed to have only submatch operator inside
+                        #      - Groups are allowed only without any char repetition, e.g.
+                        #      .*
+                        #      - Any char repetition, e.g. .*, is
+                        #      only allowed to be used in a single regex together with:
+                        #
+                        #
+                        #             - Empty string operators
+                        #             - Other repetitions
+                        #             - Ranges
+                        #             - Repetitions of ranges
+                        #
+                        #
+                        #      - Ranges are only allowed to have:
+                        #
+                        #
+                        #             - Character range
+                        #             - Digits range
+                        #             - Symbols listed in characters allowed for ranges
+                    &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                        # the path.
+                  },
                 },
                 &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                     # occurs. The weights determine the fraction of traffic that flows to
@@ -2562,6 +2618,34 @@ Returns:
                           # required.
                           #
                           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                            # It uses RE2 syntax with the following constraints:
+                            #
+                            #
+                            #      - Any single character operators
+                            #      - Groups are allowed to have only submatch operator inside
+                            #      - Groups are allowed only without any char repetition, e.g.
+                            #      .*
+                            #      - Any char repetition, e.g. .*, is
+                            #      only allowed to be used in a single regex together with:
+                            #
+                            #
+                            #             - Empty string operators
+                            #             - Other repetitions
+                            #             - Ranges
+                            #             - Repetitions of ranges
+                            #
+                            #
+                            #      - Ranges are only allowed to have:
+                            #
+                            #
+                            #             - Character range
+                            #             - Digits range
+                            #             - Symbols listed in characters allowed for ranges
+                        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                            # the path.
+                      },
                     },
                     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                         # occurs. The weights determine the fraction of traffic that flows to
@@ -3662,6 +3746,34 @@ Returns:
                           # required.
                           #
                           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                            # It uses RE2 syntax with the following constraints:
+                            #
+                            #
+                            #      - Any single character operators
+                            #      - Groups are allowed to have only submatch operator inside
+                            #      - Groups are allowed only without any char repetition, e.g.
+                            #      .*
+                            #      - Any char repetition, e.g. .*, is
+                            #      only allowed to be used in a single regex together with:
+                            #
+                            #
+                            #             - Empty string operators
+                            #             - Other repetitions
+                            #             - Ranges
+                            #             - Repetitions of ranges
+                            #
+                            #
+                            #      - Ranges are only allowed to have:
+                            #
+                            #
+                            #             - Character range
+                            #             - Digits range
+                            #             - Symbols listed in characters allowed for ranges
+                        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                            # the path.
+                      },
                     },
                     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                         # occurs. The weights determine the fraction of traffic that flows to
@@ -4906,6 +5018,34 @@ Returns:
           # required.
           #
           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+            # It uses RE2 syntax with the following constraints:
+            #
+            #
+            #      - Any single character operators
+            #      - Groups are allowed to have only submatch operator inside
+            #      - Groups are allowed only without any char repetition, e.g.
+            #      .*
+            #      - Any char repetition, e.g. .*, is
+            #      only allowed to be used in a single regex together with:
+            #
+            #
+            #             - Empty string operators
+            #             - Other repetitions
+            #             - Ranges
+            #             - Repetitions of ranges
+            #
+            #
+            #      - Ranges are only allowed to have:
+            #
+            #
+            #             - Character range
+            #             - Digits range
+            #             - Symbols listed in characters allowed for ranges
+        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+            # the path.
+      },
     },
     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to
@@ -5763,6 +5903,34 @@ Returns:
               # required.
               #
               # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+          &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+            &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                # It uses RE2 syntax with the following constraints:
+                #
+                #
+                #      - Any single character operators
+                #      - Groups are allowed to have only submatch operator inside
+                #      - Groups are allowed only without any char repetition, e.g.
+                #      .*
+                #      - Any char repetition, e.g. .*, is
+                #      only allowed to be used in a single regex together with:
+                #
+                #
+                #             - Empty string operators
+                #             - Other repetitions
+                #             - Ranges
+                #             - Repetitions of ranges
+                #
+                #
+                #      - Ranges are only allowed to have:
+                #
+                #
+                #             - Character range
+                #             - Digits range
+                #             - Symbols listed in characters allowed for ranges
+            &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                # the path.
+          },
         },
         &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
             # occurs. The weights determine the fraction of traffic that flows to
@@ -6601,6 +6769,34 @@ Returns:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -7701,6 +7897,34 @@ Returns:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -8563,6 +8787,34 @@ Args:
           # required.
           #
           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+            # It uses RE2 syntax with the following constraints:
+            #
+            #
+            #      - Any single character operators
+            #      - Groups are allowed to have only submatch operator inside
+            #      - Groups are allowed only without any char repetition, e.g.
+            #      .*
+            #      - Any char repetition, e.g. .*, is
+            #      only allowed to be used in a single regex together with:
+            #
+            #
+            #             - Empty string operators
+            #             - Other repetitions
+            #             - Ranges
+            #             - Repetitions of ranges
+            #
+            #
+            #      - Ranges are only allowed to have:
+            #
+            #
+            #             - Character range
+            #             - Digits range
+            #             - Symbols listed in characters allowed for ranges
+        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+            # the path.
+      },
     },
     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to
@@ -9420,6 +9672,34 @@ Args:
               # required.
               #
               # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+          &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+            &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                # It uses RE2 syntax with the following constraints:
+                #
+                #
+                #      - Any single character operators
+                #      - Groups are allowed to have only submatch operator inside
+                #      - Groups are allowed only without any char repetition, e.g.
+                #      .*
+                #      - Any char repetition, e.g. .*, is
+                #      only allowed to be used in a single regex together with:
+                #
+                #
+                #             - Empty string operators
+                #             - Other repetitions
+                #             - Ranges
+                #             - Repetitions of ranges
+                #
+                #
+                #      - Ranges are only allowed to have:
+                #
+                #
+                #             - Character range
+                #             - Digits range
+                #             - Symbols listed in characters allowed for ranges
+            &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                # the path.
+          },
         },
         &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
             # occurs. The weights determine the fraction of traffic that flows to
@@ -10258,6 +10538,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -11358,6 +11666,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -12927,6 +13263,34 @@ Returns:
               # required.
               #
               # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+          &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+            &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                # It uses RE2 syntax with the following constraints:
+                #
+                #
+                #      - Any single character operators
+                #      - Groups are allowed to have only submatch operator inside
+                #      - Groups are allowed only without any char repetition, e.g.
+                #      .*
+                #      - Any char repetition, e.g. .*, is
+                #      only allowed to be used in a single regex together with:
+                #
+                #
+                #             - Empty string operators
+                #             - Other repetitions
+                #             - Ranges
+                #             - Repetitions of ranges
+                #
+                #
+                #      - Ranges are only allowed to have:
+                #
+                #
+                #             - Character range
+                #             - Digits range
+                #             - Symbols listed in characters allowed for ranges
+            &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                # the path.
+          },
         },
         &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
             # occurs. The weights determine the fraction of traffic that flows to
@@ -13784,6 +14148,34 @@ Returns:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -14622,6 +15014,34 @@ Returns:
                       # required.
                       #
                       # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                  &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                    &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                        # It uses RE2 syntax with the following constraints:
+                        #
+                        #
+                        #      - Any single character operators
+                        #      - Groups are allowed to have only submatch operator inside
+                        #      - Groups are allowed only without any char repetition, e.g.
+                        #      .*
+                        #      - Any char repetition, e.g. .*, is
+                        #      only allowed to be used in a single regex together with:
+                        #
+                        #
+                        #             - Empty string operators
+                        #             - Other repetitions
+                        #             - Ranges
+                        #             - Repetitions of ranges
+                        #
+                        #
+                        #      - Ranges are only allowed to have:
+                        #
+                        #
+                        #             - Character range
+                        #             - Digits range
+                        #             - Symbols listed in characters allowed for ranges
+                    &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                        # the path.
+                  },
                 },
                 &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                     # occurs. The weights determine the fraction of traffic that flows to
@@ -15722,6 +16142,34 @@ Returns:
                       # required.
                       #
                       # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                  &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                    &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                        # It uses RE2 syntax with the following constraints:
+                        #
+                        #
+                        #      - Any single character operators
+                        #      - Groups are allowed to have only submatch operator inside
+                        #      - Groups are allowed only without any char repetition, e.g.
+                        #      .*
+                        #      - Any char repetition, e.g. .*, is
+                        #      only allowed to be used in a single regex together with:
+                        #
+                        #
+                        #             - Empty string operators
+                        #             - Other repetitions
+                        #             - Ranges
+                        #             - Repetitions of ranges
+                        #
+                        #
+                        #      - Ranges are only allowed to have:
+                        #
+                        #
+                        #             - Character range
+                        #             - Digits range
+                        #             - Symbols listed in characters allowed for ranges
+                    &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                        # the path.
+                  },
                 },
                 &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                     # occurs. The weights determine the fraction of traffic that flows to
@@ -16635,6 +17083,34 @@ Args:
           # required.
           #
           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+            # It uses RE2 syntax with the following constraints:
+            #
+            #
+            #      - Any single character operators
+            #      - Groups are allowed to have only submatch operator inside
+            #      - Groups are allowed only without any char repetition, e.g.
+            #      .*
+            #      - Any char repetition, e.g. .*, is
+            #      only allowed to be used in a single regex together with:
+            #
+            #
+            #             - Empty string operators
+            #             - Other repetitions
+            #             - Ranges
+            #             - Repetitions of ranges
+            #
+            #
+            #      - Ranges are only allowed to have:
+            #
+            #
+            #             - Character range
+            #             - Digits range
+            #             - Symbols listed in characters allowed for ranges
+        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+            # the path.
+      },
     },
     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to
@@ -17492,6 +17968,34 @@ Args:
               # required.
               #
               # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+          &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+            &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                # It uses RE2 syntax with the following constraints:
+                #
+                #
+                #      - Any single character operators
+                #      - Groups are allowed to have only submatch operator inside
+                #      - Groups are allowed only without any char repetition, e.g.
+                #      .*
+                #      - Any char repetition, e.g. .*, is
+                #      only allowed to be used in a single regex together with:
+                #
+                #
+                #             - Empty string operators
+                #             - Other repetitions
+                #             - Ranges
+                #             - Repetitions of ranges
+                #
+                #
+                #      - Ranges are only allowed to have:
+                #
+                #
+                #             - Character range
+                #             - Digits range
+                #             - Symbols listed in characters allowed for ranges
+            &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                # the path.
+          },
         },
         &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
             # occurs. The weights determine the fraction of traffic that flows to
@@ -18330,6 +18834,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -19430,6 +19962,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -20611,6 +21171,34 @@ Args:
           # required.
           #
           # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+      &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+        &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+            # It uses RE2 syntax with the following constraints:
+            #
+            #
+            #      - Any single character operators
+            #      - Groups are allowed to have only submatch operator inside
+            #      - Groups are allowed only without any char repetition, e.g.
+            #      .*
+            #      - Any char repetition, e.g. .*, is
+            #      only allowed to be used in a single regex together with:
+            #
+            #
+            #             - Empty string operators
+            #             - Other repetitions
+            #             - Ranges
+            #             - Repetitions of ranges
+            #
+            #
+            #      - Ranges are only allowed to have:
+            #
+            #
+            #             - Character range
+            #             - Digits range
+            #             - Symbols listed in characters allowed for ranges
+        &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+            # the path.
+      },
     },
     &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
         # occurs. The weights determine the fraction of traffic that flows to
@@ -21468,6 +22056,34 @@ Args:
               # required.
               #
               # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+          &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+            &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                # It uses RE2 syntax with the following constraints:
+                #
+                #
+                #      - Any single character operators
+                #      - Groups are allowed to have only submatch operator inside
+                #      - Groups are allowed only without any char repetition, e.g.
+                #      .*
+                #      - Any char repetition, e.g. .*, is
+                #      only allowed to be used in a single regex together with:
+                #
+                #
+                #             - Empty string operators
+                #             - Other repetitions
+                #             - Ranges
+                #             - Repetitions of ranges
+                #
+                #
+                #      - Ranges are only allowed to have:
+                #
+                #
+                #             - Character range
+                #             - Digits range
+                #             - Symbols listed in characters allowed for ranges
+            &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                # the path.
+          },
         },
         &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
             # occurs. The weights determine the fraction of traffic that flows to
@@ -22306,6 +22922,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -23406,6 +24050,34 @@ Args:
                   # required.
                   #
                   # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+              &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                    # It uses RE2 syntax with the following constraints:
+                    #
+                    #
+                    #      - Any single character operators
+                    #      - Groups are allowed to have only submatch operator inside
+                    #      - Groups are allowed only without any char repetition, e.g.
+                    #      .*
+                    #      - Any char repetition, e.g. .*, is
+                    #      only allowed to be used in a single regex together with:
+                    #
+                    #
+                    #             - Empty string operators
+                    #             - Other repetitions
+                    #             - Ranges
+                    #             - Repetitions of ranges
+                    #
+                    #
+                    #      - Ranges are only allowed to have:
+                    #
+                    #
+                    #             - Character range
+                    #             - Digits range
+                    #             - Symbols listed in characters allowed for ranges
+                &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                    # the path.
+              },
             },
             &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                 # occurs. The weights determine the fraction of traffic that flows to
@@ -24573,6 +25245,34 @@ Args:
             # required.
             #
             # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+        &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+          &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+              # It uses RE2 syntax with the following constraints:
+              #
+              #
+              #      - Any single character operators
+              #      - Groups are allowed to have only submatch operator inside
+              #      - Groups are allowed only without any char repetition, e.g.
+              #      .*
+              #      - Any char repetition, e.g. .*, is
+              #      only allowed to be used in a single regex together with:
+              #
+              #
+              #             - Empty string operators
+              #             - Other repetitions
+              #             - Ranges
+              #             - Repetitions of ranges
+              #
+              #
+              #      - Ranges are only allowed to have:
+              #
+              #
+              #             - Character range
+              #             - Digits range
+              #             - Symbols listed in characters allowed for ranges
+          &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+              # the path.
+        },
       },
       &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
           # occurs. The weights determine the fraction of traffic that flows to
@@ -25430,6 +26130,34 @@ Args:
                 # required.
                 #
                 # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+            &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+              &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                  # It uses RE2 syntax with the following constraints:
+                  #
+                  #
+                  #      - Any single character operators
+                  #      - Groups are allowed to have only submatch operator inside
+                  #      - Groups are allowed only without any char repetition, e.g.
+                  #      .*
+                  #      - Any char repetition, e.g. .*, is
+                  #      only allowed to be used in a single regex together with:
+                  #
+                  #
+                  #             - Empty string operators
+                  #             - Other repetitions
+                  #             - Ranges
+                  #             - Repetitions of ranges
+                  #
+                  #
+                  #      - Ranges are only allowed to have:
+                  #
+                  #
+                  #             - Character range
+                  #             - Digits range
+                  #             - Symbols listed in characters allowed for ranges
+              &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                  # the path.
+            },
           },
           &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
               # occurs. The weights determine the fraction of traffic that flows to
@@ -26268,6 +26996,34 @@ Args:
                     # required.
                     #
                     # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                  &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                      # It uses RE2 syntax with the following constraints:
+                      #
+                      #
+                      #      - Any single character operators
+                      #      - Groups are allowed to have only submatch operator inside
+                      #      - Groups are allowed only without any char repetition, e.g.
+                      #      .*
+                      #      - Any char repetition, e.g. .*, is
+                      #      only allowed to be used in a single regex together with:
+                      #
+                      #
+                      #             - Empty string operators
+                      #             - Other repetitions
+                      #             - Ranges
+                      #             - Repetitions of ranges
+                      #
+                      #
+                      #      - Ranges are only allowed to have:
+                      #
+                      #
+                      #             - Character range
+                      #             - Digits range
+                      #             - Symbols listed in characters allowed for ranges
+                  &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                      # the path.
+                },
               },
               &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                   # occurs. The weights determine the fraction of traffic that flows to
@@ -27368,6 +28124,34 @@ Args:
                     # required.
                     #
                     # Only one of path_prefix_rewrite orpath_template_rewrite may be specified.
+                &quot;regexRewrite&quot;: { # The spec for modifying the path using a regular expression. # The regex rewrite to be applied to the URL. Only one ofpathPrefixRewrite, pathTemplateRewrite, orregexRewrite may be specified.
+                  &quot;pathPattern&quot;: &quot;A String&quot;, # The regular expression used to match against the URL path.
+                      # It uses RE2 syntax with the following constraints:
+                      #
+                      #
+                      #      - Any single character operators
+                      #      - Groups are allowed to have only submatch operator inside
+                      #      - Groups are allowed only without any char repetition, e.g.
+                      #      .*
+                      #      - Any char repetition, e.g. .*, is
+                      #      only allowed to be used in a single regex together with:
+                      #
+                      #
+                      #             - Empty string operators
+                      #             - Other repetitions
+                      #             - Ranges
+                      #             - Repetitions of ranges
+                      #
+                      #
+                      #      - Ranges are only allowed to have:
+                      #
+                      #
+                      #             - Character range
+                      #             - Digits range
+                      #             - Symbols listed in characters allowed for ranges
+                  &quot;pathSubstitution&quot;: &quot;A String&quot;, # Required when path pattern is specified. Used to rewrite matching parts of
+                      # the path.
+                },
               },
               &quot;weightedBackendServices&quot;: [ # A list of weighted backend services to send traffic to when a route match
                   # occurs. The weights determine the fraction of traffic that flows to

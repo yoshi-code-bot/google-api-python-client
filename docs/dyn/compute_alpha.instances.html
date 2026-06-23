@@ -2600,6 +2600,14 @@ Returns:
                 # Engine cluster, as well as the ID of the block, sub-block, and host on
                 # which the running instance is located.
                 # running.
+              &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+                &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                    # example
+                    # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                    # the location ID of the topologies.
+                  &quot;a_key&quot;: &quot;A String&quot;,
+                },
+              },
               &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
                   # located. Instances within the same block experience low network latency.
               &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -2840,6 +2848,9 @@ Returns:
                 # Off for Standard VMs and 30 seconds for Spot VMs.
             &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
                 # termination action will be performed at the termination time.
+            &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+              &quot;mode&quot;: &quot;A String&quot;,
+            },
             &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
                 # unspecified, the default mode is `OFF`.
           },
@@ -5377,6 +5388,9 @@ Args:
           # Off for Standard VMs and 30 seconds for Spot VMs.
       &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
           # termination action will be performed at the termination time.
+      &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+        &quot;mode&quot;: &quot;A String&quot;,
+      },
       &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
           # unspecified, the default mode is `OFF`.
     },
@@ -8067,6 +8081,14 @@ Returns:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -8307,6 +8329,9 @@ Returns:
         # Off for Standard VMs and 30 seconds for Spot VMs.
     &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
         # termination action will be performed at the termination time.
+    &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+      &quot;mode&quot;: &quot;A String&quot;,
+    },
     &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
         # unspecified, the default mode is `OFF`.
   },
@@ -11248,6 +11273,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -11488,6 +11521,9 @@ Args:
         # Off for Standard VMs and 30 seconds for Spot VMs.
     &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
         # termination action will be performed at the termination time.
+    &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+      &quot;mode&quot;: &quot;A String&quot;,
+    },
     &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
         # unspecified, the default mode is `OFF`.
   },
@@ -13121,6 +13157,14 @@ Returns:
             # Engine cluster, as well as the ID of the block, sub-block, and host on
             # which the running instance is located.
             # running.
+          &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+            &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+                # example
+                # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+                # the location ID of the topologies.
+              &quot;a_key&quot;: &quot;A String&quot;,
+            },
+          },
           &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
               # located. Instances within the same block experience low network latency.
           &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -13361,6 +13405,9 @@ Returns:
             # Off for Standard VMs and 30 seconds for Spot VMs.
         &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
             # termination action will be performed at the termination time.
+        &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+          &quot;mode&quot;: &quot;A String&quot;,
+        },
         &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
             # unspecified, the default mode is `OFF`.
       },
@@ -19376,6 +19423,9 @@ Args:
       # Off for Standard VMs and 30 seconds for Spot VMs.
   &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
       # termination action will be performed at the termination time.
+  &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+    &quot;mode&quot;: &quot;A String&quot;,
+  },
   &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
       # unspecified, the default mode is `OFF`.
 }
@@ -23929,6 +23979,14 @@ Args:
         # Engine cluster, as well as the ID of the block, sub-block, and host on
         # which the running instance is located.
         # running.
+      &quot;additionalAttributes&quot;: { # Additional location information of the running instance. # Output only. [Output Only] Additional location information of the running instance.
+        &quot;acceleratorTopologyIds&quot;: { # Output only. The IDs of the accelerator topologies the instance belongs to. For
+            # example
+            # The key will be topologies like &quot;4x4&quot;, &quot;2x2x2&quot; and the value will be
+            # the location ID of the topologies.
+          &quot;a_key&quot;: &quot;A String&quot;,
+        },
+      },
       &quot;block&quot;: &quot;A String&quot;, # [Output Only] The ID of the block in which the running instance is
           # located. Instances within the same block experience low network latency.
       &quot;cluster&quot;: &quot;A String&quot;, # [Output Only] The global name of the Compute Engine cluster where the
@@ -24169,6 +24227,9 @@ Args:
         # Off for Standard VMs and 30 seconds for Spot VMs.
     &quot;terminationTime&quot;: &quot;A String&quot;, # Specifies the timestamp, when the instance will be terminated, inRFC3339 text format. If specified, the instance
         # termination action will be performed at the termination time.
+    &quot;vsockMode&quot;: { # Message to control the enablement of the vsock device. # The vsock mode of the instance.
+      &quot;mode&quot;: &quot;A String&quot;,
+    },
     &quot;windowsLicenseOptimizationMode&quot;: &quot;A String&quot;, # Represents the Windows Server License Optimization Mode of the VM. If
         # unspecified, the default mode is `OFF`.
   },
