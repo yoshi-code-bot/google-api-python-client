@@ -244,7 +244,7 @@ Args:
       { # An instance-attached disk resource.
         &quot;diskEncryption&quot;: &quot;A String&quot;, # Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         &quot;diskSizeGb&quot;: &quot;A String&quot;, # Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
-        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Input only. Indicates the type of the disk.
+        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Indicates the type of the disk.
         &quot;kmsKey&quot;: &quot;A String&quot;, # Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
         &quot;resourcePolicies&quot;: [ # Optional. The resource policies to apply to the data disk.
           &quot;A String&quot;,
@@ -527,7 +527,7 @@ Returns:
       { # An instance-attached disk resource.
         &quot;diskEncryption&quot;: &quot;A String&quot;, # Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         &quot;diskSizeGb&quot;: &quot;A String&quot;, # Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
-        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Input only. Indicates the type of the disk.
+        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Indicates the type of the disk.
         &quot;kmsKey&quot;: &quot;A String&quot;, # Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
         &quot;resourcePolicies&quot;: [ # Optional. The resource policies to apply to the data disk.
           &quot;A String&quot;,
@@ -638,6 +638,8 @@ Returns:
     { # Response for getting WbI configurations in a location
   &quot;availableImages&quot;: [ # Output only. The list of available images to create a WbI.
     { # ConfigImage represents an image release available to create a WbI
+      &quot;description&quot;: &quot;A String&quot;, # Output only. The description of the image.
+      &quot;imageFamily&quot;: &quot;A String&quot;, # Output only. The image family of the image. (ex: workbench-instances or workbench-2603)
       &quot;imageName&quot;: &quot;A String&quot;, # Output only. The name of the image of the form workbench-instances-vYYYYmmdd--
       &quot;releaseName&quot;: &quot;A String&quot;, # Output only. The release of the image of the form m123
     },
@@ -743,7 +745,7 @@ Returns:
           { # An instance-attached disk resource.
             &quot;diskEncryption&quot;: &quot;A String&quot;, # Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
             &quot;diskSizeGb&quot;: &quot;A String&quot;, # Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
-            &quot;diskType&quot;: &quot;A String&quot;, # Optional. Input only. Indicates the type of the disk.
+            &quot;diskType&quot;: &quot;A String&quot;, # Optional. Indicates the type of the disk.
             &quot;kmsKey&quot;: &quot;A String&quot;, # Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
             &quot;resourcePolicies&quot;: [ # Optional. The resource policies to apply to the data disk.
               &quot;A String&quot;,
@@ -897,7 +899,7 @@ Args:
       { # An instance-attached disk resource.
         &quot;diskEncryption&quot;: &quot;A String&quot;, # Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
         &quot;diskSizeGb&quot;: &quot;A String&quot;, # Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
-        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Input only. Indicates the type of the disk.
+        &quot;diskType&quot;: &quot;A String&quot;, # Optional. Indicates the type of the disk.
         &quot;kmsKey&quot;: &quot;A String&quot;, # Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
         &quot;resourcePolicies&quot;: [ # Optional. The resource policies to apply to the data disk.
           &quot;A String&quot;,
@@ -1130,7 +1132,7 @@ Args:
   &quot;dataDisk&quot;: { # An instance-attached disk resource. # Required. The data disk to be resized. Only disk_size_gb will be used.
     &quot;diskEncryption&quot;: &quot;A String&quot;, # Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
     &quot;diskSizeGb&quot;: &quot;A String&quot;, # Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If not specified, this defaults to 100.
-    &quot;diskType&quot;: &quot;A String&quot;, # Optional. Input only. Indicates the type of the disk.
+    &quot;diskType&quot;: &quot;A String&quot;, # Optional. Indicates the type of the disk.
     &quot;kmsKey&quot;: &quot;A String&quot;, # Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more about using your own encryption keys.
     &quot;resourcePolicies&quot;: [ # Optional. The resource policies to apply to the data disk.
       &quot;A String&quot;,
@@ -1435,6 +1437,7 @@ Args:
     The object takes the form of:
 
 { # Request for upgrading a notebook instance
+  &quot;imageFamily&quot;: &quot;A String&quot;, # Optional. The Compute Engine image family resource name to upgrade to. Format: `projects/{project_id}/global/images/family/{image_family}` If specified, the instance will be upgraded to the latest image in the specified image family, allowing upgrades across image families. If not specified, the instance will be upgraded to the latest image in its current image family.
 }
 
   x__xgafv: string, V1 error format.
