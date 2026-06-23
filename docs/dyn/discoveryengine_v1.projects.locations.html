@@ -262,6 +262,14 @@ Args:
       &quot;supportedConnectorModes&quot;: [ # Required. The supported connector modes for the associated BAP connection.
         &quot;A String&quot;,
       ],
+      &quot;toolspecOverride&quot;: { # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds the (simplified) per-tool definitions surfaced to and editable by the admin in the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as a separate public type so the Discovery Engine API surface can evolve independently of the fed-API surface (AIP-215). Handlers convert between the two via helpers in //cloud/ml/discoveryengine/external_service/v1main/data_connector_service/lib:bap_custom_tool_util. # Optional. Custom toolspec overrides for this connection. For Enterprise BAP connectors that support admin-curated tool definitions, this holds the (simplified) per-tool overrides. On Get, populated by the server by merging persisted overrides with live runtime tool definitions and trimming the result for UI consumption. On Update, the supplied value replaces the persisted overrides after server-side validation and merging: the `base_version` field MUST match the server&#x27;s current base toolspec version (otherwise the request is rejected with a user-facing error directing the admin to re-download the latest tools first).
+        &quot;baseVersion&quot;: &quot;A String&quot;, # Required. Base toolspec version against which `tools` were authored. On Update, MUST match the server&#x27;s current stable toolspec version for the connection; mismatch is rejected with a user-facing error directing the admin to re-download the latest tools first.
+        &quot;tools&quot;: [ # Required. Tool definitions (one Struct per tool) that the admin has customised on top of the base toolspec returned by the fed API. REQUIRED because it is the only user-editable field in the modify API; the request must carry at least one tool.
+          {
+            &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+          },
+        ],
+      },
     },
     &quot;blockingReasons&quot;: [ # Output only. User actions that must be completed before the connector can start syncing data.
       &quot;A String&quot;,
@@ -519,6 +527,14 @@ Args:
     &quot;supportedConnectorModes&quot;: [ # Required. The supported connector modes for the associated BAP connection.
       &quot;A String&quot;,
     ],
+    &quot;toolspecOverride&quot;: { # Customer-facing view of the admin-curated toolspec for a BAP connection. Holds the (simplified) per-tool definitions surfaced to and editable by the admin in the Discovery Engine UI. Mirrors the shape of the backend `google.cloud.connectorexecution.v1.ToolspecOverride` message, but is intentionally kept as a separate public type so the Discovery Engine API surface can evolve independently of the fed-API surface (AIP-215). Handlers convert between the two via helpers in //cloud/ml/discoveryengine/external_service/v1main/data_connector_service/lib:bap_custom_tool_util. # Optional. Custom toolspec overrides for this connection. For Enterprise BAP connectors that support admin-curated tool definitions, this holds the (simplified) per-tool overrides. On Get, populated by the server by merging persisted overrides with live runtime tool definitions and trimming the result for UI consumption. On Update, the supplied value replaces the persisted overrides after server-side validation and merging: the `base_version` field MUST match the server&#x27;s current base toolspec version (otherwise the request is rejected with a user-facing error directing the admin to re-download the latest tools first).
+      &quot;baseVersion&quot;: &quot;A String&quot;, # Required. Base toolspec version against which `tools` were authored. On Update, MUST match the server&#x27;s current stable toolspec version for the connection; mismatch is rejected with a user-facing error directing the admin to re-download the latest tools first.
+      &quot;tools&quot;: [ # Required. Tool definitions (one Struct per tool) that the admin has customised on top of the base toolspec returned by the fed API. REQUIRED because it is the only user-editable field in the modify API; the request must carry at least one tool.
+        {
+          &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
+        },
+      ],
+    },
   },
   &quot;blockingReasons&quot;: [ # Output only. User actions that must be completed before the connector can start syncing data.
     &quot;A String&quot;,
