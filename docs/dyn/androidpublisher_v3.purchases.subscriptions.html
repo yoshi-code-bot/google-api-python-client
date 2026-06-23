@@ -79,13 +79,13 @@ h1, h2, h3 {
 <p class="firstline">Acknowledges a subscription purchase.</p>
 <p class="toc_element">
   <code><a href="#cancel">cancel(packageName, subscriptionId, token, x__xgafv=None)</a></code></p>
-<p class="firstline">Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.</p>
+<p class="firstline">Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.</p>
 <p class="toc_element">
   <code><a href="#close">close()</a></code></p>
 <p class="firstline">Close httplib2 connections.</p>
 <p class="toc_element">
   <code><a href="#defer">defer(packageName, subscriptionId, token, body=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Defers a user's subscription purchase until a specified future expiration time.</p>
+<p class="firstline">Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user's subscription purchase until a specified future expiration time.</p>
 <p class="toc_element">
   <code><a href="#get">get(packageName, subscriptionId, token, x__xgafv=None)</a></code></p>
 <p class="firstline">Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's subscription purchase is valid and returns its expiry time.</p>
@@ -124,7 +124,7 @@ Args:
 
 <div class="method">
     <code class="details" id="cancel">cancel(packageName, subscriptionId, token, x__xgafv=None)</code>
-  <pre>Cancels a user&#x27;s subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.
+  <pre>Deprecated: Use purchases.subscriptionsv2.cancel instead. Cancels a user&#x27;s subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.
 
 Args:
   packageName: string, The package name of the application for which this subscription was purchased (for example, &#x27;com.some.thing&#x27;). (required)
@@ -144,7 +144,7 @@ Args:
 
 <div class="method">
     <code class="details" id="defer">defer(packageName, subscriptionId, token, body=None, x__xgafv=None)</code>
-  <pre>Defers a user&#x27;s subscription purchase until a specified future expiration time.
+  <pre>Deprecated: Use purchases.subscriptionsv2.defer instead. Defers a user&#x27;s subscription purchase until a specified future expiration time.
 
 Args:
   packageName: string, The package name of the application for which this subscription was purchased (for example, &#x27;com.some.thing&#x27;). (required)
@@ -189,7 +189,7 @@ Args:
 Returns:
   An object of the form:
 
-    { # A SubscriptionPurchase resource indicates the status of a user&#x27;s subscription purchase.
+    { # Deprecated: Use SubscriptionPurchaseV2 instead. A SubscriptionPurchase resource indicates the status of a user&#x27;s subscription purchase.
   &quot;acknowledgementState&quot;: 42, # The acknowledgement state of the subscription product. Possible values are: 0. Yet to be acknowledged 1. Acknowledged
   &quot;autoRenewing&quot;: True or False, # Whether the subscription will automatically be renewed when it reaches its current expiry time.
   &quot;autoResumeTimeMillis&quot;: &quot;A String&quot;, # Time at which the subscription will be automatically resumed, in milliseconds since the Epoch. Only present if the user has requested to pause the subscription.
