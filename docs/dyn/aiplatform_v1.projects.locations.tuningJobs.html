@@ -262,7 +262,7 @@ Args:
           &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
           &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
           &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
             &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
             &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
               &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -276,13 +276,39 @@ Args:
           &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
           &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
           &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+          &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+            { # Configuration for the model to configure output formatting and delivery.
+              &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+              },
+              &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+              },
+              &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+              },
+              &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+              },
+            },
+          ],
+          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
           &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
           &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
             &quot;A String&quot;,
           ],
-          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
             &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
             &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
               # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -383,7 +409,7 @@ Args:
         &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
         &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
         &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
           &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
           &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
             &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -397,13 +423,39 @@ Args:
         &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
         &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
         &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+        &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+          { # Configuration for the model to configure output formatting and delivery.
+            &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+              &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+              &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+            },
+            &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+            },
+            &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+              &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+            },
+            &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+              &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+            },
+          },
+        ],
+        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
         &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
         &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
           &quot;A String&quot;,
         ],
-        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
           &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
           &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
             # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -522,7 +574,7 @@ Args:
                 &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                 &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                 &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                   &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                   &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                     &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -536,13 +588,39 @@ Args:
                 &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                 &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                 &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                  { # Configuration for the model to configure output formatting and delivery.
+                    &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                      &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                      &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                    },
+                    &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                    },
+                    &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                      &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                    },
+                    &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                      &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                    },
+                  },
+                ],
+                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                 &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                 &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                   &quot;A String&quot;,
                 ],
-                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                   &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                     # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -653,7 +731,7 @@ Args:
                   &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                   &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                   &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                     &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                     &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                       &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -667,13 +745,39 @@ Args:
                   &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                   &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                   &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                  &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                    { # Configuration for the model to configure output formatting and delivery.
+                      &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                        &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                        &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                      },
+                      &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                      },
+                      &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                        &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                      },
+                      &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                        &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                      },
+                    },
+                  ],
+                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                   &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                     &quot;A String&quot;,
                   ],
-                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                     &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                       # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -1352,7 +1456,7 @@ Returns:
           &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
           &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
           &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
             &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
             &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
               &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -1366,13 +1470,39 @@ Returns:
           &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
           &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
           &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+          &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+            { # Configuration for the model to configure output formatting and delivery.
+              &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+              },
+              &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+              },
+              &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+              },
+              &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+              },
+            },
+          ],
+          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
           &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
           &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
             &quot;A String&quot;,
           ],
-          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
             &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
             &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
               # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -1473,7 +1603,7 @@ Returns:
         &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
         &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
         &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
           &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
           &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
             &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -1487,13 +1617,39 @@ Returns:
         &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
         &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
         &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+        &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+          { # Configuration for the model to configure output formatting and delivery.
+            &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+              &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+              &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+            },
+            &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+            },
+            &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+              &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+            },
+            &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+              &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+            },
+          },
+        ],
+        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
         &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
         &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
           &quot;A String&quot;,
         ],
-        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
           &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
           &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
             # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -1612,7 +1768,7 @@ Returns:
                 &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                 &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                 &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                   &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                   &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                     &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -1626,13 +1782,39 @@ Returns:
                 &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                 &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                 &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                  { # Configuration for the model to configure output formatting and delivery.
+                    &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                      &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                      &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                    },
+                    &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                    },
+                    &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                      &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                    },
+                    &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                      &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                    },
+                  },
+                ],
+                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                 &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                 &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                   &quot;A String&quot;,
                 ],
-                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                   &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                     # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -1743,7 +1925,7 @@ Returns:
                   &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                   &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                   &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                     &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                     &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                       &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -1757,13 +1939,39 @@ Returns:
                   &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                   &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                   &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                  &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                    { # Configuration for the model to configure output formatting and delivery.
+                      &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                        &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                        &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                      },
+                      &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                      },
+                      &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                        &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                      },
+                      &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                        &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                      },
+                    },
+                  ],
+                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                   &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                     &quot;A String&quot;,
                   ],
-                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                     &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                       # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -2449,7 +2657,7 @@ Returns:
           &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
           &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
           &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
             &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
             &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
               &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -2463,13 +2671,39 @@ Returns:
           &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
           &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
           &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+          &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+            { # Configuration for the model to configure output formatting and delivery.
+              &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+              },
+              &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+              },
+              &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+              },
+              &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+              },
+            },
+          ],
+          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
           &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
           &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
             &quot;A String&quot;,
           ],
-          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
             &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
             &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
               # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -2570,7 +2804,7 @@ Returns:
         &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
         &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
         &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+        &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
           &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
           &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
             &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -2584,13 +2818,39 @@ Returns:
         &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
         &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
         &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+        &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+          { # Configuration for the model to configure output formatting and delivery.
+            &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+              &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+              &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+            },
+            &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+            },
+            &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+              &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+              &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+            },
+            &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+              &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+              &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+              &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+              &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+            },
+          },
+        ],
+        &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
         &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+        &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
         &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
           &quot;A String&quot;,
         ],
-        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+        &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
           &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
           &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
             # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -2709,7 +2969,7 @@ Returns:
                 &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                 &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                 &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                   &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                   &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                     &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -2723,13 +2983,39 @@ Returns:
                 &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                 &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                 &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                  { # Configuration for the model to configure output formatting and delivery.
+                    &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                      &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                      &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                    },
+                    &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                    },
+                    &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                      &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                      &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                    },
+                    &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                      &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                      &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                      &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                      &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                    },
+                  },
+                ],
+                &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                 &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                 &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                   &quot;A String&quot;,
                 ],
-                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                   &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                     # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -2840,7 +3126,7 @@ Returns:
                   &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                   &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                   &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                     &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                     &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                       &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -2854,13 +3140,39 @@ Returns:
                   &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                   &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                   &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                  &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                    { # Configuration for the model to configure output formatting and delivery.
+                      &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                        &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                        &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                      },
+                      &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                      },
+                      &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                        &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                      },
+                      &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                        &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                      },
+                    },
+                  ],
+                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                   &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                     &quot;A String&quot;,
                   ],
-                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                     &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                       # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -3552,7 +3864,7 @@ Returns:
               &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
               &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
               &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-              &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+              &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                 &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                 &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                   &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -3566,13 +3878,39 @@ Returns:
               &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
               &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
               &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-              &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+              &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                { # Configuration for the model to configure output formatting and delivery.
+                  &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                    &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                    &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                    &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                    &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                  },
+                  &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                    &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                    &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                    &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                    &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                  },
+                  &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                    &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                    &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                  },
+                  &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                    &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                    &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                    &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                    &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                  },
+                },
+              ],
+              &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
               &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-              &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+              &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
               &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                 &quot;A String&quot;,
               ],
-              &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+              &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                 &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                 &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                   # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -3673,7 +4011,7 @@ Returns:
             &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
             &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
             &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-            &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+            &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
               &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
               &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                 &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -3687,13 +4025,39 @@ Returns:
             &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
             &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
             &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-            &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+            &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+              { # Configuration for the model to configure output formatting and delivery.
+                &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                  &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                  &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                },
+                &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                  &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                },
+                &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                  &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                },
+                &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                  &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                  &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                },
+              },
+            ],
+            &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
             &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-            &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+            &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
             &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
               &quot;A String&quot;,
             ],
-            &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+            &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
               &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
               &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                 # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -3812,7 +4176,7 @@ Returns:
                     &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                     &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                     &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                    &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                    &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                       &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                       &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                         &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -3826,13 +4190,39 @@ Returns:
                     &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                     &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                     &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                    &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                    &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                      { # Configuration for the model to configure output formatting and delivery.
+                        &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                          &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                          &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                        },
+                        &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                          &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                        },
+                        &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                          &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                        },
+                        &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                          &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                          &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                        },
+                      },
+                    ],
+                    &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                    &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                    &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                     &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                       &quot;A String&quot;,
                     ],
-                    &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                    &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                       &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                       &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                         # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -3943,7 +4333,7 @@ Returns:
                       &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                       &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                       &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                      &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                      &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                         &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                         &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                           &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -3957,13 +4347,39 @@ Returns:
                       &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                       &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                       &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                      &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                      &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                        { # Configuration for the model to configure output formatting and delivery.
+                          &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                            &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                            &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                            &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                            &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                          },
+                          &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                            &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                            &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                            &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                            &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                          },
+                          &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                            &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                            &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                          },
+                          &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                            &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                            &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                            &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                            &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                          },
+                        },
+                      ],
+                      &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                       &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                      &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                      &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                       &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                         &quot;A String&quot;,
                       ],
-                      &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                      &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                         &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                         &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                           # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -4670,7 +5086,7 @@ Args:
             &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
             &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
             &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-            &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+            &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
               &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
               &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                 &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -4684,13 +5100,39 @@ Args:
             &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
             &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
             &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-            &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+            &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+              { # Configuration for the model to configure output formatting and delivery.
+                &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                  &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                  &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                },
+                &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                  &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                },
+                &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                  &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                  &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                },
+                &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                  &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                  &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                  &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                  &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                },
+              },
+            ],
+            &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
             &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-            &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+            &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
             &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
               &quot;A String&quot;,
             ],
-            &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+            &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
               &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
               &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                 # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -4791,7 +5233,7 @@ Args:
           &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
           &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
           &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+          &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
             &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
             &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
               &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -4805,13 +5247,39 @@ Args:
           &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
           &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
           &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+          &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+            { # Configuration for the model to configure output formatting and delivery.
+              &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+              },
+              &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+              },
+              &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+              },
+              &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+              },
+            },
+          ],
+          &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
           &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+          &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
           &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
             &quot;A String&quot;,
           ],
-          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+          &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
             &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
             &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
               # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -4930,7 +5398,7 @@ Args:
                   &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                   &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                   &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                  &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                     &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                     &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                       &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -4944,13 +5412,39 @@ Args:
                   &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                   &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                   &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                  &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                    { # Configuration for the model to configure output formatting and delivery.
+                      &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                        &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                        &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                      },
+                      &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                      },
+                      &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                        &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                        &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                      },
+                      &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                        &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                        &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                        &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                        &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                      },
+                    },
+                  ],
+                  &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                   &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                  &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                   &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                     &quot;A String&quot;,
                   ],
-                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                  &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                     &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                       # Object with schema name: GoogleCloudAiplatformV1Schema
@@ -5061,7 +5555,7 @@ Args:
                     &quot;candidateCount&quot;: 42, # Optional. The number of candidate responses to generate. A higher `candidate_count` can provide more options to choose from, but it also consumes more resources. This can be useful for generating a variety of responses and selecting the best one.
                     &quot;enableAffectiveDialog&quot;: True or False, # Optional. If enabled, the model will detect emotions and adapt its responses accordingly. For example, if the model detects that the user is frustrated, it may provide a more empathetic response.
                     &quot;frequencyPenalty&quot;: 3.14, # Optional. Penalizes tokens based on their frequency in the generated text. A positive value helps to reduce the repetition of words and phrases. Valid values can range from [-2.0, 2.0].
-                    &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features.
+                    &quot;imageConfig&quot;: { # Configuration for image generation. This message allows you to control various aspects of image generation, such as the output format, aspect ratio, and whether the model can generate images of people. # Optional. Config for image generation features. Deprecated: Use `response_format.image` instead.
                       &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The desired aspect ratio for the generated images. The following aspect ratios are supported: &quot;1:1&quot; &quot;2:3&quot;, &quot;3:2&quot; &quot;3:4&quot;, &quot;4:3&quot; &quot;4:5&quot;, &quot;5:4&quot; &quot;9:16&quot;, &quot;16:9&quot; &quot;21:9&quot;
                       &quot;imageOutputOptions&quot;: { # The image output format for generated images. # Optional. The image output format for generated images.
                         &quot;compressionQuality&quot;: 42, # Optional. The compression quality of the output image.
@@ -5075,13 +5569,39 @@ Args:
                     &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate in the response. A token is approximately four characters. The default value varies by model. This parameter can be used to control the length of the generated text and prevent overly long responses.
                     &quot;mediaResolution&quot;: &quot;A String&quot;, # Optional. The token resolution at which input media content is sampled. This is used to control the trade-off between the quality of the response and the number of tokens used to represent the media. A higher resolution allows the model to perceive more detail, which can lead to a more nuanced response, but it will also use more tokens. This does not affect the image dimensions sent to the model.
                     &quot;presencePenalty&quot;: 3.14, # Optional. Penalizes tokens that have already appeared in the generated text. A positive value encourages the model to generate more diverse and less repetitive text. Valid values can range from [-2.0, 2.0].
-                    &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`.
+                    &quot;responseFormat&quot;: [ # Optional. New response format field for the model to configure output formatting and delivery.
+                      { # Configuration for the model to configure output formatting and delivery.
+                        &quot;audio&quot;: { # Configuration for audio-specific output formatting. # Audio output format.
+                          &quot;bitRate&quot;: 42, # Optional. Bit rate in bits per second (bps). Only applicable for compressed formats (MP3, Opus).
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the audio output.
+                          &quot;sampleRate&quot;: 42, # Optional. Sample rate for the generated audio in Hertz.
+                        },
+                        &quot;image&quot;: { # Configuration for image-specific output formatting. # Image output format.
+                          &quot;aspectRatio&quot;: &quot;A String&quot;, # Optional. The aspect ratio for the image output.
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;imageSize&quot;: &quot;A String&quot;, # Optional. The size of the image output.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The MIME type of the image output.
+                        },
+                        &quot;text&quot;: { # Configuration for text-specific output formatting. # Text output format.
+                          &quot;mimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response.
+                          &quot;schema&quot;: &quot;&quot;, # Optional. The JSON schema that the output should conform to. Only applicable when mime_type is APPLICATION_JSON.
+                        },
+                        &quot;video&quot;: { # Configuration for video-specific output formatting. # Video output format.
+                          &quot;aspectRatio&quot;: &quot;A String&quot;, # The aspect ratio for the video output.
+                          &quot;delivery&quot;: &quot;A String&quot;, # Optional. Delivery mode for the generated content.
+                          &quot;duration&quot;: &quot;A String&quot;, # Optional. The duration for the video output.
+                          &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI to store the video output. Required for Vertex if delivery is URI.
+                        },
+                      },
+                    ],
+                    &quot;responseJsonSchema&quot;: &quot;&quot;, # Optional. When this field is set, response_schema must be omitted and response_mime_type must be set to `application/json`. Deprecated: Use `response_format` instead.
                     &quot;responseLogprobs&quot;: True or False, # Optional. If set to true, the log probabilities of the output tokens are returned. Log probabilities are the logarithm of the probability of a token appearing in the output. A higher log probability means the token is more likely to be generated. This can be useful for analyzing the model&#x27;s confidence in its own output and for debugging.
-                    &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined.
+                    &quot;responseMimeType&quot;: &quot;A String&quot;, # Optional. The IANA standard MIME type of the response. The model will generate output that conforms to this MIME type. Supported values include &#x27;text/plain&#x27; (default) and &#x27;application/json&#x27;. The model needs to be prompted to output the appropriate response type, otherwise the behavior is undefined. Deprecated: Use `response_format` instead.
                     &quot;responseModalities&quot;: [ # Optional. The modalities of the response. The model will generate a response that includes all the specified modalities. For example, if this is set to `[TEXT, IMAGE]`, the response will include both text and an image.
                       &quot;A String&quot;,
                     ],
-                    &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`.
+                    &quot;responseSchema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Optional. Lets you to specify a schema for the model&#x27;s response, ensuring that the output conforms to a particular structure. This is useful for generating structured data such as JSON. The schema is a subset of the [OpenAPI 3.0 schema object](https://spec.openapis.org/oas/v3.0.3#schema) object. When this field is set, you must also set the `response_mime_type` to `application/json`. Deprecated: Use `response_format` instead.
                       &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
                       &quot;anyOf&quot;: [ # Optional. The instance must be valid against any (one or more) of the subschemas listed in `any_of`.
                         # Object with schema name: GoogleCloudAiplatformV1Schema

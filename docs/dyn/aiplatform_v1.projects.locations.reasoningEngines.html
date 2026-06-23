@@ -405,6 +405,14 @@ Args:
       &quot;imageUri&quot;: &quot;A String&quot;, # Required. The Artifact Registry Docker image URI (e.g., us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag) of the container image that is to be run on each worker replica.
     },
     &quot;deploymentSpec&quot;: { # The specification of a Reasoning Engine deployment. # Optional. The specification of a Reasoning Engine deployment.
+      &quot;agentGatewayConfig&quot;: { # Agent Gateway configuration for a Reasoning Engine deployment. # Optional. Agent Gateway configuration for the Reasoning Engine deployment.
+        &quot;agentToAnywhereConfig&quot;: { # Configuration for traffic originating from a Reasoning Engine. # Optional. Configuration for traffic originating from the Reasoning Engine. When unset, outgoing traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway for outbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `AGENT_TO_ANYWHERE`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+        &quot;clientToAgentConfig&quot;: { # Configuration for traffic targeting a Reasoning Engine. # Optional. Configuration for traffic targeting the Reasoning Engine. When unset, incoming traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway to use for inbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `CLIENT_TO_AGENT`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+      },
       &quot;containerConcurrency&quot;: 42, # Optional. Concurrency for each container and agent server. Recommended value: 2 * cpu + 1. Defaults to 9.
       &quot;env&quot;: [ # Optional. Environment variables to be set with the Reasoning Engine deployment. The environment variables can be updated through the UpdateReasoningEngine API.
         { # Represents an environment variable present in a Container or Python Module.
@@ -783,6 +791,14 @@ Returns:
       &quot;imageUri&quot;: &quot;A String&quot;, # Required. The Artifact Registry Docker image URI (e.g., us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag) of the container image that is to be run on each worker replica.
     },
     &quot;deploymentSpec&quot;: { # The specification of a Reasoning Engine deployment. # Optional. The specification of a Reasoning Engine deployment.
+      &quot;agentGatewayConfig&quot;: { # Agent Gateway configuration for a Reasoning Engine deployment. # Optional. Agent Gateway configuration for the Reasoning Engine deployment.
+        &quot;agentToAnywhereConfig&quot;: { # Configuration for traffic originating from a Reasoning Engine. # Optional. Configuration for traffic originating from the Reasoning Engine. When unset, outgoing traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway for outbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `AGENT_TO_ANYWHERE`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+        &quot;clientToAgentConfig&quot;: { # Configuration for traffic targeting a Reasoning Engine. # Optional. Configuration for traffic targeting the Reasoning Engine. When unset, incoming traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway to use for inbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `CLIENT_TO_AGENT`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+      },
       &quot;containerConcurrency&quot;: 42, # Optional. Concurrency for each container and agent server. Recommended value: 2 * cpu + 1. Defaults to 9.
       &quot;env&quot;: [ # Optional. Environment variables to be set with the Reasoning Engine deployment. The environment variables can be updated through the UpdateReasoningEngine API.
         { # Represents an environment variable present in a Container or Python Module.
@@ -1092,6 +1108,14 @@ Returns:
           &quot;imageUri&quot;: &quot;A String&quot;, # Required. The Artifact Registry Docker image URI (e.g., us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag) of the container image that is to be run on each worker replica.
         },
         &quot;deploymentSpec&quot;: { # The specification of a Reasoning Engine deployment. # Optional. The specification of a Reasoning Engine deployment.
+          &quot;agentGatewayConfig&quot;: { # Agent Gateway configuration for a Reasoning Engine deployment. # Optional. Agent Gateway configuration for the Reasoning Engine deployment.
+            &quot;agentToAnywhereConfig&quot;: { # Configuration for traffic originating from a Reasoning Engine. # Optional. Configuration for traffic originating from the Reasoning Engine. When unset, outgoing traffic is not routed through an Agent Gateway.
+              &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway for outbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `AGENT_TO_ANYWHERE`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+            },
+            &quot;clientToAgentConfig&quot;: { # Configuration for traffic targeting a Reasoning Engine. # Optional. Configuration for traffic targeting the Reasoning Engine. When unset, incoming traffic is not routed through an Agent Gateway.
+              &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway to use for inbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `CLIENT_TO_AGENT`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+            },
+          },
           &quot;containerConcurrency&quot;: 42, # Optional. Concurrency for each container and agent server. Recommended value: 2 * cpu + 1. Defaults to 9.
           &quot;env&quot;: [ # Optional. Environment variables to be set with the Reasoning Engine deployment. The environment variables can be updated through the UpdateReasoningEngine API.
             { # Represents an environment variable present in a Container or Python Module.
@@ -1371,6 +1395,14 @@ Args:
       &quot;imageUri&quot;: &quot;A String&quot;, # Required. The Artifact Registry Docker image URI (e.g., us-central1-docker.pkg.dev/my-project/my-repo/my-image:tag) of the container image that is to be run on each worker replica.
     },
     &quot;deploymentSpec&quot;: { # The specification of a Reasoning Engine deployment. # Optional. The specification of a Reasoning Engine deployment.
+      &quot;agentGatewayConfig&quot;: { # Agent Gateway configuration for a Reasoning Engine deployment. # Optional. Agent Gateway configuration for the Reasoning Engine deployment.
+        &quot;agentToAnywhereConfig&quot;: { # Configuration for traffic originating from a Reasoning Engine. # Optional. Configuration for traffic originating from the Reasoning Engine. When unset, outgoing traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway for outbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `AGENT_TO_ANYWHERE`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+        &quot;clientToAgentConfig&quot;: { # Configuration for traffic targeting a Reasoning Engine. # Optional. Configuration for traffic targeting the Reasoning Engine. When unset, incoming traffic is not routed through an Agent Gateway.
+          &quot;agentGateway&quot;: &quot;A String&quot;, # Required. The resource name of the Agent Gateway to use for inbound traffic. It must be set to a Google-managed gateway whose `governed_access_path` is `CLIENT_TO_AGENT`. Format: `projects/{project}/locations/{location}/agentGateways/{agent_gateway}`
+        },
+      },
       &quot;containerConcurrency&quot;: 42, # Optional. Concurrency for each container and agent server. Recommended value: 2 * cpu + 1. Defaults to 9.
       &quot;env&quot;: [ # Optional. Environment variables to be set with the Reasoning Engine deployment. The environment variables can be updated through the UpdateReasoningEngine API.
         { # Represents an environment variable present in a Container or Python Module.
