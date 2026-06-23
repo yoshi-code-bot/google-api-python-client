@@ -1405,6 +1405,7 @@ Args:
     The object takes the form of:
 
 { # The request for Firestore.ExecutePipeline.
+  &quot;autoCommitTransaction&quot;: True or False, # Optional. Automatically commits the transaction after the pipeline has been executed. Only permitted in combination with `transaction` or `new_transaction`.
   &quot;newTransaction&quot;: { # Options for creating a new transaction. # Execute the pipeline in a new transaction. The identifier of the newly created transaction will be returned in the first response on the stream. This defaults to a read-only transaction.
     &quot;readOnly&quot;: { # Options for a transaction that can only be used to read documents. # The transaction can only be used for read operations.
       &quot;readTime&quot;: &quot;A String&quot;, # Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
