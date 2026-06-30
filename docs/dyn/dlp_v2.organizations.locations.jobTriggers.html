@@ -218,6 +218,20 @@ Args:
               },
             },
             &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+            &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+              &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+                &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                  { # The field values of the Google Drive label to match.
+                    &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                    &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                  },
+                ],
+                &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+              },
+              &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+                &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+              },
+            },
             &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
               &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
               &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -637,6 +651,20 @@ Returns:
             },
           },
           &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+          &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+            &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+              &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                { # The field values of the Google Drive label to match.
+                  &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                  &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                },
+              ],
+              &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+            },
+            &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+              &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+            },
+          },
           &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
             &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
             &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -1078,6 +1106,20 @@ Returns:
             },
           },
           &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+          &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+            &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+              &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                { # The field values of the Google Drive label to match.
+                  &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                  &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                },
+              ],
+              &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+            },
+            &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+              &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+            },
+          },
           &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
             &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
             &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -1513,6 +1555,20 @@ Returns:
                 },
               },
               &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+              &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+                &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+                  &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                    { # The field values of the Google Drive label to match.
+                      &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                      &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                    },
+                  ],
+                  &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+                },
+                &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+                  &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+                },
+              },
               &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
                 &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
                 &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -1949,6 +2005,20 @@ Args:
               },
             },
             &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+            &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+              &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+                &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                  { # The field values of the Google Drive label to match.
+                    &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                    &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                  },
+                ],
+                &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+              },
+              &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+                &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+              },
+            },
             &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
               &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
               &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
@@ -2367,6 +2437,20 @@ Returns:
             },
           },
           &quot;exclusionType&quot;: &quot;A String&quot;, # If set to EXCLUSION_TYPE_EXCLUDE this infoType will not cause a finding to be returned. It still can be used for rules matching. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes.
+          &quot;fileLabelInfoType&quot;: { # Configuration for a custom infoType that detects file labels. # File label to detect.
+            &quot;googleDriveLabel&quot;: { # Google Drive labels published by Google. # Google Drive labels published by Google.
+              &quot;labelFieldsToMatch&quot;: [ # The field values of the Google Drive label to match.
+                { # The field values of the Google Drive label to match.
+                  &quot;id&quot;: &quot;A String&quot;, # The identifier of the Label Field.
+                  &quot;value&quot;: &quot;A String&quot;, # The value of the Label Field to match.
+                },
+              ],
+              &quot;labelId&quot;: &quot;A String&quot;, # The [label ID](https://developers.google.com/workspace/drive/labels/guides/overview) of the Google Drive label.
+            },
+            &quot;sensitivityLabel&quot;: { # Sensitivity labels published by Microsoft. # Sensitivity labels published by Microsoft.
+              &quot;guid&quot;: &quot;A String&quot;, # The GUID of the sensitivity label.
+            },
+          },
           &quot;infoType&quot;: { # Type of information detected by the API. # CustomInfoType can either be a new infoType, or an extension of built-in infoType, when the name matches one of existing infoTypes and that infoType is specified in `InspectContent.info_types` field. Specifying the latter adds findings to the one detected by the system. If built-in info type is not specified in `InspectContent.info_types` list then the name is treated as a custom info type.
             &quot;name&quot;: &quot;A String&quot;, # Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`.
             &quot;sensitivityScore&quot;: { # Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive. # Optional custom sensitivity for this InfoType. This only applies to data profiling.
