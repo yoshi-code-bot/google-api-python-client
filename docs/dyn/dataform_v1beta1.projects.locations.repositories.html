@@ -116,7 +116,7 @@ h1, h2, h3 {
 <p class="firstline">Deletes a single Repository.</p>
 <p class="toc_element">
   <code><a href="#deleteLongRunning">deleteLongRunning(name, body=None, x__xgafv=None)</a></code></p>
-<p class="firstline">Deletes a single Repository asynchronously.</p>
+<p class="firstline">Deletes a single repository asynchronously.</p>
 <p class="toc_element">
   <code><a href="#fetchHistory">fetchHistory(name, pageSize=None, pageToken=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Fetches a Repository's history of commits. The Repository must not have a value for `git_remote_settings.url`.</p>
@@ -244,9 +244,9 @@ Args:
   &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
   &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
     &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
     &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
     &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
       &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
       &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -289,9 +289,9 @@ Returns:
   &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
   &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
     &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
     &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
     &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
       &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
       &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -338,7 +338,7 @@ Returns:
 
 <div class="method">
     <code class="details" id="deleteLongRunning">deleteLongRunning(name, body=None, x__xgafv=None)</code>
-  <pre>Deletes a single Repository asynchronously.
+  <pre>Deletes a single repository asynchronously.
 
 Args:
   name: string, Required. The repository&#x27;s name. (required)
@@ -468,9 +468,9 @@ Returns:
   &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
   &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
     &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
     &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
     &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
       &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
       &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -561,9 +561,9 @@ Returns:
       &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
       &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
         &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-        &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+        &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
         &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-        &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+        &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
         &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
           &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
           &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -668,9 +668,9 @@ Args:
   &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
   &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
     &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
     &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
     &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
       &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
       &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
@@ -713,9 +713,9 @@ Returns:
   &quot;displayName&quot;: &quot;A String&quot;, # Optional. The repository&#x27;s user-friendly name.
   &quot;gitRemoteSettings&quot;: { # Controls Git remote configuration for a repository. # Optional. If set, configures this repository to be linked to a Git remote.
     &quot;authenticationTokenSecretVersion&quot;: &quot;A String&quot;, # Optional. The name of the Secret Manager secret version to use as an authentication token for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
-    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set `main` will be used.
+    &quot;defaultBranch&quot;: &quot;A String&quot;, # Optional. The Git remote&#x27;s default branch name. If not set, `main` will be used.
     &quot;effectiveDefaultBranch&quot;: &quot;A String&quot;, # Output only. The Git remote&#x27;s effective default branch name. This is the default branch name of the Git remote if it is set, otherwise it is `main`.
-    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the GitRepositoryLink used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
+    &quot;gitRepositoryLink&quot;: &quot;A String&quot;, # Optional. Resource name for the `GitRepositoryLink` used for machine credentials. Must be in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`
     &quot;sshAuthenticationConfig&quot;: { # Configures fields for performing SSH authentication. # Optional. Authentication fields for remote uris using SSH protocol.
       &quot;hostPublicKey&quot;: &quot;A String&quot;, # Required. Content of a public SSH key to verify an identity of a remote Git host.
       &quot;userPrivateKeySecretVersion&quot;: &quot;A String&quot;, # Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format `projects/*/secrets/*/versions/*`.
