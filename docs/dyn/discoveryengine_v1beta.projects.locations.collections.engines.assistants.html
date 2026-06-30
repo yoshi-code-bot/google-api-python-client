@@ -662,6 +662,12 @@ Returns:
     &quot;state&quot;: &quot;A String&quot;, # State of the answer generation.
   },
   &quot;assistToken&quot;: &quot;A String&quot;, # A global unique ID that identifies the current pair of request and stream of responses. Used for feedback and support.
+  &quot;connectorAuthErrors&quot;: [ # Per-connector authentication errors encountered during the request. Present when one or more connectors failed authentication but the request proceeded with the remaining connectors.
+    { # Describes an authentication error for a specific data connector.
+      &quot;dataConnector&quot;: &quot;A String&quot;, # Resource name of the data connector that failed authentication.
+      &quot;errorMessage&quot;: &quot;A String&quot;, # Human-readable error message describing the auth failure.
+    },
+  ],
   &quot;invocationTools&quot;: [ # The tool names of the tools that were invoked.
     &quot;A String&quot;,
   ],
