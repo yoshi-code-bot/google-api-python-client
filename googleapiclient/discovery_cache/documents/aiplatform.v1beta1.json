@@ -9238,40 +9238,6 @@
 "scopes": [
 "https://www.googleapis.com/auth/cloud-platform"
 ]
-},
-"patch": {
-"description": "Updates an existing AgentAnomalyDetectionScope.",
-"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/agentAnomalyDetectionScopes/{agentAnomalyDetectionScopesId}",
-"httpMethod": "PATCH",
-"id": "aiplatform.projects.locations.agentAnomalyDetectionScopes.patch",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Identifier. The resource name of the AgentAnomalyDetectionScope. Format: `projects/{project}/locations/{location}/agentAnomalyDetectionScopes/{agent_anomaly_detection_scope}`",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/agentAnomalyDetectionScopes/[^/]+$",
-"required": true,
-"type": "string"
-},
-"updateMask": {
-"description": "Optional. The list of fields to update. Supported paths: `display_name`, `auto_enroll`, `log_buckets`, `observability_buckets`.",
-"format": "google-fieldmask",
-"location": "query",
-"type": "string"
-}
-},
-"path": "v1beta1/{+name}",
-"request": {
-"$ref": "GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope"
-},
-"response": {
-"$ref": "GoogleLongrunningOperation"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
 }
 }
 },
@@ -25126,64 +25092,6 @@
 },
 "monitoredAgents": {
 "methods": {
-"create": {
-"description": "Creates a new MonitoredAgent in a specific Location.",
-"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/monitoredAgents",
-"httpMethod": "POST",
-"id": "aiplatform.projects.locations.monitoredAgents.create",
-"parameterOrder": [
-"parent"
-],
-"parameters": {
-"monitoredAgentId": {
-"description": "Required. The ID to use for the MonitoredAgent, which will become the final component of the MonitoredAgent's resource name.",
-"location": "query",
-"type": "string"
-},
-"parent": {
-"description": "Required. The resource name of the Location to create the MonitoredAgent in. Format: `projects/{project}/locations/{location}`",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1beta1/{+parent}/monitoredAgents",
-"request": {
-"$ref": "GoogleCloudAiplatformV1beta1MonitoredAgent"
-},
-"response": {
-"$ref": "GoogleCloudAiplatformV1beta1MonitoredAgent"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
-"delete": {
-"description": "Deletes a specific MonitoredAgent.",
-"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/monitoredAgents/{monitoredAgentsId}",
-"httpMethod": "DELETE",
-"id": "aiplatform.projects.locations.monitoredAgents.delete",
-"parameterOrder": [
-"name"
-],
-"parameters": {
-"name": {
-"description": "Required. The name of the MonitoredAgent resource to be deleted. Format: `projects/{project}/locations/{location}/monitoredAgents/{monitored_agent}`",
-"location": "path",
-"pattern": "^projects/[^/]+/locations/[^/]+/monitoredAgents/[^/]+$",
-"required": true,
-"type": "string"
-}
-},
-"path": "v1beta1/{+name}",
-"response": {
-"$ref": "GoogleProtobufEmpty"
-},
-"scopes": [
-"https://www.googleapis.com/auth/cloud-platform"
-]
-},
 "disable": {
 "description": "Disables a specific MonitoredAgent.",
 "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/monitoredAgents/{monitoredAgentsId}:disable",
@@ -47198,7 +47106,7 @@
 }
 }
 },
-"revision": "20260617",
+"revision": "20260623",
 "rootUrl": "https://aiplatform.googleapis.com/",
 "schemas": {
 "CloudAiLargeModelsVisionGenerateVideoExperiments": {
@@ -47828,9 +47736,6 @@
 "description": "The name of the `Agent` used for generating the completion.",
 "type": "string"
 },
-"code_mender_config": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfig"
-},
 "deepResearchConfig": {
 "$ref": "GenaiVertexV1beta1DeepResearchAgentConfig"
 },
@@ -48181,135 +48086,27 @@
 },
 "type": "object"
 },
-"GenaiVertexV1beta1CodeMenderAgentConfig": {
-"description": "Configuration for the CodeMender agent.",
-"id": "GenaiVertexV1beta1CodeMenderAgentConfig",
-"properties": {
-"find_request": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfigFindRequest",
-"description": "Parameters for finding vulnerabilities."
-},
-"fix_request": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfigFixRequest",
-"description": "Parameters for fixing vulnerabilities."
-},
-"model": {
-"description": "The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.",
-"type": "string"
-},
-"session_config": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig",
-"description": "Optional session-specific configurations to override default agent behavior."
-},
-"session_id": {
-"description": "Parameter for grouping multiple interactions that belong to the same CodeMender session.",
-"type": "string"
-}
-},
-"type": "object"
-},
-"GenaiVertexV1beta1CodeMenderAgentConfigFileContent": {
-"description": "Content of a single file in the codebase.",
-"id": "GenaiVertexV1beta1CodeMenderAgentConfigFileContent",
-"properties": {
-"content": {
-"description": "The UTF-8 encoded text content of the file.",
-"type": "string"
-},
-"path": {
-"description": "The relative path of the file from the project root.",
-"type": "string"
-}
-},
-"type": "object"
-},
-"GenaiVertexV1beta1CodeMenderAgentConfigFindRequest": {
-"description": "Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase.",
-"id": "GenaiVertexV1beta1CodeMenderAgentConfigFindRequest",
-"properties": {
-"description": {
-"description": "Additional context or custom instructions provided by the user to guide the vulnerability analysis.",
-"type": "string"
-},
-"finding_id": {
-"description": "The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent's execution-based validation on a single vulnerability.",
-"type": "string"
-},
-"source_files": {
-"description": "A list of source files to provide as context for the scan.",
-"items": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfigFileContent"
-},
-"type": "array"
-}
-},
-"type": "object"
-},
-"GenaiVertexV1beta1CodeMenderAgentConfigFixRequest": {
-"description": "Request parameters specific to FIX sessions, used for generating and validating security patches.",
-"id": "GenaiVertexV1beta1CodeMenderAgentConfigFixRequest",
-"properties": {
-"description": {
-"description": "Additional context or custom instructions provided by the user to guide the patch generation process.",
-"type": "string"
-},
-"finding_id": {
-"description": "The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.",
-"type": "string"
-},
-"source_files": {
-"description": "A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.",
-"items": {
-"$ref": "GenaiVertexV1beta1CodeMenderAgentConfigFileContent"
-},
-"type": "array"
-}
-},
-"type": "object"
-},
-"GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig": {
-"description": "The configuration of CodeMender sessions.",
-"id": "GenaiVertexV1beta1CodeMenderAgentConfigSessionConfig",
-"properties": {
-"max_rounds": {
-"description": "The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.",
-"format": "int32",
-"type": "integer"
-},
-"pipeline_mode": {
-"description": "The pipeline mode of a CodeMender session. It can only be used for a find session.",
-"enum": [
-"PIPELINE_MODE_UNSPECIFIED",
-"PIPELINE_MODE_SCAN",
-"PIPELINE_MODE_VERIFY"
-],
-"enumDescriptions": [
-"Default value. This value is unused.",
-"Fast scan using only the initial classifier.",
-"Performs classification followed by detailed investigation."
-],
-"type": "string"
-},
-"topology": {
-"description": "The cognitive architecture or \"thinking\" topology used by the agent (e.g. \"default\", \"deep\").",
-"type": "string"
-}
-},
-"type": "object"
-},
 "GenaiVertexV1beta1ComputerUse": {
 "description": "A tool that can be used by the model to interact with the computer.",
 "id": "GenaiVertexV1beta1ComputerUse",
 "properties": {
+"enablePromptInjectionDetection": {
+"description": "Whether enable the prompt injection detection check on computer-use request.",
+"type": "boolean"
+},
 "environment": {
 "description": "The environment being operated.",
 "enum": [
 "ENVIRONMENT_UNSPECIFIED",
-"BROWSER"
+"BROWSER",
+"MOBILE",
+"DESKTOP"
 ],
 "enumDescriptions": [
 "Defaults to browser.",
-"Operates in a web browser."
+"Operates in a web browser.",
+"Operates in a mobile environment.",
+"Operates in a desktop environment."
 ],
 "type": "string"
 },
@@ -49798,6 +49595,7 @@
 "type": "string"
 },
 "responseModalities": {
+"deprecated": true,
 "description": "The requested modalities of the response (TEXT, IMAGE, AUDIO).",
 "items": {
 "enum": [
@@ -52006,10 +51804,6 @@
 "description": "Resource representing an Agent Anomaly Detection Scope.",
 "id": "GoogleCloudAiplatformV1beta1AgentAnomalyDetectionScope",
 "properties": {
-"autoEnroll": {
-"description": "Optional. When true, agents created in Agent Engine that share log and observability buckets with this scope are automatically enrolled as MonitoredAgents. When false, agents must be enrolled explicitly via MonitoredAgent operations.",
-"type": "boolean"
-},
 "displayName": {
 "description": "Optional. User provided display name of the AgentAnomalyDetectionScope.",
 "type": "string"
@@ -52031,6 +51825,27 @@
 "type": "string"
 },
 "type": "array"
+},
+"state": {
+"description": "Output only. The lifecycle state of the scope. See `State` for the semantics of each value.",
+"enum": [
+"STATE_UNSPECIFIED",
+"CREATING",
+"ACTIVE",
+"DELETING",
+"FAILED",
+"UPDATING"
+],
+"enumDescriptions": [
+"The default value. This value is unused.",
+"The scope is being provisioned: tenant project turn-up, Cloud Logging / Observability link creation, and IAM grants are still in flight. The scope is not yet usable.",
+"The scope is fully provisioned and usable.",
+"The scope is being torn down.",
+"Creation failed. The scope is not usable. The scope must be deleted before another scope can be created in this region.",
+"The scope is being updated. It remains readable in this state."
+],
+"readOnly": true,
+"type": "string"
 }
 },
 "type": "object"
@@ -86882,10 +86697,6 @@ false
 "readOnly": true,
 "type": "string"
 },
-"targetProject": {
-"description": "Optional. The project where network, subnetwork and dns resources are located. If not provided, it is assumed to be the same project of SemanticGovernancePolicyEngine. This field is for Shared VPC scenarios, where network resources may be in a target project and SGP engine in a service project.",
-"type": "string"
-},
 "updateTime": {
 "description": "Output only. Timestamp when this SemanticGovernancePolicyEngine was last updated.",
 "format": "google-datetime",
@@ -90285,6 +90096,10 @@ false
 },
 "description": "Optional. Custom configs for ParallelAiSearch. This field can be used to pass any parameter from the Parallel.ai Search API. See the Parallel.ai documentation for the full list of available parameters and their usage: https://docs.parallel.ai/api-reference/search-beta/search Currently only `source_policy`, `excerpts`, `max_results`, `mode`, `fetch_policy` can be set via this field. For example: { \"source_policy\": { \"include_domains\": [\"google.com\", \"wikipedia.org\"], \"exclude_domains\": [\"example.com\"] }, \"fetch_policy\": { \"max_age_seconds\": 3600 } }",
 "type": "object"
+},
+"enableDataRetention": {
+"description": "Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention Marketplace product. If this value is \"false\" or omitted, the Parallel Web Search for Grounding standard subscription will be used. If this value is \"true\", the Parallel Web Search for Grounding - ZDR subscription will be used.",
+"type": "boolean"
 }
 },
 "type": "object"
