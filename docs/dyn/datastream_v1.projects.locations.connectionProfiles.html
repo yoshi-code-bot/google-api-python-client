@@ -260,7 +260,7 @@ Args:
       &quot;clientSecret&quot;: &quot;A String&quot;, # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the `secret_manager_stored_client_secret` field.
       &quot;secretManagerStoredClientSecret&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
     },
-    &quot;userCredentials&quot;: { # Username-password credentials. # User-password authentication.
+    &quot;userCredentials&quot;: { # Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. # Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead.
       &quot;password&quot;: &quot;A String&quot;, # Optional. Password for the Salesforce connection. Mutually exclusive with the `secret_manager_stored_password` field.
       &quot;secretManagerStoredPassword&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s password. Mutually exclusive with the `password` field.
       &quot;secretManagerStoredSecurityToken&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s security token. Mutually exclusive with the `security_token` field.
@@ -540,7 +540,7 @@ Args:
         &quot;clientSecret&quot;: &quot;A String&quot;, # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the `secret_manager_stored_client_secret` field.
         &quot;secretManagerStoredClientSecret&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
       },
-      &quot;userCredentials&quot;: { # Username-password credentials. # User-password authentication.
+      &quot;userCredentials&quot;: { # Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. # Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead.
         &quot;password&quot;: &quot;A String&quot;, # Optional. Password for the Salesforce connection. Mutually exclusive with the `secret_manager_stored_password` field.
         &quot;secretManagerStoredPassword&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s password. Mutually exclusive with the `password` field.
         &quot;secretManagerStoredSecurityToken&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s security token. Mutually exclusive with the `security_token` field.
@@ -1101,7 +1101,7 @@ Returns:
       &quot;clientSecret&quot;: &quot;A String&quot;, # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the `secret_manager_stored_client_secret` field.
       &quot;secretManagerStoredClientSecret&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
     },
-    &quot;userCredentials&quot;: { # Username-password credentials. # User-password authentication.
+    &quot;userCredentials&quot;: { # Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. # Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead.
       &quot;password&quot;: &quot;A String&quot;, # Optional. Password for the Salesforce connection. Mutually exclusive with the `secret_manager_stored_password` field.
       &quot;secretManagerStoredPassword&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s password. Mutually exclusive with the `password` field.
       &quot;secretManagerStoredSecurityToken&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s security token. Mutually exclusive with the `security_token` field.
@@ -1323,7 +1323,7 @@ Returns:
           &quot;clientSecret&quot;: &quot;A String&quot;, # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the `secret_manager_stored_client_secret` field.
           &quot;secretManagerStoredClientSecret&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
         },
-        &quot;userCredentials&quot;: { # Username-password credentials. # User-password authentication.
+        &quot;userCredentials&quot;: { # Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. # Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead.
           &quot;password&quot;: &quot;A String&quot;, # Optional. Password for the Salesforce connection. Mutually exclusive with the `secret_manager_stored_password` field.
           &quot;secretManagerStoredPassword&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s password. Mutually exclusive with the `password` field.
           &quot;secretManagerStoredSecurityToken&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s security token. Mutually exclusive with the `security_token` field.
@@ -1554,7 +1554,7 @@ Args:
       &quot;clientSecret&quot;: &quot;A String&quot;, # Optional. Client secret for Salesforce OAuth2 Client Credentials. Mutually exclusive with the `secret_manager_stored_client_secret` field.
       &quot;secretManagerStoredClientSecret&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce OAuth2 client_secret. Mutually exclusive with the `client_secret` field.
     },
-    &quot;userCredentials&quot;: { # Username-password credentials. # User-password authentication.
+    &quot;userCredentials&quot;: { # Deprecated: Salesforce is retiring Username-Password authentication. Use `Oauth2ClientCredentials` instead. # Deprecated: Salesforce is retiring Username-Password authentication. Use `oauth2_client_credentials` instead.
       &quot;password&quot;: &quot;A String&quot;, # Optional. Password for the Salesforce connection. Mutually exclusive with the `secret_manager_stored_password` field.
       &quot;secretManagerStoredPassword&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s password. Mutually exclusive with the `password` field.
       &quot;secretManagerStoredSecurityToken&quot;: &quot;A String&quot;, # Optional. A reference to a Secret Manager resource name storing the Salesforce connection&#x27;s security token. Mutually exclusive with the `security_token` field.

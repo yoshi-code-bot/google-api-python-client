@@ -130,7 +130,7 @@ Args:
             &quot;green&quot;: 3.14, # The amount of green in the color as a value in the interval [0, 1].
             &quot;red&quot;: 3.14, # The amount of red in the color as a value in the interval [0, 1].
           },
-          &quot;lightOffDuration&quot;: &quot;A String&quot;, # Required. Along with `light_on_duration `, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+          &quot;lightOffDuration&quot;: &quot;A String&quot;, # Required. Along with `light_on_duration`, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
           &quot;lightOnDuration&quot;: &quot;A String&quot;, # Required. Along with `light_off_duration`, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         },
         &quot;localOnly&quot;: True or False, # Set whether or not this notification is relevant only to the current device. Some notifications can be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend this notification not be bridged. See [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
@@ -176,7 +176,7 @@ Args:
     &quot;fcmOptions&quot;: { # Platform independent options for features provided by the FCM SDKs. # Input only. Template for FCM SDK feature options to use across all platforms.
       &quot;analyticsLabel&quot;: &quot;A String&quot;, # Label associated with the message&#x27;s analytics data.
     },
-    &quot;fid&quot;: &quot;A String&quot;, # Optional. Firebase Installation ID to send a message to.
+    &quot;fid&quot;: &quot;A String&quot;, # Firebase Installation ID to send a message to.
     &quot;name&quot;: &quot;A String&quot;, # Output Only. The identifier of the message sent, in the format of `projects/*/messages/{message_id}`.
     &quot;notification&quot;: { # Basic notification template to use across all platforms. # Input only. Basic notification template to use across all platforms.
       &quot;body&quot;: &quot;A String&quot;, # The notification&#x27;s body text.
@@ -246,7 +246,7 @@ Returns:
           &quot;green&quot;: 3.14, # The amount of green in the color as a value in the interval [0, 1].
           &quot;red&quot;: 3.14, # The amount of red in the color as a value in the interval [0, 1].
         },
-        &quot;lightOffDuration&quot;: &quot;A String&quot;, # Required. Along with `light_on_duration `, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
+        &quot;lightOffDuration&quot;: &quot;A String&quot;, # Required. Along with `light_on_duration`, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
         &quot;lightOnDuration&quot;: &quot;A String&quot;, # Required. Along with `light_off_duration`, define the blink rate of LED flashes. Resolution defined by [proto.Duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.Duration)
       },
       &quot;localOnly&quot;: True or False, # Set whether or not this notification is relevant only to the current device. Some notifications can be bridged to other devices for remote display, such as a Wear OS watch. This hint can be set to recommend this notification not be bridged. See [Wear OS guides](https://developer.android.com/training/wearables/notifications/bridger#existing-method-of-preventing-bridging)
@@ -292,7 +292,7 @@ Returns:
   &quot;fcmOptions&quot;: { # Platform independent options for features provided by the FCM SDKs. # Input only. Template for FCM SDK feature options to use across all platforms.
     &quot;analyticsLabel&quot;: &quot;A String&quot;, # Label associated with the message&#x27;s analytics data.
   },
-  &quot;fid&quot;: &quot;A String&quot;, # Optional. Firebase Installation ID to send a message to.
+  &quot;fid&quot;: &quot;A String&quot;, # Firebase Installation ID to send a message to.
   &quot;name&quot;: &quot;A String&quot;, # Output Only. The identifier of the message sent, in the format of `projects/*/messages/{message_id}`.
   &quot;notification&quot;: { # Basic notification template to use across all platforms. # Input only. Basic notification template to use across all platforms.
     &quot;body&quot;: &quot;A String&quot;, # The notification&#x27;s body text.

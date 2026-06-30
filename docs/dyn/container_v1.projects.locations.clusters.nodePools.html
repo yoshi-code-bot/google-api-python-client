@@ -168,7 +168,7 @@ Args:
       &quot;enabled&quot;: True or False, # When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
       &quot;minProvisionNodes&quot;: 42, # Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
     },
-    &quot;conditions&quot;: [ # Which conditions caused the current node pool state.
+    &quot;conditions&quot;: [ # Output only. Which conditions caused the current node pool state.
       { # StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
         &quot;canonicalCode&quot;: &quot;A String&quot;, # Canonical code of the condition.
         &quot;code&quot;: &quot;A String&quot;, # Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
@@ -480,7 +480,7 @@ Args:
         &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
       },
     },
-    &quot;etag&quot;: &quot;A String&quot;, # This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+    &quot;etag&quot;: &quot;A String&quot;, # Output only. This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
     &quot;initialNodeCount&quot;: 42, # The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
     &quot;instanceGroupUrls&quot;: [ # Output only. The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
       &quot;A String&quot;,
@@ -804,7 +804,7 @@ Returns:
     &quot;enabled&quot;: True or False, # When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
     &quot;minProvisionNodes&quot;: 42, # Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
   },
-  &quot;conditions&quot;: [ # Which conditions caused the current node pool state.
+  &quot;conditions&quot;: [ # Output only. Which conditions caused the current node pool state.
     { # StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
       &quot;canonicalCode&quot;: &quot;A String&quot;, # Canonical code of the condition.
       &quot;code&quot;: &quot;A String&quot;, # Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
@@ -1116,7 +1116,7 @@ Returns:
       &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
     },
   },
-  &quot;etag&quot;: &quot;A String&quot;, # This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+  &quot;etag&quot;: &quot;A String&quot;, # Output only. This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
   &quot;initialNodeCount&quot;: 42, # The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
   &quot;instanceGroupUrls&quot;: [ # Output only. The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
     &quot;A String&quot;,
@@ -1264,7 +1264,7 @@ Returns:
         &quot;enabled&quot;: True or False, # When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes
         &quot;minProvisionNodes&quot;: 42, # Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be provisioned gradually and eventually when stockout issue has been resolved.
       },
-      &quot;conditions&quot;: [ # Which conditions caused the current node pool state.
+      &quot;conditions&quot;: [ # Output only. Which conditions caused the current node pool state.
         { # StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
           &quot;canonicalCode&quot;: &quot;A String&quot;, # Canonical code of the condition.
           &quot;code&quot;: &quot;A String&quot;, # Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
@@ -1576,7 +1576,7 @@ Returns:
           &quot;mode&quot;: &quot;A String&quot;, # Mode is the configuration for how to expose metadata to workloads running on the node pool.
         },
       },
-      &quot;etag&quot;: &quot;A String&quot;, # This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
+      &quot;etag&quot;: &quot;A String&quot;, # Output only. This checksum is computed by the server based on the value of node pool fields, and may be sent on update requests to ensure the client has an up-to-date value before proceeding.
       &quot;initialNodeCount&quot;: 42, # The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
       &quot;instanceGroupUrls&quot;: [ # Output only. The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool. During the node pool blue-green upgrade operation, the URLs contain both blue and green resources.
         &quot;A String&quot;,

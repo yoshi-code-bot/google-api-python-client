@@ -104,35 +104,6 @@ Returns:
     { # Response for InteractionService.CreateInteraction.
   &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
     &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-    &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-      &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-        &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-        &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-        &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-          { # Content of a single file in the codebase.
-            &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-            &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-          },
-        ],
-      },
-      &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-        &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-        &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-        &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-          { # Content of a single file in the codebase.
-            &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-            &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-          },
-        ],
-      },
-      &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-      &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-        &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-        &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-        &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-      },
-      &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-    },
     &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
       &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
       &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -6576,6 +6547,7 @@ Returns:
       &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
       },
       &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+        &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
         &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
         &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
           &quot;A String&quot;,
@@ -7209,35 +7181,6 @@ Returns:
     { # Response for InteractionService.CreateInteraction.
   &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
     &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-    &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-      &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-        &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-        &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-        &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-          { # Content of a single file in the codebase.
-            &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-            &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-          },
-        ],
-      },
-      &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-        &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-        &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-        &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-          { # Content of a single file in the codebase.
-            &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-            &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-          },
-        ],
-      },
-      &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-      &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-        &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-        &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-        &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-      },
-      &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-    },
     &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
       &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
       &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -13681,6 +13624,7 @@ Returns:
       &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
       },
       &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+        &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
         &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
         &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
           &quot;A String&quot;,
@@ -16382,35 +16326,6 @@ Returns:
     &quot;interaction&quot;: { # Response for InteractionService.CreateInteraction. # Required. The completed interaction with empty outputs to reduce the payload size. Use the preceding ContentDelta events for the actual output.
       &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
         &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-        &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-          &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-            &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-            &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-          &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-            &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-            &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-            &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-          },
-          &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-        },
         &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
           &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
           &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -22854,6 +22769,7 @@ Returns:
           &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
           },
           &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+            &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
             &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
             &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
               &quot;A String&quot;,
@@ -23465,35 +23381,6 @@ Returns:
     &quot;interaction&quot;: { # Response for InteractionService.CreateInteraction. # Required. The completed interaction with empty outputs to reduce the payload size. Use the preceding ContentDelta events for the actual output.
       &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
         &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-        &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-          &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-            &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-            &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-          &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-            &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-            &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-            &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-          },
-          &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-        },
         &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
           &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
           &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -29937,6 +29824,7 @@ Returns:
           &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
           },
           &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+            &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
             &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
             &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
               &quot;A String&quot;,
@@ -30548,35 +30436,6 @@ Returns:
     &quot;interaction&quot;: { # Response for InteractionService.CreateInteraction.
       &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
         &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-        &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-          &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-            &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-            &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-          &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-            &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-            &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-            &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-          },
-          &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-        },
         &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
           &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
           &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -37020,6 +36879,7 @@ Returns:
           &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
           },
           &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+            &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
             &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
             &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
               &quot;A String&quot;,
@@ -37631,35 +37491,6 @@ Returns:
     &quot;interaction&quot;: { # Response for InteractionService.CreateInteraction.
       &quot;agentInteraction&quot;: { # Interaction for generating the completion using agents. # Interaction for generating the completion using agents.
         &quot;agent&quot;: &quot;A String&quot;, # The name of the `Agent` used for generating the completion.
-        &quot;code_mender_config&quot;: { # Configuration for the CodeMender agent.
-          &quot;find_request&quot;: { # Request parameters specific to FIND sessions, used for discovering vulnerabilities in a codebase. # Parameters for finding vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the vulnerability analysis.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of a specific finding to verify. This is primarily used in VERIFY mode to focus the agent&#x27;s execution-based validation on a single vulnerability.
-            &quot;source_files&quot;: [ # A list of source files to provide as context for the scan.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;fix_request&quot;: { # Request parameters specific to FIX sessions, used for generating and validating security patches. # Parameters for fixing vulnerabilities.
-            &quot;description&quot;: &quot;A String&quot;, # Additional context or custom instructions provided by the user to guide the patch generation process.
-            &quot;finding_id&quot;: &quot;A String&quot;, # The identifier of the specific security finding to be remediated. This ID maps to a previously discovered vulnerability.
-            &quot;source_files&quot;: [ # A list of source files providing context for the remediation. These files are typically the ones containing the identified vulnerability.
-              { # Content of a single file in the codebase.
-                &quot;content&quot;: &quot;A String&quot;, # The UTF-8 encoded text content of the file.
-                &quot;path&quot;: &quot;A String&quot;, # The relative path of the file from the project root.
-              },
-            ],
-          },
-          &quot;model&quot;: &quot;A String&quot;, # The name of the model to use for the CodeMender agent. One CodeMender session will only use one model.
-          &quot;session_config&quot;: { # The configuration of CodeMender sessions. # Optional session-specific configurations to override default agent behavior.
-            &quot;max_rounds&quot;: 42, # The maximum number of interaction rounds the agent is allowed to perform before reaching a timeout.
-            &quot;pipeline_mode&quot;: &quot;A String&quot;, # The pipeline mode of a CodeMender session. It can only be used for a find session.
-            &quot;topology&quot;: &quot;A String&quot;, # The cognitive architecture or &quot;thinking&quot; topology used by the agent (e.g. &quot;default&quot;, &quot;deep&quot;).
-          },
-          &quot;session_id&quot;: &quot;A String&quot;, # Parameter for grouping multiple interactions that belong to the same CodeMender session.
-        },
         &quot;deepResearchConfig&quot;: { # Configuration for the Deep Research agent.
           &quot;collaborativePlanning&quot;: True or False, # Enables human-in-the-loop planning for the Deep Research agent. If set to true, the Deep Research agent will provide a research plan in its response. The agent will then proceed only if the user confirms the plan in the next turn.
           &quot;enableBigqueryTool&quot;: True or False, # Enables bigquery tool for the Deep Research agent.
@@ -44103,6 +43934,7 @@ Returns:
           &quot;codeExecution&quot;: { # A tool that can be used by the model to execute code. # A tool that can be used by the model to execute code.
           },
           &quot;computerUse&quot;: { # A tool that can be used by the model to interact with the computer. # Tool to support the model interacting directly with the computer.
+            &quot;enablePromptInjectionDetection&quot;: True or False, # Whether enable the prompt injection detection check on computer-use request.
             &quot;environment&quot;: &quot;A String&quot;, # The environment being operated.
             &quot;excludedPredefinedFunctions&quot;: [ # The list of predefined functions that are excluded from the model call.
               &quot;A String&quot;,

@@ -155,6 +155,7 @@ Returns:
           &quot;id&quot;: &quot;A String&quot;, # Required. ID of the component from the device provider.
           &quot;traitData&quot;: [ # Required. List of trait data associated with the component.
             { # Contains the trait payload for a single trait.
+              &quot;commitTime&quot;: &quot;A String&quot;, # Other metadata for the trait. The time the client update was committed in the server.
               &quot;trait&quot;: { # The Provider Home API trait payload.
                 &quot;a_key&quot;: &quot;&quot;, # Properties of the object. Contains field @type with type URL.
               },
@@ -208,6 +209,7 @@ Args:
               &quot;componentId&quot;: &quot;A String&quot;, # Required. ID of the component from the device provider.
               &quot;traitData&quot;: [ # Required. The updated trait data for the component.
                 { # Contains the trait payload for a single trait.
+                  &quot;commitTime&quot;: &quot;A String&quot;, # Other metadata for the trait. The time the client update was committed in the server.
                   &quot;trait&quot;: { # The Provider Home API trait payload.
                     &quot;a_key&quot;: &quot;&quot;, # Properties of the object. Contains field @type with type URL.
                   },
