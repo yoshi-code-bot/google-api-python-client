@@ -108,7 +108,7 @@ h1, h2, h3 {
   <pre>Registers a new subscriber endpoint to receive notifications. A subscriber represents an application or service that wishes to receive data change notifications for users who have granted consent. **Endpoint Verification:** For a subscriber to be successfully created, the provided `endpoint_uri` must be a valid HTTPS endpoint and must pass an automated verification check. The backend will send two HTTP POST requests to the `endpoint_uri`: 1. **Verification with Authorization:** * **Headers:** Includes `Content-Type: application/json` and `Authorization` (with the exact value from `CreateSubscriberPayload.endpoint_authorization.secret`). * **Body:** `{&quot;type&quot;: &quot;verification&quot;}` * **Expected Response:** HTTP `201 Created`. 2. **Verification without Authorization:** * **Headers:** Includes `Content-Type: application/json`. The `Authorization` header is OMITTED. * **Body:** `{&quot;type&quot;: &quot;verification&quot;}` * **Expected Response:** HTTP `401 Unauthorized` or `403 Forbidden`. Both tests must pass for the subscriber creation to succeed. If verification fails, the operation will not be completed and an error will be returned. This process ensures the endpoint is reachable and correctly validates the `Authorization` header.
 
 Args:
-  parent: string, Required. The parent resource where this subscriber will be created. Format: projects/{project} Example: projects/my-project-123 (required)
+  parent: string, Required. The parent resource where this subscriber will be created. Format: projects/{project_number} Example: projects/1234567890 (required)
   body: object, The request body.
     The object takes the form of:
 
