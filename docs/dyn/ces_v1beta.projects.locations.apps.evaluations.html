@@ -246,7 +246,7 @@ Args:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
       { # A golden turn defines a single turn in a golden conversation.
         &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
         &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -333,6 +333,7 @@ Args:
                 &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                 &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
               },
+              &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
               &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                 &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
               },
@@ -348,6 +349,7 @@ Args:
                   &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                 },
               },
+              &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
               &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
               &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
               &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -567,6 +569,7 @@ Args:
                   &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                   &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                 },
+                &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                 &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                   &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                 },
@@ -582,6 +585,7 @@ Args:
                     &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                   },
                 },
+                &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                 &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                 &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                 &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -1154,6 +1158,7 @@ Args:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -1169,6 +1174,7 @@ Args:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -1605,10 +1611,11 @@ Args:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
     &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
       &quot;A String&quot;,
     ],
+    &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
     &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
       { # The expectation to evaluate the conversation produced by the simulation.
         &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
@@ -1847,7 +1854,7 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
       { # A golden turn defines a single turn in a golden conversation.
         &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
         &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -1934,6 +1941,7 @@ Returns:
                 &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                 &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
               },
+              &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
               &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                 &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
               },
@@ -1949,6 +1957,7 @@ Returns:
                   &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                 },
               },
+              &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
               &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
               &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
               &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -2168,6 +2177,7 @@ Returns:
                   &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                   &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                 },
+                &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                 &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                   &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                 },
@@ -2183,6 +2193,7 @@ Returns:
                     &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                   },
                 },
+                &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                 &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                 &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                 &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -2755,6 +2766,7 @@ Returns:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -2770,6 +2782,7 @@ Returns:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -3206,10 +3219,11 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
     &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
       &quot;A String&quot;,
     ],
+    &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
     &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
       { # The expectation to evaluate the conversation produced by the simulation.
         &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
@@ -3524,7 +3538,7 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
       { # A golden turn defines a single turn in a golden conversation.
         &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
         &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -3611,6 +3625,7 @@ Returns:
                 &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                 &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
               },
+              &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
               &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                 &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
               },
@@ -3626,6 +3641,7 @@ Returns:
                   &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                 },
               },
+              &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
               &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
               &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
               &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -3845,6 +3861,7 @@ Returns:
                   &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                   &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                 },
+                &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                 &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                   &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                 },
@@ -3860,6 +3877,7 @@ Returns:
                     &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                   },
                 },
+                &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                 &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                 &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                 &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -4432,6 +4450,7 @@ Returns:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -4447,6 +4466,7 @@ Returns:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -4883,10 +4903,11 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
     &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
       &quot;A String&quot;,
     ],
+    &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
     &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
       { # The expectation to evaluate the conversation produced by the simulation.
         &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
@@ -5140,7 +5161,7 @@ Returns:
         &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
           &quot;A String&quot;,
         ],
-        &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+        &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
           { # A golden turn defines a single turn in a golden conversation.
             &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
             &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -5227,6 +5248,7 @@ Returns:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -5242,6 +5264,7 @@ Returns:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -5461,6 +5484,7 @@ Returns:
                       &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                       &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                     },
+                    &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                     &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                       &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                     },
@@ -5476,6 +5500,7 @@ Returns:
                         &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                       },
                     },
+                    &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                     &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                     &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                     &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -6048,6 +6073,7 @@ Returns:
                         &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                         &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                       },
+                      &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                       &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                         &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                       },
@@ -6063,6 +6089,7 @@ Returns:
                           &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                         },
                       },
+                      &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                       &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                       &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                       &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -6499,10 +6526,11 @@ Returns:
         &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
           &quot;A String&quot;,
         ],
-        &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+        &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
         &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
           &quot;A String&quot;,
         ],
+        &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
         &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
           { # The expectation to evaluate the conversation produced by the simulation.
             &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
@@ -6759,7 +6787,7 @@ Args:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
       { # A golden turn defines a single turn in a golden conversation.
         &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
         &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -6846,6 +6874,7 @@ Args:
                 &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                 &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
               },
+              &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
               &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                 &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
               },
@@ -6861,6 +6890,7 @@ Args:
                   &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                 },
               },
+              &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
               &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
               &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
               &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -7080,6 +7110,7 @@ Args:
                   &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                   &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                 },
+                &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                 &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                   &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                 },
@@ -7095,6 +7126,7 @@ Args:
                     &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                   },
                 },
+                &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                 &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                 &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                 &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -7667,6 +7699,7 @@ Args:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -7682,6 +7715,7 @@ Args:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -8118,10 +8152,11 @@ Args:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
     &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
       &quot;A String&quot;,
     ],
+    &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
     &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
       { # The expectation to evaluate the conversation produced by the simulation.
         &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
@@ -8360,7 +8395,7 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the replayed conversation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation.
+    &quot;turns&quot;: [ # Required. The golden turns required to replay a golden conversation. The maximum number of allowed turns is 100.
       { # A golden turn defines a single turn in a golden conversation.
         &quot;hallucinationMetricBehaviorOverride&quot;: &quot;A String&quot;, # Optional. Override for turn-level hallucination metric behavior.
         &quot;rootSpan&quot;: { # A span is a unit of work or a single operation during the request processing. # Optional. The root span of the golden turn for processing and maintaining audio information. The uri for the audio must contain audio saved in 16Khz sample rate.
@@ -8447,6 +8482,7 @@ Returns:
                 &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                 &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
               },
+              &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
               &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                 &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
               },
@@ -8462,6 +8498,7 @@ Returns:
                   &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                 },
               },
+              &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
               &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
               &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
               &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -8681,6 +8718,7 @@ Returns:
                   &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                   &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                 },
+                &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                 &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                   &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                 },
@@ -8696,6 +8734,7 @@ Returns:
                     &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                   },
                 },
+                &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                 &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                 &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                 &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -9268,6 +9307,7 @@ Returns:
                     &quot;displayName&quot;: &quot;A String&quot;, # Output only. Display name of the agent.
                     &quot;targetAgent&quot;: &quot;A String&quot;, # Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}`
                   },
+                  &quot;comparisonType&quot;: &quot;A String&quot;, # Optional. The comparison type to use for the expectation check.
                   &quot;expectationLevelMetricsThresholdsOverride&quot;: { # Expectation level metrics thresholds. # Optional. Overrides metrics at the step level.
                     &quot;toolInvocationParameterCorrectnessThreshold&quot;: 3.14, # Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0.
                   },
@@ -9283,6 +9323,7 @@ Returns:
                       &quot;toolset&quot;: &quot;A String&quot;, # Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}`
                     },
                   },
+                  &quot;noToolCalls&quot;: True or False, # Optional. Check that no tools were called during this turn.
                   &quot;note&quot;: &quot;A String&quot;, # Optional. A note for this requirement, useful in reporting when specific checks fail. E.g., &quot;Check_Payment_Tool_Called&quot;.
                   &quot;skipEvaluation&quot;: True or False, # Optional. If set to true, this specific expectation will not be evaluated.
                   &quot;toolCall&quot;: { # Request for the client or the agent to execute the specified tool. # Optional. Check that a specific tool was called with the parameters.
@@ -9719,10 +9760,11 @@ Returns:
     &quot;evaluationExpectations&quot;: [ # Optional. The evaluation expectations to evaluate the conversation produced by the simulation against. Format: `projects/{project}/locations/{location}/apps/{app}/evaluationExpectations/{evaluationExpectation}`
       &quot;A String&quot;,
     ],
-    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. If not specified, the simulation will continue until the task is complete.
+    &quot;maxTurns&quot;: 42, # Optional. The maximum number of turns to simulate. The maximum allowed value is 100. The default value is 100.
     &quot;rubrics&quot;: [ # Required. The rubrics to score the scenario against.
       &quot;A String&quot;,
     ],
+    &quot;scenarioExecutionMode&quot;: &quot;A String&quot;, # Optional. The execution mode for scenario evaluations.
     &quot;scenarioExpectations&quot;: [ # Required. The ScenarioExpectations to evaluate the conversation produced by the user simulation.
       { # The expectation to evaluate the conversation produced by the simulation.
         &quot;agentResponse&quot;: { # A message within a conversation. # Optional. The agent response to be evaluated.
