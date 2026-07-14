@@ -241,21 +241,34 @@ Returns:
               # create the resource.
           &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
               # defined by the server.
-          &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of external IPv4 addresses,
-              # like a PublicDelegatedPrefix (PDP) for BYOIP.
-              # The PDP must support enhanced IPv4 allocations.
+          &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of IP addresses.
               #
-              # Use one of the following formats to specify a PDP when reserving an
-              # external IPv4 address using BYOIP.
+              # It supports the following cases:
               #
               #    -
-              #    Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+              #      Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
+              #      addresses. The PDP must support enhanced IPv4 allocations.
               #    -
-              #    Partial URL, as in
+              #      Case 2: Internal Range for global internal addresses.
               #
               #
-              #           - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
-              #           - regions/region/publicDelegatedPrefixes/pdp-name
+              #
+              # Use one of the following formats to specify the resource:
+              #
+              # For a Public Delegated Prefix:
+              #
+              #    -
+              #    Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp
+              #    - Partial URL:
+              #       - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+              #       - regions/region/publicDelegatedPrefixes/pdp-name
+              #
+              #
+              #
+              # For an Internal Range:
+              #
+              #    - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range
+              #    - Partial URL:projects/project/locations/global/internalRanges/internal-range
           &quot;ipVersion&quot;: &quot;A String&quot;, # The IP version that will be used by this address. Valid options areIPV4 or IPV6.
           &quot;ipv6EndpointType&quot;: &quot;A String&quot;, # The endpoint type of this address, which should be VM
               # or NETLB. This is used for deciding which type of endpoint
@@ -748,21 +761,34 @@ Returns:
       # create the resource.
   &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
       # defined by the server.
-  &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of external IPv4 addresses,
-      # like a PublicDelegatedPrefix (PDP) for BYOIP.
-      # The PDP must support enhanced IPv4 allocations.
+  &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of IP addresses.
       #
-      # Use one of the following formats to specify a PDP when reserving an
-      # external IPv4 address using BYOIP.
+      # It supports the following cases:
       #
       #    -
-      #    Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+      #      Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
+      #      addresses. The PDP must support enhanced IPv4 allocations.
       #    -
-      #    Partial URL, as in
+      #      Case 2: Internal Range for global internal addresses.
       #
       #
-      #           - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
-      #           - regions/region/publicDelegatedPrefixes/pdp-name
+      #
+      # Use one of the following formats to specify the resource:
+      #
+      # For a Public Delegated Prefix:
+      #
+      #    -
+      #    Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp
+      #    - Partial URL:
+      #       - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+      #       - regions/region/publicDelegatedPrefixes/pdp-name
+      #
+      #
+      #
+      # For an Internal Range:
+      #
+      #    - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range
+      #    - Partial URL:projects/project/locations/global/internalRanges/internal-range
   &quot;ipVersion&quot;: &quot;A String&quot;, # The IP version that will be used by this address. Valid options areIPV4 or IPV6.
   &quot;ipv6EndpointType&quot;: &quot;A String&quot;, # The endpoint type of this address, which should be VM
       # or NETLB. This is used for deciding which type of endpoint
@@ -872,21 +898,34 @@ Args:
       # create the resource.
   &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
       # defined by the server.
-  &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of external IPv4 addresses,
-      # like a PublicDelegatedPrefix (PDP) for BYOIP.
-      # The PDP must support enhanced IPv4 allocations.
+  &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of IP addresses.
       # 
-      # Use one of the following formats to specify a PDP when reserving an
-      # external IPv4 address using BYOIP.
+      # It supports the following cases:
       # 
       #    -
-      #    Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+      #      Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
+      #      addresses. The PDP must support enhanced IPv4 allocations.
       #    -
-      #    Partial URL, as in
+      #      Case 2: Internal Range for global internal addresses.
       # 
       # 
-      #           - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
-      #           - regions/region/publicDelegatedPrefixes/pdp-name
+      # 
+      # Use one of the following formats to specify the resource:
+      # 
+      # For a Public Delegated Prefix:
+      # 
+      #    -
+      #    Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp
+      #    - Partial URL:
+      #       - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+      #       - regions/region/publicDelegatedPrefixes/pdp-name
+      # 
+      # 
+      # 
+      # For an Internal Range:
+      # 
+      #    - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range
+      #    - Partial URL:projects/project/locations/global/internalRanges/internal-range
   &quot;ipVersion&quot;: &quot;A String&quot;, # The IP version that will be used by this address. Valid options areIPV4 or IPV6.
   &quot;ipv6EndpointType&quot;: &quot;A String&quot;, # The endpoint type of this address, which should be VM
       # or NETLB. This is used for deciding which type of endpoint
@@ -1371,21 +1410,34 @@ Returns:
           # create the resource.
       &quot;id&quot;: &quot;A String&quot;, # Output only. [Output Only] The unique identifier for the resource. This identifier is
           # defined by the server.
-      &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of external IPv4 addresses,
-          # like a PublicDelegatedPrefix (PDP) for BYOIP.
-          # The PDP must support enhanced IPv4 allocations.
+      &quot;ipCollection&quot;: &quot;A String&quot;, # Reference to the source of IP addresses.
           #
-          # Use one of the following formats to specify a PDP when reserving an
-          # external IPv4 address using BYOIP.
+          # It supports the following cases:
           #
           #    -
-          #    Full resource URL, as inhttps://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+          #      Case 1: PublicDelegatedPrefix (PDP) for BYOIP external IPv4
+          #      addresses. The PDP must support enhanced IPv4 allocations.
           #    -
-          #    Partial URL, as in
+          #      Case 2: Internal Range for global internal addresses.
           #
           #
-          #           - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
-          #           - regions/region/publicDelegatedPrefixes/pdp-name
+          #
+          # Use one of the following formats to specify the resource:
+          #
+          # For a Public Delegated Prefix:
+          #
+          #    -
+          #    Full resource URL:https://www.googleapis.com/compute/v1/projects/projectId/regions/region/publicDelegatedPrefixes/pdp
+          #    - Partial URL:
+          #       - projects/projectId/regions/region/publicDelegatedPrefixes/pdp-name
+          #       - regions/region/publicDelegatedPrefixes/pdp-name
+          #
+          #
+          #
+          # For an Internal Range:
+          #
+          #    - Full URL:https://networkconnectivity.googleapis.com/v1/projects/project/locations/global/internalRanges/internal-range
+          #    - Partial URL:projects/project/locations/global/internalRanges/internal-range
       &quot;ipVersion&quot;: &quot;A String&quot;, # The IP version that will be used by this address. Valid options areIPV4 or IPV6.
       &quot;ipv6EndpointType&quot;: &quot;A String&quot;, # The endpoint type of this address, which should be VM
           # or NETLB. This is used for deciding which type of endpoint

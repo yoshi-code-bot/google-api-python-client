@@ -87,10 +87,10 @@ h1, h2, h3 {
   <code><a href="#createInstances">createInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Creates instances with per-instance configurations in this regional managed</p>
 <p class="toc_element">
-  <code><a href="#delete">delete(project, region, instanceGroupManager, requestId=None, x__xgafv=None)</a></code></p>
+  <code><a href="#delete">delete(project, region, instanceGroupManager, noGracefulShutdown=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Deletes the specified managed instance group and all of the instances</p>
 <p class="toc_element">
-  <code><a href="#deleteInstances">deleteInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
+  <code><a href="#deleteInstances">deleteInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Flags the specified instances in the managed instance group to be</p>
 <p class="toc_element">
   <code><a href="#deletePerInstanceConfigs">deletePerInstanceConfigs(project, region, instanceGroupManager, body=None, x__xgafv=None)</a></code></p>
@@ -132,7 +132,7 @@ h1, h2, h3 {
   <code><a href="#patchPerInstanceConfigs">patchPerInstanceConfigs(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Inserts or patches per-instance configurations for the managed instance</p>
 <p class="toc_element">
-  <code><a href="#recreateInstances">recreateInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
+  <code><a href="#recreateInstances">recreateInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Flags the specified VM instances in the managed instance group to be</p>
 <p class="toc_element">
   <code><a href="#resize">resize(project, region, instanceGroupManager, size, requestId=None, x__xgafv=None)</a></code></p>
@@ -150,7 +150,7 @@ h1, h2, h3 {
   <code><a href="#startInstances">startInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Flags the specified instances in the managed instance group to be</p>
 <p class="toc_element">
-  <code><a href="#stopInstances">stopInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
+  <code><a href="#stopInstances">stopInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Flags the specified instances in the managed instance group to be</p>
 <p class="toc_element">
   <code><a href="#suspendInstances">suspendInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</a></code></p>
@@ -1181,7 +1181,7 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="delete">delete(project, region, instanceGroupManager, requestId=None, x__xgafv=None)</code>
+    <code class="details" id="delete">delete(project, region, instanceGroupManager, noGracefulShutdown=None, requestId=None, x__xgafv=None)</code>
   <pre>Deletes the specified managed instance group and all of the instances
 in that group.
 
@@ -1189,6 +1189,8 @@ Args:
   project: string, Project ID for this request. (required)
   region: string, Name of the region scoping this request. (required)
   instanceGroupManager: string, Name of the managed instance group to delete. (required)
+  noGracefulShutdown: boolean, When set, graceful shutdown is skipped for instance deletion even if it&#x27;s
+configured for the instances.
   requestId: string, An optional request ID to identify requests. Specify a unique request ID so
 that if you must retry your request, the server will know to ignore the
 request if it has already been completed.
@@ -1475,7 +1477,7 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="deleteInstances">deleteInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</code>
+    <code class="details" id="deleteInstances">deleteInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</code>
   <pre>Flags the specified instances in the managed instance group to be
 immediately deleted. The instances are also removed from any target
 pools of which they were a member. This method reduces thetargetSize of the managed instance group by the number of
@@ -1513,6 +1515,8 @@ Args:
       # group&#x27;s zone or region.
 }
 
+  noGracefulShutdown: boolean, When set, graceful shutdown is skipped for instance deletion even if it&#x27;s
+configured for the instances.
   requestId: string, An optional request ID to identify requests. Specify a unique request ID so
 that if you must retry your request, the server will know to ignore the
 request if it has already been completed.
@@ -5277,6 +5281,32 @@ Returns:
           # InstanceFlexibilityPolicy.
         &quot;machineType&quot;: &quot;A String&quot;, # Output only. The machine type to be used for this instance.
       },
+      &quot;scheduling&quot;: { # Output only. Information about the termination timestamp of the instance, if applicable.
+        &quot;gracefulShutdownTimestamp&quot;: &quot;A String&quot;, # Output only. The timestamp at which the underlying instance will be
+            # triggered for graceful shutdown if it is configured. This is in RFC3339 text format.
+        &quot;terminationTimestamp&quot;: &quot;A String&quot;, # Output only. The timestamp at which the managed instance will be terminated. This is
+            # in RFC3339 text
+            # format.
+      },
+      &quot;shutdownDetails&quot;: { # Output only. Specifies the graceful shutdown details if the instance is in
+          # `PENDING_STOP` state or there is a programmed stop scheduled.
+        &quot;maxDuration&quot;: { # A Duration represents a fixed-length span of time represented # Output only. The duration for graceful shutdown. Only applicable when the instance is
+            # in `PENDING_STOP` state.
+            # as a count of seconds and fractions of seconds at nanosecond
+            # resolution. It is independent of any calendar and concepts like &quot;day&quot;
+            # or &quot;month&quot;. Range is approximately 10,000 years.
+          &quot;nanos&quot;: 42, # Span of time that&#x27;s a fraction of a second at nanosecond resolution.
+              # Durations less than one second are represented with a 0
+              # `seconds` field and a positive `nanos` field. Must be from 0
+              # to 999,999,999 inclusive.
+          &quot;seconds&quot;: &quot;A String&quot;, # Span of time at a resolution of a second. Must be from 0
+              # to 315,576,000,000 inclusive. Note: these bounds are computed from:
+              # 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        },
+        &quot;requestTimestamp&quot;: &quot;A String&quot;, # Output only. Past timestamp indicating the beginning of `PENDING_STOP` state of
+            # instance in RFC3339
+            # text format.
+      },
       &quot;version&quot;: { # Output only. [Output Only] Intended version of this instance.
         &quot;instanceTemplate&quot;: &quot;A String&quot;, # Output only. [Output Only] The intended template of the instance. This field is empty
             # when current_action is one of { DELETING, ABANDONING }.
@@ -6959,7 +6989,7 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="recreateInstances">recreateInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</code>
+    <code class="details" id="recreateInstances">recreateInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</code>
   <pre>Flags the specified VM instances in the managed instance group to be
 immediately recreated. Each instance is recreated using the group&#x27;s current
 configuration. This operation is marked as DONE when the flag
@@ -6988,6 +7018,8 @@ Args:
   ],
 }
 
+  noGracefulShutdown: boolean, When set, graceful shutdown is skipped for instance recreation even if it&#x27;s
+configured for the instances.
   requestId: string, An optional request ID to identify requests. Specify a unique request ID so
 that if you must retry your request, the server will know to ignore the
 request if it has already been completed.
@@ -8826,7 +8858,7 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="stopInstances">stopInstances(project, region, instanceGroupManager, body=None, requestId=None, x__xgafv=None)</code>
+    <code class="details" id="stopInstances">stopInstances(project, region, instanceGroupManager, body=None, noGracefulShutdown=None, requestId=None, x__xgafv=None)</code>
   <pre>Flags the specified instances in the managed instance group to be
 immediately stopped. You can only specify instances that are running in
 this request. This method reduces thetargetSize and increases the targetStoppedSize
@@ -8869,6 +8901,8 @@ Args:
   ],
 }
 
+  noGracefulShutdown: boolean, When set, graceful shutdown is skipped for instance stopping even if it&#x27;s
+configured for the instances.
   requestId: string, An optional request ID to identify requests. Specify a unique request ID so
 that if you must retry your request, the server will know to ignore the
 request if it has already been completed.

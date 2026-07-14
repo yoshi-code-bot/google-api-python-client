@@ -2051,6 +2051,8 @@ Returns:
           &quot;lastStartTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last start timestamp inRFC3339 text format.
           &quot;lastStopTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last stop timestamp inRFC3339 text format.
           &quot;lastSuspendedTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last suspended timestamp inRFC3339 text format.
+          &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+              # Local SSDs attached to the VM.
           &quot;machineType&quot;: &quot;A String&quot;, # Full or partial URL of the machine type resource to use for this instance,
               # in the format:zones/zone/machineTypes/machine-type. This is provided by the client
               # when the instance is created. For example, the following is a valid partial
@@ -4341,6 +4343,8 @@ Args:
     &quot;labels&quot;: { # Labels to apply to instances that are created from these properties.
       &quot;a_key&quot;: &quot;A String&quot;,
     },
+    &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
     &quot;machineType&quot;: &quot;A String&quot;, # The machine type to use for instances that are created from these
         # properties.
         # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -6857,6 +6861,8 @@ Returns:
   &quot;lastStartTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last start timestamp inRFC3339 text format.
   &quot;lastStopTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last stop timestamp inRFC3339 text format.
   &quot;lastSuspendedTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last suspended timestamp inRFC3339 text format.
+  &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+      # Local SSDs attached to the VM.
   &quot;machineType&quot;: &quot;A String&quot;, # Full or partial URL of the machine type resource to use for this instance,
       # in the format:zones/zone/machineTypes/machine-type. This is provided by the client
       # when the instance is created. For example, the following is a valid partial
@@ -7462,7 +7468,9 @@ Returns:
             # the action to be taken when traffic matches this condition (allow or deny).
           &quot;action&quot;: &quot;A String&quot;, # The Action to perform when the client connection triggers the rule.
               # Valid actions for firewall rules are: &quot;allow&quot;, &quot;deny&quot;,
-              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot;.
+              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot; (
+              # &quot;apply_security_profile_group&quot; can be specified only for global
+              # network firewall policies or hierarchical firewall policies).
               # Valid actions for packet mirroring rules are: &quot;mirror&quot;, &quot;do_not_mirror&quot;
               # and &quot;goto_next&quot;.
           &quot;description&quot;: &quot;A String&quot;, # An optional description for this resource.
@@ -7593,11 +7601,12 @@ Returns:
               # and can be updated.
           &quot;ruleTupleCount&quot;: 42, # Output only. [Output Only] Calculation of the complexity of a single firewall policy
               # rule.
-          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfile resource instance.
+          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfileGroup resource instance.
               # Example:
               # https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
               # Must be specified if action is one of &#x27;apply_security_profile_group&#x27; or
-              # &#x27;mirror&#x27;. Cannot be specified for other actions.
+              # &#x27;mirror&#x27;. Cannot be specified for other actions. Can be specified only
+              # for global network firewall policies or hierarchical firewall policies.
           &quot;targetForwardingRules&quot;: [ # A list of forwarding rules to which this rule applies.
               # This field allows you to control which load balancers get this rule.
               # For example, the following are valid values:
@@ -7651,7 +7660,9 @@ Returns:
             # the action to be taken when traffic matches this condition (allow or deny).
           &quot;action&quot;: &quot;A String&quot;, # The Action to perform when the client connection triggers the rule.
               # Valid actions for firewall rules are: &quot;allow&quot;, &quot;deny&quot;,
-              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot;.
+              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot; (
+              # &quot;apply_security_profile_group&quot; can be specified only for global
+              # network firewall policies or hierarchical firewall policies).
               # Valid actions for packet mirroring rules are: &quot;mirror&quot;, &quot;do_not_mirror&quot;
               # and &quot;goto_next&quot;.
           &quot;description&quot;: &quot;A String&quot;, # An optional description for this resource.
@@ -7782,11 +7793,12 @@ Returns:
               # and can be updated.
           &quot;ruleTupleCount&quot;: 42, # Output only. [Output Only] Calculation of the complexity of a single firewall policy
               # rule.
-          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfile resource instance.
+          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfileGroup resource instance.
               # Example:
               # https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
               # Must be specified if action is one of &#x27;apply_security_profile_group&#x27; or
-              # &#x27;mirror&#x27;. Cannot be specified for other actions.
+              # &#x27;mirror&#x27;. Cannot be specified for other actions. Can be specified only
+              # for global network firewall policies or hierarchical firewall policies.
           &quot;targetForwardingRules&quot;: [ # A list of forwarding rules to which this rule applies.
               # This field allows you to control which load balancers get this rule.
               # For example, the following are valid values:
@@ -9097,6 +9109,8 @@ Args:
   &quot;lastStartTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last start timestamp inRFC3339 text format.
   &quot;lastStopTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last stop timestamp inRFC3339 text format.
   &quot;lastSuspendedTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last suspended timestamp inRFC3339 text format.
+  &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+      # Local SSDs attached to the VM.
   &quot;machineType&quot;: &quot;A String&quot;, # Full or partial URL of the machine type resource to use for this instance,
       # in the format:zones/zone/machineTypes/machine-type. This is provided by the client
       # when the instance is created. For example, the following is a valid partial
@@ -10636,6 +10650,8 @@ Returns:
       &quot;lastStartTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last start timestamp inRFC3339 text format.
       &quot;lastStopTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last stop timestamp inRFC3339 text format.
       &quot;lastSuspendedTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last suspended timestamp inRFC3339 text format.
+      &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+          # Local SSDs attached to the VM.
       &quot;machineType&quot;: &quot;A String&quot;, # Full or partial URL of the machine type resource to use for this instance,
           # in the format:zones/zone/machineTypes/machine-type. This is provided by the client
           # when the instance is created. For example, the following is a valid partial
@@ -20038,6 +20054,8 @@ Args:
   &quot;lastStartTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last start timestamp inRFC3339 text format.
   &quot;lastStopTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last stop timestamp inRFC3339 text format.
   &quot;lastSuspendedTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Last suspended timestamp inRFC3339 text format.
+  &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+      # Local SSDs attached to the VM.
   &quot;machineType&quot;: &quot;A String&quot;, # Full or partial URL of the machine type resource to use for this instance,
       # in the format:zones/zone/machineTypes/machine-type. This is provided by the client
       # when the instance is created. For example, the following is a valid partial

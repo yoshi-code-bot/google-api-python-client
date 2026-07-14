@@ -365,6 +365,7 @@ Args:
             &quot;eventCount&quot;: 42, # Optional. Specifies to trigger generation when the event count reaches this limit.
             &quot;fixedInterval&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation at a fixed interval. The duration must have a minute-level granularity.
             &quot;idleDuration&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation if the stream is inactive for the specified duration after the most recent event. The duration must have a minute-level granularity.
+            &quot;overlapEventCount&quot;: 42, # Optional. Re-include the last N already-processed events in the next window.
           },
         },
         &quot;model&quot;: &quot;A String&quot;, # Optional. The model used to generate memories. Format: `projects/{project}/locations/{location}/publishers/google/models/{model}`.
@@ -396,6 +397,9 @@ Args:
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
   &quot;spec&quot;: { # ReasoningEngine configurations # Optional. Configurations of the ReasoningEngine
     &quot;agentFramework&quot;: &quot;A String&quot;, # Optional. The OSS agent framework used to develop the agent. Currently supported values: &quot;google-adk&quot;, &quot;langchain&quot;, &quot;langgraph&quot;, &quot;ag2&quot;, &quot;llama-index&quot;, &quot;custom&quot;.
+    &quot;buildSpec&quot;: { # Specification for building container image. # Optional. Configuration for building container image.
+      &quot;workerPool&quot;: &quot;A String&quot;, # Optional. Identifier. The resource name of the Cloud Build WorkerPool to use for the build. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`
+    },
     &quot;classMethods&quot;: [ # Optional. Declarations for object class methods in OpenAPI specification format.
       {
         &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
@@ -751,6 +755,7 @@ Returns:
             &quot;eventCount&quot;: 42, # Optional. Specifies to trigger generation when the event count reaches this limit.
             &quot;fixedInterval&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation at a fixed interval. The duration must have a minute-level granularity.
             &quot;idleDuration&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation if the stream is inactive for the specified duration after the most recent event. The duration must have a minute-level granularity.
+            &quot;overlapEventCount&quot;: 42, # Optional. Re-include the last N already-processed events in the next window.
           },
         },
         &quot;model&quot;: &quot;A String&quot;, # Optional. The model used to generate memories. Format: `projects/{project}/locations/{location}/publishers/google/models/{model}`.
@@ -782,6 +787,9 @@ Returns:
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
   &quot;spec&quot;: { # ReasoningEngine configurations # Optional. Configurations of the ReasoningEngine
     &quot;agentFramework&quot;: &quot;A String&quot;, # Optional. The OSS agent framework used to develop the agent. Currently supported values: &quot;google-adk&quot;, &quot;langchain&quot;, &quot;langgraph&quot;, &quot;ag2&quot;, &quot;llama-index&quot;, &quot;custom&quot;.
+    &quot;buildSpec&quot;: { # Specification for building container image. # Optional. Configuration for building container image.
+      &quot;workerPool&quot;: &quot;A String&quot;, # Optional. Identifier. The resource name of the Cloud Build WorkerPool to use for the build. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`
+    },
     &quot;classMethods&quot;: [ # Optional. Declarations for object class methods in OpenAPI specification format.
       {
         &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
@@ -1068,6 +1076,7 @@ Returns:
                 &quot;eventCount&quot;: 42, # Optional. Specifies to trigger generation when the event count reaches this limit.
                 &quot;fixedInterval&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation at a fixed interval. The duration must have a minute-level granularity.
                 &quot;idleDuration&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation if the stream is inactive for the specified duration after the most recent event. The duration must have a minute-level granularity.
+                &quot;overlapEventCount&quot;: 42, # Optional. Re-include the last N already-processed events in the next window.
               },
             },
             &quot;model&quot;: &quot;A String&quot;, # Optional. The model used to generate memories. Format: `projects/{project}/locations/{location}/publishers/google/models/{model}`.
@@ -1099,6 +1108,9 @@ Returns:
       &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
       &quot;spec&quot;: { # ReasoningEngine configurations # Optional. Configurations of the ReasoningEngine
         &quot;agentFramework&quot;: &quot;A String&quot;, # Optional. The OSS agent framework used to develop the agent. Currently supported values: &quot;google-adk&quot;, &quot;langchain&quot;, &quot;langgraph&quot;, &quot;ag2&quot;, &quot;llama-index&quot;, &quot;custom&quot;.
+        &quot;buildSpec&quot;: { # Specification for building container image. # Optional. Configuration for building container image.
+          &quot;workerPool&quot;: &quot;A String&quot;, # Optional. Identifier. The resource name of the Cloud Build WorkerPool to use for the build. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`
+        },
         &quot;classMethods&quot;: [ # Optional. Declarations for object class methods in OpenAPI specification format.
           {
             &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
@@ -1355,6 +1367,7 @@ Args:
             &quot;eventCount&quot;: 42, # Optional. Specifies to trigger generation when the event count reaches this limit.
             &quot;fixedInterval&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation at a fixed interval. The duration must have a minute-level granularity.
             &quot;idleDuration&quot;: &quot;A String&quot;, # Optional. Specifies to trigger generation if the stream is inactive for the specified duration after the most recent event. The duration must have a minute-level granularity.
+            &quot;overlapEventCount&quot;: 42, # Optional. Re-include the last N already-processed events in the next window.
           },
         },
         &quot;model&quot;: &quot;A String&quot;, # Optional. The model used to generate memories. Format: `projects/{project}/locations/{location}/publishers/google/models/{model}`.
@@ -1386,6 +1399,9 @@ Args:
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
   &quot;spec&quot;: { # ReasoningEngine configurations # Optional. Configurations of the ReasoningEngine
     &quot;agentFramework&quot;: &quot;A String&quot;, # Optional. The OSS agent framework used to develop the agent. Currently supported values: &quot;google-adk&quot;, &quot;langchain&quot;, &quot;langgraph&quot;, &quot;ag2&quot;, &quot;llama-index&quot;, &quot;custom&quot;.
+    &quot;buildSpec&quot;: { # Specification for building container image. # Optional. Configuration for building container image.
+      &quot;workerPool&quot;: &quot;A String&quot;, # Optional. Identifier. The resource name of the Cloud Build WorkerPool to use for the build. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`
+    },
     &quot;classMethods&quot;: [ # Optional. Declarations for object class methods in OpenAPI specification format.
       {
         &quot;a_key&quot;: &quot;&quot;, # Properties of the object.

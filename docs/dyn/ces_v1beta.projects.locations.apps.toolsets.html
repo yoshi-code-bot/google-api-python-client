@@ -311,6 +311,7 @@ Args:
     },
     &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
   },
+  &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
   &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
     &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
       &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -527,6 +528,7 @@ Returns:
     },
     &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
   },
+  &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
   &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
     &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
       &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -769,6 +771,7 @@ Returns:
     },
     &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
   },
+  &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
   &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
     &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
       &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -998,6 +1001,7 @@ Returns:
         },
         &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
       },
+      &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
       &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
         &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
           &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -1231,6 +1235,7 @@ Args:
     },
     &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
   },
+  &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
   &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
     &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
       &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -1447,6 +1452,7 @@ Returns:
     },
     &quot;url&quot;: &quot;A String&quot;, # Optional. The server URL of the Open API schema. This field is only set in toolsets in the environment dependencies during the export process if the schema contains a server url. During the import process, if this url is present in the environment dependencies and the schema has the $env_var placeholder, it will replace the placeholder in the schema.
   },
+  &quot;timeout&quot;: &quot;A String&quot;, # Optional. The timeout for the toolset execution. If not set, the default timeout is 30 seconds for `SYNCHRONOUS` toolsets and 60 seconds for `ASYNCHRONOUS` toolsets.
   &quot;toolFakeConfig&quot;: { # Configuration for tool behavior in fake mode. # Optional. Configuration for tools behavior in fake mode.
     &quot;codeBlock&quot;: { # A code block to be executed instead of a real tool call. # Optional. Code block which will be executed instead of a real tool call.
       &quot;pythonCode&quot;: &quot;A String&quot;, # Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -&gt; Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead.
@@ -1488,7 +1494,6 @@ Returns:
         &quot;agent&quot;: &quot;A String&quot;, # Optional. The resource name of the agent that is the entry point of the tool. Format: `projects/{project}/locations/{location}/agents/{agent}`
         &quot;description&quot;: &quot;A String&quot;, # Optional. Description of the tool&#x27;s purpose.
         &quot;name&quot;: &quot;A String&quot;, # Required. The name of the agent tool.
-        &quot;rootAgent&quot;: &quot;A String&quot;, # Optional. Deprecated: Use `agent` instead. The resource name of the root agent that is the entry point of the tool. Format: `projects/{project}/locations/{location}/agents/{agent}`
       },
       &quot;clientFunction&quot;: { # Represents a client-side function that the agent can invoke. When the tool is chosen by the agent, control is handed off to the client. The client is responsible for executing the function and returning the result as a ToolResponse to continue the interaction with the agent. # Optional. The client function.
         &quot;description&quot;: &quot;A String&quot;, # Optional. The function description.

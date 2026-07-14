@@ -5875,6 +5875,353 @@
 }
 }
 },
+"memoryBanks": {
+"resources": {
+"memories": {
+"methods": {
+"get": {
+"description": "Get a Memory.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}",
+"httpMethod": "GET",
+"id": "aiplatform.memoryBanks.memories.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "Required. The resource name of the Memory. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}`",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleCloudAiplatformV1beta1Memory"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+},
+"resources": {
+"operations": {
+"methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.memoryBanks.memories.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"delete": {
+"description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}",
+"httpMethod": "DELETE",
+"id": "aiplatform.memoryBanks.memories.operations.delete",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be deleted.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.memoryBanks.memories.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"list": {
+"description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations",
+"httpMethod": "GET",
+"id": "aiplatform.memoryBanks.memories.operations.list",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"filter": {
+"description": "The standard list filter.",
+"location": "query",
+"type": "string"
+},
+"name": {
+"description": "The name of the operation's parent resource.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+$",
+"required": true,
+"type": "string"
+},
+"pageSize": {
+"description": "The standard list page size.",
+"format": "int32",
+"location": "query",
+"type": "integer"
+},
+"pageToken": {
+"description": "The standard list page token.",
+"location": "query",
+"type": "string"
+},
+"returnPartialSuccess": {
+"description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+"location": "query",
+"type": "boolean"
+}
+},
+"path": "v1beta1/{+name}/operations",
+"response": {
+"$ref": "GoogleLongrunningListOperationsResponse"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.memoryBanks.memories.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+}
+}
+}
+},
+"operations": {
+"methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.memoryBanks.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"delete": {
+"description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/operations/{operationsId}",
+"httpMethod": "DELETE",
+"id": "aiplatform.memoryBanks.operations.delete",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be deleted.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.memoryBanks.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"list": {
+"description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/operations",
+"httpMethod": "GET",
+"id": "aiplatform.memoryBanks.operations.list",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"filter": {
+"description": "The standard list filter.",
+"location": "query",
+"type": "string"
+},
+"name": {
+"description": "The name of the operation's parent resource.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+$",
+"required": true,
+"type": "string"
+},
+"pageSize": {
+"description": "The standard list page size.",
+"format": "int32",
+"location": "query",
+"type": "integer"
+},
+"pageToken": {
+"description": "The standard list page token.",
+"location": "query",
+"type": "string"
+},
+"returnPartialSuccess": {
+"description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+"location": "query",
+"type": "boolean"
+}
+},
+"path": "v1beta1/{+name}/operations",
+"response": {
+"$ref": "GoogleLongrunningListOperationsResponse"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/memoryBanks/{memoryBanksId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.memoryBanks.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+}
+}
+}
+},
 "metadataStores": {
 "resources": {
 "artifacts": {
@@ -21262,6 +21609,353 @@
 }
 }
 },
+"memoryBanks": {
+"resources": {
+"memories": {
+"methods": {
+"get": {
+"description": "Get a Memory.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.memoryBanks.memories.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "Required. The resource name of the Memory. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}`",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleCloudAiplatformV1beta1Memory"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+},
+"resources": {
+"operations": {
+"methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.memoryBanks.memories.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"delete": {
+"description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}",
+"httpMethod": "DELETE",
+"id": "aiplatform.projects.locations.memoryBanks.memories.operations.delete",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be deleted.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.memoryBanks.memories.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"list": {
+"description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.memoryBanks.memories.operations.list",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"filter": {
+"description": "The standard list filter.",
+"location": "query",
+"type": "string"
+},
+"name": {
+"description": "The name of the operation's parent resource.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+$",
+"required": true,
+"type": "string"
+},
+"pageSize": {
+"description": "The standard list page size.",
+"format": "int32",
+"location": "query",
+"type": "integer"
+},
+"pageToken": {
+"description": "The standard list page token.",
+"location": "query",
+"type": "string"
+},
+"returnPartialSuccess": {
+"description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+"location": "query",
+"type": "boolean"
+}
+},
+"path": "v1beta1/{+name}/operations",
+"response": {
+"$ref": "GoogleLongrunningListOperationsResponse"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/memories/{memoriesId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.memoryBanks.memories.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/memories/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+}
+}
+}
+},
+"operations": {
+"methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.memoryBanks.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"delete": {
+"description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/operations/{operationsId}",
+"httpMethod": "DELETE",
+"id": "aiplatform.projects.locations.memoryBanks.operations.delete",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be deleted.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.memoryBanks.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"list": {
+"description": "Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/operations",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.memoryBanks.operations.list",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"filter": {
+"description": "The standard list filter.",
+"location": "query",
+"type": "string"
+},
+"name": {
+"description": "The name of the operation's parent resource.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+$",
+"required": true,
+"type": "string"
+},
+"pageSize": {
+"description": "The standard list page size.",
+"format": "int32",
+"location": "query",
+"type": "integer"
+},
+"pageToken": {
+"description": "The standard list page token.",
+"location": "query",
+"type": "string"
+},
+"returnPartialSuccess": {
+"description": "When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `\"projects/example/locations/-\"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.",
+"location": "query",
+"type": "boolean"
+}
+},
+"path": "v1beta1/{+name}/operations",
+"response": {
+"$ref": "GoogleLongrunningListOperationsResponse"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/memoryBanks/{memoryBanksId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.memoryBanks.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/memoryBanks/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+}
+}
+}
+}
+},
 "metadataStores": {
 "methods": {
 "create": {
@@ -25314,7 +26008,7 @@
 "type": "string"
 },
 "orderBy": {
-"description": "Optional. Comma-separated list of fields to sort by, following AIP-132 syntax. The default sort direction is ascending; append \" desc\" to a field to sort descending. Subfields are not supported (no field listed below has any). Supported fields (any other field yields INVALID_ARGUMENT): * `latest_detection_time` - the session's most-recent flagged detection time. This is the column the landing page's \"Detection time\" header sorts on. Sorted by the underlying TIMESTAMP value (newer is \"greater\" so `latest_detection_time desc` puts the newest sessions first). * `max_severity_rank` - the session's bucketed maximum severity, ranked LOW=1 < MEDIUM=2 < HIGH=3 < CRITICAL=4 (matches `Severity` enum ordering). `max_severity_rank desc` puts the most-severe sessions first. The ranking is documented here per AIP-132 because the field is not a natural-comparator type. The server always appends `session_id ASC` as a stable tiebreak so pagination remains consistent across pages when the primary sort field has duplicates (e.g. multiple sessions with the same latest_detection_time within a second). If empty, defaults to `latest_detection_time desc` (the prior implicit behavior). Multi-field sort (e.g. `max_severity_rank desc, latest_detection_time desc`) is supported. The `order_by` value MUST match the value used on the call that minted any supplied `page_token` (AIP-158). Mismatches yield INVALID_ARGUMENT.",
+"description": "Optional. Comma-separated list of fields to sort by, following AIP-132 syntax. The default sort direction is ascending; append \" desc\" to a field to sort descending. Subfields are not supported (no field listed below has any). Supported fields (any other field yields INVALID_ARGUMENT): * `latest_detection_time` - the session's most-recent flagged detection time. This is the column the landing page's \"Detection time\" header sorts on. Sorted by the underlying TIMESTAMP value (newer is \"greater\" so `latest_detection_time desc` puts the newest sessions first). * `max_severity_rank` - the session's bucketed maximum severity, ranked LOW=1 < MEDIUM=2 < HIGH=3 < CRITICAL=4 (matches `Severity` enum ordering). `max_severity_rank desc` puts the most-severe sessions first. The ranking is documented here per AIP-132 because the field is not a natural-comparator type. * `agent_display_name` - the MonitoredAgent's display name as shown in the UI's \"Agent name\" column. Sorted as a STRING using BigQuery default collation (case-sensitive, code-point order). The server always appends `session_id ASC` as a stable tiebreak so pagination remains consistent across pages when the primary sort field has duplicates (e.g. multiple sessions with the same latest_detection_time within a second). If empty, defaults to `latest_detection_time desc` (the prior implicit behavior). Multi-field sort (e.g. `max_severity_rank desc, latest_detection_time desc`) is supported. The `order_by` value MUST match the value used on the call that minted any supplied `page_token` (AIP-158). Mismatches yield INVALID_ARGUMENT.",
 "location": "query",
 "type": "string"
 },
@@ -39395,6 +40089,31 @@
 "resources": {
 "operations": {
 "methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.tuningJobs.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
 "delete": {
 "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
 "flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}",
@@ -39415,6 +40134,62 @@
 "path": "v1beta1/{+name}",
 "response": {
 "$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.projects.locations.tuningJobs.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/projects/{projectsId}/locations/{locationsId}/tuningJobs/{tuningJobsId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.projects.locations.tuningJobs.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^projects/[^/]+/locations/[^/]+/tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
 },
 "scopes": [
 "https://www.googleapis.com/auth/cloud-platform"
@@ -46954,6 +47729,31 @@
 "resources": {
 "operations": {
 "methods": {
+"cancel": {
+"description": "Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.",
+"flatPath": "v1beta1/tuningJobs/{tuningJobsId}/operations/{operationsId}:cancel",
+"httpMethod": "POST",
+"id": "aiplatform.tuningJobs.operations.cancel",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to be cancelled.",
+"location": "path",
+"pattern": "^tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:cancel",
+"response": {
+"$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
 "delete": {
 "description": "Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.",
 "flatPath": "v1beta1/tuningJobs/{tuningJobsId}/operations/{operationsId}",
@@ -46974,6 +47774,62 @@
 "path": "v1beta1/{+name}",
 "response": {
 "$ref": "GoogleProtobufEmpty"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"get": {
+"description": "Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.",
+"flatPath": "v1beta1/tuningJobs/{tuningJobsId}/operations/{operationsId}",
+"httpMethod": "GET",
+"id": "aiplatform.tuningJobs.operations.get",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource.",
+"location": "path",
+"pattern": "^tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}",
+"response": {
+"$ref": "GoogleLongrunningOperation"
+},
+"scopes": [
+"https://www.googleapis.com/auth/cloud-platform"
+]
+},
+"wait": {
+"description": "Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.",
+"flatPath": "v1beta1/tuningJobs/{tuningJobsId}/operations/{operationsId}:wait",
+"httpMethod": "POST",
+"id": "aiplatform.tuningJobs.operations.wait",
+"parameterOrder": [
+"name"
+],
+"parameters": {
+"name": {
+"description": "The name of the operation resource to wait on.",
+"location": "path",
+"pattern": "^tuningJobs/[^/]+/operations/[^/]+$",
+"required": true,
+"type": "string"
+},
+"timeout": {
+"description": "The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.",
+"format": "google-duration",
+"location": "query",
+"type": "string"
+}
+},
+"path": "v1beta1/{+name}:wait",
+"response": {
+"$ref": "GoogleLongrunningOperation"
 },
 "scopes": [
 "https://www.googleapis.com/auth/cloud-platform"
@@ -47106,7 +47962,7 @@
 }
 }
 },
-"revision": "20260623",
+"revision": "20260703",
 "rootUrl": "https://aiplatform.googleapis.com/",
 "schemas": {
 "CloudAiLargeModelsVisionGenerateVideoExperiments": {
@@ -48090,6 +48946,33 @@
 "description": "A tool that can be used by the model to interact with the computer.",
 "id": "GenaiVertexV1beta1ComputerUse",
 "properties": {
+"disabledSafetyPolicies": {
+"description": "Optional. Disabled safety policies for computer use.",
+"items": {
+"enum": [
+"SAFETY_POLICY_UNSPECIFIED",
+"FINANCIAL_TRANSACTIONS",
+"SENSITIVE_DATA_MODIFICATION",
+"COMMUNICATION_TOOL",
+"ACCOUNT_CREATION",
+"DATA_MODIFICATION",
+"USER_CONSENT_MANAGEMENT",
+"LEGAL_TERMS_AND_AGREEMENTS"
+],
+"enumDescriptions": [
+"Unspecified safety policy.",
+"Safety policy for financial transactions.",
+"Safety policy for sensitive data modification.",
+"Safety policy for communication tools (e.g. Gmail, Chat, Meet).",
+"Safety policy for account creation.",
+"Safety policy for data modification.",
+"Safety policy for user consent management.",
+"Safety policy for legal terms and agreements."
+],
+"type": "string"
+},
+"type": "array"
+},
 "enablePromptInjectionDetection": {
 "description": "Whether enable the prompt injection detection check on computer-use request.",
 "type": "boolean"
@@ -48907,6 +49790,10 @@
 "description": "The maximum cumulative probability of tokens to consider when sampling.",
 "format": "float",
 "type": "number"
+},
+"videoConfig": {
+"$ref": "GenaiVertexV1beta1VideoConfig",
+"description": "Configuration for video generation."
 }
 },
 "type": "object"
@@ -50155,6 +51042,10 @@
 "$ref": "GenaiVertexV1beta1Content"
 },
 "type": "array"
+},
+"error": {
+"$ref": "GoogleRpcStatus",
+"description": "The error result of the operation in case of failure or cancellation."
 }
 },
 "type": "object"
@@ -50346,6 +51237,9 @@
 },
 "text": {
 "$ref": "GenaiVertexV1beta1TextResponseFormat"
+},
+"video": {
+"$ref": "GenaiVertexV1beta1VideoResponseFormat"
 }
 },
 "type": "object"
@@ -50613,6 +51507,14 @@
 "index": {
 "format": "int32",
 "type": "integer"
+},
+"stepUsage": {
+"$ref": "GenaiVertexV1beta1InteractionUsage",
+"description": "Model usage stats for this specific step."
+},
+"usage": {
+"$ref": "GenaiVertexV1beta1InteractionUsage",
+"description": "Cumulative model usage stats from the start of the session."
 }
 },
 "type": "object"
@@ -51324,6 +52226,10 @@
 "description": "Represents a boolean value.",
 "type": "boolean"
 },
+"contentValue": {
+"$ref": "GenaiVertexV1beta1Content",
+"description": "Represents rich content (text, image, etc.)."
+},
 "listValue": {
 "$ref": "GenaiVertexV1beta1ListValue",
 "description": "Represents a repeated `Value`."
@@ -51367,6 +52273,31 @@
 },
 "engine": {
 "description": "Optional. Used to specify Vertex AI Search engine.",
+"type": "string"
+}
+},
+"type": "object"
+},
+"GenaiVertexV1beta1VideoConfig": {
+"description": "Configuration options for video generation.",
+"id": "GenaiVertexV1beta1VideoConfig",
+"properties": {
+"task": {
+"description": "Optional task mode for video generation. If not specified, the model automatically determines the appropriate mode based on the provided text prompt and input media.",
+"enum": [
+"TASK_UNSPECIFIED",
+"TEXT_TO_VIDEO",
+"IMAGE_TO_VIDEO",
+"REFERENCE_TO_VIDEO",
+"EDIT"
+],
+"enumDescriptions": [
+"Unspecified task. The task is inferred from the input prompt and media.",
+"Generates video solely from a text prompt.",
+"Generates video from one or two source images. The first image defines the starting frame, and the optional second image defines the ending frame.",
+"Generates video using reference media (such as images, audio, or video).",
+"Modifies an existing input video."
+],
 "type": "string"
 }
 },
@@ -51487,6 +52418,50 @@
 "type": "string"
 },
 "uri": {
+"type": "string"
+}
+},
+"type": "object"
+},
+"GenaiVertexV1beta1VideoResponseFormat": {
+"description": "Configuration for video output format.",
+"id": "GenaiVertexV1beta1VideoResponseFormat",
+"properties": {
+"aspectRatio": {
+"description": "The aspect ratio for the video output.",
+"enum": [
+"ASPECT_RATIO_UNSPECIFIED",
+"ASPECT_RATIO_SIXTEEN_BY_NINE",
+"ASPECT_RATIO_NINE_BY_SIXTEEN"
+],
+"enumDescriptions": [
+"Default value. This value is unused.",
+"16:9 aspect ratio.",
+"9:16 aspect ratio."
+],
+"type": "string"
+},
+"delivery": {
+"description": "The delivery mode for the video output.",
+"enum": [
+"DELIVERY_UNSPECIFIED",
+"INLINE",
+"URI"
+],
+"enumDescriptions": [
+"Default value. This value is unused.",
+"Video data is returned inline in the response.",
+"Video data is returned as a URI."
+],
+"type": "string"
+},
+"duration": {
+"description": "The duration for the video output.",
+"format": "google-duration",
+"type": "string"
+},
+"gcsUri": {
+"description": "The GCS URI to store the video output. Required for Vertex if delivery mode is URI.",
 "type": "string"
 }
 },
@@ -54492,6 +55467,11 @@
 "description": "Required. The candidate that is being evaluated. The value is the same as the candidate name in the EvaluationRequest.",
 "type": "string"
 },
+"error": {
+"$ref": "GoogleRpcStatus",
+"description": "Output only. Error while evaluating the candidate for the metric.",
+"readOnly": true
+},
 "explanation": {
 "description": "Optional. The explanation for the metric.",
 "type": "string"
@@ -54717,6 +55697,51 @@
 "inferenceTimeout": {
 "description": "Customizable online prediction request timeout.",
 "format": "google-duration",
+"type": "string"
+}
+},
+"type": "object"
+},
+"GoogleCloudAiplatformV1beta1CloudLoggingConfig": {
+"description": "Specifies configuration for exporting evaluation results to Cloud Logging.",
+"id": "GoogleCloudAiplatformV1beta1CloudLoggingConfig",
+"properties": {
+"project": {
+"description": "Optional. Google Cloud project to write logs to. Defaults to the request project.",
+"type": "string"
+},
+"resourceLabels": {
+"additionalProperties": {
+"type": "string"
+},
+"description": "Optional. MonitoredResource labels to associate the log with. The backend will automatically inject project and location.",
+"type": "object"
+},
+"resourceType": {
+"description": "Optional. MonitoredResource type. Defaults to \"global\" if unspecified.",
+"type": "string"
+},
+"tracingContext": {
+"$ref": "GoogleCloudAiplatformV1beta1CloudLoggingConfigTracingContext",
+"description": "Optional. Tracing context for the evaluation run."
+}
+},
+"type": "object"
+},
+"GoogleCloudAiplatformV1beta1CloudLoggingConfigTracingContext": {
+"description": "Tracing context for Observability correlation.",
+"id": "GoogleCloudAiplatformV1beta1CloudLoggingConfigTracingContext",
+"properties": {
+"conversationId": {
+"description": "Optional. Unique identifier for a conversation (session thread), used to store and correlate messages within a conversation. The value corresponds to the `gen_ai.conversation.id` field in the the OpenTelemetry GenAI attributes.",
+"type": "string"
+},
+"spanId": {
+"description": "Optional. ID of the Cloud Trace span associated with the current operation in which the log is being written. e.g., `7a2190356c3fc94b`. If a span is being evaluated, this field should be populated.",
+"type": "string"
+},
+"traceId": {
+"description": "Optional. Trace ID being written to Cloud Trace in association with this log entry. e.g., `12345`, the numeric ID from the resource name. If a trace or span is being evaluated, this field should be populated.",
 "type": "string"
 }
 },
@@ -58138,6 +59163,10 @@
 "$ref": "GoogleCloudAiplatformV1beta1PrivateServiceConnectConfig",
 "description": "Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive."
 },
+"publisherModelConfig": {
+"$ref": "GoogleCloudAiplatformV1beta1PublisherModelConfig",
+"description": "Optional. Configuration for a Publisher Model. This message contains details about a publisher model used with this Endpoint, such as logging config or data sharing settings."
+},
 "satisfiesPzi": {
 "description": "Output only. Reserved for future use.",
 "readOnly": true,
@@ -59532,6 +60561,10 @@
 "$ref": "GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigAutoraterConfig",
 "description": "Optional. The autorater config for the evaluation run."
 },
+"cloudLoggingConfig": {
+"$ref": "GoogleCloudAiplatformV1beta1CloudLoggingConfig",
+"description": "Optional. Configuration for exporting evaluation results to Cloud Logging."
+},
 "datasetCustomMetrics": {
 "description": "Optional. Specifications for custom dataset-level aggregations.",
 "items": {
@@ -59653,6 +60686,10 @@
 "description": "Optional. The parallelism of the evaluation run for the inference step. If not specified, the default parallelism will be used.",
 "format": "int32",
 "type": "integer"
+},
+"promptTemplate": {
+"$ref": "GoogleCloudAiplatformV1beta1EvaluationRunEvaluationConfigPromptTemplate",
+"description": "Optional. The prompt template used for inference. The values for variables in the prompt template are defined in EvaluationItem.EvaluationPrompt.PromptTemplateData.values. If not specified, the prompt template in the EvaluationConfig will be used."
 }
 },
 "type": "object"
@@ -64853,7 +65890,7 @@
 "additionalProperties": {
 "$ref": "GoogleCloudAiplatformV1beta1AgentConfig"
 },
-"description": "Required. A map containing the static configurations for each agent in the system. Key: agent_id (matches the `author` field in events). Value: The static configuration of the agent.",
+"description": "Optional. A map containing the static configurations for each agent in the system. Key: agent_id (matches the `author` field in events). Value: The static configuration of the agent. Required unless `gemini_agent_config` is set, in which case the agents map and `root_agent_id` are derived from the referenced Gemini Agent.",
 "type": "object"
 },
 "allowCrossRegionModel": {
@@ -64861,7 +65898,7 @@
 "type": "boolean"
 },
 "rootAgentId": {
-"description": "Required. The agent id to identify the root agent.",
+"description": "Optional. The agent id to identify the root agent. Required unless `gemini_agent_config` is set, in which case it is derived from the referenced Gemini Agent.",
 "type": "string"
 },
 "userScenarioGenerationConfig": {
@@ -66923,6 +67960,27 @@
 },
 "type": "object"
 },
+"GoogleCloudAiplatformV1beta1InferenceEventLoggingConfig": {
+"description": "Configures emission of the per-request `aiplatform.googleapis.com/inference_request` Cloud Logging log.",
+"id": "GoogleCloudAiplatformV1beta1InferenceEventLoggingConfig",
+"properties": {
+"state": {
+"description": "Optional. Whether the `aiplatform.googleapis.com/inference_request` log is enabled.",
+"enum": [
+"STATE_UNSPECIFIED",
+"ENABLED",
+"DISABLED"
+],
+"enumDescriptions": [
+"Not specified. Treated as `DISABLED`.",
+"Inference-event logging is enabled.",
+"Inference-event logging is disabled."
+],
+"type": "string"
+}
+},
+"type": "object"
+},
 "GoogleCloudAiplatformV1beta1IngestEventsRequest": {
 "description": "Request message for MemoryBankService.IngestEvents.",
 "id": "GoogleCloudAiplatformV1beta1IngestEventsRequest",
@@ -66931,6 +67989,10 @@
 "$ref": "GoogleCloudAiplatformV1beta1IngestionDirectContentsSource",
 "description": "Ingest events directly from the request."
 },
+"disableMemoryRevisions": {
+"description": "Optional. If true, no revisions will be created for this request.",
+"type": "boolean"
+},
 "forceFlush": {
 "description": "Optional. Forces a flush of all pending events in the stream and triggers memory generation immediately bypassing any conditions configured in the `generation_trigger_config`.",
 "type": "boolean"
@@ -66938,6 +68000,46 @@
 "generationTriggerConfig": {
 "$ref": "GoogleCloudAiplatformV1beta1MemoryGenerationTriggerConfig",
 "description": "Optional. Configuration for triggering memory generation from this ingestion. If not set, then the stream will be force flushed immediately."
+},
+"metadata": {
+"additionalProperties": {
+"$ref": "GoogleCloudAiplatformV1beta1MemoryMetadataValue"
+},
+"description": "Optional. User-provided metadata for the generated memories. This is not generated by Memory Bank.",
+"type": "object"
+},
+"metadataMergeStrategy": {
+"description": "Optional. The strategy to use when applying metadata to existing memories.",
+"enum": [
+"METADATA_MERGE_STRATEGY_UNSPECIFIED",
+"OVERWRITE",
+"MERGE",
+"REQUIRE_EXACT_MATCH"
+],
+"enumDescriptions": [
+"Unspecified metadata merge strategy. If unspecified, the default behavior is to overwrite existing metadata (`OVERWRITE`).",
+"Replace the metadata of the updated memories with the new metadata.",
+"Append new metadata to the existing metadata. If there are duplicate keys, the existing values will be overwritten.",
+"Restrict consolidation to memories that have exactly the same metadata as the request. If a memory doesn't have the same metadata, it is not eligible for consolidation."
+],
+"type": "string"
+},
+"revisionExpireTime": {
+"description": "Optional. Timestamp of when the revision is considered expired. If not set, the memory revision will be kept until manually deleted.",
+"format": "google-datetime",
+"type": "string"
+},
+"revisionLabels": {
+"additionalProperties": {
+"type": "string"
+},
+"description": "Optional. Labels to be applied to the generated memory revisions. For example, you can use this to label a revision with its data source.",
+"type": "object"
+},
+"revisionTtl": {
+"description": "Optional. The TTL for the revision. The expiration time is computed: now + TTL.",
+"format": "google-duration",
+"type": "string"
 },
 "scope": {
 "additionalProperties": {
@@ -69616,6 +70718,11 @@ false
 "description": "Optional. Specifies to trigger generation if the stream is inactive for the specified duration after the most recent event. The duration must have a minute-level granularity.",
 "format": "google-duration",
 "type": "string"
+},
+"overlapEventCount": {
+"description": "Optional. Re-include the last N already-processed events in the next window.",
+"format": "int32",
+"type": "integer"
 }
 },
 "type": "object"
@@ -72470,23 +73577,9 @@ false
 "description": "Optional. The display name of the MonitoredAgent.",
 "type": "string"
 },
-"logBuckets": {
-"description": "Optional. The log buckets configured for the agent, in MVP this will be restricted to 1. Format: `projects/{project}/locations/{location}/buckets/{bucket}`",
-"items": {
-"type": "string"
-},
-"type": "array"
-},
 "name": {
 "description": "Identifier. The resource name of the MonitoredAgent.",
 "type": "string"
-},
-"observabilityBuckets": {
-"description": "Optional. The observability buckets configured for the agent, in MVP this will be restricted to 1. Format: `projects/{project}/locations/{location}/observationBuckets/{observation_bucket}`",
-"items": {
-"type": "string"
-},
-"type": "array"
 },
 "state": {
 "description": "Output only. The current state of the agent's enablement.",
@@ -76142,6 +77235,16 @@ false
 "$ref": "GoogleCloudAiplatformV1beta1GcsSource",
 "description": "Optional. A JSONL file containing a list of files to process stored in the user's GCS bucket."
 },
+"inputBucketProjectNumber": {
+"description": "Optional. The project number of the project that the user expects to own the input Cloud Storage bucket referenced by gcs_source. The service verifies that the bucket is actually owned by this project before reading from it, in order to prevent bucket squatting. If unset, the bucket is verified to be owned by the project the request is made for (parent).",
+"format": "int64",
+"type": "string"
+},
+"outputBucketProjectNumber": {
+"description": "Optional. The project number of the project that the user expects to own the output Cloud Storage bucket referenced by gcs_destination. The service verifies that the bucket is actually owned by this project before writing to it, in order to prevent bucket squatting. If unset, the bucket is verified to be owned by the project the request is made for (parent).",
+"format": "int64",
+"type": "string"
+},
 "veoSpec": {
 "$ref": "GoogleCloudAiplatformV1beta1ProcessDataRequestVeoSpec",
 "description": "Optional. Spec for Veo data processing."
@@ -76546,6 +77649,10 @@ false
 "description": "This message contains configs of a publisher model.",
 "id": "GoogleCloudAiplatformV1beta1PublisherModelConfig",
 "properties": {
+"claudeFeatureConfig": {
+"$ref": "GoogleCloudAiplatformV1beta1PublisherModelConfigClaudeFeatureConfig",
+"description": "Optional. Config for Claude-specific features."
+},
 "dataSharingEnabledProvider": {
 "description": "Optional. The model provider (publisher) for which the customer has enabled data sharing. For publisher models that are configured to require data sharing, a prediction request is only allowed when the model's publisher matches this provider. Otherwise, the request is rejected.",
 "enum": [
@@ -76558,9 +77665,29 @@ false
 ],
 "type": "string"
 },
+"inferenceEventLoggingConfig": {
+"$ref": "GoogleCloudAiplatformV1beta1InferenceEventLoggingConfig",
+"description": "Optional. Turns the per-request `aiplatform.googleapis.com/inference_request` Cloud Logging log on or off. The log records structured per-request metadata (such as principal, traffic type, and token usage). Logs are emitted only for projects with Provisioned Throughput, including their on-demand and spill-over traffic; enabling this on a project without Provisioned Throughput has no effect until it is provisioned. This is distinct from `logging_config` above: that one logs raw request/response payloads to a BigQuery table, while this one controls structured per-request metadata in Cloud Logging."
+},
 "loggingConfig": {
 "$ref": "GoogleCloudAiplatformV1beta1PredictRequestResponseLoggingConfig",
 "description": "Optional. The prediction request/response logging config."
+}
+},
+"type": "object"
+},
+"GoogleCloudAiplatformV1beta1PublisherModelConfigClaudeFeatureConfig": {
+"description": "Config for Claude-specific features.",
+"id": "GoogleCloudAiplatformV1beta1PublisherModelConfigClaudeFeatureConfig",
+"properties": {
+"advancedAiEnabled": {
+"description": "Optional. Indicates whether the customer has enabled advanced AI features for this publisher model (data retention opt-in). See b/528731813. This is the source of truth; the deprecated `cyber_verification_program_enabled` is no longer consulted on read.",
+"type": "boolean"
+},
+"cyberVerificationProgramEnabled": {
+"deprecated": true,
+"description": "Optional. Deprecated: use `advanced_ai_enabled` instead. Indicates whether the customer has enabled the Cyber Verification Program (CVP) for this publisher model (data retention opt-in). See b/528731813.",
+"type": "boolean"
 }
 },
 "type": "object"
@@ -78789,6 +79916,10 @@ false
 "description": "Optional. The OSS agent framework used to develop the agent. Currently supported values: \"google-adk\", \"langchain\", \"langgraph\", \"ag2\", \"llama-index\", \"custom\".",
 "type": "string"
 },
+"buildSpec": {
+"$ref": "GoogleCloudAiplatformV1beta1ReasoningEngineSpecBuildSpec",
+"description": "Optional. Configuration for building container image."
+},
 "classMethods": {
 "description": "Optional. Declarations for object class methods in OpenAPI specification format.",
 "items": {
@@ -78838,6 +79969,17 @@ false
 "sourceCodeSpec": {
 "$ref": "GoogleCloudAiplatformV1beta1ReasoningEngineSpecSourceCodeSpec",
 "description": "Deploy from source code files with a defined entrypoint."
+}
+},
+"type": "object"
+},
+"GoogleCloudAiplatformV1beta1ReasoningEngineSpecBuildSpec": {
+"description": "Specification for building container image.",
+"id": "GoogleCloudAiplatformV1beta1ReasoningEngineSpecBuildSpec",
+"properties": {
+"workerPool": {
+"description": "Optional. Identifier. The resource name of the Cloud Build WorkerPool to use for the build. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`",
+"type": "string"
 }
 },
 "type": "object"
@@ -90098,6 +91240,11 @@ false
 "type": "object"
 },
 "enableDataRetention": {
+"deprecated": true,
+"description": "Optional. Deprecated: Use `enable_zero_data_retention` instead. Instructs Vertex Grounding to use Parallel's Zero Data Retention Marketplace product. If this value is \"false\" or omitted, the Parallel Web Search for Grounding standard subscription will be used. If this value is \"true\", the Parallel Web Search for Grounding - ZDR subscription will be used.",
+"type": "boolean"
+},
+"enableZeroDataRetention": {
 "description": "Optional. Instructs Vertex Grounding to use Parallel's Zero Data Retention Marketplace product. If this value is \"false\" or omitted, the Parallel Web Search for Grounding standard subscription will be used. If this value is \"true\", the Parallel Web Search for Grounding - ZDR subscription will be used.",
 "type": "boolean"
 }

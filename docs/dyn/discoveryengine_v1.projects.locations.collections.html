@@ -352,6 +352,9 @@ Returns:
     &quot;utcOffset&quot;: &quot;A String&quot;, # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.
     &quot;year&quot;: 42, # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   },
+  &quot;oauthStaticIpAddresses&quot;: [ # Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication). These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for actions and/or federated search.
+    &quot;A String&quot;,
+  ],
   &quot;params&quot;: { # Required data connector parameters in structured json format.
     &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
   },
@@ -588,6 +591,9 @@ Args:
     &quot;utcOffset&quot;: &quot;A String&quot;, # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.
     &quot;year&quot;: 42, # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   },
+  &quot;oauthStaticIpAddresses&quot;: [ # Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication). These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for actions and/or federated search.
+    &quot;A String&quot;,
+  ],
   &quot;params&quot;: { # Required data connector parameters in structured json format.
     &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
   },
@@ -823,6 +829,9 @@ Returns:
     &quot;utcOffset&quot;: &quot;A String&quot;, # UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }.
     &quot;year&quot;: 42, # Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year.
   },
+  &quot;oauthStaticIpAddresses&quot;: [ # Output only. The static IP addresses used by this connector for OAuth APIs (e.g. end user authentication). These are surfaced separately from `static_ip_addresses` so that customers can apply granular firewall settings for OAuth endpoints. Only populated for connectors that have static IP enabled and are used for actions and/or federated search.
+    &quot;A String&quot;,
+  ],
   &quot;params&quot;: { # Required data connector parameters in structured json format.
     &quot;a_key&quot;: &quot;&quot;, # Properties of the object.
   },

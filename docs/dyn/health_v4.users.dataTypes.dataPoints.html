@@ -827,28 +827,28 @@ Args:
     &quot;description&quot;: &quot;A String&quot;, # Optional. The description of the food.
     &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the food.
     &quot;energyAvg&quot;: { # Represents the energy quantity. # Optional. Value representing the average energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMax&quot;: { # Represents the energy quantity. # Optional. Value representing the maximum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMin&quot;: { # Represents the energy quantity. # Optional. Value representing the minimum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;languageCode&quot;: &quot;A String&quot;, # Optional. The language code where the food is available in format xx-XX. Supported values are defined in Settings.food_language_code.
     &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal type associated with this food.
     &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the food for the default serving.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
@@ -863,11 +863,11 @@ Args:
       },
     ],
     &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -1075,18 +1075,18 @@ Args:
     },
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of the data types, individual data points do not need to be identified and this field would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example: `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
-  &quot;nutritionLog&quot;: { # Holds information about a user logged food. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable. # Optional. Data for points in the `nutrition-log` session data type collection.
-    &quot;energy&quot;: { # Represents the energy quantity. # Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+  &quot;nutritionLog&quot;: { # Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. # Optional. Data for points in the `nutrition-log` session data type collection.
+    &quot;energy&quot;: { # Represents the energy quantity. # Optional. The total energy of the food, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. The energy from fat, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;food&quot;: &quot;A String&quot;, # Required. Represents the food ID.
-    &quot;foodDisplayName&quot;: &quot;A String&quot;, # Value representing the display name of the food. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. Observed interval.
+    &quot;food&quot;: &quot;A String&quot;, # Optional. The resource name of the Food item. Required when creating a nutrition log from an identified food. For anonymous food logs, use the `food_display_name` field instead.
+    &quot;foodDisplayName&quot;: &quot;A String&quot;, # The display name of the food. For identified food logs, this is populated automatically from the referenced food.
+    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. The time window when the food was logged.
       &quot;civilEndTime&quot;: { # Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. # Output only. Session end time in civil time in the timezone the subject is in at the end of the session.
         &quot;date&quot;: { # Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp # Required. Calendar date.
           &quot;day&quot;: 42, # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#x27;t significant.
@@ -1118,27 +1118,27 @@ Args:
       &quot;startTime&quot;: &quot;A String&quot;, # Required. The start time of the observed session.
       &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
     },
-    &quot;mealType&quot;: &quot;A String&quot;, # Optional. Value representing the meal type of the nutrition log.
-    &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the nutrition log.
+    &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+    &quot;nutrients&quot;: [ # Optional. An array of individual nutrient values for the nutrition log.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
     ],
-    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. Value representing the nutrition log serving.
-      &quot;amount&quot;: 3.14, # Optional. Amount of food consumed, fractional values are supported.
+    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. The serving information for the logged food.
+      &quot;amount&quot;: 3.14, # Optional. The number of servings.
       &quot;foodMeasurementUnit&quot;: &quot;A String&quot;, # Required. Food measurement unit
       &quot;foodMeasurementUnitDisplayName&quot;: &quot;A String&quot;, # Output only. Legacy measurement unit for serving size in singular form (e.g. &quot;piece&quot;, &quot;gram&quot;).
     },
-    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. The total carbohydrate content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. The total fat content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -2427,28 +2427,28 @@ Returns:
     &quot;description&quot;: &quot;A String&quot;, # Optional. The description of the food.
     &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the food.
     &quot;energyAvg&quot;: { # Represents the energy quantity. # Optional. Value representing the average energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMax&quot;: { # Represents the energy quantity. # Optional. Value representing the maximum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMin&quot;: { # Represents the energy quantity. # Optional. Value representing the minimum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;languageCode&quot;: &quot;A String&quot;, # Optional. The language code where the food is available in format xx-XX. Supported values are defined in Settings.food_language_code.
     &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal type associated with this food.
     &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the food for the default serving.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
@@ -2463,11 +2463,11 @@ Returns:
       },
     ],
     &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -2675,18 +2675,18 @@ Returns:
     },
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of the data types, individual data points do not need to be identified and this field would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example: `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
-  &quot;nutritionLog&quot;: { # Holds information about a user logged food. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable. # Optional. Data for points in the `nutrition-log` session data type collection.
-    &quot;energy&quot;: { # Represents the energy quantity. # Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+  &quot;nutritionLog&quot;: { # Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. # Optional. Data for points in the `nutrition-log` session data type collection.
+    &quot;energy&quot;: { # Represents the energy quantity. # Optional. The total energy of the food, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. The energy from fat, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;food&quot;: &quot;A String&quot;, # Required. Represents the food ID.
-    &quot;foodDisplayName&quot;: &quot;A String&quot;, # Value representing the display name of the food. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. Observed interval.
+    &quot;food&quot;: &quot;A String&quot;, # Optional. The resource name of the Food item. Required when creating a nutrition log from an identified food. For anonymous food logs, use the `food_display_name` field instead.
+    &quot;foodDisplayName&quot;: &quot;A String&quot;, # The display name of the food. For identified food logs, this is populated automatically from the referenced food.
+    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. The time window when the food was logged.
       &quot;civilEndTime&quot;: { # Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. # Output only. Session end time in civil time in the timezone the subject is in at the end of the session.
         &quot;date&quot;: { # Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp # Required. Calendar date.
           &quot;day&quot;: 42, # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#x27;t significant.
@@ -2718,27 +2718,27 @@ Returns:
       &quot;startTime&quot;: &quot;A String&quot;, # Required. The start time of the observed session.
       &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
     },
-    &quot;mealType&quot;: &quot;A String&quot;, # Optional. Value representing the meal type of the nutrition log.
-    &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the nutrition log.
+    &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+    &quot;nutrients&quot;: [ # Optional. An array of individual nutrient values for the nutrition log.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
     ],
-    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. Value representing the nutrition log serving.
-      &quot;amount&quot;: 3.14, # Optional. Amount of food consumed, fractional values are supported.
+    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. The serving information for the logged food.
+      &quot;amount&quot;: 3.14, # Optional. The number of servings.
       &quot;foodMeasurementUnit&quot;: &quot;A String&quot;, # Required. Food measurement unit
       &quot;foodMeasurementUnitDisplayName&quot;: &quot;A String&quot;, # Output only. Legacy measurement unit for serving size in singular form (e.g. &quot;piece&quot;, &quot;gram&quot;).
     },
-    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. The total carbohydrate content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. The total fat content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -3754,28 +3754,28 @@ Returns:
         &quot;description&quot;: &quot;A String&quot;, # Optional. The description of the food.
         &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the food.
         &quot;energyAvg&quot;: { # Represents the energy quantity. # Optional. Value representing the average energy of the food for the default serving.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
         &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the food for the default serving.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
         &quot;energyMax&quot;: { # Represents the energy quantity. # Optional. Value representing the maximum energy of the food for the default serving.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
         &quot;energyMin&quot;: { # Represents the energy quantity. # Optional. Value representing the minimum energy of the food for the default serving.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
         &quot;languageCode&quot;: &quot;A String&quot;, # Optional. The language code where the food is available in format xx-XX. Supported values are defined in Settings.food_language_code.
         &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal type associated with this food.
         &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the food for the default serving.
           { # Represents the quantity of a nutrient.
-            &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-            &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-              &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+            &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+            &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+              &quot;grams&quot;: 3.14, # Required. The weight value in grams.
               &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
             },
           },
@@ -3790,11 +3790,11 @@ Returns:
           },
         ],
         &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the food for the default serving.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
         &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the food for the default serving.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
@@ -4002,18 +4002,18 @@ Returns:
         },
       },
       &quot;name&quot;: &quot;A String&quot;, # Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of the data types, individual data points do not need to be identified and this field would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example: `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
-      &quot;nutritionLog&quot;: { # Holds information about a user logged food. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable. # Optional. Data for points in the `nutrition-log` session data type collection.
-        &quot;energy&quot;: { # Represents the energy quantity. # Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;nutritionLog&quot;: { # Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. # Optional. Data for points in the `nutrition-log` session data type collection.
+        &quot;energy&quot;: { # Represents the energy quantity. # Optional. The total energy of the food, measured in kilocalories (`kcal`).
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+        &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. The energy from fat, measured in kilocalories (`kcal`).
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;food&quot;: &quot;A String&quot;, # Required. Represents the food ID.
-        &quot;foodDisplayName&quot;: &quot;A String&quot;, # Value representing the display name of the food. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-        &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. Observed interval.
+        &quot;food&quot;: &quot;A String&quot;, # Optional. The resource name of the Food item. Required when creating a nutrition log from an identified food. For anonymous food logs, use the `food_display_name` field instead.
+        &quot;foodDisplayName&quot;: &quot;A String&quot;, # The display name of the food. For identified food logs, this is populated automatically from the referenced food.
+        &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. The time window when the food was logged.
           &quot;civilEndTime&quot;: { # Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. # Output only. Session end time in civil time in the timezone the subject is in at the end of the session.
             &quot;date&quot;: { # Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp # Required. Calendar date.
               &quot;day&quot;: 42, # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#x27;t significant.
@@ -4045,27 +4045,27 @@ Returns:
           &quot;startTime&quot;: &quot;A String&quot;, # Required. The start time of the observed session.
           &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
         },
-        &quot;mealType&quot;: &quot;A String&quot;, # Optional. Value representing the meal type of the nutrition log.
-        &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the nutrition log.
+        &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+        &quot;nutrients&quot;: [ # Optional. An array of individual nutrient values for the nutrition log.
           { # Represents the quantity of a nutrient.
-            &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-            &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-              &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+            &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+            &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+              &quot;grams&quot;: 3.14, # Required. The weight value in grams.
               &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
             },
           },
         ],
-        &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. Value representing the nutrition log serving.
-          &quot;amount&quot;: 3.14, # Optional. Amount of food consumed, fractional values are supported.
+        &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. The serving information for the logged food.
+          &quot;amount&quot;: 3.14, # Optional. The number of servings.
           &quot;foodMeasurementUnit&quot;: &quot;A String&quot;, # Required. Food measurement unit
           &quot;foodMeasurementUnitDisplayName&quot;: &quot;A String&quot;, # Output only. Legacy measurement unit for serving size in singular form (e.g. &quot;piece&quot;, &quot;gram&quot;).
         },
-        &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. The total carbohydrate content, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. The total fat content, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
@@ -5088,28 +5088,28 @@ Args:
     &quot;description&quot;: &quot;A String&quot;, # Optional. The description of the food.
     &quot;displayName&quot;: &quot;A String&quot;, # Required. The display name of the food.
     &quot;energyAvg&quot;: { # Represents the energy quantity. # Optional. Value representing the average energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMax&quot;: { # Represents the energy quantity. # Optional. Value representing the maximum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;energyMin&quot;: { # Represents the energy quantity. # Optional. Value representing the minimum energy of the food for the default serving.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;languageCode&quot;: &quot;A String&quot;, # Optional. The language code where the food is available in format xx-XX. Supported values are defined in Settings.food_language_code.
     &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal type associated with this food.
     &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the food for the default serving.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
@@ -5124,11 +5124,11 @@ Args:
       },
     ],
     &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
     &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the food for the default serving.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -5336,18 +5336,18 @@ Args:
     },
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. Data point name, only supported for the subset of identifiable data types. For the majority of the data types, individual data points do not need to be identified and this field would be empty. Format: `users/{user}/dataTypes/{data_type}/dataPoints/{data_point}` Example: `users/abcd1234/dataTypes/sleep/dataPoints/a1b2c3d4-e5f6-7890-1234-567890abcdef` The `{user}` ID is a system-generated identifier, as described in Identity.health_user_id. The `{data_type}` ID corresponds to the kebab-case version of the field names in the DataPoint data union field, e.g. `heart-rate` for the `heart_rate` field. The `{data_point}` ID can be client-provided or system-generated. If client-provided, it must be a string of 4-63 characters, containing only lowercase letters, numbers, and hyphens.
-  &quot;nutritionLog&quot;: { # Holds information about a user logged food. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable. # Optional. Data for points in the `nutrition-log` session data type collection.
-    &quot;energy&quot;: { # Represents the energy quantity. # Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+  &quot;nutritionLog&quot;: { # Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. # Optional. Data for points in the `nutrition-log` session data type collection.
+    &quot;energy&quot;: { # Represents the energy quantity. # Optional. The total energy of the food, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+    &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. The energy from fat, measured in kilocalories (`kcal`).
+      &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;food&quot;: &quot;A String&quot;, # Required. Represents the food ID.
-    &quot;foodDisplayName&quot;: &quot;A String&quot;, # Value representing the display name of the food. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. Observed interval.
+    &quot;food&quot;: &quot;A String&quot;, # Optional. The resource name of the Food item. Required when creating a nutrition log from an identified food. For anonymous food logs, use the `food_display_name` field instead.
+    &quot;foodDisplayName&quot;: &quot;A String&quot;, # The display name of the food. For identified food logs, this is populated automatically from the referenced food.
+    &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. The time window when the food was logged.
       &quot;civilEndTime&quot;: { # Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. # Output only. Session end time in civil time in the timezone the subject is in at the end of the session.
         &quot;date&quot;: { # Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp # Required. Calendar date.
           &quot;day&quot;: 42, # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#x27;t significant.
@@ -5379,27 +5379,27 @@ Args:
       &quot;startTime&quot;: &quot;A String&quot;, # Required. The start time of the observed session.
       &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
     },
-    &quot;mealType&quot;: &quot;A String&quot;, # Optional. Value representing the meal type of the nutrition log.
-    &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the nutrition log.
+    &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+    &quot;nutrients&quot;: [ # Optional. An array of individual nutrient values for the nutrition log.
       { # Represents the quantity of a nutrient.
-        &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-        &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+        &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },
     ],
-    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. Value representing the nutrition log serving.
-      &quot;amount&quot;: 3.14, # Optional. Amount of food consumed, fractional values are supported.
+    &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. The serving information for the logged food.
+      &quot;amount&quot;: 3.14, # Optional. The number of servings.
       &quot;foodMeasurementUnit&quot;: &quot;A String&quot;, # Required. Food measurement unit
       &quot;foodMeasurementUnitDisplayName&quot;: &quot;A String&quot;, # Output only. Legacy measurement unit for serving size in singular form (e.g. &quot;piece&quot;, &quot;gram&quot;).
     },
-    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. The total carbohydrate content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
-    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-      &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+    &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. The total fat content, measured in grams.
+      &quot;grams&quot;: 3.14, # Required. The weight value in grams.
       &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
     },
   },
@@ -6472,18 +6472,18 @@ Returns:
           &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
         },
       },
-      &quot;nutritionLog&quot;: { # Holds information about a user logged food. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not be editable. # Data for points in the `nutrition-log` session data type collection.
-        &quot;energy&quot;: { # Represents the energy quantity. # Optional. Value representing the energy of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+      &quot;nutritionLog&quot;: { # Holds information about food logged by a user. There are two ways of creating a nutrition log based on the food type: 1. Identified food: Using the food field, which is a reference to a Food resource. In this case fields `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat`, `food_display_name` will be populated based on the referenced food. 2. Anonymous food: Using the `food_display_name` field and setting the `nutrients`, `energy`, `energy_from_fat`, `total_carbohydrate`, `total_fat` fields manually. The identified food is preferred over the anonymous food. Nutrition logs created from anonymous food are not editable. # Data for points in the `nutrition-log` session data type collection.
+        &quot;energy&quot;: { # Represents the energy quantity. # Optional. The total energy of the food, measured in kilocalories (`kcal`).
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. Value representing the energy from fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;kcal&quot;: 3.14, # Required. Value representing the energy in kilocalories.
+        &quot;energyFromFat&quot;: { # Represents the energy quantity. # Optional. The energy from fat, measured in kilocalories (`kcal`).
+          &quot;kcal&quot;: 3.14, # Required. The energy value in kilocalories.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;food&quot;: &quot;A String&quot;, # Required. Represents the food ID.
-        &quot;foodDisplayName&quot;: &quot;A String&quot;, # Value representing the display name of the food. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-        &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. Observed interval.
+        &quot;food&quot;: &quot;A String&quot;, # Optional. The resource name of the Food item. Required when creating a nutrition log from an identified food. For anonymous food logs, use the `food_display_name` field instead.
+        &quot;foodDisplayName&quot;: &quot;A String&quot;, # The display name of the food. For identified food logs, this is populated automatically from the referenced food.
+        &quot;interval&quot;: { # Represents a time interval of session data point, which bundles multiple observed metrics together. # Required. The time window when the food was logged.
           &quot;civilEndTime&quot;: { # Civil time representation similar to google.type.DateTime, but ensures that neither the timezone nor the UTC offset can be set to avoid confusion between civil and physical time queries. # Output only. Session end time in civil time in the timezone the subject is in at the end of the session.
             &quot;date&quot;: { # Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay * google.type.DateTime * google.protobuf.Timestamp # Required. Calendar date.
               &quot;day&quot;: 42, # Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn&#x27;t significant.
@@ -6515,27 +6515,27 @@ Returns:
           &quot;startTime&quot;: &quot;A String&quot;, # Required. The start time of the observed session.
           &quot;startUtcOffset&quot;: &quot;A String&quot;, # Required. The offset of the user&#x27;s local time at the start of the session relative to the Coordinated Universal Time (UTC).
         },
-        &quot;mealType&quot;: &quot;A String&quot;, # Optional. Value representing the meal type of the nutrition log.
-        &quot;nutrients&quot;: [ # Optional. Value representing the nutrients of the nutrition log.
+        &quot;mealType&quot;: &quot;A String&quot;, # Optional. The meal category. One of `BREAKFAST`, `LUNCH`, `DINNER`, or `SNACK`.
+        &quot;nutrients&quot;: [ # Optional. An array of individual nutrient values for the nutrition log.
           { # Represents the quantity of a nutrient.
-            &quot;nutrient&quot;: &quot;A String&quot;, # Required. Value representing the nutrient.
-            &quot;quantity&quot;: { # Represents the weight quantity. # Required. Value representing the quantity of the nutrient.
-              &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+            &quot;nutrient&quot;: &quot;A String&quot;, # Required. The nutrient type.
+            &quot;quantity&quot;: { # Represents the weight quantity. # Required. The quantity of the nutrient, measured in grams.
+              &quot;grams&quot;: 3.14, # Required. The weight value in grams.
               &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
             },
           },
         ],
-        &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. Value representing the nutrition log serving.
-          &quot;amount&quot;: 3.14, # Optional. Amount of food consumed, fractional values are supported.
+        &quot;serving&quot;: { # Represents different properties and information about the serving of a specific food. # Optional. The serving information for the logged food.
+          &quot;amount&quot;: 3.14, # Optional. The number of servings.
           &quot;foodMeasurementUnit&quot;: &quot;A String&quot;, # Required. Food measurement unit
           &quot;foodMeasurementUnitDisplayName&quot;: &quot;A String&quot;, # Output only. Legacy measurement unit for serving size in singular form (e.g. &quot;piece&quot;, &quot;gram&quot;).
         },
-        &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. Value representing the total carbohydrate of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;totalCarbohydrate&quot;: { # Represents the weight quantity. # Optional. The total carbohydrate content, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
-        &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. Value representing the total fat of the nutrition log. For nutrition logs created from an identified food, this field will be populated based on the referenced food. For anonymous food, this field will be populated manually.
-          &quot;grams&quot;: 3.14, # Required. Value representing the weight in grams.
+        &quot;totalFat&quot;: { # Represents the weight quantity. # Optional. The total fat content, measured in grams.
+          &quot;grams&quot;: 3.14, # Required. The weight value in grams.
           &quot;userProvidedUnit&quot;: &quot;A String&quot;, # Optional. Value representing the user provided unit.
         },
       },

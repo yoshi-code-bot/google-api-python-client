@@ -7662,17 +7662,17 @@ Returns:
             # e.g. &#x27;Intel Ice Lake&#x27;.
         &quot;provisioningModel&quot;: &quot;A String&quot;, # Output only. The provisioning model to be used for this instance.
       },
-      &quot;scheduling&quot;: { # Output only. [Output Only] Information about the termination timestamp of the instance,
-          # if applicable.
-        &quot;gracefulShutdownTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The timestamp at which the underlying instance will be
+      &quot;scheduling&quot;: { # Output only. Information about the termination timestamp of the instance, if applicable.
+        &quot;gracefulShutdownTimestamp&quot;: &quot;A String&quot;, # Output only. The timestamp at which the underlying instance will be
             # triggered for graceful shutdown if it is configured. This is in RFC3339 text format.
-        &quot;terminationTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] The timestamp at which the managed instance will be
-            # terminated. This is in RFC3339 text format.
+        &quot;terminationTimestamp&quot;: &quot;A String&quot;, # Output only. The timestamp at which the managed instance will be terminated. This is
+            # in RFC3339 text
+            # format.
       },
-      &quot;shutdownDetails&quot;: { # Output only. [Output Only] Specifies the graceful shutdown details if the instance is in
+      &quot;shutdownDetails&quot;: { # Output only. Specifies the graceful shutdown details if the instance is in
           # `PENDING_STOP` state or there is a programmed stop scheduled.
-        &quot;maxDuration&quot;: { # A Duration represents a fixed-length span of time represented # Output only. [Output Only] The duration for graceful shutdown. Only applicable when
-            # the instance is in `PENDING_STOP` state.
+        &quot;maxDuration&quot;: { # A Duration represents a fixed-length span of time represented # Output only. The duration for graceful shutdown. Only applicable when the instance is
+            # in `PENDING_STOP` state.
             # as a count of seconds and fractions of seconds at nanosecond
             # resolution. It is independent of any calendar and concepts like &quot;day&quot;
             # or &quot;month&quot;. Range is approximately 10,000 years.
@@ -7684,8 +7684,9 @@ Returns:
               # to 315,576,000,000 inclusive. Note: these bounds are computed from:
               # 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
         },
-        &quot;requestTimestamp&quot;: &quot;A String&quot;, # Output only. [Output Only] Past timestamp indicating the beginning of `PENDING_STOP`
-            # state of instance in RFC3339 text format.
+        &quot;requestTimestamp&quot;: &quot;A String&quot;, # Output only. Past timestamp indicating the beginning of `PENDING_STOP` state of
+            # instance in RFC3339
+            # text format.
       },
       &quot;targetStatus&quot;: &quot;A String&quot;, # Output only. [Output Only] The eventual status of the instance. The instance group
           # manager will not be identified as stable till each managed instance reaches

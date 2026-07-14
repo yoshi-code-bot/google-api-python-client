@@ -320,6 +320,7 @@ Returns:
     },
   ],
   &quot;progress&quot;: { # The progress of the evaluation run. # Output only. The progress of the evaluation run.
+    &quot;cancelledCount&quot;: 42, # Output only. Number of evaluation results that were cancelled. (EvaluationResult.execution_state is CANCELLED).
     &quot;completedCount&quot;: 42, # Output only. Number of evaluation results that finished successfully. (EvaluationResult.execution_state is COMPLETED).
     &quot;errorCount&quot;: 42, # Output only. Number of evaluation results that failed to execute. (EvaluationResult.execution_state is ERROR).
     &quot;failedCount&quot;: 42, # Output only. Number of completed evaluation results with an outcome of FAIL. (EvaluationResult.execution_state is COMPLETED and EvaluationResult.evaluation_status is FAIL).
@@ -477,6 +478,7 @@ Returns:
         },
       ],
       &quot;progress&quot;: { # The progress of the evaluation run. # Output only. The progress of the evaluation run.
+        &quot;cancelledCount&quot;: 42, # Output only. Number of evaluation results that were cancelled. (EvaluationResult.execution_state is CANCELLED).
         &quot;completedCount&quot;: 42, # Output only. Number of evaluation results that finished successfully. (EvaluationResult.execution_state is COMPLETED).
         &quot;errorCount&quot;: 42, # Output only. Number of evaluation results that failed to execute. (EvaluationResult.execution_state is ERROR).
         &quot;failedCount&quot;: 42, # Output only. Number of completed evaluation results with an outcome of FAIL. (EvaluationResult.execution_state is COMPLETED and EvaluationResult.evaluation_status is FAIL).

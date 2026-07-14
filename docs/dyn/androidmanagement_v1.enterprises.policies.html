@@ -280,7 +280,7 @@ Returns:
   },
   &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
   &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
     { # The default application setting for a DefaultApplicationType.
       &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
         &quot;A String&quot;,
@@ -493,7 +493,7 @@ Returns:
       &quot;A String&quot;,
     ],
   },
-  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
     { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
       &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
         &quot;A String&quot;,
@@ -808,7 +808,7 @@ Returns:
       },
       &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
       &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-      &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+      &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
         { # The default application setting for a DefaultApplicationType.
           &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
             &quot;A String&quot;,
@@ -1021,7 +1021,7 @@ Returns:
           &quot;A String&quot;,
         ],
       },
-      &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+      &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
         { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
           &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
             &quot;A String&quot;,
@@ -1422,7 +1422,7 @@ Returns:
     },
     &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
     &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-    &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+    &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
       { # The default application setting for a DefaultApplicationType.
         &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
           &quot;A String&quot;,
@@ -1635,7 +1635,7 @@ Returns:
         &quot;A String&quot;,
       ],
     },
-    &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+    &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
       { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
         &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
           &quot;A String&quot;,
@@ -1941,7 +1941,7 @@ Args:
   },
   &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
   &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
     { # The default application setting for a DefaultApplicationType.
       &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
         &quot;A String&quot;,
@@ -2154,7 +2154,7 @@ Args:
       &quot;A String&quot;,
     ],
   },
-  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
     { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
       &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
         &quot;A String&quot;,
@@ -2458,7 +2458,7 @@ Returns:
   },
   &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
   &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+  &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
     { # The default application setting for a DefaultApplicationType.
       &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
         &quot;A String&quot;,
@@ -2671,7 +2671,7 @@ Returns:
       &quot;A String&quot;,
     ],
   },
-  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+  &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
     { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
       &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
         &quot;A String&quot;,
@@ -2991,7 +2991,7 @@ Returns:
     },
     &quot;dataRoamingDisabled&quot;: True or False, # Whether roaming data services are disabled.
     &quot;debuggingFeaturesAllowed&quot;: True or False, # Whether the user is allowed to enable debugging features.
-    &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
+    &quot;defaultApplicationSettings&quot;: [ # Optional. The default application setting for supported types. If the default application is successfully set for at least one app type on a profile, users are prevented from changing any default applications on that profile.Only one DefaultApplicationSetting is allowed for each DefaultApplicationType.Warning: Do not configure this and persistent_preferred_activities for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.See Default application settings (https://developers.google.com/android/management/default-application-settings) guide for more details.
       { # The default application setting for a DefaultApplicationType.
         &quot;defaultApplicationScopes&quot;: [ # Required. The scopes to which the policy should be applied. This list must not be empty or contain duplicates.A NonComplianceDetail with MANAGEMENT_MODE reason and DEFAULT_APPLICATION_SETTING_UNSUPPORTED_SCOPES specific reason is reported if none of the specified scopes can be applied to the management mode (e.g. a fully managed device receives a policy with only SCOPE_PERSONAL_PROFILE in the list).
           &quot;A String&quot;,
@@ -3204,7 +3204,7 @@ Returns:
         &quot;A String&quot;,
       ],
     },
-    &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.
+    &quot;persistentPreferredActivities&quot;: [ # Default intent handler activities.Warning: Do not configure this and default_application_settings for the same intent domain, such as web browsing. Setting both for the same intent domain can lead to unpredictable behavior.
       { # A default activity for handling intents that match a particular intent filter. Note: To set up a kiosk, use InstallType to KIOSK rather than use persistent preferred activities.
         &quot;actions&quot;: [ # The intent actions to match in the filter. If any actions are included in the filter, then an intent&#x27;s action must be one of those values for it to match. If no actions are included, the intent action is ignored.
           &quot;A String&quot;,

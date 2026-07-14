@@ -142,6 +142,10 @@ Args:
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The relative resource name of the DataDomain, of the form: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
   &quot;parentDataDomain&quot;: &quot;A String&quot;, # Optional. Immutable. The resource name of the parent DataDomain. Empty if this is a top-level DataDomain. Format: projects/{project_id_or_number}/locations/{location}/dataDomains/{parent_data_domain_id} This field is immutable after creation.
+  &quot;policyMember&quot;: { # Output-only policy member strings of a Google Cloud resource&#x27;s built-in identity. # Output only. Output-only policy member strings of this resource.
+    &quot;iamPolicyNamePrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource.Example: principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+    &quot;iamPolicyUidPrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resourceExample: principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+  },
   &quot;uid&quot;: &quot;A String&quot;, # Output only. System-generated globally unique ID for the DataDomain.
   &quot;updateTime&quot;: &quot;A String&quot;, # Output only. The time at which the DataDomain was last updated.
 }
@@ -244,6 +248,10 @@ Returns:
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The relative resource name of the DataDomain, of the form: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
   &quot;parentDataDomain&quot;: &quot;A String&quot;, # Optional. Immutable. The resource name of the parent DataDomain. Empty if this is a top-level DataDomain. Format: projects/{project_id_or_number}/locations/{location}/dataDomains/{parent_data_domain_id} This field is immutable after creation.
+  &quot;policyMember&quot;: { # Output-only policy member strings of a Google Cloud resource&#x27;s built-in identity. # Output only. Output-only policy member strings of this resource.
+    &quot;iamPolicyNamePrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource.Example: principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+    &quot;iamPolicyUidPrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resourceExample: principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+  },
   &quot;uid&quot;: &quot;A String&quot;, # Output only. System-generated globally unique ID for the DataDomain.
   &quot;updateTime&quot;: &quot;A String&quot;, # Output only. The time at which the DataDomain was last updated.
 }</pre>
@@ -335,6 +343,10 @@ Returns:
       },
       &quot;name&quot;: &quot;A String&quot;, # Identifier. The relative resource name of the DataDomain, of the form: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
       &quot;parentDataDomain&quot;: &quot;A String&quot;, # Optional. Immutable. The resource name of the parent DataDomain. Empty if this is a top-level DataDomain. Format: projects/{project_id_or_number}/locations/{location}/dataDomains/{parent_data_domain_id} This field is immutable after creation.
+      &quot;policyMember&quot;: { # Output-only policy member strings of a Google Cloud resource&#x27;s built-in identity. # Output only. Output-only policy member strings of this resource.
+        &quot;iamPolicyNamePrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource.Example: principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+        &quot;iamPolicyUidPrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resourceExample: principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+      },
       &quot;uid&quot;: &quot;A String&quot;, # Output only. System-generated globally unique ID for the DataDomain.
       &quot;updateTime&quot;: &quot;A String&quot;, # Output only. The time at which the DataDomain was last updated.
     },
@@ -384,6 +396,10 @@ Args:
   },
   &quot;name&quot;: &quot;A String&quot;, # Identifier. The relative resource name of the DataDomain, of the form: projects/{project_id_or_number}/locations/{location_id}/dataDomains/{data_domain_id}
   &quot;parentDataDomain&quot;: &quot;A String&quot;, # Optional. Immutable. The resource name of the parent DataDomain. Empty if this is a top-level DataDomain. Format: projects/{project_id_or_number}/locations/{location}/dataDomains/{parent_data_domain_id} This field is immutable after creation.
+  &quot;policyMember&quot;: { # Output-only policy member strings of a Google Cloud resource&#x27;s built-in identity. # Output only. Output-only policy member strings of this resource.
+    &quot;iamPolicyNamePrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by user-assigned name (https://google.aip.dev/122). If a resource is deleted and recreated with the same name, the binding will be applicable to the new resource.Example: principal://parametermanager.googleapis.com/projects/12345/name/locations/us-central1-a/parameters/my-parameter
+    &quot;iamPolicyUidPrincipal&quot;: &quot;A String&quot;, # Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resourceExample: principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5
+  },
   &quot;uid&quot;: &quot;A String&quot;, # Output only. System-generated globally unique ID for the DataDomain.
   &quot;updateTime&quot;: &quot;A String&quot;, # Output only. The time at which the DataDomain was last updated.
 }

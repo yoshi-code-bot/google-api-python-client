@@ -339,6 +339,9 @@ Returns:
               # does not exist already, it is created automatically at the time of Approval
               # with INACTIVE state till specified start-time. Either provide the
               # reservation_name or a name_prefix.
+          &quot;resourceName&quot;: &quot;A String&quot;, # Name of the resource intended to be delivered. Name should conform to
+              # RFC1035. This will be the name of storage pool or Exapool for persistent
+              # disk FRs.
           &quot;schedulingType&quot;: &quot;A String&quot;, # Maintenance information for this reservation
           &quot;selfLink&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined fully-qualified URL for this resource.
           &quot;selfLinkWithId&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined URL for this resource with the resource id.
@@ -418,6 +421,11 @@ Returns:
                 # start_time.
               &quot;A String&quot;,
             ],
+            &quot;exapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Output only. Exapool provisioned capacities for each SKU type.
+              &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+              &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+              &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+            },
             &quot;existingMatchingUsageInfo&quot;: { # [Output Only] Represents the existing matching usage for the future # Output only. [Output Only] Represents the existing matching usage for the future
                 # reservation.
                 # reservation.
@@ -546,6 +554,28 @@ Returns:
               &quot;sourceInstanceTemplateId&quot;: &quot;A String&quot;, # ID of the instance template used to populate the Future Reservation
                   # properties.
             },
+            &quot;storagePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Output only. Storage pool provisioned capacities for each SKU type.
+              &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+              &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+                  # type is hyperdisk-balanced.
+              &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+                  # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+            },
+          },
+          &quot;storagePoolProperties&quot;: { # Storage pool properties for the future reservation. # Storage pool details for the future reservation.
+            &quot;requestedExapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Requested exapool provisioned capacity in GiB.
+              &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+              &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+              &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+            },
+            &quot;requestedStoragePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Requested storage pool provisioned capacity.
+              &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+              &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+                  # type is hyperdisk-balanced.
+              &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+                  # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+            },
+            &quot;storagePoolType&quot;: &quot;A String&quot;, # Type of the storage pool.
           },
           &quot;timeWindow&quot;: { # Time window for this Future Reservation.
             &quot;duration&quot;: { # A Duration represents a fixed-length span of time represented
@@ -1376,6 +1406,9 @@ Returns:
       # does not exist already, it is created automatically at the time of Approval
       # with INACTIVE state till specified start-time. Either provide the
       # reservation_name or a name_prefix.
+  &quot;resourceName&quot;: &quot;A String&quot;, # Name of the resource intended to be delivered. Name should conform to
+      # RFC1035. This will be the name of storage pool or Exapool for persistent
+      # disk FRs.
   &quot;schedulingType&quot;: &quot;A String&quot;, # Maintenance information for this reservation
   &quot;selfLink&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined fully-qualified URL for this resource.
   &quot;selfLinkWithId&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined URL for this resource with the resource id.
@@ -1455,6 +1488,11 @@ Returns:
         # start_time.
       &quot;A String&quot;,
     ],
+    &quot;exapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Output only. Exapool provisioned capacities for each SKU type.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
     &quot;existingMatchingUsageInfo&quot;: { # [Output Only] Represents the existing matching usage for the future # Output only. [Output Only] Represents the existing matching usage for the future
         # reservation.
         # reservation.
@@ -1583,6 +1621,28 @@ Returns:
       &quot;sourceInstanceTemplateId&quot;: &quot;A String&quot;, # ID of the instance template used to populate the Future Reservation
           # properties.
     },
+    &quot;storagePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Output only. Storage pool provisioned capacities for each SKU type.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+  },
+  &quot;storagePoolProperties&quot;: { # Storage pool properties for the future reservation. # Storage pool details for the future reservation.
+    &quot;requestedExapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Requested exapool provisioned capacity in GiB.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
+    &quot;requestedStoragePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Requested storage pool provisioned capacity.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+    &quot;storagePoolType&quot;: &quot;A String&quot;, # Type of the storage pool.
   },
   &quot;timeWindow&quot;: { # Time window for this Future Reservation.
     &quot;duration&quot;: { # A Duration represents a fixed-length span of time represented
@@ -1734,6 +1794,9 @@ Args:
       # does not exist already, it is created automatically at the time of Approval
       # with INACTIVE state till specified start-time. Either provide the
       # reservation_name or a name_prefix.
+  &quot;resourceName&quot;: &quot;A String&quot;, # Name of the resource intended to be delivered. Name should conform to
+      # RFC1035. This will be the name of storage pool or Exapool for persistent
+      # disk FRs.
   &quot;schedulingType&quot;: &quot;A String&quot;, # Maintenance information for this reservation
   &quot;selfLink&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined fully-qualified URL for this resource.
   &quot;selfLinkWithId&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined URL for this resource with the resource id.
@@ -1813,6 +1876,11 @@ Args:
         # start_time.
       &quot;A String&quot;,
     ],
+    &quot;exapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Output only. Exapool provisioned capacities for each SKU type.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
     &quot;existingMatchingUsageInfo&quot;: { # [Output Only] Represents the existing matching usage for the future # Output only. [Output Only] Represents the existing matching usage for the future
         # reservation.
         # reservation.
@@ -1941,6 +2009,28 @@ Args:
       &quot;sourceInstanceTemplateId&quot;: &quot;A String&quot;, # ID of the instance template used to populate the Future Reservation
           # properties.
     },
+    &quot;storagePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Output only. Storage pool provisioned capacities for each SKU type.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+  },
+  &quot;storagePoolProperties&quot;: { # Storage pool properties for the future reservation. # Storage pool details for the future reservation.
+    &quot;requestedExapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Requested exapool provisioned capacity in GiB.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
+    &quot;requestedStoragePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Requested storage pool provisioned capacity.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+    &quot;storagePoolType&quot;: &quot;A String&quot;, # Type of the storage pool.
   },
   &quot;timeWindow&quot;: { # Time window for this Future Reservation.
     &quot;duration&quot;: { # A Duration represents a fixed-length span of time represented
@@ -2471,6 +2561,9 @@ Returns:
           # does not exist already, it is created automatically at the time of Approval
           # with INACTIVE state till specified start-time. Either provide the
           # reservation_name or a name_prefix.
+      &quot;resourceName&quot;: &quot;A String&quot;, # Name of the resource intended to be delivered. Name should conform to
+          # RFC1035. This will be the name of storage pool or Exapool for persistent
+          # disk FRs.
       &quot;schedulingType&quot;: &quot;A String&quot;, # Maintenance information for this reservation
       &quot;selfLink&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined fully-qualified URL for this resource.
       &quot;selfLinkWithId&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined URL for this resource with the resource id.
@@ -2550,6 +2643,11 @@ Returns:
             # start_time.
           &quot;A String&quot;,
         ],
+        &quot;exapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Output only. Exapool provisioned capacities for each SKU type.
+          &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+          &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+          &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+        },
         &quot;existingMatchingUsageInfo&quot;: { # [Output Only] Represents the existing matching usage for the future # Output only. [Output Only] Represents the existing matching usage for the future
             # reservation.
             # reservation.
@@ -2678,6 +2776,28 @@ Returns:
           &quot;sourceInstanceTemplateId&quot;: &quot;A String&quot;, # ID of the instance template used to populate the Future Reservation
               # properties.
         },
+        &quot;storagePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Output only. Storage pool provisioned capacities for each SKU type.
+          &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+          &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+              # type is hyperdisk-balanced.
+          &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+              # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        },
+      },
+      &quot;storagePoolProperties&quot;: { # Storage pool properties for the future reservation. # Storage pool details for the future reservation.
+        &quot;requestedExapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Requested exapool provisioned capacity in GiB.
+          &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+          &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+          &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+        },
+        &quot;requestedStoragePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Requested storage pool provisioned capacity.
+          &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+          &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+              # type is hyperdisk-balanced.
+          &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+              # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+        },
+        &quot;storagePoolType&quot;: &quot;A String&quot;, # Type of the storage pool.
       },
       &quot;timeWindow&quot;: { # Time window for this Future Reservation.
         &quot;duration&quot;: { # A Duration represents a fixed-length span of time represented
@@ -2882,6 +3002,9 @@ Args:
       # does not exist already, it is created automatically at the time of Approval
       # with INACTIVE state till specified start-time. Either provide the
       # reservation_name or a name_prefix.
+  &quot;resourceName&quot;: &quot;A String&quot;, # Name of the resource intended to be delivered. Name should conform to
+      # RFC1035. This will be the name of storage pool or Exapool for persistent
+      # disk FRs.
   &quot;schedulingType&quot;: &quot;A String&quot;, # Maintenance information for this reservation
   &quot;selfLink&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined fully-qualified URL for this resource.
   &quot;selfLinkWithId&quot;: &quot;A String&quot;, # Output only. [Output Only] Server-defined URL for this resource with the resource id.
@@ -2961,6 +3084,11 @@ Args:
         # start_time.
       &quot;A String&quot;,
     ],
+    &quot;exapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Output only. Exapool provisioned capacities for each SKU type.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
     &quot;existingMatchingUsageInfo&quot;: { # [Output Only] Represents the existing matching usage for the future # Output only. [Output Only] Represents the existing matching usage for the future
         # reservation.
         # reservation.
@@ -3089,6 +3217,28 @@ Args:
       &quot;sourceInstanceTemplateId&quot;: &quot;A String&quot;, # ID of the instance template used to populate the Future Reservation
           # properties.
     },
+    &quot;storagePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Output only. Storage pool provisioned capacities for each SKU type.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+  },
+  &quot;storagePoolProperties&quot;: { # Storage pool properties for the future reservation. # Storage pool details for the future reservation.
+    &quot;requestedExapoolProvisionedCapacityGb&quot;: { # Exapool provisioned capacities for each SKU type # Requested exapool provisioned capacity in GiB.
+      &quot;capacityOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned capacity-optimized capacity for this Exapool
+      &quot;readOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned read-optimized capacity for this Exapool
+      &quot;writeOptimized&quot;: &quot;A String&quot;, # Size, in GiB, of provisioned write-optimized capacity for this Exapool
+    },
+    &quot;requestedStoragePoolProvisionedCapacity&quot;: { # Storage pool provisioned capacities for each SKU type. # Requested storage pool provisioned capacity.
+      &quot;poolProvisionedCapacityGb&quot;: &quot;A String&quot;, # Size of the storage pool in GiB.
+      &quot;poolProvisionedIops&quot;: &quot;A String&quot;, # Provisioned IOPS of the storage pool. Only relevant if the storage pool
+          # type is hyperdisk-balanced.
+      &quot;poolProvisionedThroughput&quot;: &quot;A String&quot;, # Provisioned throughput of the storage pool in MiB/s. Only relevant if
+          # the storage pool type is hyperdisk-balanced or hyperdisk-throughput.
+    },
+    &quot;storagePoolType&quot;: &quot;A String&quot;, # Type of the storage pool.
   },
   &quot;timeWindow&quot;: { # Time window for this Future Reservation.
     &quot;duration&quot;: { # A Duration represents a fixed-length span of time represented

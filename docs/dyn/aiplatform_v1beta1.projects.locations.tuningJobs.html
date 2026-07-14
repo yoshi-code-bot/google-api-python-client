@@ -9668,6 +9668,8 @@ Args:
       &quot;A String&quot;,
     ],
   },
+  &quot;inputBucketProjectNumber&quot;: &quot;A String&quot;, # Optional. The project number of the project that the user expects to own the input Cloud Storage bucket referenced by gcs_source. The service verifies that the bucket is actually owned by this project before reading from it, in order to prevent bucket squatting. If unset, the bucket is verified to be owned by the project the request is made for (parent).
+  &quot;outputBucketProjectNumber&quot;: &quot;A String&quot;, # Optional. The project number of the project that the user expects to own the output Cloud Storage bucket referenced by gcs_destination. The service verifies that the bucket is actually owned by this project before writing to it, in order to prevent bucket squatting. If unset, the bucket is verified to be owned by the project the request is made for (parent).
   &quot;veoSpec&quot;: { # Spec for Veo data processing. # Optional. Spec for Veo data processing.
     &quot;processType&quot;: &quot;A String&quot;, # Optional. The type of data processing to perform.
   },
