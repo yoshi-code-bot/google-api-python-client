@@ -84,7 +84,7 @@ h1, h2, h3 {
   <code><a href="#get">get(project, instance, readTime=None, x__xgafv=None)</a></code></p>
 <p class="firstline">Retrieves connect settings about a Cloud SQL instance.</p>
 <p class="toc_element">
-  <code><a href="#resolve">resolve(dnsName, location, x__xgafv=None)</a></code></p>
+  <code><a href="#resolve">resolve(location, dnsName, x__xgafv=None)</a></code></p>
 <p class="firstline">Retrieves connect settings about a Cloud SQL instance using the instance DNS name.</p>
 <h3>Method Details</h3>
 <div class="method">
@@ -150,6 +150,7 @@ Returns:
 
     { # Connect settings retrieval response.
   &quot;backendType&quot;: &quot;A String&quot;, # `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
+  &quot;connectionName&quot;: &quot;A String&quot;, # Optional. Output only. Connection name of the Cloud SQL instance used in connection strings, in the format project:region:instance.
   &quot;customSubjectAlternativeNames&quot;: [ # Custom subject alternative names for the server certificate.
     &quot;A String&quot;,
   ],
@@ -214,12 +215,12 @@ Returns:
 </div>
 
 <div class="method">
-    <code class="details" id="resolve">resolve(dnsName, location, x__xgafv=None)</code>
+    <code class="details" id="resolve">resolve(location, dnsName, x__xgafv=None)</code>
   <pre>Retrieves connect settings about a Cloud SQL instance using the instance DNS name.
 
 Args:
-  dnsName: string, Required. Cloud SQL instance ID. This does not include the project ID. (required)
   location: string, Required. The region of the instance. (required)
+  dnsName: string, Required. Cloud SQL instance ID. This does not include the project ID. (required)
   x__xgafv: string, V1 error format.
     Allowed values
       1 - v1 error format
@@ -230,6 +231,7 @@ Returns:
 
     { # Connect settings retrieval response.
   &quot;backendType&quot;: &quot;A String&quot;, # `SECOND_GEN`: Cloud SQL database instance. `EXTERNAL`: A database server that is not managed by Google. This property is read-only; use the `tier` property in the `settings` object to determine the database type.
+  &quot;connectionName&quot;: &quot;A String&quot;, # Optional. Output only. Connection name of the Cloud SQL instance used in connection strings, in the format project:region:instance.
   &quot;customSubjectAlternativeNames&quot;: [ # Custom subject alternative names for the server certificate.
     &quot;A String&quot;,
   ],
