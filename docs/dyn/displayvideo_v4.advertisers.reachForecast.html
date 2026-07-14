@@ -127,8 +127,7 @@ Args:
     &quot;durationDays&quot;: 42, # Required. The number of days the plan covers.
   },
   &quot;currencyCode&quot;: &quot;A String&quot;, # Required. The currency code for the plan in ISO 4217 format.
-  &quot;effectiveFrequencyBreakdownLimit&quot;: 42, # Optional. The highest minimum effective frequency to include in PlannedProductForecast.effective_frequency_breakdowns. Must be between 1 and 10, inclusive. If not specified, PlannedProductForecast.effective_frequency_breakdowns will not be populated. If set, this value will also be used as the minimum effective frequency for reach metrics reporting. This field cannot be combined with the min_effective_frequency field.
-  &quot;minEffectiveFrequency&quot;: 42, # Optional. The minimum effective frequency for the reported reach metrics. This is the smallest number of times a customer must be exposed to the ad for it to be considered effective. This setting only impacts reporting. Must be between 1 and 10, inclusive. If not specified, a default of 1 is applied. This field cannot be combined with effective_frequency_breakdown_limit.
+  &quot;minEffectiveFrequency&quot;: 42, # Optional. The minimum effective frequency for the reported reach metrics. This is the smallest number of times a customer must be exposed to the ad for it to be considered effective. This setting only impacts reporting. Must be between 1 and 10, inclusive. If not specified, a default of 1 is applied.
   &quot;plannedProducts&quot;: [ # Required. The list of line items to include in the forecast.
     { # Configuration for a specific product in the plan.
       &quot;advancedProductTargeting&quot;: { # Product-specific targeting overrides. # Optional. Optional line item level targeting overrides.
@@ -158,6 +157,7 @@ Args:
         &quot;genders&quot;: [ # Optional. The gender options to target.
           &quot;A String&quot;,
         ],
+        &quot;network&quot;: &quot;A String&quot;, # Optional. The network to target.
         &quot;plannableLocationIds&quot;: [ # Optional. Plannable location IDs to target.
           &quot;A String&quot;,
         ],
@@ -217,15 +217,6 @@ Returns:
       { # A single point in the reach curve.
         &quot;costMicros&quot;: &quot;A String&quot;, # Total cost for this point in micros.
         &quot;forecast&quot;: { # Performance metrics for a forecast point. # Aggregate forecast for the entire plan.
-          &quot;effectiveFrequencyBreakdowns&quot;: [ # A list of effective frequency breakdowns.
-            { # A breakdown of the number of unique people reached at a given effective frequency.
-              &quot;effectiveCoviewReach&quot;: &quot;A String&quot;, # The number of unique individuals, including co-viewers, exactly matching the targeting that were served the ad at least the number of times dictated by the effective_frequency.
-              &quot;effectiveFrequency&quot;: 42, # The set effective frequency.
-              &quot;onTargetEffectiveCoviewReach&quot;: &quot;A String&quot;, # The total number of unique individuals, including co-viewers that were served the ad at least the number of times dictated by the effective_frequency. This includes individuals that may fall outside of targeting.
-              &quot;onTargetReach&quot;: &quot;A String&quot;, # The number of unique individuals exactly matching the targeting that were served the ad at least the number of times dictated by the effective_frequency.
-              &quot;totalReach&quot;: &quot;A String&quot;, # The total number of unique individuals that were served the ad at least the number of times dictated by the effective_frequency. This includes individuals that may fall outside of targeting.
-            },
-          ],
           &quot;onTargetImpressions&quot;: &quot;A String&quot;, # Number of on-target impressions.
           &quot;onTargetReach&quot;: &quot;A String&quot;, # Number of unique people reached that match the on-target definition.
           &quot;totalImpressions&quot;: &quot;A String&quot;, # Total number of impressions.
@@ -238,15 +229,6 @@ Returns:
             &quot;costMicros&quot;: &quot;A String&quot;, # The cost in micros for this product.
             &quot;plannableProductCode&quot;: &quot;A String&quot;, # The code for the product.
             &quot;plannedProductForecast&quot;: { # Performance metrics for a forecast point. # Performance metrics for the product.
-              &quot;effectiveFrequencyBreakdowns&quot;: [ # A list of effective frequency breakdowns.
-                { # A breakdown of the number of unique people reached at a given effective frequency.
-                  &quot;effectiveCoviewReach&quot;: &quot;A String&quot;, # The number of unique individuals, including co-viewers, exactly matching the targeting that were served the ad at least the number of times dictated by the effective_frequency.
-                  &quot;effectiveFrequency&quot;: 42, # The set effective frequency.
-                  &quot;onTargetEffectiveCoviewReach&quot;: &quot;A String&quot;, # The total number of unique individuals, including co-viewers that were served the ad at least the number of times dictated by the effective_frequency. This includes individuals that may fall outside of targeting.
-                  &quot;onTargetReach&quot;: &quot;A String&quot;, # The number of unique individuals exactly matching the targeting that were served the ad at least the number of times dictated by the effective_frequency.
-                  &quot;totalReach&quot;: &quot;A String&quot;, # The total number of unique individuals that were served the ad at least the number of times dictated by the effective_frequency. This includes individuals that may fall outside of targeting.
-                },
-              ],
               &quot;onTargetImpressions&quot;: &quot;A String&quot;, # Number of on-target impressions.
               &quot;onTargetReach&quot;: &quot;A String&quot;, # Number of unique people reached that match the on-target definition.
               &quot;totalImpressions&quot;: &quot;A String&quot;, # Total number of impressions.
@@ -282,6 +264,7 @@ Returns:
       &quot;displayName&quot;: &quot;A String&quot;, # Output only. The display name of the location, for example &quot;Algeria&quot;.
       &quot;geoRegionType&quot;: &quot;A String&quot;, # Output only. The type of location.
       &quot;name&quot;: &quot;A String&quot;, # Output only. The resource name of the plannable location.
+      &quot;parentPlannableLocationId&quot;: &quot;A String&quot;, # Output only. The parent plannable location ID, for example the country ID for subgeos.
       &quot;plannableLocationId&quot;: &quot;A String&quot;, # Output only. The plannable location ID.
       &quot;regionCode&quot;: &quot;A String&quot;, # Output only. The region code of the location, for example &quot;DZ&quot; for Algeria.
     },
@@ -309,22 +292,32 @@ Returns:
     { # Metadata for a plannable product.
       &quot;displayName&quot;: &quot;A String&quot;, # Output only. The name associated with the ad product. For example: &quot;Video View Campaign&quot;.
       &quot;plannableProductCode&quot;: &quot;A String&quot;, # Output only. The plannable product code (e.g. &quot;YOUTUBE_REACH_MIX&quot;).
+      &quot;plannableProductCoreAttributes&quot;: { # Core attributes for a plannable product. # Output only. Core attributes for this product.
+        &quot;buyingMethod&quot;: &quot;A String&quot;, # Output only. The buying method.
+        &quot;costModel&quot;: &quot;A String&quot;, # Output only. The cost model.
+        &quot;productCategory&quot;: &quot;A String&quot;, # Output only. The product category.
+      },
       &quot;plannableProductDescription&quot;: &quot;A String&quot;, # Output only. The plain-text description of the ad product.
       &quot;plannableTargeting&quot;: { # Targeting capabilities for a given product. # Output only. The targeting capabilities available for this product.
         &quot;ageRanges&quot;: [ # Output only. Allowed plannable age ranges for the product. Actual targeting is computed by mapping this age range onto standard Google age targeting.
           &quot;A String&quot;,
         ],
+        &quot;defaultYoutubeSelectLineup&quot;: { # A Plannable YouTube Select Lineup for product targeting. # Output only. The default YouTube Select Lineup for this product, if applicable.
+          &quot;displayName&quot;: &quot;A String&quot;, # Output only. The display name of the YouTube Select Lineup.
+          &quot;lineupId&quot;: &quot;A String&quot;, # Output only. The ID of the YouTube Select Lineup.
+        },
         &quot;devices&quot;: [ # Output only. Targetable devices for the ad product.
           &quot;A String&quot;,
         ],
         &quot;genders&quot;: [ # Output only. Targetable genders for the ad product.
           &quot;A String&quot;,
         ],
-        &quot;networks&quot;: [ # Output only. Targetable networks for the ad product.
-          &quot;A String&quot;,
-        ],
+        &quot;network&quot;: &quot;A String&quot;, # Output only. Targetable network for the ad product.
         &quot;surfaceTargetingCombinations&quot;: { # Surface targeting rules. # Output only. Targetable surface combinations for the ad product.
           &quot;availableSurfaceTypes&quot;: [ # Output only. The surface types available.
+            &quot;A String&quot;,
+          ],
+          &quot;defaultSurfaceTypes&quot;: [ # Output only. The default surface types for this product.
             &quot;A String&quot;,
           ],
           &quot;validSurfaceCombinations&quot;: [ # Output only. Valid combinations of surfaces that can be selected together.
@@ -387,7 +380,7 @@ Returns:
 
 Args:
   advertiserId: string, Required. The ID of the advertiser to retrieve plannable user lists for. (required)
-  filter: string, Optional. Allows filtering by plannable user list properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The `updateTime` field must use the `GREATER THAN OR EQUAL TO (&gt;=)` or `LESS THAN OR EQUAL TO (&lt;=)` operators. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `plannableStatus` Examples: * All plannable user lists: `plannableStatus=&quot;PLANNABLE&quot;` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
+  filter: string, Optional. Allows filtering by plannable user list properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The `displayName` field must use the `HAS (:)` operator. * All other fields must use the `EQUALS (=)` operator. Supported fields: * `plannableStatus` * `displayName` * `userListType` * `name` Examples: * All plannable user lists: `plannableStatus=&quot;PLANNABLE&quot;` * Plannable user lists with display name containing &quot;Shopping&quot;: `plannableStatus=&quot;PLANNABLE&quot; AND displayName:&quot;Shopping&quot;` * First party user lists: `userListType=&quot;FIRST_PARTY&quot;` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information.
   pageSize: integer, Optional. Requested page size. Must be between `1` and `5000`. If unspecified will default to `5000`.
   pageToken: string, Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `RetrievePlannableUserLists` method. If not specified, the first page of results will be returned.
   x__xgafv: string, V1 error format.
