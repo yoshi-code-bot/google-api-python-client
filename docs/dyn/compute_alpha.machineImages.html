@@ -969,6 +969,8 @@ Returns:
     &quot;labels&quot;: { # Labels to apply to instances that are created from these properties.
       &quot;a_key&quot;: &quot;A String&quot;,
     },
+    &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
     &quot;machineType&quot;: &quot;A String&quot;, # The machine type to use for instances that are created from these
         # properties.
         # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -1066,6 +1068,15 @@ Returns:
         &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -1077,6 +1088,15 @@ Returns:
         &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -1495,6 +1515,7 @@ Returns:
     &quot;workloadIdentityConfig&quot;: {
       &quot;identity&quot;: &quot;A String&quot;,
       &quot;identityCertificateEnabled&quot;: True or False,
+      &quot;identityType&quot;: &quot;A String&quot;,
     },
   },
   &quot;kind&quot;: &quot;compute#machineImage&quot;, # Output only. [Output Only] The resource type, which is alwayscompute#machineImage for machine image.
@@ -1933,6 +1954,15 @@ Returns:
         &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -1944,6 +1974,15 @@ Returns:
         &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -3227,6 +3266,8 @@ Args:
     &quot;labels&quot;: { # Labels to apply to instances that are created from these properties.
       &quot;a_key&quot;: &quot;A String&quot;,
     },
+    &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+        # Local SSDs attached to the VM.
     &quot;machineType&quot;: &quot;A String&quot;, # The machine type to use for instances that are created from these
         # properties.
         # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -3324,6 +3365,15 @@ Args:
         &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -3335,6 +3385,15 @@ Args:
         &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -3753,6 +3812,7 @@ Args:
     &quot;workloadIdentityConfig&quot;: {
       &quot;identity&quot;: &quot;A String&quot;,
       &quot;identityCertificateEnabled&quot;: True or False,
+      &quot;identityType&quot;: &quot;A String&quot;,
     },
   },
   &quot;kind&quot;: &quot;compute#machineImage&quot;, # Output only. [Output Only] The resource type, which is alwayscompute#machineImage for machine image.
@@ -4191,6 +4251,15 @@ Args:
         &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -4202,6 +4271,15 @@ Args:
         &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
             # You can only specify this field for network interfaces in VPC networks.
           { # An alias IP range attached to an instance&#x27;s network interface.
+            &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                # IPs to be allocated from. When it is set, the IP would be allocated from
+                # any subnetwork range defined here if the IPs are available.
+                # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                # should be set.
+              &quot;A String&quot;,
+            ],
+            &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                # It will be set to the subnetwork range where the IP is allocated only.
             &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                 # must belong to the specified subnetwork and cannot contain IP addresses
                 # reserved by system or used by other network interfaces. This range may be
@@ -5491,6 +5569,8 @@ Returns:
         &quot;labels&quot;: { # Labels to apply to instances that are created from these properties.
           &quot;a_key&quot;: &quot;A String&quot;,
         },
+        &quot;localSsdEncryptionMode&quot;: &quot;A String&quot;, # Specifies which method should be used for encrypting the
+            # Local SSDs attached to the VM.
         &quot;machineType&quot;: &quot;A String&quot;, # The machine type to use for instances that are created from these
             # properties.
             # This field only accepts a machine type name, for example `n2-standard-4`.
@@ -5588,6 +5668,15 @@ Returns:
             &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
                 # You can only specify this field for network interfaces in VPC networks.
               { # An alias IP range attached to an instance&#x27;s network interface.
+                &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                    # IPs to be allocated from. When it is set, the IP would be allocated from
+                    # any subnetwork range defined here if the IPs are available.
+                    # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                    # should be set.
+                  &quot;A String&quot;,
+                ],
+                &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                    # It will be set to the subnetwork range where the IP is allocated only.
                 &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                     # must belong to the specified subnetwork and cannot contain IP addresses
                     # reserved by system or used by other network interfaces. This range may be
@@ -5599,6 +5688,15 @@ Returns:
             &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
                 # You can only specify this field for network interfaces in VPC networks.
               { # An alias IP range attached to an instance&#x27;s network interface.
+                &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                    # IPs to be allocated from. When it is set, the IP would be allocated from
+                    # any subnetwork range defined here if the IPs are available.
+                    # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                    # should be set.
+                  &quot;A String&quot;,
+                ],
+                &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                    # It will be set to the subnetwork range where the IP is allocated only.
                 &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                     # must belong to the specified subnetwork and cannot contain IP addresses
                     # reserved by system or used by other network interfaces. This range may be
@@ -6017,6 +6115,7 @@ Returns:
         &quot;workloadIdentityConfig&quot;: {
           &quot;identity&quot;: &quot;A String&quot;,
           &quot;identityCertificateEnabled&quot;: True or False,
+          &quot;identityType&quot;: &quot;A String&quot;,
         },
       },
       &quot;kind&quot;: &quot;compute#machineImage&quot;, # Output only. [Output Only] The resource type, which is alwayscompute#machineImage for machine image.
@@ -6455,6 +6554,15 @@ Returns:
             &quot;aliasIpRanges&quot;: [ # An array of alias IP ranges for this network interface.
                 # You can only specify this field for network interfaces in VPC networks.
               { # An alias IP range attached to an instance&#x27;s network interface.
+                &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                    # IPs to be allocated from. When it is set, the IP would be allocated from
+                    # any subnetwork range defined here if the IPs are available.
+                    # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                    # should be set.
+                  &quot;A String&quot;,
+                ],
+                &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                    # It will be set to the subnetwork range where the IP is allocated only.
                 &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                     # must belong to the specified subnetwork and cannot contain IP addresses
                     # reserved by system or used by other network interfaces. This range may be
@@ -6466,6 +6574,15 @@ Returns:
             &quot;aliasIpv6Ranges&quot;: [ # An array of alias IPv6 ranges for this network interface.
                 # You can only specify this field for network interfaces in VPC networks.
               { # An alias IP range attached to an instance&#x27;s network interface.
+                &quot;candidateSubnetworkRangeNames&quot;: [ # Identifies the candidate subnetwork range names for the alias
+                    # IPs to be allocated from. When it is set, the IP would be allocated from
+                    # any subnetwork range defined here if the IPs are available.
+                    # Only one of subnetwork_range_name or candidate_subnetwork_range_names
+                    # should be set.
+                  &quot;A String&quot;,
+                ],
+                &quot;effectiveSubnetworkRangeName&quot;: &quot;A String&quot;, # Output only. [Output Only] The subnetwork range name where the IP is allocated.
+                    # It will be set to the subnetwork range where the IP is allocated only.
                 &quot;ipCidrRange&quot;: &quot;A String&quot;, # The IP alias ranges to allocate for this interface. This IP CIDR range
                     # must belong to the specified subnetwork and cannot contain IP addresses
                     # reserved by system or used by other network interfaces. This range may be

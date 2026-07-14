@@ -1331,7 +1331,9 @@ Returns:
             # the action to be taken when traffic matches this condition (allow or deny).
           &quot;action&quot;: &quot;A String&quot;, # The Action to perform when the client connection triggers the rule.
               # Valid actions for firewall rules are: &quot;allow&quot;, &quot;deny&quot;,
-              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot;.
+              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot; (
+              # &quot;apply_security_profile_group&quot; can be specified only for global
+              # network firewall policies or hierarchical firewall policies).
               # Valid actions for packet mirroring rules are: &quot;mirror&quot;, &quot;do_not_mirror&quot;
               # and &quot;goto_next&quot;.
           &quot;description&quot;: &quot;A String&quot;, # An optional description for this resource.
@@ -1464,11 +1466,12 @@ Returns:
               # and can be updated.
           &quot;ruleTupleCount&quot;: 42, # Output only. [Output Only] Calculation of the complexity of a single firewall policy
               # rule.
-          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfile resource instance.
+          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfileGroup resource instance.
               # Example:
               # https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
               # Must be specified if action is one of &#x27;apply_security_profile_group&#x27; or
-              # &#x27;mirror&#x27;. Cannot be specified for other actions.
+              # &#x27;mirror&#x27;. Cannot be specified for other actions. Can be specified only
+              # for global network firewall policies or hierarchical firewall policies.
           &quot;targetForwardingRules&quot;: [ # A list of forwarding rules to which this rule applies.
               # This field allows you to control which load balancers get this rule.
               # For example, the following are valid values:
@@ -1520,7 +1523,9 @@ Returns:
             # the action to be taken when traffic matches this condition (allow or deny).
           &quot;action&quot;: &quot;A String&quot;, # The Action to perform when the client connection triggers the rule.
               # Valid actions for firewall rules are: &quot;allow&quot;, &quot;deny&quot;,
-              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot;.
+              # &quot;apply_security_profile_group&quot; and &quot;goto_next&quot; (
+              # &quot;apply_security_profile_group&quot; can be specified only for global
+              # network firewall policies or hierarchical firewall policies).
               # Valid actions for packet mirroring rules are: &quot;mirror&quot;, &quot;do_not_mirror&quot;
               # and &quot;goto_next&quot;.
           &quot;description&quot;: &quot;A String&quot;, # An optional description for this resource.
@@ -1653,11 +1658,12 @@ Returns:
               # and can be updated.
           &quot;ruleTupleCount&quot;: 42, # Output only. [Output Only] Calculation of the complexity of a single firewall policy
               # rule.
-          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfile resource instance.
+          &quot;securityProfileGroup&quot;: &quot;A String&quot;, # A fully-qualified URL of a SecurityProfileGroup resource instance.
               # Example:
               # https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
               # Must be specified if action is one of &#x27;apply_security_profile_group&#x27; or
-              # &#x27;mirror&#x27;. Cannot be specified for other actions.
+              # &#x27;mirror&#x27;. Cannot be specified for other actions. Can be specified only
+              # for global network firewall policies or hierarchical firewall policies.
           &quot;targetForwardingRules&quot;: [ # A list of forwarding rules to which this rule applies.
               # This field allows you to control which load balancers get this rule.
               # For example, the following are valid values:
