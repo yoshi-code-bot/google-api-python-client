@@ -79,7 +79,7 @@ h1, h2, h3 {
 <p class="firstline">Close httplib2 connections.</p>
 <p class="toc_element">
   <code><a href="#getOpenid_configuration">getOpenid_configuration(name, x__xgafv=None)</a></code></p>
-<p class="firstline">Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported.</p>
+<p class="firstline">Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the "Pre-GA Offerings Terms" in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available "as is" and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).</p>
 <h3>Method Details</h3>
 <div class="method">
     <code class="details" id="close">close()</code>
@@ -88,7 +88,7 @@ h1, h2, h3 {
 
 <div class="method">
     <code class="details" id="getOpenid_configuration">getOpenid_configuration(name, x__xgafv=None)</code>
-  <pre>Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported.
+  <pre>Gets the OIDC provider configuration for an agentic or managed workload identity pool following [the OIDC 1.0 discovery specification](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationResponse). For now, only agentic system pools are supported. **Preview** This feature is subject to the &quot;Pre-GA Offerings Terms&quot; in the General Service Terms section of the [Service Specific Terms](https://cloud.google.com/terms/service-terms#1). Pre-GA features are available &quot;as is&quot; and might have limited support. For more information, see the [launch stage descriptions](https://cloud.google.com/products#product-launch-stages).
 
 Args:
   name: string, Required. The name of the pool whose OpenID provider configuration to retrieve. Format: &#x27;organizations/{ORGANIZATION_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}&#x27; &#x27;projects/{PROJECT_NUMBER}/locations/global/workloadIdentityPools/{POOL_ID}&#x27; Example: &#x27;organizations/1234/locations/global/workloadIdentityPools/agents.global.org-1234.system.id.goog&#x27; &#x27;projects/12345678/locations/global/workloadIdentityPools/agents.global.proj-12345678.system.id.goog&#x27; (required)
