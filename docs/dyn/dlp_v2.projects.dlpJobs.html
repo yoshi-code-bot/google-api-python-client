@@ -3302,9 +3302,9 @@ Returns:
       },
     },
   ],
-  &quot;createTime&quot;: &quot;A String&quot;, # Time when the job was created.
-  &quot;endTime&quot;: &quot;A String&quot;, # Time when the job finished.
-  &quot;errors&quot;: [ # A stream of errors encountered running the job.
+  &quot;createTime&quot;: &quot;A String&quot;, # Output only. Time when the job was created.
+  &quot;endTime&quot;: &quot;A String&quot;, # Output only. Time when the job finished.
+  &quot;errors&quot;: [ # Output only. A stream of errors encountered running the job.
     { # Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
       &quot;details&quot;: { # The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). # Detailed error codes and messages.
         &quot;code&quot;: 42, # The status code, which should be an enum value of google.rpc.Code.
@@ -3995,9 +3995,9 @@ Returns:
       &quot;totalEstimatedBytes&quot;: &quot;A String&quot;, # Estimate of the number of bytes to process.
     },
   },
-  &quot;jobTriggerName&quot;: &quot;A String&quot;, # If created by a job trigger, the resource name of the trigger that instantiated the job.
-  &quot;lastModified&quot;: &quot;A String&quot;, # Time when the job was last modified by the system.
-  &quot;name&quot;: &quot;A String&quot;, # The server-assigned name.
+  &quot;jobTriggerName&quot;: &quot;A String&quot;, # Output only. If created by a job trigger, the resource name of the trigger that instantiated the job.
+  &quot;lastModified&quot;: &quot;A String&quot;, # Output only. Time when the job was last modified by the system.
+  &quot;name&quot;: &quot;A String&quot;, # Output only. The server-assigned name.
   &quot;riskDetails&quot;: { # Result of a risk analysis operation request. # Results from analyzing risk of a data source.
     &quot;categoricalStatsResult&quot;: { # Result of the categorical stats computation. # Categorical stats result
       &quot;valueFrequencyHistogramBuckets&quot;: [ # Histogram of value frequencies in the column.
@@ -4554,8 +4554,8 @@ Returns:
       &quot;tableId&quot;: &quot;A String&quot;, # Name of the table.
     },
   },
-  &quot;startTime&quot;: &quot;A String&quot;, # Time when the job started.
-  &quot;state&quot;: &quot;A String&quot;, # State of a job.
+  &quot;startTime&quot;: &quot;A String&quot;, # Output only. Time when the job started.
+  &quot;state&quot;: &quot;A String&quot;, # Output only. State of a job.
   &quot;type&quot;: &quot;A String&quot;, # The type of job.
 }</pre>
 </div>
@@ -7192,9 +7192,9 @@ Returns:
       },
     },
   ],
-  &quot;createTime&quot;: &quot;A String&quot;, # Time when the job was created.
-  &quot;endTime&quot;: &quot;A String&quot;, # Time when the job finished.
-  &quot;errors&quot;: [ # A stream of errors encountered running the job.
+  &quot;createTime&quot;: &quot;A String&quot;, # Output only. Time when the job was created.
+  &quot;endTime&quot;: &quot;A String&quot;, # Output only. Time when the job finished.
+  &quot;errors&quot;: [ # Output only. A stream of errors encountered running the job.
     { # Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
       &quot;details&quot;: { # The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). # Detailed error codes and messages.
         &quot;code&quot;: 42, # The status code, which should be an enum value of google.rpc.Code.
@@ -7885,9 +7885,9 @@ Returns:
       &quot;totalEstimatedBytes&quot;: &quot;A String&quot;, # Estimate of the number of bytes to process.
     },
   },
-  &quot;jobTriggerName&quot;: &quot;A String&quot;, # If created by a job trigger, the resource name of the trigger that instantiated the job.
-  &quot;lastModified&quot;: &quot;A String&quot;, # Time when the job was last modified by the system.
-  &quot;name&quot;: &quot;A String&quot;, # The server-assigned name.
+  &quot;jobTriggerName&quot;: &quot;A String&quot;, # Output only. If created by a job trigger, the resource name of the trigger that instantiated the job.
+  &quot;lastModified&quot;: &quot;A String&quot;, # Output only. Time when the job was last modified by the system.
+  &quot;name&quot;: &quot;A String&quot;, # Output only. The server-assigned name.
   &quot;riskDetails&quot;: { # Result of a risk analysis operation request. # Results from analyzing risk of a data source.
     &quot;categoricalStatsResult&quot;: { # Result of the categorical stats computation. # Categorical stats result
       &quot;valueFrequencyHistogramBuckets&quot;: [ # Histogram of value frequencies in the column.
@@ -8444,8 +8444,8 @@ Returns:
       &quot;tableId&quot;: &quot;A String&quot;, # Name of the table.
     },
   },
-  &quot;startTime&quot;: &quot;A String&quot;, # Time when the job started.
-  &quot;state&quot;: &quot;A String&quot;, # State of a job.
+  &quot;startTime&quot;: &quot;A String&quot;, # Output only. Time when the job started.
+  &quot;state&quot;: &quot;A String&quot;, # Output only. State of a job.
   &quot;type&quot;: &quot;A String&quot;, # The type of job.
 }</pre>
 </div>
@@ -11076,9 +11076,9 @@ Returns:
           },
         },
       ],
-      &quot;createTime&quot;: &quot;A String&quot;, # Time when the job was created.
-      &quot;endTime&quot;: &quot;A String&quot;, # Time when the job finished.
-      &quot;errors&quot;: [ # A stream of errors encountered running the job.
+      &quot;createTime&quot;: &quot;A String&quot;, # Output only. Time when the job was created.
+      &quot;endTime&quot;: &quot;A String&quot;, # Output only. Time when the job finished.
+      &quot;errors&quot;: [ # Output only. A stream of errors encountered running the job.
         { # Details information about an error encountered during job execution or the results of an unsuccessful activation of the JobTrigger.
           &quot;details&quot;: { # The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors). # Detailed error codes and messages.
             &quot;code&quot;: 42, # The status code, which should be an enum value of google.rpc.Code.
@@ -11769,9 +11769,9 @@ Returns:
           &quot;totalEstimatedBytes&quot;: &quot;A String&quot;, # Estimate of the number of bytes to process.
         },
       },
-      &quot;jobTriggerName&quot;: &quot;A String&quot;, # If created by a job trigger, the resource name of the trigger that instantiated the job.
-      &quot;lastModified&quot;: &quot;A String&quot;, # Time when the job was last modified by the system.
-      &quot;name&quot;: &quot;A String&quot;, # The server-assigned name.
+      &quot;jobTriggerName&quot;: &quot;A String&quot;, # Output only. If created by a job trigger, the resource name of the trigger that instantiated the job.
+      &quot;lastModified&quot;: &quot;A String&quot;, # Output only. Time when the job was last modified by the system.
+      &quot;name&quot;: &quot;A String&quot;, # Output only. The server-assigned name.
       &quot;riskDetails&quot;: { # Result of a risk analysis operation request. # Results from analyzing risk of a data source.
         &quot;categoricalStatsResult&quot;: { # Result of the categorical stats computation. # Categorical stats result
           &quot;valueFrequencyHistogramBuckets&quot;: [ # Histogram of value frequencies in the column.
@@ -12328,8 +12328,8 @@ Returns:
           &quot;tableId&quot;: &quot;A String&quot;, # Name of the table.
         },
       },
-      &quot;startTime&quot;: &quot;A String&quot;, # Time when the job started.
-      &quot;state&quot;: &quot;A String&quot;, # State of a job.
+      &quot;startTime&quot;: &quot;A String&quot;, # Output only. Time when the job started.
+      &quot;state&quot;: &quot;A String&quot;, # Output only. State of a job.
       &quot;type&quot;: &quot;A String&quot;, # The type of job.
     },
   ],
