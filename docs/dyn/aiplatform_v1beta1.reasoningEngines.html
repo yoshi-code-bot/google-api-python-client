@@ -385,6 +385,7 @@ Args:
           &quot;schemaConfigs&quot;: [ # Optional. Represents configuration of the structured memories&#x27; schemas.
             { # Schema configuration for structured memories.
               &quot;id&quot;: &quot;A String&quot;, # Required. Represents the ID of the schema. Must be 1-63 characters, start with a lowercase letter, and consist of lowercase letters, numbers, and hyphens.
+              &quot;jsonSchema&quot;: &quot;&quot;, # Optional. Represents the JSON Schema of the structured memories.
               &quot;memoryType&quot;: &quot;A String&quot;, # Optional. Represents the type of the structured memories associated with the schema. If not set, then `STRUCTURED_PROFILE` will be used.
               &quot;schema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Required. Represents the OpenAPI schema of the structured memories. The schema `type` cannot be `ARRAY` when `memory_type` is `STRUCTURED_PROFILE`.
                 &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
@@ -846,6 +847,7 @@ Returns:
           &quot;schemaConfigs&quot;: [ # Optional. Represents configuration of the structured memories&#x27; schemas.
             { # Schema configuration for structured memories.
               &quot;id&quot;: &quot;A String&quot;, # Required. Represents the ID of the schema. Must be 1-63 characters, start with a lowercase letter, and consist of lowercase letters, numbers, and hyphens.
+              &quot;jsonSchema&quot;: &quot;&quot;, # Optional. Represents the JSON Schema of the structured memories.
               &quot;memoryType&quot;: &quot;A String&quot;, # Optional. Represents the type of the structured memories associated with the schema. If not set, then `STRUCTURED_PROFILE` will be used.
               &quot;schema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Required. Represents the OpenAPI schema of the structured memories. The schema `type` cannot be `ARRAY` when `memory_type` is `STRUCTURED_PROFILE`.
                 &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
@@ -1202,6 +1204,7 @@ Returns:
               &quot;schemaConfigs&quot;: [ # Optional. Represents configuration of the structured memories&#x27; schemas.
                 { # Schema configuration for structured memories.
                   &quot;id&quot;: &quot;A String&quot;, # Required. Represents the ID of the schema. Must be 1-63 characters, start with a lowercase letter, and consist of lowercase letters, numbers, and hyphens.
+                  &quot;jsonSchema&quot;: &quot;&quot;, # Optional. Represents the JSON Schema of the structured memories.
                   &quot;memoryType&quot;: &quot;A String&quot;, # Optional. Represents the type of the structured memories associated with the schema. If not set, then `STRUCTURED_PROFILE` will be used.
                   &quot;schema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Required. Represents the OpenAPI schema of the structured memories. The schema `type` cannot be `ARRAY` when `memory_type` is `STRUCTURED_PROFILE`.
                     &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.
@@ -1563,6 +1566,7 @@ Args:
           &quot;schemaConfigs&quot;: [ # Optional. Represents configuration of the structured memories&#x27; schemas.
             { # Schema configuration for structured memories.
               &quot;id&quot;: &quot;A String&quot;, # Required. Represents the ID of the schema. Must be 1-63 characters, start with a lowercase letter, and consist of lowercase letters, numbers, and hyphens.
+              &quot;jsonSchema&quot;: &quot;&quot;, # Optional. Represents the JSON Schema of the structured memories.
               &quot;memoryType&quot;: &quot;A String&quot;, # Optional. Represents the type of the structured memories associated with the schema. If not set, then `STRUCTURED_PROFILE` will be used.
               &quot;schema&quot;: { # Defines the schema of input and output data. This is a subset of the [OpenAPI 3.0 Schema Object](https://spec.openapis.org/oas/v3.0.3#schema-object). # Required. Represents the OpenAPI schema of the structured memories. The schema `type` cannot be `ARRAY` when `memory_type` is `STRUCTURED_PROFILE`.
                 &quot;additionalProperties&quot;: &quot;&quot;, # Optional. If `type` is `OBJECT`, specifies how to handle properties not defined in `properties`. If it is a boolean `false`, no additional properties are allowed. If it is a schema, additional properties are allowed if they conform to the schema.

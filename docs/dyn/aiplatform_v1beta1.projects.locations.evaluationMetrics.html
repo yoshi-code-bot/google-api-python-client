@@ -116,6 +116,9 @@ Args:
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time when the EvaluationMetric was created.
   &quot;description&quot;: &quot;A String&quot;, # Optional. A description of the EvaluationMetric.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The user-friendly display name for the EvaluationMetric.
+  &quot;encryptionSpec&quot;: { # Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource. # Optional. Customer-managed encryption key spec for this EvaluationMetric. If set, this EvaluationMetric will be secured by this key.
+    &quot;kmsKeyName&quot;: &quot;A String&quot;, # Required. Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  },
   &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI that stores the metric specification..
   &quot;labels&quot;: { # Optional. Labels for the evaluation metric.
     &quot;a_key&quot;: &quot;A String&quot;,
@@ -515,6 +518,9 @@ Returns:
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time when the EvaluationMetric was created.
   &quot;description&quot;: &quot;A String&quot;, # Optional. A description of the EvaluationMetric.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The user-friendly display name for the EvaluationMetric.
+  &quot;encryptionSpec&quot;: { # Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource. # Optional. Customer-managed encryption key spec for this EvaluationMetric. If set, this EvaluationMetric will be secured by this key.
+    &quot;kmsKeyName&quot;: &quot;A String&quot;, # Required. Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  },
   &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI that stores the metric specification..
   &quot;labels&quot;: { # Optional. Labels for the evaluation metric.
     &quot;a_key&quot;: &quot;A String&quot;,
@@ -955,6 +961,9 @@ Returns:
   &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time when the EvaluationMetric was created.
   &quot;description&quot;: &quot;A String&quot;, # Optional. A description of the EvaluationMetric.
   &quot;displayName&quot;: &quot;A String&quot;, # Required. The user-friendly display name for the EvaluationMetric.
+  &quot;encryptionSpec&quot;: { # Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource. # Optional. Customer-managed encryption key spec for this EvaluationMetric. If set, this EvaluationMetric will be secured by this key.
+    &quot;kmsKeyName&quot;: &quot;A String&quot;, # Required. Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+  },
   &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI that stores the metric specification..
   &quot;labels&quot;: { # Optional. Labels for the evaluation metric.
     &quot;a_key&quot;: &quot;A String&quot;,
@@ -1366,6 +1375,9 @@ Returns:
       &quot;createTime&quot;: &quot;A String&quot;, # Output only. The time when the EvaluationMetric was created.
       &quot;description&quot;: &quot;A String&quot;, # Optional. A description of the EvaluationMetric.
       &quot;displayName&quot;: &quot;A String&quot;, # Required. The user-friendly display name for the EvaluationMetric.
+      &quot;encryptionSpec&quot;: { # Represents a customer-managed encryption key specification that can be applied to a Vertex AI resource. # Optional. Customer-managed encryption key spec for this EvaluationMetric. If set, this EvaluationMetric will be secured by this key.
+        &quot;kmsKeyName&quot;: &quot;A String&quot;, # Required. Resource name of the Cloud KMS key used to protect the resource. The Cloud KMS key must be in the same region as the resource. It must have the format `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
+      },
       &quot;gcsUri&quot;: &quot;A String&quot;, # Optional. The Google Cloud Storage URI that stores the metric specification..
       &quot;labels&quot;: { # Optional. Labels for the evaluation metric.
         &quot;a_key&quot;: &quot;A String&quot;,

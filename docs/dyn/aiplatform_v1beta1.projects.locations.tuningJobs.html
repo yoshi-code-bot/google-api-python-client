@@ -502,6 +502,7 @@ Args:
       &quot;learningRateMultiplier&quot;: 3.14, # Optional. Learning rate multiplier for Reinforcement Tuning.
       &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate per prompt. Default to 32768.
       &quot;samplesPerPrompt&quot;: 42, # Optional. Number of different responses to generate per prompt during tuning.
+      &quot;stepCount&quot;: &quot;A String&quot;, # Optional. Number of steps for the tuning job (mutually exclusive with epoch_count).
       &quot;thinkingBudget&quot;: 42, # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5 only). * -1 means dynamic thinking * 0 means no thinking * &gt; 0 means thinking budget in tokens If not set, default to -1 (dynamic thinking).
       &quot;thinkingLevel&quot;: &quot;A String&quot;, # Indicates the maximum thinking depth during tuning. Starting from Gemini 3.5 models, the old thinking_budget will no longer be supported and will result in a user error if set. Instead, users should use the thinking_level parameter to control the maximum thinking depth.
     },
@@ -2826,6 +2827,7 @@ Returns:
       &quot;learningRateMultiplier&quot;: 3.14, # Optional. Learning rate multiplier for Reinforcement Tuning.
       &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate per prompt. Default to 32768.
       &quot;samplesPerPrompt&quot;: 42, # Optional. Number of different responses to generate per prompt during tuning.
+      &quot;stepCount&quot;: &quot;A String&quot;, # Optional. Number of steps for the tuning job (mutually exclusive with epoch_count).
       &quot;thinkingBudget&quot;: 42, # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5 only). * -1 means dynamic thinking * 0 means no thinking * &gt; 0 means thinking budget in tokens If not set, default to -1 (dynamic thinking).
       &quot;thinkingLevel&quot;: &quot;A String&quot;, # Indicates the maximum thinking depth during tuning. Starting from Gemini 3.5 models, the old thinking_budget will no longer be supported and will result in a user error if set. Instead, users should use the thinking_level parameter to control the maximum thinking depth.
     },
@@ -5157,6 +5159,7 @@ Returns:
       &quot;learningRateMultiplier&quot;: 3.14, # Optional. Learning rate multiplier for Reinforcement Tuning.
       &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate per prompt. Default to 32768.
       &quot;samplesPerPrompt&quot;: 42, # Optional. Number of different responses to generate per prompt during tuning.
+      &quot;stepCount&quot;: &quot;A String&quot;, # Optional. Number of steps for the tuning job (mutually exclusive with epoch_count).
       &quot;thinkingBudget&quot;: 42, # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5 only). * -1 means dynamic thinking * 0 means no thinking * &gt; 0 means thinking budget in tokens If not set, default to -1 (dynamic thinking).
       &quot;thinkingLevel&quot;: &quot;A String&quot;, # Indicates the maximum thinking depth during tuning. Starting from Gemini 3.5 models, the old thinking_budget will no longer be supported and will result in a user error if set. Instead, users should use the thinking_level parameter to control the maximum thinking depth.
     },
@@ -7494,6 +7497,7 @@ Returns:
           &quot;learningRateMultiplier&quot;: 3.14, # Optional. Learning rate multiplier for Reinforcement Tuning.
           &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate per prompt. Default to 32768.
           &quot;samplesPerPrompt&quot;: 42, # Optional. Number of different responses to generate per prompt during tuning.
+          &quot;stepCount&quot;: &quot;A String&quot;, # Optional. Number of steps for the tuning job (mutually exclusive with epoch_count).
           &quot;thinkingBudget&quot;: 42, # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5 only). * -1 means dynamic thinking * 0 means no thinking * &gt; 0 means thinking budget in tokens If not set, default to -1 (dynamic thinking).
           &quot;thinkingLevel&quot;: &quot;A String&quot;, # Indicates the maximum thinking depth during tuning. Starting from Gemini 3.5 models, the old thinking_budget will no longer be supported and will result in a user error if set. Instead, users should use the thinking_level parameter to control the maximum thinking depth.
         },
@@ -10077,6 +10081,7 @@ Args:
         &quot;learningRateMultiplier&quot;: 3.14, # Optional. Learning rate multiplier for Reinforcement Tuning.
         &quot;maxOutputTokens&quot;: 42, # Optional. The maximum number of tokens to generate per prompt. Default to 32768.
         &quot;samplesPerPrompt&quot;: 42, # Optional. Number of different responses to generate per prompt during tuning.
+        &quot;stepCount&quot;: &quot;A String&quot;, # Optional. Number of steps for the tuning job (mutually exclusive with epoch_count).
         &quot;thinkingBudget&quot;: 42, # Optional. The thinking budget for the tuning job to optimize for (Gemini 2.5 only). * -1 means dynamic thinking * 0 means no thinking * &gt; 0 means thinking budget in tokens If not set, default to -1 (dynamic thinking).
         &quot;thinkingLevel&quot;: &quot;A String&quot;, # Indicates the maximum thinking depth during tuning. Starting from Gemini 3.5 models, the old thinking_budget will no longer be supported and will result in a user error if set. Instead, users should use the thinking_level parameter to control the maximum thinking depth.
       },

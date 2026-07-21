@@ -1559,6 +1559,9 @@ Returns:
         &quot;retrievalMetadata&quot;: { # Metadata related to the retrieval grounding source. This is part of the `GroundingMetadata` returned when grounding is enabled. # Optional. Output only. Metadata related to the retrieval grounding source.
           &quot;googleSearchDynamicRetrievalScore&quot;: 3.14, # Optional. A score indicating how likely it is that a Google Search query could help answer the prompt. The score is in the range of `[0, 1]`. A score of 1 means the model is confident that a search will be helpful, and 0 means it is not. This score is populated only when Google Search grounding and dynamic retrieval are enabled. The score is used to determine whether to trigger a search.
         },
+        &quot;retrievalQueries&quot;: [ # Optional. The queries that were executed by the retrieval tools. This field is populated only when the grounding source is a retrieval tool, such as Vertex AI Search.
+          &quot;A String&quot;,
+        ],
         &quot;searchEntryPoint&quot;: { # An entry point for displaying Google Search results. A `SearchEntryPoint` is populated when the grounding source for a model&#x27;s response is Google Search. It provides information that you can use to display the search results in your application. # Optional. A web search entry point that can be used to display search results. This field is populated only when the grounding source is Google Search.
           &quot;renderedContent&quot;: &quot;A String&quot;, # Optional. An HTML snippet that can be embedded in a web page or an application&#x27;s webview. This snippet displays a search result, including the title, URL, and a brief description of the search result.
           &quot;sdkBlob&quot;: &quot;A String&quot;, # Optional. A base64-encoded JSON object that contains a list of search queries and their corresponding search URLs. This information can be used to build a custom search UI.
@@ -2493,6 +2496,9 @@ Returns:
         &quot;retrievalMetadata&quot;: { # Metadata related to the retrieval grounding source. This is part of the `GroundingMetadata` returned when grounding is enabled. # Optional. Output only. Metadata related to the retrieval grounding source.
           &quot;googleSearchDynamicRetrievalScore&quot;: 3.14, # Optional. A score indicating how likely it is that a Google Search query could help answer the prompt. The score is in the range of `[0, 1]`. A score of 1 means the model is confident that a search will be helpful, and 0 means it is not. This score is populated only when Google Search grounding and dynamic retrieval are enabled. The score is used to determine whether to trigger a search.
         },
+        &quot;retrievalQueries&quot;: [ # Optional. The queries that were executed by the retrieval tools. This field is populated only when the grounding source is a retrieval tool, such as Vertex AI Search.
+          &quot;A String&quot;,
+        ],
         &quot;searchEntryPoint&quot;: { # An entry point for displaying Google Search results. A `SearchEntryPoint` is populated when the grounding source for a model&#x27;s response is Google Search. It provides information that you can use to display the search results in your application. # Optional. A web search entry point that can be used to display search results. This field is populated only when the grounding source is Google Search.
           &quot;renderedContent&quot;: &quot;A String&quot;, # Optional. An HTML snippet that can be embedded in a web page or an application&#x27;s webview. This snippet displays a search result, including the title, URL, and a brief description of the search result.
           &quot;sdkBlob&quot;: &quot;A String&quot;, # Optional. A base64-encoded JSON object that contains a list of search queries and their corresponding search URLs. This information can be used to build a custom search UI.
